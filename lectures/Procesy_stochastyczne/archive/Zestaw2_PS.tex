@@ -1,0 +1,83 @@
+\documentclass[12pt]{mwart}
+\usepackage{polski}
+\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{zd}{Zadanie}
+\title{Procesy stochastyczne\\ Zestaw zadań nr 2}
+\begin{document}
+\maketitle
+\begin{df}
+	Niech $\left( \Omega, \mathcal{F}, \mathbb{P}\right)$ będzie przestrzenią probabilistyczną. Procesem stochastycznym z czasem dyskretnym nazywamy ciąg zmiennych losowych	
+	\begin{displaymath}
+	X(n)\colon \Omega \to \mathbb{R},\ n>0.
+	\end{displaymath}
+	Przyjmujemy, że $X(0)$ jest stałe.
+\end{df}
+\begin{df}
+	Niech $\left( \Omega, \mathcal{F}, \mathbb{P}\right)$ będzie przestrzenią probabilistyczną. Filtracją (z czasem dyskretnym) nazywamy ciąg pod-$\sigma$-ciał $\left\{\mathcal{F}_n\right\}$ takich, że dla dowolnego $n > 0$ zachodzi
+	\begin{displaymath}
+	\mathcal{F}_{n-1} \subset \mathcal{F}_n.
+	\end{displaymath}
+\end{df}
+\begin{df}
+	Filtracją generowaną przez proces $\left(X(n)\right)$ (naturalną) nazywamy filtrację zadana następująco
+	\begin{displaymath}
+	\mathcal{F}_n^X = \sigma\left( \left\{ X^{-1}(k)(B),\ B \in \mathcal{B}, k = 0, 1,2, \dots , n \right\}\right).
+	\end{displaymath}
+\end{df} 
+\begin{df}
+	Proces $\left(X(n)\right)$ nazywamy adaptowanym do filtracji $\left(\mathcal{F}_n\right)$, jeżeli dla dowolnego $n$ $X(n)$ jest $\mathcal{F}_n$ mierzalna.
+\end{df}
+\begin{zd}
+	Niech $\Omega = [0,1]$. Znajdź postać filtracji generowanej przez proces $X(n,\omega) = 2\omega \chi_{[0, 1 - 1/n]}(\omega)$.
+\end{zd}
+
+\begin{zd}
+	Pokaż, że filtracja naturalna jest najmniejszą filtracją taką, że dany proces jest do niej adaptowany.
+\end{zd}
+
+\begin{df}
+	Proces $\left(X(n)\right)$ nazywamy martyngałem względem filtracji $\left(\mathcal{F}_n\right)$, gdy
+	\begin{displaymath}
+		\mathbb{E}\left(X(m)|\mathcal{F}_{m-1}\right) = X(m-1),\ m > 0.
+	\end{displaymath}
+\end{df}
+\begin{zd}
+	Sprawdź, czy martyngałem względem filtracji naturalnej jest proces $Z(n)$ zadany następująco 
+	\begin{displaymath}
+		Z(n) = Z(n-1) + L(n), Z(0) = 0,\  \mathbb{P}(L(n) = 1)  = \mathbb{P}(L(n) = -1)
+	\end{displaymath}
+	oraz zmienne $L(n)$ są niezależne między sobą.
+\end{zd}
+\begin{zd}
+	Udowodnij, że wartość oczekiwana martyngału względem zadanej filtracji jest stała w czasie.
+\end{zd}
+\begin{zd}
+	Niech dana będzie filtracja $\left(\mathcal{F}_n\right)$ i całkowalna zmienna losowa $X$. Udowodnij, że martyngałem względem tej filtracji jest proces określony następująco
+	\begin{displaymath}
+		\mathbb{E}\left(X|\mathcal{F}_{m}\right) = X(m),\ m > 0.
+	\end{displaymath}
+\end{zd}
+\begin{zd}
+	Niech $\xi_1, \xi_2, \dots$ będzie ciągiem niezależnych zmiennych losowych o tym samym rozkładzie, całkowalnych z kwadratem i o średniej zero. Niech $S_n = \xi_1 + \xi_2 + \dots + \xi_n$. Pokaż, że martyngałem względem filtracji generowanej przez zmienne $\xi_i$ jest proces \begin{displaymath}
+		Y(n) = S_n^2 - n\mathbb{E}\xi_1^2.
+	\end{displaymath}
+\end{zd}
+\begin{zd}
+	Niech $\xi_1, \xi_2, \dots$ będą niezależnymi, całkowalnymi i scentrowanymi zmiennymi losowymi. Niech $S_n = \xi_1 + \xi_2 + \dots + \xi_n$. Udowodnij, $S_n$ jest martyngałem względem swojej filtracji naturalnej.
+\end{zd}
+\begin{zd}
+	Niech $\xi_1, \xi_2, \dots$ będą niezależnymi, całkowalnymi i o wartości oczekiwanej równej $1$. Niech $S_n = \xi_1 \cdot \xi_2 \cdot \dots \cdot \xi_n$. Udowodnij, $S_n$ jest martyngałem względem filtracji generowanej przez zmienne $\xi_i$.
+\end{zd}
+
+
+
+
+\end{document}

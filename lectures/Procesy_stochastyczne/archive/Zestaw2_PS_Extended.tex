@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+\usepackage{polski}
+\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{zd}{Zadanie}
+\title{Procesy stochastyczne\\ Zestaw zadań nr 2}
+\begin{document}
+\maketitle
+\begin{df}
+	Niech $\left( \Omega, \mathcal{F}, \mathbb{P}\right)$ będzie przestrzenią probabilistyczną. Procesem stochastycznym z czasem dyskretnym nazywamy ciąg zmiennych losowych	
+	\begin{displaymath}
+	X(n)\colon \Omega \to \mathbb{R},\ n>0.
+	\end{displaymath}
+	Przyjmujemy, że $X(0)$ jest stałe.
+\end{df}
+\begin{df}
+	Niech $\left( \Omega, \mathcal{F}, \mathbb{P}\right)$ będzie przestrzenią probabilistyczną. Filtracją (z czasem dyskretnym) nazywamy ciąg pod-$\sigma$-ciał $\left\{\mathcal{F}_n\right\}$ takich, że dla dowolnego $n > 0$ zachodzi
+	\begin{displaymath}
+	\mathcal{F}_{n-1} \subset \mathcal{F}_n.
+	\end{displaymath}
+\end{df}
+\begin{df}
+	Filtracją generowaną przez proces $\left(X(n)\right)$ (naturalną) nazywamy filtrację zadana następująco
+	\begin{displaymath}
+	\mathcal{F}_n^X = \sigma\left( \left\{ X^{-1}(k)(B),\ B \in \mathcal{B}, k = 0, 1,2, \dots , n \right\}\right).
+	\end{displaymath}
+\end{df} 
+\begin{df}
+	Proces $\left(X(n)\right)$ nazywamy adaptowanym do filtracji $\left(\mathcal{F}_n\right)$, jeżeli dla dowolnego $n$ $X(n)$ jest $\mathcal{F}_n$ mierzalna.
+\end{df}
+\begin{zd}
+	Niech $\Omega = [0,1]$. Znajdź postać filtracji generowanej przez proces $X(n,\omega) = 2\omega \chi_{[0, 1 - 1/n]}(\omega)$.
+\end{zd}
+
+\begin{zd}
+	Pokaż, że filtracja naturalna jest najmniejszą filtracją taką, że dany proces jest do niej adaptowany.
+\end{zd}
+
+\begin{zd}
+	Niech $\{\xi_n\}$ będzie martyngałem względem pewnej filtracji $\{\mathcal{F}_n\}$. Udowodnij, że $\{\xi_n\}$ jest również martyngałem względem swojej filtracji naturalnej.
+\end{zd}
+\begin{df}
+	Proces $\left(X(n)\right)$ nazywamy martyngałem względem filtracji $\left(\mathcal{F}_n\right)$, gdy
+	\begin{displaymath}
+		\mathbb{E}\left(X(m)|\mathcal{F}_{m-1}\right) = X(m-1),\ m > 0.
+	\end{displaymath}
+\end{df}
+\begin{zd}
+	Określmy proces $Z(n)$ w następujący sposób 
+	\begin{displaymath}
+		Z(n) = Z(n-1) + L(n), Z(0) = 0,\  \mathbb{P}(L(n) = 1)  = \mathbb{P}(L(n) = -1),
+	\end{displaymath}
+	gdzie zmienne $L(n)$ są niezależne między sobą.\\
+	Udowodnij, że następujące procesy są martyngałami względem filtracji $\mathcal{F} = \sigma\left(Z(0), Z(1), \dots, Z(n)\right)$:
+	\begin{itemize}
+		\item $Z(n), \ n= 0, 1, \dots$
+		\item $Z(n)^2 - n, \ n= 0, 1, \dots$,
+		\item $ (-1)^2\cos \left(\pi Z(n)\right), \ n= 0, 1, \dots.$
+	\end{itemize}
+\end{zd}
+\begin{zd}
+	Udowodnij, że wartość oczekiwana martyngału względem zadanej filtracji jest stała w czasie.
+\end{zd}
+\begin{zd}
+	Niech dana będzie filtracja $\left(\mathcal{F}_n\right)$ i całkowalna zmienna losowa $X$. Udowodnij, że martyngałem względem tej filtracji jest proces określony następująco
+	\begin{displaymath}
+		\mathbb{E}\left(X|\mathcal{F}_{m}\right) = X(m),\ m > 0.
+	\end{displaymath}
+\end{zd}
+\begin{zd}
+	Niech $\xi_1, \xi_2, \dots$ będzie ciągiem niezależnych zmiennych losowych o tym samym rozkładzie, całkowalnych z kwadratem i o średniej zero. Niech $S_n = \xi_1 + \xi_2 + \dots + \xi_n$. Pokaż, że martyngałem względem filtracji generowanej przez zmienne $\xi_i$ jest proces \begin{displaymath}
+		Y(n) = S_n^2 - n\mathbb{E}\xi_1^2.
+	\end{displaymath}
+\end{zd}
+\begin{zd}
+	Niech $\xi_1, \xi_2, \dots$ będą niezależnymi, całkowalnymi i scentrowanymi zmiennymi losowymi. Niech $S_n = \xi_1 + \xi_2 + \dots + \xi_n$. Udowodnij, $S_n$ jest martyngałem względem swojej filtracji naturalnej.
+\end{zd}
+\begin{zd}
+	Niech $\xi_1, \xi_2, \dots$ będą niezależnymi, całkowalnymi i o wartości oczekiwanej równej $1$. Niech $S_n = \xi_1 \cdot \xi_2 \cdot \dots \cdot \xi_n$. Udowodnij, $S_n$ jest martyngałem względem filtracji generowanej przez zmienne $\xi_i$.
+\end{zd}
+\begin{zd}
+	Niech $\{\xi_t\}$ będzie supermartynagałem względem pewnej filtracji, którego wartość oczekiwana jest stała w czasie. Udowodnij, że jest on martyngałem. Czy to samo zachodzi dla submartyngałów?
+\end{zd}
+\begin{zd}
+	Udowodnij, że przyrosty martyngału są parami nieskorelowane.
+\end{zd}
+\begin{zd}
+	Niech proces $X$ będzie martyngałem względem pewnej filtracji. Zbadać (w razie potrzeby zakładając odpowiednią całkowalność) czy proces $|X|^p,\ p \geq 1$ jest sub- czy supermartyngałem.
+\end{zd}
+\begin{zd}
+	Wykazać, że przy odpowiednich założeniach co do całkowalności funkcja wypukła martyngały względem pewnej filtracji jest submartyngałem względem tej filtracji oraz że funkcja wypukła i niemalejąca przekształca submartyngał w submartyngał.
+\end{zd}
+
+
+\end{document}

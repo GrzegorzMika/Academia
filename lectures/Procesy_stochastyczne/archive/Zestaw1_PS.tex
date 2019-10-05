@@ -1,0 +1,122 @@
+\documentclass[12pt]{mwart}
+\usepackage{polski}
+\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{zd}{Zadanie}
+\title{Procesy stochastyczne\\ Zestaw zadań nr 1}
+\begin{document}
+\maketitle
+\begin{zd}
+	Udowodnij, że $X,Y \colon \Omega\to \mathbb{R}$ są zmiennymi losowymi wtedy i tylko wtedy, gdy $(X,Y)\colon \Omega \to \mathbb{R}$ jest wektorem losowym.
+\end{zd}
+% 3.8 Probability for Finance	
+\begin{zd}
+	Niech $X,Y$ będą zmiennymi losowymi z łączną gęstością $f_{X,Y}$. Udowodnij, że zmienna losowa $X+Y$ jest ciągłą zmienną losową z gęstością 
+	\begin{displaymath}
+	f_{X+Y}(z) = \int_{\mathbb{R}}f_{X,Y}(x,z-x)d\lambda (x).
+	\end{displaymath}
+\end{zd}
+% 3.13 Probablility for Finance
+\begin{zd}
+	Co to znaczy, że $\sigma$-ciała $\mathcal{F},\mathcal{G}$ są niezależne? Co można powiedzieć o $\sigma$-ciele, które jest niezależne od siebie samego?
+\end{zd}	
+% 3.30 Probability for Finance
+\begin{zd}
+	Niech $(\Omega,\mathcal{F},\mathbb{P})$ będzie przestrzenią probabilistyczną i niech $B\in \mathcal{F}$ będzie taki, że $\mathbb{P}(B) > 0$. Udowodnij, że $\mathbb{P}_B(A) = \mathbb{P}(A|B)$ jest rozkładem prawdopodobieństwa na $B$ z $\sigma$-ciałem $\mathcal{F}_B$ składającym się ze wszystkich $A\in\mathcal{F}$ takich, że $A\subset B$.
+\end{zd}
+% 4.3 Probability for Finance
+\begin{zd}
+	Niech $X$ będzie zmienną losową o rozkładzie Poissona z parametrem $\lambda$. Znajdź warunkową wartość oczekiwaną tej zmiennej losowej pod warunkiem, że przyjmuje ona wartość parzystą.
+\end{zd}
+% 4.4 Probability for Finance	
+\begin{zd}
+	Niech $(\Omega, \mathcal{F}, \mathbb{P})$ będzie przestrzenią probabilistyczną i niech $X,Y$ będą całkowalnymi zmiennymi losowymi określonymi na tej przestrzeni. Niech $\mathcal{G}$ będzie pod-$\sigma$-ciałem $\sigma$-ciała $\mathcal{F}$. Udowodnij, że $\mathbb{P}$-prawie wszędzie zachodzi: 
+	\begin{itemize}
+		\item $\forall_{a,b\in\mathbb{R}}\ \mathbb{E}(aX+bY| \mathcal{G}) = a\mathbb{E}(X|\mathcal{G}) + b\mathbb{E}(Y|\mathcal{G})$,
+		\item jeśli $X \geq 0$, to $\mathbb{E}(X|\mathcal{G})\geq 0$.
+	\end{itemize}
+\end{zd}
+% 4.13 Probability for Finance	
+\begin{zd}
+	Niech $X,Y$ będą zmiennymi losowymi o standardowym rozkładzie normalnym i kowariancji równej $\rho$. Znajdź $\mathbb{E}(X|Y)$.
+\end{zd}
+% 4.16 Probability for Finance	
+\begin{zd}
+	Niech zmienne losowe $X,Y$ będą określone na pewnej przestrzeni probabilistycznej w następujący sposób
+	\begin{displaymath}
+	X (x) = 2x^2,\ \ \ \ Y (x) = 1 - |2x - 1|.
+	\end{displaymath}
+	Znajdź $\mathbb{E}(X|Y)$.
+\end{zd}	
+% 2.6 Basic stochastic processes Course through Exercises	
+\begin{zd}
+	Niech $(\Omega = [0,1], \mathcal{F} = \mathcal{B}_{[0,1]}, \lambda)$ będzie przestrzenią probabilistyczną. Niech $Y(\omega) = \omega(1-\omega)$. Udowodnij, że dla dowolnej zmiennej losowej $X$ określonej na tej przestrzeni zachodzi
+	\begin{displaymath}
+	 \mathbb{E}(X|Y)(\omega) = \frac{X(\omega) + X(1-\omega)}{2}.
+	\end{displaymath}
+\end{zd}	
+% 2.15 Basic stochastic processes Course through Exercises		
+\begin{zd}
+	Niech zmienne losowe $X,Y$ mają ten sam rozkład. Przy jakim dodatkowym założeniu zachodzi
+	\begin{displaymath}
+		\mathbb{E}\left(\frac{X}{X+Y}\right) = \mathbb{E}\left(\frac{Y}{X+Y}\right)?
+	\end{displaymath}
+	Przy tym założeniu oblicz tą wartość.
+\end{zd}
+% 4 Różański 	
+\begin{zd}
+	Udowodnij, że dla nieujemnej i całkowalnej zmiennej losowej $X$ zachodzi
+	\begin{displaymath}
+	\mathbb{E}X = \int_0^{\infty}\mathbb{P}(X > t)dt \ \ \ \ \mathbb{E}(X|\mathcal{F}) = \int_0^{\infty}\mathbb{P}(X > t|\mathcal{F})dt.
+	\end{displaymath}
+\end{zd}
+%  6 Różański
+\begin{zd}
+	Niech zmienna losowa $X$ będzie całkowalna z kwadratem. Określmy $Var (X|\mathcal{F}) = \mathbb{E}\left((X-\mathbb{E}(X|\mathcal{F}))|\mathcal{F}\right)$. Udowodnij, że 
+	\begin{displaymath}
+	\begin{split}
+	VarX = &\mathbb{E}\left(Var(X|\mathcal{F})\right) + Var\left(\mathbb{E}(X|\mathcal{F})\right)\\ &\left(\mathbb{E}(X|\mathcal{F})\right)^2 \leq \mathbb{E}(X^2|\mathcal{F})\\
+	& VarX \geq Var\left(\mathbb{E}(X|\mathcal{F})\right).
+	\end{split}
+	\end{displaymath}
+\end{zd}	
+% 20 21 22 Różański
+\begin{zd}
+Niech $X,Y$ będą całkowalnymi z kwadratem, symetrycznymi i niezależnymi zmiennymi losowymi.	Udowodnij, że zachodzi
+\begin{displaymath}
+\mathbb{E}\left((X+Y)^2|X^2+Y^2\right) = X^2 + Y^2.
+\end{displaymath}
+\end{zd}
+\begin{zd}
+Niech $X,Y$ będą całkowalnymi z kwadratem zmiennymi losowymi. Udowodnij, że zachodzi
+\begin{displaymath}
+\mathbb{E}\left(X\mathbb{E}(Y|\mathcal{F})\right) = \mathbb{E}\left(Y\mathbb{E}(X|\mathcal{F})\right).
+\end{displaymath}
+\end{zd}	
+\begin{zd}
+	Niech $X_1, X_2, \dots, X_n$ będą niezależnymi całkowalnymi zmiennymi losowymi o tym samym rozkładzie. Oblicz $\mathbb{E}(X_1| X_1+ \dots +X_n)$. 
+\end{zd}
+\begin{zd}
+	Niech $\mathcal{F}_1 \subset \mathcal{F}_2$ i niech $\mathbb{E}|X|^2 <\infty$. Udowodnij, że zachodzi wtedy
+	\begin{displaymath}
+	\mathbb{E}\left|X - \mathbb{E}(X|\mathcal{F}_2)\right| ^2 \leq \mathbb{E}\left|X - \mathbb{E}(X|\mathcal{F}_1)\right| ^2.
+	\end{displaymath}
+\end{zd}
+\begin{zd}
+	Niech $X_1, X_2, \dots $ będzie ciągiem niezależnych i całkowalnych zmiennych losowych o tym samym rozkładzie gamma($\alpha,\beta$) i niech $\tau$ będzie zmienną losową o rozkładzie Poissona z parametrem $\lambda$ niezależną od tego ciągu. Znajdź wartość oczekiwaną zmiennej losowej
+	\begin{displaymath}
+	\xi \stackrel{d}{=} \sum_{n=1}^\tau X_n.
+	\end{displaymath}
+\end{zd}	
+	
+	
+	
+	
+\end{document}
