@@ -8,6 +8,8 @@
   Room 410
 - e-mail address:  
   grzegorz.mika@agh.edu.pl
+- LinkedIn  
+  [LinkedIn profile](https://www.linkedin.com/in/grzegorzwmika/)
   
 
 
