@@ -1,6 +1,6 @@
 # Zestawy zadań - procesy stochastyczne
 
-[Zestaw 1](https://https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw1_PS_2020.pdf)
+[Zestaw 1](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw1_PS_2020.pdf)
 
 
 
