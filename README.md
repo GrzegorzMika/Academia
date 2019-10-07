@@ -17,7 +17,7 @@
 ![](https://github.com/GrzegorzMika/Academia/blob/master/additional/agh_znak.jpg)
 
 
-## Zestawy zadań - procesy stochastyczne
+## Teaching
 
 [Zestaw 1](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw1_PS_2020.pdf)
 
