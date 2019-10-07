@@ -1,5 +1,17 @@
 # Grzegorz Mika 
 
+## Contact
+
+- University address:  
+  AGH University of Science and Technology  
+  ul. Gramatyka 8a - D13  
+  Room 410
+- e-mail address:  
+  grzegorz.mika@agh.edu.pl
+  
+
+
+
 ![](https://github.com/GrzegorzMika/Academia/blob/master/additional/agh_znak.jpg)
 
 
