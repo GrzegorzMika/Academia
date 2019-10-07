@@ -10,12 +10,6 @@
   grzegorz.mika@agh.edu.pl
 - **LinkedIn**  
   [LinkedIn profile](https://www.linkedin.com/in/grzegorzwmika/)
-  
-
-
-
-![](https://github.com/GrzegorzMika/Academia/blob/master/additional/agh_znak.jpg)
-
 
 ## Teaching
 
