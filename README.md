@@ -1,5 +1,9 @@
 # Grzegorz Mika ![][https://github.com/GrzegorzMika/Academia/blob/master/additional/agh_znak.jpg]
 
+<img src="https://github.com/GrzegorzMika/Academia/blob/master/additional/agh_znak.jpg"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
+
 ## Zestawy zadań - procesy stochastyczne
 
 [Zestaw 1](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw1_PS_2020.pdf)
