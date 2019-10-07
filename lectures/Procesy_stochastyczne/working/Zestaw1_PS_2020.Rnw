@@ -15,92 +15,37 @@
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 \maketitle
-\begin{zd}
-Niech $X_i\colon \left(\Omega, \mathcal{F}\right) \to \left(\Omega_i, \mathcal{F}_i\right), i = 1, 2, \dots, n$ będą niezależnymi zmiennymi losowymi i nich $g_i\colon  \left(\Omega_i, \mathcal{F}_i\right) \to  \left(\Omega'_i, \mathcal{F}'_i\right), i = 1, 2, \dots, n$ będą mierzalne. Co można powiedzieć na temat niezależności $g_i\circ X_i$?
-\end{zd}
 
 \begin{zd}
-Niech $f, g$ będą mierzalnymi funkcjami borelowskimi. Udowodnij, że są one niezależne wtedy i tylko wtedy, gdy dla dowolonych $a, b, c, d\in \mathbb{R}$ zachodzi:
+Dana jest funkcja
 \begin{displaymath}
-\mu\left(f^{-1}[a, b)\cap g^{-1}[c, d)\right) = \mu\left(f^{-1}[a, b)\right)\cap \mu\left(g^{-1}[c, d)\right)
+F(x) = 0\cdot\pmb{1}_{x\leq 0} + (ax^2+bx)\cdot\pmb{1}_{0<x\leq 1} + 1\cdot \pmb{1}_{x\geq 1}.
 \end{displaymath}
+Znajdź wszystkie pary liczb $a, b$ dla których funkcja ta jest dystrybuantą. Dla jakich wartości dystrybuanta ta jest ciągła?
 \end{zd}
 
-\begin{zd}
-Niech $X$ będzie dyskretną zmienną losową przyjmującą wartości $1, 2, 3, \dots$ z prawdopodobieństwami odpowiednio $p_1, p_2, p_3, \dots$. Niech $Y$ będzie taką zmienną losową, że gdy $X=n$, $Y$ przyjmuje nieujemne wartości zgodnie z rozkładem o gęstości $f_n$. Znajdź prawdopodobieństwo, że $1\leq X+Y\leq 3$.
-\end{zd}
-
-\begin{zd}
-Niech $X$ będzie zmienną losową przyjmującą tylko skończenie wiele wartości $x_1, x_2, \dots, x_n$ i niech $Y$ będzie taką zmienną losową, że $Y\in \mathcal{L}_1\left(\Omega\right)$ (tzn. $\mathbb{E}Y < +\infty$). Udowodnij, że zachodzi równość
-\begin{displaymath}
-\mathbb{E}\left(Y|X = x_i\right) = \frac{1}{\mathbb{P}\left(X = x_i\right)}\int_{\{X = x_i\}}Yd\mathbb{P}.
-\end{displaymath}
-Co można powiedziec na temat $\mathbb{E}\left(Y|B\right)$, gdzie $B$ jest pewnym mierzalnym zbiorem o dodatniej mierze?
-\end{zd}
-
-\begin{zd}
-Niech $\left\{B_i\right\}_{i =1}^{\infty}$ będzie rodziną wzajemnie rozłącznych zbiorów takich, że $\bigcup_{i =1}^{\infty}B_i=\Omega$ i niech $X\in \mathcal{L}_1\left(\Omega\right)$. Udowodnij, że zachodzi równość
-\begin{displaymath}
-\mathbb{E}X = \sum_{i =1}^{\infty}\mathbb{P}(B_i)\mathbb{E}\left(X|B_i\right).
-\end{displaymath}
-\end{zd}
-
-\begin{zd}
-Niech $\sigma$-ciało $\mathcal{F}$ będzie generowane przez skończoną rodzinę rozłącznych zbiorów $B_i$ i niech $X\in \mathcal{L}_1\left(\Omega\right)$. Znajdź postać $\mathbb{E}\left(X|\mathcal{F}\right)$.
-\end{zd}
-
-\begin{zd}
-Niech $X$ będzie nieujemną zmienną losową o skonczonym pierwszym momencie. Pokaż, że zachodzi
-\begin{enumerate}
-\item $\mathbb{E}\left(X|\mathcal{G}\right)= \int_0^{+\infty}\mathbb{P}\left(X > t\right)dt$,
-\item $\mathbb{P}\left(X > \alpha\right)\leq \alpha^{-1}\mathbb{E}\left(X|\mathcal{G}\right)$.
-\end{enumerate}
-\end{zd}
-
-\begin{zd}
-Niech $X \in \mathcal{L}_2\left(\Omega\right)$. Zdefinujmy warunkową wariancję względem $\sigma$- ciała $\mathcal{G}$ w nastepujący sposób
-\begin{displaymath}
-\mathbb{V}\left(X|\mathcal{G}\right) = \mathbb{E}\left(\left(X - \mathbb{E}\left(X|\mathcal{G}\right)\right)^2|\mathcal{G}\right).
-\end{displaymath}
-Wykaż, że zachodzi
-\begin{displaymath}
-\mathbb{V}\left(X\right) = \mathbb{E}\left(\mathbb{V}\left(X|\mathcal{G}\right)\right) + \mathbb{V}\left(\mathbb{E}\left(X|\mathcal{G}\right)\right).
-\end{displaymath}
-\end{zd}
-
-\begin{zd}
-Niech $\Omega = [0,1]\times[0,1]$ i niech $\mathbb{P}$ będzie miarą Lebesgue'a na tej przestrzeni. Wyznacz warunkową wartość oczekiwaną $\mathbb{E}\left(f|\mathcal{G}\right)$, jeśli:
-\begin{enumerate}
-\item $f(x,y) = x,\ \mathcal{G} = \sigma(y)$,
-\item $f(x,y) = x - y,\ \mathcal{G} = \sigma(x+y)$.
-\end{enumerate}
-\end{zd}
-\begin{zd}
-Niech $\Omega = [0, 1]$ i niech $\mathbb{P}$ będzie miarą Lebesgue'a na tej przestrzeni. Niech $f(x) = x^2$ i $g(x) = 2\pmb{1}_{[0, 1/2)} + x\pmb{1}_{[1/2, 1]}$. Znajdź $\mathbb{E}\left(f|g\right)$.
-\end{zd}
-% 2.6 Basic stochastic processes Course through Exercises
-\begin{zd}
-	Niech $(\Omega = [0,1], \mathcal{F} = \mathcal{B}_{[0,1]}, \lambda)$ będzie przestrzenią probabilistyczną. Niech $Y(\omega) = \omega(1-\omega)$. Udowodnij, że dla dowolnej zmiennej losowej $X$ określonej na tej przestrzeni zachodzi
-	\begin{displaymath}
-	 \mathbb{E}(X|Y)(\omega) = \frac{X(\omega) + X(1-\omega)}{2}.
-	\end{displaymath}
-\end{zd}
-
-\begin{zd}
-	Niech $X_1, X_2, \dots $ będzie ciągiem niezależnych i całkowalnych zmiennych losowych o tym samym rozkładzie normalnym ($\mathcal{N}(\mu,\sigma)$) i niech $\tau$ będzie zmienną losową o rozkładzie Poissona z parametrem $\lambda$ niezależną od tego ciągu. Znajdź wartość oczekiwaną zmiennej losowej
-	\begin{displaymath}
-	\xi \stackrel{d}{=} \sum_{n=1}^\tau X_n.
-	\end{displaymath}
-\end{zd}
-
-\begin{zdt}
-Niech $\left(\Omega, \mathcal{F}, \mathbb{P}\right)$ będzie przestrzenią probabilistyczną i niech $\mathcal{G}$ będzie pod-$\sigma$-ciałem ciała $\mathcal{F}$. Niech $Y\in \mathcal{L}_1\left(\Omega\right)$. Wtedy mamy, że $\mathbb{E}\left(Y|\mathcal{G}\right) \in \mathcal{L}_1\left(\Omega\right)$, a zatem $A(Y) = \mathbb{E}\left(Y|\mathcal{G}\right)$ definuje liniowy operator na przestrzeni $\mathcal{L}_1\left(\Omega\right)$. Wykaż, że
-\begin{enumerate}
-\item $||A|| = 1$,
-\item Definując iloczyn skalarny jako $[X, Y] = \int_{\Omega}XYd\mathbb{P}$ wykaż, że $A$ jest samosprzężony.
-\end{enumerate}
-\end{zdt}
 
 
+
+
+<<echo = FALSE>>=
+library('tidyverse')
+library('furrr')
+source('functions.R')
+@
+<<echo = FALSE>>=
+plan(multisession, workers = availableCores())
+No <- 3
+times <- 10
+df <- Observations_map_par(No, times)
+@
+\begin{figure}
+<<echo = FALSE, fig=TRUE, fig.width = 2, fig.height = 2, fig.align = 'center'>>=
+df %>%
+  enframe() %>%
+  mutate(value = scale(value)) %>%
+  ggplot(aes(x = value)) + geom_density(fill = 'green') + theme_classic()
+@
+\end{figure}
 
 \end{document}
