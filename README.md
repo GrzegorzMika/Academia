@@ -1,6 +1,6 @@
 # Grzegorz Mika 
 
-<img src="https://github.com/GrzegorzMika/Academia/blob/master/additional/agh_znak.jpg" alt="AGH"/>
+![]["https://github.com/GrzegorzMika/Academia/blob/master/additional/agh_znak.jpg"]
 
 
 ## Zestawy zadań - procesy stochastyczne
