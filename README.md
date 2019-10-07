@@ -1,4 +1,6 @@
-# Grzegorz Mika <img src="https://github.com/GrzegorzMika/Academia/blob/master/additional/agh_znak.jpg"
+# Grzegorz Mika 
+
+<img src="https://github.com/GrzegorzMika/Academia/blob/master/additional/agh_znak.jpg"
      alt="Markdown Monster icon"
      style="float: right; margin-right: 10px;" />
 
