@@ -52,8 +52,8 @@ Niech $\sigma$-ciało $\mathcal{F}$ będzie generowane przez skończoną rodzin�
 \begin{zd}
 Niech $X$ będzie nieujemną zmienną losową o skonczonym pierwszym momencie. Pokaż, że zachodzi
 \begin{enumerate}
-\item $\mathbb{E}\left(X|mathcal{G}\right)= \int_0^{+\infty}\mathbb{P}\left(X > t\right)dt$,
-\item $\mathbb{P}\left(X > \alpha\right)\leq \alpha^{-1}\mathbb{E}\left(X\mathcal{G}\right)$.
+\item $\mathbb{E}\left(X|\mathcal{G}\right)= \int_0^{+\infty}\mathbb{P}\left(X > t\right)dt$,
+\item $\mathbb{P}\left(X > \alpha\right)\leq \alpha^{-1}\mathbb{E}\left(X|\mathcal{G}\right)$.
 \end{enumerate}
 \end{zd}
 
@@ -97,7 +97,7 @@ Niech $\Omega = [0, 1]$ i niech $\mathbb{P}$ będzie miarą Lebesgue'a na tej pr
 Niech $\left(\Omega, \mathcal{F}, \mathbb{P}\right)$ będzie przestrzenią probabilistyczną i niech $\mathcal{G}$ będzie pod-$\sigma$-ciałem ciała $\mathcal{F}$. Niech $Y\in \mathcal{L}_1\left(\Omega\right)$. Wtedy mamy, że $\mathbb{E}\left(Y|\mathcal{G}\right) \in \mathcal{L}_1\left(\Omega\right)$, a zatem $A(Y) = \mathbb{E}\left(Y|\mathcal{G}\right)$ definuje liniowy operator na przestrzeni $\mathcal{L}_1\left(\Omega\right)$. Wykaż, że
 \begin{enumerate}
 \item $||A|| = 1$,
-\item definując iloczyn skalarny jako $[X, Y] = \int_{\Omega}XYd\mathbb{P}$ wykaż, że $A$ jest samosprzężony.
+\item Definując iloczyn skalarny jako $[X, Y] = \int_{\Omega}XYd\mathbb{P}$ wykaż, że $A$ jest samosprzężony.
 \end{enumerate}
 \end{zdt}
 
