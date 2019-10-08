@@ -36,7 +36,21 @@ Niech $X_1, X_2, \dots, X_n$ będą niezależnymi zmiennymi losowymi o tym samym
 \begin{zd}
 Niech $X$ będzie zmienną losową przyjmującą dodatnie wartości oraz o gęstości $f$. Znajdź postać gęstości zmiennej losowej $X^{-1}$.
 \end{zd}
+%5.7.2, 5.7.4
+\begin{zd}
+Niech $X$ będzie zmienną losową przyjmująca nieujemne wartości i niech $\phi$ będzie rosnącą i różniczkowalną funkcją taką, że $\phi(0) =0$. Udowodnij
+\begin{enumerate}
+\item $\mathbb{E}X = \int_0^{+\infty}\mathbb{P}(X\geq t)dt$
+\item $\sum_{i=1}^{+infty}\mathbb{P}(X \geq n) \leq \mathbb{E}X \leq 1 +\sum_{i=1}^{+infty}\mathbb{P}(X \geq n$ (jaki stąd wniosek na temat całkowalności $X$?)
+\item  $\mathbb{E}\phi(X) = \int_0^{+\infty}\phi'(t)\mathbb{P}(X\geq t)dt$
+\end{enumerate}
+\end{zd}
 
+\begin{zd}
+Niech $X, Y$ będą niezależnymi zmiennymi losowym o jednosatjnym rozkładzie na odcinku $(0,1)$. Udowodnij, że zmienne $U = \sqrt{-2\log X}\cos(2\pi Y)$, $V = \sqrt{-2\log X}\sin (2\pi Y)$ są niezależne i mają standardowy rozkład normalny. Czy widzisz jakieś zastosowanie tego twierdzenia?
+\end{zd}
+
+%5.10.5
 \begin{zd}
 Rozkład Cauchy'ego ma następującą gęstość
 \begin{displaymath}
@@ -54,9 +68,29 @@ c_u(x) = \frac{1}{\pi}\frac{1}{u^2 + x^2}, x\in \mathbb{R}, u >0.
 \end{figure}
 \end{zd}
 
+\begin{zd}
+Niech dany będzie wielowymiarowy rozkład normlny z gęstością $g(x,y)=\frac{1}{\sqrt{2}\pi}exp\left(-\frac{x^{2}-2xy+3y^{2}}{2}\right)$. Znajdź parametry tego rozkładu.
+\end{zd}
 
+\begin{zd}
+Niech $X\sim \mathcal{N}_p\left(\mu, \Sigma \right)$ i niech $A$ będzie macierzą symetryczną. Udowodnij, że
+$\mathbb{E}X^TAX = tr(A\Sigma) + \mu^T A \mu$.
+\end{zd}
 
+\begin{zd}
+Załóżmy, że zmienne losowe $X_1, X_2, \dots, X_{20}$ są niezależne, o jednakowym
+rozkładzie $\mathcal{N}(\mu, \sigma^2)$. Niech $Y_5 = X_1 + \dots + X_5$, $Y_{20} = X_1+\dots +X_{20}$. Wyznaczyć warunkową wartość oczekiwaną $\mathbb{E}(Y_5|Y_{20})$.
+\end{zd}
 
+\begin{zd}
+W grupie studenckiej przeprowadzono test z analizy, w którym można uzyskać od 0 do 100 punktów. Przeciętna liczba punktów uzyskiwanych przez studenta wynosi 40, a odchylenie standardowe 20. Zakładając, że wyniki studentów są niezależnymi zmiennymi losowymi o tym samym rozkładzie prawdopodobieństwa, obliczyć prawdopodobieństwo tego, że średnia liczba punktów w 150 osobowej grupie studenckiej będzie większa od 45.
+\end{zd}
+
+\begin{zd}
+Załóżmy, że przy składaniu książki w drukarni każda litera ma prawdopodobieństwo 0.0001, że zostanie złożona błędnie. Po złożeniu książki szpalty czyta korektor, który znajduje każdy błąd z prawdopodobieństwem 0.5. Znaleźć prawdopodobieństwo, że w książce o stu tysiącach znaków drukarskich pozostaną po korekcie nie więcej niż dwa błędy.
+\end{zd}
+
+%5.9.11
 \begin{zdt}
 Zbiór Cantora $C$ to zbiór wszystkich liczb $t$ postaci
 \begin{displaymath}
@@ -86,7 +120,7 @@ Od jakiej wartość (ilości sumownaych składników) można powiedzieć, że dz
 \end{figure}
 \end{zd}
 
-\begin{zd}
-Niech $X_1, X_2, \dots$ będzie ciągiem niezależnych zmiennych losowych takich, że $X_n \tilde B(n, p_n)$, gdzie $p_n = \lambda/n$ dla pewnego $\lambda > 0$. Przy pomocy eksperymentu numerycznego zaproponuj rozkład graniczny tego ciągu.
-\end{zd}
+% \begin{zd}
+% Niech $X_1, X_2, \dots$ będzie ciągiem niezależnych zmiennych losowych takich, że $X_n \tilde B(n, p_n)$, gdzie $p_n = \lambda/n$ dla pewnego $\lambda > 0$. Przy pomocy eksperymentu numerycznego zaproponuj rozkład graniczny tego ciągu.
+% \end{zd}
 \end{document}
