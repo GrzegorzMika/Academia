@@ -69,8 +69,8 @@ c_u(x) = \frac{1}{\pi}\frac{1}{u^2 + x^2}, x\in \mathbb{R}, u >0.
 \end{enumerate}
 \begin{figure}
 <<echo = FALSE, fig = TRUE>>=
-  rcauchy(10) %>% enframe() %>% ggplot(aes(x = value)) + geom_density(fill = 'blue') +
-    theme_classic() + labs(title = "Rozkład Cauch'ego")
+  rcauchy(100000) %>% enframe() %>% ggplot(aes(x = value)) + geom_density(fill = 'blue') +
+    theme_classic() + labs(title = "Rozklad Cauch'ego")
 @
 \end{figure}
 \end{zd}
@@ -124,8 +124,8 @@ Od jakiej wartość (ilości sumownaych składników) można powiedzieć, że dz
 
 <<echo = FALSE>>=
 plan(multisession, workers = availableCores())
-No <- 30
-times <- 1
+No <- 3000
+times <- 1000000
 df <- Observations_map_par(No, times)
 @
 \begin{figure}
@@ -133,7 +133,7 @@ df <- Observations_map_par(No, times)
 df %>%
   enframe() %>%
   mutate(value = scale(value)) %>%
-  ggplot(aes(x = value)) + geom_density(fill = 'green') + theme_classic() + labs(title = 'CTG - to działa!')
+  ggplot(aes(x = value)) + geom_density(fill = 'green') + theme_classic() + labs(title = 'CTG - to dziala!')
 @
 \end{figure}
 \end{zd}
