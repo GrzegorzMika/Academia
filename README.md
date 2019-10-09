@@ -15,14 +15,14 @@
 
 ### Publications
 - **Master Thesis**
-  - Grzegorz Mika (2018), ["Nierównosci wyrocznie dla problemów odwrotnych"](https://github.com/GrzegorzMika/Academia/blob/master/msc/finalMika.pdf) (_"Oracle inequalities for inverse problems"_)  
+  - Grzegorz Mika (2018), [_"Nierównosci wyrocznie dla problemów odwrotnych"_](https://github.com/GrzegorzMika/Academia/blob/master/msc/finalMika.pdf) (_"Oracle inequalities for inverse problems"_)  
 - **Bachelor Thesis** 
-  - Grzegorz Mika (2016), ["Testowanie regresji liniowej przeciwko wypukłej"](https://github.com/GrzegorzMika/Academia/blob/master/bsc/G.W.Mika%20Praca%20licencjacka.pdf) (_"Testing linear versus convex regression function"_)
+  - Grzegorz Mika (2016), [_"Testowanie regresji liniowej przeciwko wypukłej"_](https://github.com/GrzegorzMika/Academia/blob/master/bsc/G.W.Mika%20Praca%20licencjacka.pdf) (_"Testing linear versus convex regression function"_)
   
 ### Talks & Posters
-- Grzegorz Mika (2018), ["Dekonwolucja zaborzonego sygnału. Podejście przez wyrocznie"](https://github.com/GrzegorzMika/Academia/blob/master/posters/2018/dwumian/dwumian.pdf), DwuMian, 2018
-- Grzegorz Mika (2018), ["Stochastyczne problemy odwrotne. Definicje i zastosowania"](https://github.com/GrzegorzMika/Academia/blob/master/presentations/2018/wspolczesne_oblicza_matematyki/Oblicza.pdf), Współczesne oblicza matematyki, 2018
-- Grzegorz Mika (2017), ["Zastosowanie metod MCMC do modeli wyceny"](https://github.com/GrzegorzMika/Academia/blob/master/presentations/2017/krakowska_konferencja_matematyki_finansowej/MCMC.pdf), VI Krakowska konferencja Matematyki Finansowej, 2017
+- Grzegorz Mika (2018), [_"Dekonwolucja zaborzonego sygnału. Podejście przez wyrocznie"_](https://github.com/GrzegorzMika/Academia/blob/master/posters/2018/dwumian/dwumian.pdf), DwuMian, 2018
+- Grzegorz Mika (2018), [_"Stochastyczne problemy odwrotne. Definicje i zastosowania"_](https://github.com/GrzegorzMika/Academia/blob/master/presentations/2018/wspolczesne_oblicza_matematyki/Oblicza.pdf), Współczesne oblicza matematyki, 2018
+- Grzegorz Mika (2017), [_"Zastosowanie metod MCMC do modeli wyceny"_](https://github.com/GrzegorzMika/Academia/blob/master/presentations/2017/krakowska_konferencja_matematyki_finansowej/MCMC.pdf), VI Krakowska konferencja Matematyki Finansowej, 2017
 
 ## Teaching
 - Consultation: Friday, 10:15-11:30, 410, D13
