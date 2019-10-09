@@ -1,4 +1,4 @@
-# Grzegorz Mika )
+# Grzegorz Mika 
 ## [AGH University of Science and Technology in Cracow](https://www.agh.edu.pl/)
 
 ## Contact
