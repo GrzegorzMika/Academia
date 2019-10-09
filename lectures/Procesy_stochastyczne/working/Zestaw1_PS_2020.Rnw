@@ -58,7 +58,7 @@ Niech $X, Y$ będą niezależnymi zmiennymi losowym o jednosatjnym rozkładzie n
 \begin{zd}
 Rozkład Cauchy'ego ma następującą gęstość
 \begin{displaymath}
-c_u(x) = \frac{1}{\pi}\frac{1}{u^2 + x^2}, x\in \mathbb{R}, u >0.
+c_u(x) = \frac{1}{\pi}\frac{u}{u^2 + x^2}, x\in \mathbb{R}, u >0.
 \end{displaymath}
 \begin{enumerate}
 \item Znajdź wartość oczekiwaną rozkładu Cauchy'ego.
