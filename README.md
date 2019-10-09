@@ -1,5 +1,7 @@
 # Grzegorz Mika 
 
+![AGH](https://github.com/GrzegorzMika/Academia/blob/master/additional/agh_znak.jpg)
+
 ## Contact
 
 - **University address:**  
