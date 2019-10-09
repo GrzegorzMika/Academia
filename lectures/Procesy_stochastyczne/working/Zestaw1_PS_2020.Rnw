@@ -45,7 +45,7 @@ Niech $X$ będzie zmienną losową przyjmującą dodatnie wartości oraz o gęst
 Niech $X$ będzie zmienną losową przyjmująca nieujemne wartości i niech $\phi$ będzie rosnącą i różniczkowalną funkcją taką, że $\phi(0) =0$. Udowodnij
 \begin{enumerate}
 \item $\mathbb{E}X = \int_0^{+\infty}\mathbb{P}(X\geq t)dt$
-\item $\sum_{i=1}^{+infty}\mathbb{P}(X \geq n) \leq \mathbb{E}X \leq 1 +\sum_{i=1}^{+infty}\mathbb{P}(X \geq n$ (jaki stąd wniosek na temat całkowalności $X$?)
+\item $\sum_{i=1}^{+\infty}\mathbb{P}(X \geq n) \leq \mathbb{E}X \leq 1 +\sum_{i=1}^{+\infty}\mathbb{P}(X \geq n)$ (jaki stąd wniosek na temat całkowalności $X$?)
 \item  $\mathbb{E}\phi(X) = \int_0^{+\infty}\phi'(t)\mathbb{P}(X\geq t)dt$
 \end{enumerate}
 \end{zd}
