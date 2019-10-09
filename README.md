@@ -1,6 +1,5 @@
 # Grzegorz Mika 
-
-![AGH](https://github.com/GrzegorzMika/Academia/blob/master/additional/agh_znak.jpg)
+## AGH University of Science and Technology in Cracow
 
 ## Contact
 
