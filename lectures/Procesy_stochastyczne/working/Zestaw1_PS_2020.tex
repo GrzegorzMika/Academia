@@ -19,7 +19,7 @@
 \begin{zd}
 Dana jest funkcja
 \begin{displaymath}
-F(x) = 0\cdot\pmb{1}_{x\leq 0} + (ax^2+bx)\cdot\pmb{1}_{0<x\leq 1} + 1\cdot \pmb{1}_{x\geq 1}.
+F(x) = 0\cdot\pmb{1}_{x\leq 0} + (ax^2+bx)\cdot\pmb{1}_{0<x< 1} + 1\cdot \pmb{1}_{x\geq 1}.
 \end{displaymath}
 Znajdź wszystkie pary liczb $a, b$ dla których funkcja ta jest dystrybuantą. Dla jakich wartości dystrybuanta ta jest ciągła?
 \end{zd}
@@ -41,7 +41,7 @@ Niech $X$ będzie zmienną losową przyjmującą dodatnie wartości oraz o gęst
 Niech $X$ będzie zmienną losową przyjmująca nieujemne wartości i niech $\phi$ będzie rosnącą i różniczkowalną funkcją taką, że $\phi(0) =0$. Udowodnij
 \begin{enumerate}
 \item $\mathbb{E}X = \int_0^{+\infty}\mathbb{P}(X\geq t)dt$
-\item $\sum_{i=1}^{+infty}\mathbb{P}(X \geq n) \leq \mathbb{E}X \leq 1 +\sum_{i=1}^{+infty}\mathbb{P}(X \geq n$ (jaki stąd wniosek na temat całkowalności $X$?)
+\item $\sum_{i=1}^{+\infty}\mathbb{P}(X \geq n) \leq \mathbb{E}X \leq 1 +\sum_{i=1}^{+\infty}\mathbb{P}(X \geq n)$ (jaki stąd wniosek na temat całkowalności $X$?)
 \item  $\mathbb{E}\phi(X) = \int_0^{+\infty}\phi'(t)\mathbb{P}(X\geq t)dt$
 \end{enumerate}
 \end{zd}
@@ -54,7 +54,7 @@ Niech $X, Y$ będą niezależnymi zmiennymi losowym o jednosatjnym rozkładzie n
 \begin{zd}
 Rozkład Cauchy'ego ma następującą gęstość
 \begin{displaymath}
-c_u(x) = \frac{1}{\pi}\frac{1}{u^2 + x^2}, x\in \mathbb{R}, u >0.
+c_u(x) = \frac{1}{\pi}\frac{u}{u^2 + x^2}, x\in \mathbb{R}, u >0.
 \end{displaymath}
 \begin{enumerate}
 \item Znajdź wartość oczekiwaną rozkładu Cauchy'ego.
