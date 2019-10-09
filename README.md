@@ -14,9 +14,9 @@
 ## Research
 
 ### Publications
-- Master Thesis
+- **Master Thesis**
   - Grzegorz Mika (2018), ["Nierównosci wyrocznie dla problemów odwrotnych"](https://github.com/GrzegorzMika/Academia/blob/master/msc/finalMika.pdf) (_"Oracle inequalities for inverse problems"_)  
-- Bachelor Thesis 
+- **Bachelor Thesis** 
   - Grzegorz Mika (2016), ["Testowanie regresji liniowej przeciwko wypukłej"](https://github.com/GrzegorzMika/Academia/blob/master/bsc/G.W.Mika%20Praca%20licencjacka.pdf) (_"Testing linear versus convex regression function"_)
   
 ### Talks & Posters
