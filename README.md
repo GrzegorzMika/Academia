@@ -25,6 +25,12 @@
 - Grzegorz Mika (2018), [_"Stochastyczne problemy odwrotne. Definicje i zastosowania"_](https://github.com/GrzegorzMika/Academia/blob/master/presentations/2018/wspolczesne_oblicza_matematyki/Oblicza.pdf), Współczesne oblicza matematyki, 2018
 - Grzegorz Mika (2017), [_"Zastosowanie metod MCMC do modeli wyceny"_](https://github.com/GrzegorzMika/Academia/blob/master/presentations/2017/krakowska_konferencja_matematyki_finansowej/MCMC.pdf), VI Krakowska konferencja Matematyki Finansowej, 2017
 
+### Participant
+- [_Why R? 2019 Conference_](http://whyr.pl/2019/), 26-29 September 2019, Warszawa, Poland
+- [_Jubileuszowy zjazd matematyków polskich w 100-lecie PTM_](https://100latptm.matinf.uj.edu.pl/), 3-7 September 2019, Kraków, Poland
+- [_Statistics conference in honor of Add Van der Vaart's 60th birthday_](http://pub.math.leidenuniv.nl/~schmidthieberaj/aadbirthday/), 17-21 June 2019, Leiden, The Netherlands
+- [_SatRday_](https://gdansk2019.satrdays.org/), 17-18 May 2019, Gdańsk, Poland
+
 ## Teaching
 - Consultation: Friday, 10:15-11:30, 410, D13
 - Stochastic processes (2019/2020)  
