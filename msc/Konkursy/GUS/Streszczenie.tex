@@ -1,0 +1,30 @@
+\documentclass[]{article}
+
+\usepackage{polski}
+\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+
+\begin{document}
+\begin{center}
+	\huge{{\bf Streszczenie}}\\ Grzegorz Mika\\Nierówności wyrocznie dla problemów odwrotnych
+\end{center}
+\vspace{1cm}
+W pracy rozważany jest problem estymacji nieznanego elementu $f$ na podstawie niebezpośrednich i zaburzonych obserwacji w modelu 
+\begin{displaymath}
+Y = Af + \epsilon\xi.
+\end{displaymath}. Niech $\Lambda$ będzie skończonym zbiorem estymatorów liniowych, czyli estymatorów postaci $TY$, gdzie $T$ jest pewnym operatorem liniowym. Celem jest konstrukcja metody wyboru estymatora z rodziny $\Lambda$ naśladującego estymator o minimalnym ryzyku w tej klasie. Okazuje się, że można to osiągnąć poprzez minimalizację odpowiedniego wyrażenia związanego z ryzykiem empirycznym, nieobciążonego estymatora tego ryzyka w przypadku problemu z operatorem zwartym bądź górnego oszacowania tego ryzyka w problemie z dowolnym operatorem liniowym ciągłym. Głównym wynikiem pracy jest zaprezentowanie odpowiednich nieasymptotycznych nierówności wyroczni w obu przypadkach postaci 
+\begin{displaymath}
+\mathcal{R}(\theta^*,\theta)\leq C_1 \inf_{\hat{\theta} \in \Lambda}\mathcal{R}(\hat{\theta},\theta)+C_2(\Lambda,n),
+\end{displaymath}
+gdzie $\Lambda$ jest rozważaną rodziną estymatorów, $\mathcal{R}$ jest odpowiednio zdefiniowanym ryzykiem estymatora, $\theta$ poszukiwanym elementem a estymator $\theta^*$ jest wybierany zgodnie z zaprezentowaną metodą. \\
+Dodatkowo pokazane zostaje w pracy, że przy pewnych założeniach na rozważaną rodzinę estymatorów $\Lambda$, powyższe nierówności wyrocznie są asymptotycznie dokładne, czyli
+\begin{equation}\label{aoracle}
+\mathcal{R}(\theta^*,\theta)\leq(1+o(1))\inf_{\hat{\theta} \in \Lambda}\mathcal{R}(\hat{\theta},\theta).
+\end{equation}
+
+\end{document}

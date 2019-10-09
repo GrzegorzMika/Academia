@@ -1,0 +1,318 @@
+\documentclass[12pt]{article}
+\usepackage{polski}
+\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{eufrak}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{makeidx}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{lm}{Lemat}
+\newtheorem{wn}{Wniosek}
+\newtheorem{prz}{Przykład}
+\newtheorem{uw}{Uwaga}
+\newtheorem{zd}{Zadanie}
+\title{SVD i obcięte SVD}
+\author{Grzegorz Mika}
+\begin{document}
+\maketitle
+\section{Wstęp}
+Niech $H,G$ będą przestrzeniami Hilberta, $A\colon H \to G$ niech będzie liniowym i ograniczonym operatorem między tymi przestrzeniami. Naszym zadaniem jest, mając dany $g\in G$, znaleźć taki $f\in H$, że
+\begin{displaymath}
+Af=g.
+\end{displaymath}
+Problem nazwiemy dobrze postawionym (well- posed) wg Hadamarda, gdy:
+\begin{itemize}
+\item dla dowolnego $g\in G$ istnieje $f\in H$ spełniający zadane równanie,
+\item rozwiązanie jest jedyne,
+\item rozwiązanie jest stabilne, czyli zależy w sposób ciągły od prawej strony równania.
+\end{itemize}
+Jeżeli choć jeden z warunków nie jest spełniony problem nazywamy źle postawionym (ill- posed). W przypadku braku stabilności, operator odwrotny $A^{-1}$ jest nieograniczony, co może prowadzić do eksplozji rozwiązania nawet w przypadku niewielkiego zaburzenia wartości $g$, czyli rozpatrując lekko zaburzoną wersję $g$ oznaczoną jako $g_{\epsilon}$, dostajemy, że $f_{\epsilon}=A^{-1}g_{\epsilon}$ może być bardzo odległe od prawdziwej wartości $f$.
+
+W przypadku stochastycznych problemów odwrotnych możemy rozpatrzeć następujący problem
+\begin{displaymath}
+Y=Af+\epsilon \xi,
+\end{displaymath}
+gdzie $\epsilon$ jest pewną liczbą determinującą poziom szumu, natomiast $\xi$ jest losowym zaburzeniem mierzonej wartości.
+Podsumowując, przy rozwiązywaniu stochastycznych problemów odwrotnych spotykamy następujące problemy:
+\begin{itemize}
+\item  jak poradzić sobie z losowym szumem w obserwacji?
+\item w jaki sposób ''delikatnie'' odwrócić operator $A$?
+\item jak wydajnie zaimplementować numeryczne rozwiązanie?
+\end{itemize}
+
+
+\section{Teoria operatorów}
+Rozważmy liniowy operator ograniczony $A$ między dwoma przestrzeniami Hilberta $H,G$. Założymy, że $D(A)=\{f\in H\colon \exists_{g\in G}\ Af=g\}=H$.
+
+Operatorem sprzężonym do operatora $A$ nazywamy operator $A^*$ taki, że $\forall_{f\in H}\forall_{g\in G}\ \langle Af,g\rangle=\langle f,A^*g\rangle$.
+
+Operator $A$ nazwiemy samosprzężonym, jeżeli $A=A^*$.
+
+Operator $A\colon H\to H$ jest nieujemny, gdy $\forall_{f\in H}\ \langle Af,f\rangle\geq 0$ (odpowiednio dodatni).
+
+\begin{tw}
+Niech $A\in L(H,G)$. Wtedy
+\begin{itemize}
+\item $KerA=(RangeA^*)^{\perp}$ oraz $\overline{RangeA}=(KerA^*)^{\perp}$,
+\item jeśli $A$ jest iniektywny, to $A^*A$ też,
+\item $A^*A\in L(H)$ oraz $A^*A$ jest dodatni i samosprzężony.
+\end{itemize}
+\end{tw}
+\begin{proof}
+Zauważmy, że $RangeA^{\perp}=\{g\in G\colon \langle Ag,g\rangle =0\ \forall f\in H\}$.
+
+Wtedy dla dowolnych $f\in KerA$ i $g\in G$ mamy, że $0=\langle Af,g\rangle=\langle f,A^*g\rangle$ a stąd $KerA=(RangeA^*){\perp}$. Zamieniając $A$ z $A^*$ otrzymujemy, że $(KerA^*)^{\perp}=RangeA^{\perp}$, czyli $(KerA^*)^{\perp}=(RangeA^{\perp})^{\perp}=\overline{RangeA}$, jako że rozpatrujemy przestrzenie Hilberta.
+
+Korzystając z równości $\langle A^*Af,f\rangle=\langle Af,Af\rangle=||Af||^2$, widzimy, że $KerA=KerA^*A$.
+
+Analogicznie otrzymujemy, że $\langle A^*Af,f\rangle=\langle Af,Af\rangle=\langle f, A^*Af\rangle$ oraz $\langle A^*Af, f\rangle=||Af||^2\geq 0$, zatem operator $A^*A$ jest samosprzężony i dodatni.
+\end{proof}
+\begin{wn}
+\begin{itemize}
+\item $H=KerA \oplus KerA^{\perp}=KerA\oplus \overline{RangeA^*}$,
+\item $G=\overline{RangeA}\oplus RangeA^{\perp}=\overline{RangeA}\oplus KerA^*$.
+\end{itemize}
+\end{wn}
+
+\section{Operatory zwarte}
+\begin{df}
+Operator $A\colon H \to G$ nazywamy zwartym (compact), jeżeli dla każdego ograniczonego zbioru w $H$, jego obraz przez operator $A$ jest względnie zwarty w $G$, czyli jego domknięcie jest zwarte w $G$. Przez $K(H,G)$ będziemy oznaczać zbiór operatorów zwartych między przestrzeniami $H$ i $G$.
+\end{df}
+\begin{uw}
+Jeżeli $A\in K(H,G)$ oraz $dimH=\infty$ to operator $A^{-1}$ jest nieograniczony.
+\end{uw}
+
+\begin{tw}[Reprezentacja spektralna]
+Niech $A$ będzie samosprzężonym operatorem zwartym na przestrzeni Hilberta $H$. Wtedy istnieje zupełny układ funkcji własnych $E=\{f_j,j\in I\}\subset H$. Niech $J=\{j\in I\colon\lambda_j\neq 0\}$ oznacza zbiór tych indeksów dla których odpowiednie wartości własne są niezerowe, wtedy zbiór $J$ jest przeliczalny oraz 
+\begin{displaymath}
+\forall_{f\in H}\ Af=\sum_{j\in J}\lambda_j\langle f,f_j\rangle f_j.
+\end{displaymath}
+Ponadto dla każdego $\delta>0$ zbiór $J_{\delta}=\{j\in I\colon |\lambda_j|\geq \delta\}$ jest skończony a jedynym mozliwym punktem skupienia zbioru wartości własnych jest zero.
+\end{tw}
+\begin{proof}
+Bez dowodu.
+\end{proof}
+Powyższe twierdzenie można stosować tylko do przypadku operatorów samosprzężonych i zwartych. O ile w dalszym ciągu będziemy zakładać zwartość operatora $A$, o tyle warunek samosprzężenia zostanie usunięty dzięki zamienieniu reprezentacji spektralnej na reprezentację singularną.
+\begin{tw}
+Niech $A\colon H\to G$ będzie operatorem zwartym na przestrzeniach Hilberta $H,G$. Wtedy istnieją skończony lub zbieżny do zera ciąg liczb dodatnich $\{b_n\}_{n\in I}$ oraz układy ortonormalne $\{v_n\}_{n\in I}\subset H,\ \{u_n\}_{n\in I}\subset G$ takie, że
+\begin{itemize}
+\item $KerA^{\perp}=\overline{span\{v_n,\ n\in I\}}$,
+\item $\overline{RangeA}=\overline{span\{u_n,\ n\in I\}}$,
+\item $Af=\sum_nb_n\langle f, v_n\rangle u_n$ oraz $A^*g=\sum_nb_n\langle g, u_n\rangle v_n$.
+\end{itemize}
+Ponadto $g\in RangeA$ wtedy i tylko wtedy, gdy spełniony jest tzw. warunek Picarda
+\begin{displaymath} 
+\sum_nb_n^{-2}|\langle g, u_n\rangle|^2< \infty\ \textrm{oraz}\ g=\sum_n\langle g, u_n\rangle u_n
+\end{displaymath}
+Wtedy rozwiązania równania $Af=g$ mają postać 
+\begin{displaymath}
+f=f_0+\sum_nb_n^{-1}\langle g, u_n\rangle v_n
+\end{displaymath}
+przy czym $f_0\in KerA$ jest dowolne.
+\end{tw}
+Układ $(u_n,v_n,b_n)$ nazywamy układem singularnym operatora $A$ a jego reprezentację w postaci $Af=\sum_n\lambda_n\langle f,v_n\rangle u_n$ nazywamy dekompozycją według wartości osobliwych (singular value decomposition-- SVD) operatora $A$.
+\begin{proof}
+Dowód twierdzenia opiera się na wykorzystaniu twierdzenia spektralnego do operatora $A^*A$.
+
+Operator $A^*A$ jest samosprzężony, zwarty i dodatni, a zatem istnieją liczby $b_1^2\geq b_2^2\geq\dots\geq 0$ oraz funkcje ortonormalne $v_n$ takie, że $A^*Av_n=b_n^2v_n$. Niech $I=\{n\colon b_n>0\}$ oraz przez $u_n$ oznaczmy znormalizowane obrazy wektorów $v_n$, czyli $u_n=b_n^{-1}Av_n$ dla $n\in I$. Zauważmy, że $\langle u_k,u_l\rangle=b_k^{-1}b_l^{-1}\langle Av_k, Av_l\rangle=b_k^{-1}b_l^{-1}\langle v_k,A^*Av_l\rangle=b_k^{-1}b_l^{-1}\langle v_k,b_l^2v_l\rangle=\delta_{kl}$.
+
+Korzystając w wykazanego wcześniej twierdzenia dostajemy, że $KerA^{\perp}=(KerA^*A)^{\perp}=\overline{RangeA^*A}=\overline{span\{v_n,\ n\in I\}}$.
+
+Analogicznie rozpatrując operator $AA^*$ z rozkładem spektralnym $AA^*u_n=b_n^2u_n$ dostajemy, że $\overline{RangeA}=\overline{span\{u_n,\ n\in I\}}$.
+
+Tożsamości $Af=\sum_nb_n\langle f, v_n\rangle u_n$ oraz $A^*g=\sum_nb_n\langle g, u_n\rangle v_n$ otrzymujemy, zauważając, że
+$Af=\sum_n\langle Af,u_n\rangle u_n=\sum_n\langle Af, b_n^{-1}Av_n\rangle u_n=\sum_n\langle f,b_n^{-1}A^*Av_n\rangle u_n=\sum_n\langle f,b_n^{-1}b_n^2v_n\rangle u_n=\sum_n b_n\langle f,v_n\rangle u_n$ oraz drugą analogicznie.
+
+Z nierówności Bessela dostajemy, że $\sum_n|\langle f, v_n\rangle |^2<\infty$, bo $f\in H$ a stąd
+$\sum_n|\langle f,v_n\rangle|^2=\sum_nb_n^{-4}|\langle f,b_n^2v_n\rangle|^2=\sum_nb_n^{-4}|\langle f, A^*Av_n\rangle|^2=\sum_nb_n^{-4}|\langle Af,Av_n\rangle|^2=\sum_nb_n^{-2}|\langle g, b_n^{-1}Av_n\rangle|^2=\sum_nb_n^{-2}|\langle g, u_n\rangle|^2<\infty$. W drugą stronę wnioskujemy, że jeśli spełniony jest warunek Picarda to możemy wypisać jawny wzór na rozwiązanie,  gdyż odpowiedni szereg norm współczynników jest zbieżny i $g$ jest sumą swojego szeregu Fouriera..
+
+Ostatecznie możemy wnioskować, że $f=f_0+\sum_nb_n^{-1}\langle g, u_n\rangle v_n$, gdzie $f_0\in KerA$.
+\end{proof}
+
+Udało nam się zaprezentować działanie zwartego operatora w postaci jego rozwinięcia według wartości osobliwych w postaci $Af=\sum_nb_n\langle f, v_n\rangle u_n$ oraz uzyskać postać szukanych rozwiązań w postaci $f=f_0+\sum_nb_n^{-1}\langle g, u_n\rangle v_n$. Jednak takie rozwiązanie sytuacji stawia przed nami nowe problemy. Po pierwsze zauważmy, że jeżeli tylko $g$ posiada niezerowe składowe w przestrzeni ortogonalnej do domknięcia obrazu operatora $A$ równanie $Af=g$ nie może być spełnione dokładnie. Niech $P\colon G\to \overline{RangeA}$ będzie rzutem ortogonalnym, czyli $\forall_{g\in G}\ Pg=\sum_n\langle g,u_n\rangle u_n$. Wtedy dla dowolnego elementu $f\in H$ mamy, że $||Af-g||^2=||Af-Pg||^2+||(1-P)g||^2\geq ||(1-P)g||^2$.
+
+Drugi problem związany jest ze zbieżnością szeregu w warunku Picarda. Z twierdzenia o reprezentacji spektralnej operatora zwartego samosprzężonego wiemy, że liczby $b_n\to 0$ gdy $n\to \infty$ a zatem liczby $b_n^{-2}\to \infty$ gdy $n \to \infty$ a nie mamy żadnej gwarancji, że liczby $\langle g,u_n\rangle$ zbiegają do zera odpowiednio szybko by zrównoważyć ten przyrost szczególnie w przypadku zaburzonej wartości $y$.
+
+\section{Przykłady}
+
+\begin{prz}
+Należy zauważyć i nie mylić wartości własnych operatora zwartego, które mogą nie istnieć, z jego wartościami osobliwymi. Rozważmy następujący przykład. Niech $H=G$ i niech $\{e_n\}$ będzie zupełnym układem ortonormalnym w tej przestrzeni oraz rozważmy operator zadany następująco $Af=\sum_k\frac{1}{k}\langle f, e_k\rangle e_{k+1}$. Pokażemy teraz, że operator ten nie ma wartości własnych. Gdyby miał musiałoby być spełnione dla pewnych $\lambda,f$ równanie $Af=\lambda f$. Korzystając z zupełności ukłądu $\{e_n\}$ możemy prawą stronę równania zapisać jako $\lambda\sum_{k=1}^{\infty}\langle f,e_k\rangle e_k$ i porównując odpowiednie współczynniki dostajemy, że $\forall_k\ \frac{1}{k}\langle f,e_k\rangle =\lambda \langle f,e_{k+1}\rangle$. Jeżeli $\lambda=0$ to $f=0$, jeżeli natomiast $\lambda\neq 0$, to dostajemy, że $\forall_k\ \langle f, e_{k+1}\rangle = \frac{1}{k!\lambda^k}\langle f,e_1\rangle$ i pozostaje zagadnienie znalezienia wartości $\langle f, e_1\rangle$. Licząc iloczyn skalarny $\langle Af,e_1\rangle =0 =\langle \lambda f, e_1\rangle$, czyli $\langle f,e_1\rangle$ musi być zerem, czyli $f=0$, czyli operator $A$ nie może mieć wartości własnych. Widać jednak od razu, że układ $(\frac{1}{k},e_k,e_{k+1})$ tworzy jego układ singularny.
+\end{prz}
+
+
+\section{Stochastyczny problem odwrotny}
+Powróćmy do sformułowania problemu z zaburzonymi pomiarami wyrażonymi w języku stochastyki, czyli niech $A\colon H\to G$ będzie zwartym operatorem między dwoma przestrzeniami Hilberta. Obserwując pewną zaburzoną informację $Y$ naszym zadaniem jest poznać $f\in H$ według modelu
+\begin{displaymath}
+Y=Af+\epsilon\xi
+\end{displaymath}
+gdzie $\epsilon$ oznacza wielkość szumu.
+
+Podamy teraz założenia jakie będzie musiał spełniać losowy szum. 
+
+\begin{df}
+Stochastycznym błędem $\xi$ nazwiemy Hilbert-- space process, czyli ograniczony liniowy operator $\xi\colon G\to L^2(\Omega, \mathcal{F},\mathbb{P})$ taki, że dla dowolnych elementów $g_1,g_2\in G$ mamy zdefiniowane zmienne losowe $\langle \xi, g_i\rangle$ takie, że $\mathbb{E}\langle \xi, g_i\rangle =0$ oraz możemy zdefiniować kowariancję $Cov_{\xi}$ jako ograniczony liniowy operator ($||Cov_{\xi}||\leq 1$) z przestrzeni $G$ w przestrzeń $G$ taki, że $ \langle Cov_{\xi}g_1,g_2\rangle=Cov(\langle \xi,g_1\rangle,\langle \xi,g_2\rangle)$.
+\end{df}
+
+Często wykorzystywanym modelem będącym idealizacją pewnych innych modeli jest model białego szumu.
+\begin{df}
+Powiemy, że losowy błąd $\xi$ jest białym szumem, jeśli $Cov_{\xi}=I$ oraz indukowane zmienne losowe są gaussowskie, czyli dla dowolnych elementów $g_1,g_2\in G$ mamy, że $\langle \xi,g_i\rangle\sim \mathcal{N}(0,||g_i||^2)$ oraz $Cov(\langle \xi,g_1\rangle , \langle \xi , g_2\rangle)=\langle g_1, g_2\rangle$.
+\end{df}
+\begin{lm}
+Niech $\xi$ będzie białym szumem w przestrzeni $G$ oraz niech $\{u_n\}$ będzie ortonormalną bazą tej przestrzeni. Oznaczając $\xi_k=\langle \xi,u_k\rangle$ dostajemy, że $\{\xi_n\}$ niezależnymi zmiennymi losowymi o tym samym standardowym rozkładzie gaussowskim.
+\end{lm}
+\begin{proof}
+Z definicji $\xi_k=\langle \xi,u_k\rangle\sim \mathcal{N}(0,||u_k||^2)=\mathcal{N}(0,1)$ oraz $Cov(\langle \xi, u_n\rangle,\langle \xi, u_k\rangle)=\langle u_n,u_k\rangle=\delta_{nk}$.
+\end{proof}
+
+Zauważmy, że gdy $\xi$ jest białym szumem, $Y$ nie jest elementem przestrzeni $G$ a staje się operatorem działającym na przestrzeni $G$ w następujący sposób
+\begin{displaymath}
+\forall_{g\in G}\ \langle Y,g\rangle =\langle Af,u_n\rangle + \epsilon\langle \xi, g\rangle
+\end{displaymath}
+gdzie $\langle \xi, g\rangle\sim\mathcal{N}(0,||g||^2)$.
+
+Rozważmy teraz układ singularny $(u_n,v_n,b_n)$ operatora zwartego $A$ oraz niech $\xi$ będzie białym szumem. Możemy wtedy zapisać rozpatrując projekcję $Y$ na układ $\{u_n\}$, że
+\begin{displaymath}
+\langle Y,u_n\rangle=\langle Af,u_n\rangle +\epsilon\langle \xi, u_n\rangle=\langle Af,b_n^{-1}Av_n\rangle+\epsilon \xi_n=b_n^{-1}\langle A^*Af, v_n\rangle+\epsilon \xi_n=
+\end{displaymath}
+\begin{displaymath}
+b_n^{-1}\langle \sum_kb_k^2\langle f, v_k\rangle v_k, v_n\rangle +\epsilon\xi_n=b_n\theta_n+\epsilon\xi_n
+\end{displaymath}
+gdzie $\theta_n=\langle f,v_n\rangle$ są współczynnikami w rozwinięciu Fouriera funkcji $f$ w bazie $\{v_n\}$. 
+
+Oznaczając przez $y_n=\langle Y,u_n\rangle$ możemy wyjściowy problem $Y=Af+\epsilon\xi$ zapisać w równoważnej postaci sequence space model jako
+\begin{displaymath}
+y_n=b_n\theta_n+\epsilon\xi_n,\ n=1,2,\dots.
+\end{displaymath}
+W tej postaci widać dokładnie trudności związane ze stochastycznymi problemami odwrotnymi. Jako że $b_n$ są wartościami osobliwymi operatora zwartego mamy, że $b_n\to 0$ gdy $n\to \infty$, czyli widać, że wraz ze wzrostem $n$ sygnał $b_n\theta_n$ staje się coraz słabszy i coraz trudniej estymować $\theta_n$. Dodatkową trudnością jest fakt, że naszym celem jest estymacja współczynników $\theta_n$ a nie współczynników $b_n\theta_n$, dlatego możemy zapisać równoważną postać problemu
+\begin{displaymath}
+x_n=\theta_n+\epsilon\sigma_n\xi_n,\ n=1,2,\dots
+\end{displaymath}
+gdzie $x_n=y_n/b_n$ oraz $\sigma_n=b_n^{-1}$, czyli $\sigma_n\to \infty$ gdy $n\to \infty$. Widzimy zatem, że wraz ze wzrostem $n$ szum zaczyna dominować nad sygnałem czyniąc estymację $\theta_n$ trudną.
+
+Zależnie od szybkości ucieczki wartości $b_n$ do nieskończoności można podzielić problemy odwrotne na pewne kategorie
+\begin{itemize}
+\item direct, gdy $\sigma_n\asymp 1$,
+\item mildly ill-- posed, gdy $\sigma_n\asymp n^{\beta}$,
+\item severely ill-- posed, gdy $\sigma_n\asymp \exp{(\beta n)}$.
+\end{itemize}
+Poszczególne kategorie problemów charakteryzują się coraz większą trudnością z uwagi na tempo ''gubienia'' sygnału pośród szumu.
+\section{Przykłady 2}
+\begin{prz}
+Rozważmy problem estymacji $l$-- tej pochodnej funkcji.\\
+Niech $H=G=\mathcal{L}^2([0,1]),\ f\in C^k([0,1])$ będzie $1$-- periodyczną funkcją i zdefiniujmy model $Y=f+\epsilon\xi$, gdzie $\xi$ jest białym szumem a naszym celem jest estymacja $f^{(l)}=D^lf$. Używając bazy trygonometrycznej $\{\phi_k=e^{2\pi i k x}\}$ możemy zapisać współczynniki funkcji $ f$ w tej bazie jako $\theta$. Jest znane, że wtedy $f^{(l)}=\sum_{-\infty}^{\infty}(2\pi i k)^l\theta_k \phi_k$. Problem ten jest równoważny następującemu modelowi:\\
+Obserwujemy $y_k=\theta_k+\epsilon\xi_k$ i próbujemy estymować współczynniki $\nu_k(2\pi i k)^l\theta$ co jest równoważne modelowi $y_k=(2\pi i k)^{-l}\nu_k+\epsilon\xi_k$ i próbie estymacji współczynników $\theta_k$. Widać zatem, że problem ten jest mildly ill-- posed.
+\end{prz}
+\begin{prz}
+Rozważmy problem dekonwolucji. Niech $H=G=\mathbb{L}^2(\mathbb{R})$ oraz niech operator $A\colon H\to H$ będzie zdefiniowany następująco
+\begin{displaymath}
+(Af)(x)=\phi \ast f(t)=\int_{-\infty}^{\infty}\phi (x-y)f(y)dy.
+\end{displaymath} 
+Rozwiązanie tego problemu możemy znaleźć stosując transformatę Fouriera. Przypomnijmy, że dla całkowalnej funkcji $f$ jej transformata Fouriera wyraża się wzorem $\hat{f}(t)=\int_{-\infty}^{\infty}f(x)\exp{(- i xt)}dx$. Stosując ją do naszego operatora otrzymujemy, że $\mathcal{F}(Af)(t)=\hat{\phi}(t)\hat{f}(t)$ a stąd rozwiązaniem jest funkcja $f(x)=\mathcal{F}^{-1}(\hat{\phi}^{-1}g)(x)$ jednak mamy problem ze zbieżnością tego rozwiązania! Jako, że transformata Fouriera jądra gaussowskiego wyraża się wzorem $\hat{\phi}(t)=e^{-t^2/2}$ jej odwrotność rośnie w tempie wykładniczym.
+\end{prz}
+
+\section{Obcięte SVD}
+
+
+Na początek rozważmy problem estymacji w nieparametrycznym modelu regresji
+\begin{displaymath}
+y_n=f(x_n)+\sigma\epsilon_n.
+\end{displaymath}
+Naszym celem jest znalezienie funkcji $f$. W tym celu możemy posłużyć się metodą rzutowania na pewną bazę, na przykład trygonometryczną lub falkową. Funkcję $f$ możemy wtedy zapisać w postaci szeregu $f=\sum_{n=1}^{\infty}a_n\phi_n$ i wtedy zadanie estymacji sprowadzi się do znalezienia współczynników rozwinięcia $a_n$. W przypadku obserwowania skończonej liczby pomiarów ciężko oczekiwać by udało się wyestymować nieskończoną liczbę parametrów (ciężko oczekiwać zbieżności tak otrzymanego szeregu), dlatego możemy zastosować następującą metodę: pierwsze $N$ współczynników oszacujemy na podstawie posiadanych danych natomiast pozostałe współczynniki oszacujemy przez $0$. Metoda ta znajduje swoje uzasadnienie w tym, że w przypadku gładkich funkcji $f$ o jej kształcie decydują początkowe współczynniki, natomiast pozostałe stają się zaniedbywalne. Metoda ta posiada także pewne swoje modyfikacje (hard tresholding, soft tresholding) polegające na zastąpieniu przez zero współczynników w pewnym sensie małych, szczególnie dobrze sprawujące się w przypadku funkcji posiadających sparse przedstawienie w pewnej bazie falkowej.
+
+Podobną metodologię możemy spróbować zastosować w przypadku stochastycznych problemów odwrotnych z operatorami zwartymi posiadającymi dekompozycję według wartości osobliwych.
+
+Rozważmy problem w postaci 
+\begin{displaymath}
+x_n=\theta_n+\epsilon\sigma_n\xi_n,\ n=1,2,\dots\ .
+\end{displaymath}
+Wtedy możemy zaproponować następujący estymator dla współczynników $\theta_n$
+\begin{displaymath}
+\hat{\theta}(N)=\left\{{x_k,\ k\leq N}\atop {0,\ k>N}\right. .
+\end{displaymath}
+Wtedy estymatorem elementu $f$ staje się $\hat{f}=\sum_{k=1}^Nx_kv_k$.
+
+Liczbę $N$ nazywamy bandwidth.
+
+Na tak zaproponowaną metodę estymacji możemy również spojrzeć w następujący sposób. Niech $P_k\colon G\to span\{u_1,u_2,\dots,u_k\}$ będzie skończenie wymiarową projekcją ortogonalną $P_kg=\sum_{n=1}^k\langle g,u_n\rangle u_n.$ Jako że $P_k$ jest skończenie wymiarowe $P_kg\in RangeA$ dla dowolnego $k$ oraz $P_kg\to Pg$ gdy $k\to \infty$, gdzie $P$ oznacza projekcję ortogonalna na $\overline{RangeA}$ (czyli to, co w zasadzie rozwiązujemy rozpatrując dekompozycję operatora według wartości osobliwych). Możemy wtedy rozpatrywać następującą modyfikację problemu
+\begin{displaymath}
+Af=P_kg,\ k\in\mathbb{N}.
+\end{displaymath}
+Równanie to zawsze posiada rozwiązanie oraz biorąc iloczyn skalarny z wektorami $u_n$ otrzymujemy, że 
+\begin{displaymath}
+b_n\langle f,v_n\rangle=\left\{{\langle g,u_n\rangle,\ n\leq k}\atop {0,\ n>k}\right. .
+\end{displaymath}
+A zatem poszukiwane rozwiązanie możemy zapisać w postaci
+\begin{displaymath}
+f_k=f_0+\sum_{n=1}^kb_n^{-1}\langle g, u_n\rangle v_n
+\end{displaymath}
+dla pewnego $f_0\in KerA$.
+Zauważmy również, że $||Af_k-Pg||^2=||(P-P_k)g||^2\to 0$ gdy $k\to \infty$, czyli błąd popełniany przy zastąpieniu $P$ przez $P_k$ może być dowolnie mały.
+
+Wybierając $f_0=0$ możemy zapisać następującą definicję
+\begin{df}
+Niech $A\colon H\to G$ będzie zwartym operatorem liniowym z rozkładem według wartości osobliwych $(v_n,u_n,b_n).$ Aproksymacją przez obcięcie SVD (TSVD) problemu $Af=g$ nazwiemy problem znalezienia takiego $f\in H$, że 
+\begin{displaymath}
+Af=P_kg,\ f\perp KerA
+\end{displaymath}
+dla pewnego $k\in \mathbb{N}$.
+\end{df}
+Tak postawiony problem posiada jedyne rozwiązanie w postaci obcięcia reprezentacji według wartości osobliwych (TSVD) w postaci
+\begin{displaymath}
+f_k=\sum_{n=1}^kb_n^{-1}\langle g,u_n\rangle v_n.
+\end{displaymath}
+
+Problemem jaki pozostał jest dobranie odpowiedniego poziomu obcięcia $k$.
+
+W celu oceny jakości estymatora posłużymy się błędem średniokwadratowym, czyli $R(f,\hat{f})=\mathbb{E}(||f-\hat{f}||^2)$. Mając do dyspozycji układ wartości osobliwych możemy zapisać estymator uzyskany metodą TSVD w postaci $\hat{f}=\sum_{n=1}^kx_nv_n$. Dzięki temu możemy zauważyć, że jest to estymator liniowy z wektorem wag posiadających jedynki na pierwszych $k$ pozycjach i zerach na pozostałych. Ryzyko estymatora możemy wtedy zapisać jako $R(f,\hat{f})=\mathbb{E}(||f-\hat{f}||^2)=\mathbb{E}(\sum_n(\hat{f}_k-f_k)^2)=\sum_{n=k+1}^{\infty}\theta_n^2+\sum_{n=1}^k\epsilon^2\sigma_n^2$, czyli ryzyko estymatora TSVD wyraża się w bardzo prosty sposób.
+
+Możemy teraz zastanowić się jak wybór $k$ będzie wpływał na ryzyko estymatora TSVD
+\begin{displaymath}
+R(f,\hat{f})=\sum_{n=k+1}^{\infty}\theta_n^2+\sum_{n=1}^k\epsilon\sigma_n.
+\end{displaymath}
+Z uzyskanego wzoru widzimy, że wraz ze wzrostem $k$ zmniejsza się się obciążenie estymatora (ubywa pominiętych współrzędnych), ale rośnie wariancja, odwrotny skutek obserwujemy zmniejszając $k$- rośnie obciążenie, ale maleje wariancja. Optymalny wybór $k$ powinien prowadzić do zbalansowania tych dwóch przeciwstawnych tendencji. Ogólnie wiadomo jednak, że wybór optymalnego poziomu odcięcia wymaga znajomości pewnych parametrów poszukiwanej funkcji (gładkość).
+\section{Przykłady 3}
+\begin{prz}
+W następującym przykładzie prześledzimy problemy związane z odwracaniem operatorów (nawet skończenie wymiarowych), poziomem obcięcia i występowaniem szumu.\\
+Rozważmy transformację Laplace'a funkcji zdefiniowanej na odcinku $[0,\infty)$ zadanej jako
+\begin{displaymath}
+(\mathcal{L}f)(s)=\int_0^{\infty}e^{-st}f(t)dt.
+\end{displaymath}
+Uprościmy sytuację rozważając pewną dyskretną aproksymację tej transformaty zadaną na siatce $0<s_1<s_2< \dots <s_n<\infty$, wyrażającą się wzorem
+\begin{displaymath}
+(\mathcal{L}_df)(s_j)=\sum_{k=1}^n w_ke^{-s_jt_k}f(t_k),
+\end{displaymath}
+gdzie $w_k,t_k$ są wybrane według jakiejś metody przybliżonego całkowania.\\
+W przykładzie z \cite{kaipo} zastosowano logarytmicznie rozłożone punkty siatki i $40$ punktową kwadraturę Gaussa- Legendre'a obciętą do przedziału $(0,5)$.\\
+Niech funkcja $f$ będzie zadana wzorem
+\begin{displaymath}
+f(t)=t\pmb{1}_{[0,1)}+\left(\frac{3}{2}-\frac{1}{2}t\right)\pmb{1}_{[1,3)},
+\end{displaymath}
+której transformatę można wyrazić jawnym wzorem 
+\begin{displaymath}
+(\mathcal{L}f)(s)=\frac{1}{2s^2}\left(2-3e^{-s}+e^{-3s}\right).
+\end{displaymath}
+Zadaniem jest teraz odtworzenie funkcji $f$ na podstawie wartości jej transformaty w punktach $s_j$.\\
+Bezpośrednia próba rozwiązania tego zagadnienia nawet pomijając jakikolwiek błąd addytywny prowadzi do katastrofalnych wyników z powodu fatalnego uwarunkowania tego zadania co wyraża się przez wskaźnik uwarunkowania tego zadania zdefiniowany w tym przypadku jako 
+\begin{displaymath}
+\kappa (A)=||A||\ ||A^{-1}||\approx 8,5\cdot 10^{20}.
+\end{displaymath}
+Stąd nawet zaokrąglenia numeryczne prowadzą do poważnych zaburzeń wyniku.
+
+W przypadku gdy pojawia się problem z odwróceniem macierzy możemy skorzystać z pseudoodwrotności Penrosa-- Moora. Każdą macierz $A\in \mathbb{R}^{m\times n}$ można zdekomponować według wartości osobliwych $A=U\Lambda V^T$, gdzie $U\in \mathbb{R}^{m\times m}$ i $V\in \mathbb{R}^{n\times n}$ są macierzami ortogonalnymi, a $\Lambda\in \mathbb{R}^{m\times n}$ macierzą diagonalną z elementami $\lambda_1\geq \lambda_2\geq \dots\geq \lambda_{(m,n)}$. Wtedy rozwiązanie zagadnienia $Af=g$ ma rozwiązanie w postaci $f=f_0+A^{\dagger}g$, gdzie $A^{\dagger}$ jest właśnie pseudoodwrotnością Penrosa-- Moora, zdefiniowaną jako $ A^{\dagger}=V\Lambda^{\dagger}U^T$, gdzie $\Lambda^{\dagger}\in \mathbb{R}^{n\times m}$ jest macierzą diagonalną złożoną z odwrotności wartości singularnych macierzy $A$. Zauważmy, że gdy któraś z wartości singularnych wyjściowej macierzy jest bardzo mała jej odwrotność bardzo mocno rośnie, co może powodować, że zastosowanie wprost pseudoodwrotności P-- M może skutkować niestabilnością wyniku i nawet błędy zaokrągleń mogą powodować eksplozję wyniku. Stąd potrzebne jest obcięcie pewnych najmniejszych wartości singularnych. W tym przypadku można zastosować discrepancy principle. Niech $y$ będzie zaburzoną wersją 'czystego' $y_0$ i $||g-g_0||\approx\epsilon$ i wtedy wybieramy poziom obcięcia $k$ jako największy indeks spełniający $||g-Af_k||=||g-P_kg||\geq \epsilon$.\\
+\end{prz}
+\begin{thebibliography}{4}
+\bibitem{cavalier}
+L. Cavalier, \emph{Inverse Problems in Ststistics} in P. Alquier et al., \emph{Inverse problems and high- dimensional estimation}, Springer, 2011,
+\bibitem{kaipo}
+J. Kaipo, E. Somersalo, \emph{Statistical and computational inverse problems}, Springer, 2004,
+\bibitem{szkutnik}
+Z. Szkutnik, \emph{Statystyczne problemy odwrotne}, notatki do wykładu,
+\bibitem{wasserman}
+L. Wasserman, \emph{All of nonparmetric statistics}, Springer, 2006.
+\end{thebibliography}
+\end{document}

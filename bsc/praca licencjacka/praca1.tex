@@ -1,0 +1,418 @@
+\documentclass[12pt]{mwart}
+\usepackage{polski}
+\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{eufrak}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage[pdftex]{graphicx}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{lm}{Lemat}
+\newtheorem{wn}{Wniosek}
+\newtheorem{prz}{Przykład}
+\newtheorem{uw}{Uwaga}
+\title{Testowanie regresji liniowej przeciwko regresji wypukłej}
+\author{Grzegorz Mika}
+\begin{document}
+\maketitle
+\begin{center}
+\today
+\end{center}
+\tableofcontents
+\begin{thebibliography}{4}
+\bibitem{bartoszewski}
+Bartoszewicz J., \emph{Wykłady ze statystyki matematycznej}, PWN, Warszawa, 1996
+\bibitem{fraser}
+Fraser D.A.S., Massam H., \emph{A Mixed Primal- Dual Bases Algorithm for Regression under Inequality Constraints. Application to Concave regression}, Scand J. Statist, 16 65-74, 1989
+\bibitem{meyer}
+Meyer Mary C., \emph{A test for linear vs convex regression function using shape- restricted regression}, Stanford University, Technical Report No. 2001-20, sierpień 2001
+\bibitem{roman}
+Roman S., \emph{Advanced Linear Algebra}, Springer, 2005
+\end{thebibliography}
+\newpage
+\section{Wstęp}
+Rozważmy problem dopasowania pewnej funkcji $f$ opisującej związek między zmiennymi objaśniejącymi $x_i$ a zmiennymi objaśnianymi $y_i$ według następującego modelu
+\begin{displaymath}
+y_i=f(x_i)+\varepsilon_i,\quad i=1,2,\dots,n,
+\end{displaymath}
+gdzie zakładamy, że błędy $\varepsilon_i$ są niezależnymi zmiennymi losowym o tym samym rozkładzie normalnym $N(0,\sigma^2)$. Punkty $x_i$ są ustalone. Ponadto zakładać będziemy, że wariancja $\sigma^2$ jest znana.
+
+Najprostszym związkiem między zmiennymi $x_i$ a odpowiedziami $y_i$ jest zależność liniowa. Możliwy jest jednak również inna zależność między zmiennymi a odpowiedziami. W niniejszej pracy rozważać będziemy problem, czy funkcja $f$ jest funkcją liniową czy pewną funkcją wypukłą. Prowadzi do problemu testowania hipotez
+\begin{displaymath}
+H_0\colon f(x)=ax+b \qquad vs.\qquad H_1\colon f\in \mathcal{F},
+\end{displaymath}
+gdzie $\mathcal{F}$ jest klasą funkcji wypukłych.
+
+W niniejszej pracy postaramy się skonstruować odpowiedni do postawionego problemu test statystyczny. Zaproponowane zostanie rozwiązanie oparte o iloraz wiarygodniści w przypadku modelu regresji z ograniczeniami w postaci nierówności.
+
+W drugim rozdziale zostaną omówione podstawowe własności wielościennych stożków wypukłych traktowanych jako podzbiór przestrzeni liniowej. Trzeci rozdział będzie traktował o konstrukcji estymatora regresji wypukłej jako rzutu wektora danych na taki stożek wielościenny. W czwartym rozdziale zostanie wyznaczony rozkład poszukiwanej statystyki testowej w przypadku ze znaną wariancją błędu obserwacji.
+
+Praca została napisana głównie na podstawie \cite{meyer}, natomiast rozdział o wyznaczaniu estymatora regresji wypukłej został napisany w dużym stopniu na podstawie \cite{fraser}.
+
+\section{Stożki wypukłe}
+Do konstrukcji testu zostanie wykorzystana metoda rzutowania wektora danych na stożek wielościenny powstały w wyniku narzuconych ograniczeń liniowych. W tym rozdziale zostaną przedstwione podstawowe definicje i własności wypuklych stożków wielościennych użyteczne w dalszych rozważaniach.
+\begin{df}[\textbf{Ortant}]\footnote{Definicja podana za Wikipedią: https://en.m.wikipedia.org/wiki/Orthant}
+Ortantem w $n$-wymiarowej przestrzeni $\mathbb{R}^n$ nazywamy podzbiór powstały przez ograniczenie każdej ze współrzędnych do bycia nieujemną albo niedodatnią, czyli
+\begin{displaymath}
+O=\{(x_1,x_2,\dots,x_n)\in \mathbb{R}^n\colon \epsilon_i x_i\geq 0, |\epsilon_i|=1, i=1,2,\dots,n\}.
+\end{displaymath}
+\end{df}
+\begin{df}[\textbf{Nieujemny ortant}]
+Nieujemnym ortantem nazywamy ortant, którego wszystkie współrzędne są nieujemne.
+\end{df}
+\begin{df}[\textbf{Półprzestrzeń}]
+Półprzestrzenią $H$ przestrzeni wektorowej $\mathbb{R}^n$ nazywamy zbiór
+\begin{displaymath}
+H=\{(x_1,x_2,\dots,x_n)\in \mathbb{R}^n\colon a_1 x_1+a_2 x_2+\dots a_n x_n\geq 0\},
+\end{displaymath}
+gdzie $a_1,a_2,\dots,a_n$ są pewnymi, ustalonymi liczbami rzeczywistymi.\\
+\end{df}
+\begin{df}[\textbf{Wielościenny stożek wypukły}]
+Wielościennym stożkiem wypukłym w przestrzeni wektorowej $\mathbb{R}^n$ nazywamy przecięcie skończonej ilości półprzestrzeni przestrzeni $\mathbb{R}^n$.
+\end{df}
+
+Z powyższych definicji wynika, że dowolny stożek wypukły $K$ w przestrzeni wektorowej $\mathbb{R}^n$ można zapisać jako 
+\begin{displaymath}
+K=\bigcap_{i=1}^m{H_i},
+\end{displaymath}
+gdzie
+\begin{displaymath}
+H_j=\{\textbf{x}\in \mathbb{R}^n\colon \sum_{i=1}^na^j_ix_i\geq 0\}.
+\end{displaymath}
+Zatem stożek $K$ możemy przedstawić w postaci
+\begin{displaymath}
+K=\left\{(x_1,x_2,\dots,x_n)\in \mathbb{R}^n\colon \sum_{i=1}^na^1_i x_i\geq 0, \dots , \sum_{i=1}^n a^m_i x_i\geq 0\right\},
+\end{displaymath}
+co będziemy zapisywać skrótowo jako
+\begin{displaymath}
+K=\{\textbf{x}\in \mathbb{R}^n\colon  \textbf{A}\textbf{x}\geq \mathbf{0}\},
+\end{displaymath}
+gdzie
+\begin{displaymath}
+\textbf{A}=\left[
+\begin{array}{cccc}
+a_1^1&a_2^1&\dots&a_n^1\\a_1^2&a_2^2&\dots&a_m^2\\ \vdots &\vdots &\ldots &\vdots\\
+a_1^n&a_2^n&\dots &a_m^n
+\end{array}\right],\quad \textbf{x}=(x_1,x_2,\dots,x_n)^T.
+\end{displaymath}
+Symbolem $\langle \cdot , \cdot \rangle$ będziemy oznaczać iloczyn skalarny w przestrzeni wektorowej $V$.
+Oznaczmy ponadto przez $\pmb{\gamma}_i^T$ kolejne wiersze macierzy $-\textbf{A}$. Bez straty ogólności możemy założyć, że tworzą one układ wektorów liniowo niezależnych, gdyż w przeciwnym wypadku któreś ograniczenie stanowiłoby kombinację pozostałych stąd dostajemy, że $m\leq n$. Wtedy stożek $K$ możemy też zapisać w sposób 
+\begin{displaymath}
+K=\{\textbf{x}\in \mathbb{R}^n\colon \langle \textbf{x}, \pmb{\gamma}_i\rangle \leq 0, i=1,2,\dots,m\}.
+\end{displaymath}
+Ponadto zbiór wektorów $\{\pmb{\gamma}_i\}_{i=1}^m$ możemy uzupełnić do bazy przestrzni $\mathbb{R}^n$ o wektory ortogonalne do wektorów z tego zbioru oraz zdefiniować bazę dualną złożoną z wektorów $\pmb{\beta}_i$ w następujący sposób
+\begin{eqnarray}\label{bazy}
+\pmb{\beta}_i^T\pmb{\gamma}_j=\left\{{-1,\ i=j}\atop {0,\ i\neq j}\right. .
+\end{eqnarray}
+Wówczas możemy zapisać równoważne przedstawienie stożka $K$
+\begin{displaymath}
+K=\{\textbf{x}\in \mathbb{R}^n\colon \textbf{x}=\sum_{i=1}^m{b_i\pmb{\beta}_i}+\sum_{i=m+1}^n{c_i\pmb{\beta}_i}, b_i\geq 0, c_i\in \mathbb{R}\}.
+\end{displaymath}
+\begin{tw}
+Niech $\{\pmb{\gamma}_i\}_{i=1}^n,\{\pmb{\beta}_i\}_{i=1}^n$ będą bazami przestrzeni $\mathbb{R}^n$ takimi, że $\pmb{\beta}_i^T\pmb{\gamma}_i=-1$ oraz $\pmb{\beta}_i^T\pmb{\gamma}_j=0$ dla $i\neq j$. Wtedy przedstawienia
+\begin{displaymath}
+K=\{\textbf{x}\in \mathbb{R}^n\colon \langle \textbf{x}, \pmb{\gamma}_i\rangle \leq 0, \quad i=1,2,\dots,m\},
+\end{displaymath}
+\begin{displaymath}
+K=\{\textbf{x}\in \mathbb{R}^n\colon \textbf{x}=\sum_{i=1}^m{b_i\pmb{\beta}_i}+\sum_{i=m+1}^n{c_i\pmb{\beta}_i},\quad b_i\geq 0, c_i\in \mathbb{R}\}
+\end{displaymath}
+są równoważne.
+\end{tw}
+\begin{proof}
+Wektory $\pmb{\beta}_i, \pmb{\gamma}_i,i=1,2,\dots,n$ spełniają zależność $\pmb{\beta}_i^T\pmb{\gamma}_i=-1$ oraz $\pmb{\beta}_i^T\pmb{\gamma}_j=0,\ i\neq j$. Oznaczając rzez $\mathbf{B}$, $\mathbf{C}$ macierze, których kolumnami są odpowiednio wektory $\beta_i,\gamma_i$, związek ten możemy przedstawić jako $\mathbf{B}^T\mathbf{C}=-\mathbf{I}$. Macierz $\pmb{B}$ jest nieosobliwa i jest macierzą przejścia z bazy kanonicznej do bazy $\{\pmb{\beta}_i\}_{i=1}^m$. Stąd dostajemy, że $\mathbf{C}^T\textbf{x}=-\mathbf{B}^{-1}\textbf{x}$.  Wyrażenia $\langle \textbf{x}, \pmb{\gamma}_i\rangle ,i=1,2,\dots,m$ są pierwszymi $m$ współrzędnymi $\mathbf{C}^T\textbf{x}$. Zatem wektor $\textbf{x}$ wyrażony w bazie złożonej z wektorów $\pmb{\beta}_i$ ma pierwsze $m$ współrzędnych nieujemnych wtedy i tylko wtedy, gdy $ \langle \textbf{x}, \pmb{\gamma}_i\rangle \leq 0, i=1,2,\dots,m$, co dowodzi równoważności przedstawień.
+\end{proof}
+
+\section{Regresja wypukła}
+Podobnie jak w przypadku estymatora regresji liniowej wyznaczonego metodą najmniejszych kwadratów, który jest rzutem wektora danych na pewną podprzestrzeń liniową, tak w przypadku estymatora regresji wypukłej, który wyznaczymy tą samą metodą, będzie on rzutem na pewien wielościenny stożek wypukły powstały w wyniku stosownych ograniczeń.
+
+Zbiór po którym będziemy minimalizować kwadrat błędu powstaje w sposób następujący.
+Przypuśmy, że wartości $x_i$ $i=1,2,\dots ,n$ są różne między sobą i uporządkowane rosnąco oraz niech $\theta_i = f(x_i), \quad i=1,2,\dots, n$. Wymóg wypukłości funkcji $f$ może zostać zapisany jako 
+\begin{displaymath}
+\frac{\theta_{i+1}-\theta_i}{x_{i+1}-x_i}\leq \frac{\theta_{i+2}-\theta_{i+1}}{x_{i+2}-x_{i+1}},\quad i=1,2,\dots,n-2,
+\end{displaymath}
+czyli by spadki wartości funkcji $f$ między kolejnymi punktami $x_i$ były niemalejące. Warunek ten można przekształcić do postaci
+\begin{displaymath}
+\theta_i (x_{i+2}-x_{i+1})-\theta_{i+1} (x_{i+2}-x_i)+\theta_{i+2}(x_{i+1}-x_i)\geq 0, i=1,\dots,n-2.
+\end{displaymath}
+Zgodnie z rozważaniami przeprowadzonymi w poprzednim paragrafie możemy zbiór tych ograniczeń zapisać jako
+\begin{displaymath}
+K=\{\mathbf{A}\theta \geq 0\},
+\end{displaymath}
+gdzie $\pmb{A}$ jest rzeczywistą macierzą wymiaru $(n-2)\times n$, której kolejne wiersze stanowią współczynniki przy niewiadomych $\theta_1,\dots,\theta_n$ wzięte z kolejnych ograniczeń. Oznaczając przez $\Delta_i=x_{i+1}-x_i$ macierz $\pmb{A}$ przyjmuje następującą postać
+\begin{displaymath}
+\left[\begin{array}{ccccccc}
+\Delta_2&-\Delta_2-\Delta_1&\Delta_1&0&&0\dots&0\\
+0&\Delta_3&-\Delta_3-\Delta_2&\Delta_2&&0\dots&0\\
+&\vdots&\ddots&&&&\vdots\\
+0&\dots&\Delta_{i+1}&-\Delta_{i+1}-\Delta_i&\Delta_i&\dots&0\\
+&\vdots&&\ddots&&&\vdots\\
+0&0&0&\dots&\Delta_{n-1}&-\Delta_{n-1}-\Delta_{n-2}&\Delta_{n-2}
+\end{array}\right].
+\end{displaymath}
+
+Zatem problem znalezienia estymatora regresji wypukłej sprowadza się do znalezienia $\hat{\pmb{\theta}}\in K$ takiego, że
+\begin{displaymath}
+\min_{\pmb{\theta}\in K}\|\pmb{y}-\pmb{\theta}\|=\|\pmb{y}-\hat{\pmb{\theta}}\|,
+\end{displaymath}
+gdzie $\|\mathbf{x}\|=\sqrt{\mathbf{x}^T\mathbf{x}}$.
+
+Niech $(\mathbf{e}_1,\mathbf{e}_2,\dots,\mathbf{e}_n)$ będzie bazę kanoniczną przestrzeni $\mathbb{R}^n$. Wówczas $\pmb{\gamma}_i=-\pmb{A}^T\pmb{e}_i$, $i=1,2,\dots,n-2$. Wtedy zbiór $K$ możemy zapisać jako $K=\{\pmb{\theta}\in \mathbb{R}^n\colon -\pmb{e}_i^T\pmb{A}\pmb{\theta}\leq 0,i=1,2,\dots,n-2\}=\{\pmb{\theta} \in \mathbb{R}^k\colon \langle \pmb{\gamma}_i, \pmb{\theta}\rangle\leq 0, i=1,2,\dots,n-2\}$.
+
+Z określenia macierzy $\mathbf{A}$ oraz wektorów $\pmb{\gamma}_i, i=1,2,\dots,n-2$, widać, że tworzą one układ wektorów liniowo niezależnych. Zatem zbiór $B_{\gamma}'=\{\pmb{\gamma}_i,i=1,2,\dots, n-2\}$ można uzupełnić do bazy $B_{\gamma}$ przestrzeni $\mathbb{R}^n$ o wektory $\pmb{\gamma}_{n-1},\pmb{\gamma}_n$ tak, żeby były one ortogonalne do wszytkich wektorów z bazy $B_{\gamma}'$. Sprawdzimy, że warunek ten spełniają wektory $\pmb{\gamma}_{n-1}=\textbf{1}$ oraz $\pmb{\gamma}_n=(\pmb{x}-\bar{x}\textbf{1})$, gdzie $\pmb{x}=(x_1,x_2,\dots,x_n)$, $\bar{x}$ oznacza wartość średnią, $\textbf{1}=(1,1,\dots,1)^T$, a ortogonalność rozumiana jest w sensie iloczynu skalarnego powiązanego ze zdefiniowaną wcześniej normą euklidesową.
+\begin{lm}\label{ortogonalnosc}
+Wektory $\pmb{\gamma}_{n-1},\pmb{\gamma}_n$ zdefiniowane jak powyżej są ortogonalne do wektorów ze zbioru $B_{\gamma}'$.
+\end{lm}
+\begin{proof}
+Dowolny wektor ze zbioru $B_{\gamma}'$ możemy zapisać jako\\ $\pmb{\gamma}_i=(0,\dots,0,\overset{(i)} {x_{i+1}-x_{i+2}},\overset{(i+1)}{x_{i+2}-x_i},\overset{(i+2)}{x_i-x_{i+1}},0,\dots,0)$. Stąd $\langle \pmb{1},\gamma_i\rangle= x_{i+1}-x_{i+2}+x_{i+2}-x_i+x_i-x_{i+1}=0$ oraz $\langle \pmb{x}-\bar{x}\pmb{1},\gamma_i\rangle = \langle \pmb{x},\gamma_i\rangle -\bar{x}\langle \pmb{1},\gamma_i\rangle=x_i(x_{i+1}-x_{i+2})+x_{i+1}(x_{i+2}-x_i)+x_{i+2}(x_i-x_{i+1})=0$.
+\end{proof}
+Teraz możemy zdefiniować bazę $B_{\beta}=\{\pmb{\beta}_1,\pmb{\beta}_2,\dots,\pmb{\beta}_n\}$ dualną do bazy $B_{\gamma}$ w zaproponaowany w poprzednim paragrafie sposób (por. (\ref{bazy}))
+\begin{displaymath}
+\pmb{\beta}_i^T\pmb{\gamma}_j=\left\{{-1,\ i=j}\atop {0,\ i\neq j}\right. .
+\end{displaymath}
+Oznaczając przez $\mathbf{B}$ i $\mathbf{C}$ macierze, których kolumnami są odpowiednio wektory $\pmb{\beta}_i$ i $\pmb{\gamma}_i$ związek między nimi możemy wyrazić jako 
+\begin{displaymath}
+\mathbf{B}^T\mathbf{C}=-\mathbf{I},
+\end{displaymath}
+gdzie $\mathbf{I}$ oznacza macierz jednostkową. 
+
+
+Niech $E$ oznacza podprzestrzeń przestrzeni $\mathbb{R}^n$ rozpiętą przez wektory $\pmb{\beta}_{n-1},\pmb{\beta}_n$, natomiast $\mathcal{L}(K)$ oznacza przestrzeń rozpiętą przez wektory $\pmb{\beta}_i,i=1,2,\dots,n-2$. Przestrzenie $E$ oraz $\mathcal{L}(K)$ są do siebie ortogonalne, zatem wektor obserwacji $\mathbf{y}$ możemy zapisać jako sumę $\mathbf{y}_E + \mathbf{z}$, gdzie $\mathbf{y}_E$ i $\mathbf{z}$ są rzutami wektora $\mathbf{y}$ odpowiednio na podprzestrzeń $E$ oraz $\mathcal{L}(K)$.
+\begin{prz}\label{stozek}
+Prześledźmy powyższe rozważania na przykładzie. Rozważmy zbiór danych $\{x_1,x_2,x_3,x_4\}$ takich, że $x_{i+1}-x_i=1,\ i=1,2,3$.
+
+Macierz ograniczeń $\pmb{A}$ przybiera wtedy postać 
+\begin{displaymath}
+\pmb{A}=\left[\begin{array}{cccc}1&-2&1&0\\0&1&-2&1
+\end{array}\right].
+\end{displaymath}
+Zatem stożek powstały z ograniczeń jest postaci 
+\begin{displaymath}
+K=\{\pmb{\theta}\in \mathbb{R}^4\colon\left[\begin{array}{cccc}1&-2&1&0\\0&1&-2&1
+\end{array}\right]\pmb{\theta} \geq 0\}.
+\end{displaymath}
+Baza wektorów $B_{\pmb{\gamma}}$ jest postaci 
+\begin{displaymath}
+B_{\pmb{\gamma}}=\left((-1,2,-1,0)^T,(0,-1,2,-1)^T,(1,1,1,1)^T,\left(-\frac{3}{2},-\frac{1}{2},\frac{1}{2},\frac{3}{2}\right)^T\right).
+\end{displaymath}
+Wektory $\pmb{\beta}_i$ spełniające warunek $\langle \pmb{\beta}_i,\quad \pmb{\gamma}_i\rangle=-1$ oraz $\langle \pmb{\beta}_i, \pmb{\gamma}_j\rangle =0, i\neq j$ mają następująca postać 
+\begin{displaymath}
+B_{\pmb{\beta}}=((3,-4,-1,2)^T,(2,-1,-4,3)^T,(-1,-1,-1,-1)^T,(3,1,-1,-3)^T).
+\end{displaymath}
+Przestrzenie na które będziemy rzutować wektor obserwacji przybierają postać
+\begin{displaymath}
+E=\{t_1(-1,-1,-1,1)+t_2(3,1,-1,-3),t_1,t_2\in \mathbb{R}\},
+\end{displaymath}
+\begin{displaymath}
+\mathcal{L}(K)=\{t_1(3,-4,-1,2)+t_2(2,-1,-4,3),t_1,t_2\in \mathbb{R}\}. \quad \diamondsuit
+\end{displaymath}
+\end{prz}
+Zadanie znalezienia rzutu wektora obserwacji na stożek $K$ sprowadza się do znalezienia rzutu jego składowych na stożek $K$. Wszytkie elementy podprzestrzeni $E$ należą do stożka $K$, więc rzut wektora $\mathbf{y_E}$ na stożek $K$ jest tym samym co jego rzut na podprzestrzeń $E$. Przestrzeń $E$ jest rozpinana przez wektory $\pmb{\beta}_{n-1}$ i $\pmb{\beta}_n$. Niech $\mathcal{E}$ oznacza macierz wymiaru $n\times 2$ taką, że jej kolumnami są wektory rozpinające podprzestrzeń $E$. Wtedy rzut wektora $\pmb{y}$ na tą podprzestrzeń wyraża się wzorem 
+\begin{eqnarray}\label{rzut}
+\mathbf{y}_E=\mathcal{E}(\mathcal{E}^T\mathcal{E})^{-1}\mathcal{E}^T\mathbf{y}.
+\end{eqnarray}
+Pozostaje zagadnienie znalezienia rzutu $\mathbf{z}$ na stożek $K$. Sprowadza się ono do znalezienia rzutu $\mathbf{z}$ na stożek 
+\begin{displaymath}
+K'=K\cap \mathcal{L}(K)=\{\pmb{\theta} \in \mathbb{R}^n\colon \pmb{\theta} =\sum_{i=1}^{n-2}{b_i\pmb{\beta}_i, b_i\geq 0}\}.
+\end{displaymath}
+W \cite{fraser} zostało pokazane, że przestrzeń $\mathcal{L}(K)$ może zostać podzielona na $2^{n-2}$ obszarów w taki sposób, że każdy z nich może być opisany jako nieujemny ortant w bazie $B_J=\{\pmb{\beta}_i, i\in J, \pmb{\gamma}_i,i\in L\setminus J\}$, gdzie $J$ jest pewnym podzbiorem zbioru $L=\{1,2,\dots,n-2\}$. Zatem każdy element $\pmb{z}$ należący do $\mathcal{L}(K)$ może być przedstawiony w następujący sposób
+\begin{displaymath}
+\pmb{z}=\sum_{i\in J}{b_i\pmb{\beta}_i}+\sum_{i\in L\setminus J}{c_i\pmb{\gamma}_i},\quad b_i>0,c_i\geq 0.
+\end{displaymath}
+Dla dowolnego zbioru $J\subset L$, $B_J$ jest bazą przestrzeni $\mathcal{L}(K)$, ponadto $\pmb{\beta}_i, i\in J$ oraz $\pmb{\gamma}_i,i\in L\setminus J$ są wzajemnie ortogonalne, zatem rzutem $\pmb{z}$ na $K'$ jest wektor postaci
+\begin{displaymath}
+\pmb{z}_{K'}=\sum_{i\in J}{b_i\pmb{\beta}_i}, b_i>0.
+\end{displaymath}
+Podsumowując, dowolny wektor $\mathbf{y}$ z przestrzeni $\mathbb{R}^n$ można przedstawić w następującej postaci
+\begin{displaymath}
+\mathbf{y}=\mathbf{z}+\mathbf{y}_E=\sum_{i\in J}{b_i\pmb{\beta}_i}+\sum_{i\in L\setminus J}{c_i\pmb{\gamma}_i}+d_1\pmb{\gamma}_{n-1}+d_2\pmb{\gamma}_n,\ b_i>0, c_i\geq 0, d_1,d_2\in \mathbb{R},
+\end{displaymath}
+dla pewnego zbioru $J\subset \{1,2,\dots,n-2\}$. W \cite{fraser} zostało pokazane, że przedstawienie to jest jednoznaczne.
+
+Wtedy rzut tego wektora na stożek 
+$
+K=\{\mathbf{A}\pmb{\theta} \geq 0\}
+$
+jest postaci
+\begin{displaymath}
+\hat{\pmb{\theta}}=\sum_{i\in J}{b_i\pmb{\beta}_i}+d_1\pmb{\gamma}_{n-1}+d_2\pmb{\gamma}_n.
+\end{displaymath}
+Natomiast wektor reszt $\hat{\pmb{\rho}}=\mathbf{y}-\hat{\pmb{\theta}}$ jest postaci
+\begin{displaymath}
+\hat{\pmb{\rho}}=\sum_{i\in L\setminus J}{c_i\pmb{\gamma_i}}.
+\end{displaymath}
+\begin{prz}\label{stozek1}
+Rozważmy stożek z przykładu \ref{stozek} i wektor obserwacji $\pmb{y}^T=(0;3.1;5.2;6.8)$. 
+Na początek wyliczymy macierz rzutu oznaczoną w (\ref{rzut}) jako $\mathcal{E}(\mathcal{E}^T\mathcal{E})^{-1}\mathcal{E}^T$.
+$$
+\mathcal{E}(\mathcal{E}^T\mathcal{E})^{-1}\mathcal{E}^T=
+$$
+$$
+=\left[\begin{array}{cc}-1&3\\-1&1\\-1&-1\\-1&-1\end{array}\right] \left(\left[\begin{array}{cccc}-1&-1&-1&-1\\3&1&-1&-3\end{array}\right]\left[\begin{array}{cc}-1&3\\-1&1\\-1&-1\\-1&-3\end{array}\right]\right)^{-1}\left[\begin{array}{cccc}-1&-1&-1&-1\\3&1&-1&-3\end{array}\right]=
+$$
+
+$$
+=\frac{1}{80}\left[\begin{array}{cc}-1&3\\-1&1\\-1&-1\\-1&-3\end{array}\right] \left[\begin{array}{cc}20&0\\0&4\end{array}\right]\left[\begin{array}{cccc}-1&-1&-1&-1\\3&1&-1&-3\end{array}\right]=
+$$
+$$
+=\frac{1}{80}\left[\begin{array}{cccc}56&32&8&-16\\32&24&16&8\\8&16&24&32\\-16&8&32&56\end{array}\right].
+$$
+Następnie wyznaczymy rzut $\pmb{y}_E$.
+$$\pmb{y}_E=\mathcal{E}(\mathcal{E}^T\mathcal{E})^{-1}\mathcal{E}^T\pmb{y}=$$
+$$=\frac{1}{80}\left[\begin{array}{cccc}56&32&8&-16\\32&24&16&8\\8&16&24&32\\-16&8&32&56\end{array}\right]\left[\begin{array}{c}0\\3.1\\5.2\\6.8\end{array}\right]=\left[\begin{array}{c}0.4\\2.65\\4.9\\7.15\end{array}\right].$$
+Wektor $\pmb{z}$, który będziemy rzutować jest postaci $\pmb{z}^T=(-0.4;0.45;0.3;-0.35)$. Baza mieszna w której wszystkie współrzędne tego wektora są dodatnie to $B=(\pmb{\gamma}_1,\pmb{\gamma}_2,\pmb{\gamma}_3,\pmb{\beta}_4)$, a poszczególne współrzędne wynoszą w przybliżeniu odpowiednio $0.4;0.35;0\ i\ 6.94\cdot 10^{-18}$. Zatem rzut wektora $\pmb{z}$ na stożek $K$ jest równy $$\pmb{z}_{K}^T=6.94\cdot 10^{-18}\cdot(3;1;-1;-3)=10^{-18}\cdot(20.82;6.94;-6.94;-20.82).$$
+Zatem poszukiwany rzut wektora $\pmb{y}$ na stożek $K$ jest postaci
+$$
+\hat{\pmb{\theta}}^T=\pmb{y}_E^T+\pmb{z}^T\approx \pmb{y}_E^T=(0.4;2.65;4.9;7.15).\diamondsuit
+$$
+\end{prz}
+
+
+\section{Statystyka testowa i jej rozkład}
+\subsection{Lematy i oznaczenia}
+Na początek wprowadzimy kilka oznaczeń i udowodnimy dwa lematy z których skorzystamy w dalszej części rozważań. Zatem
+\begin{eqnarray}\label{zbior}
+C_{L\setminus J}=\{\pmb{y}\in \mathbb{R}^n\colon y=
+\end{eqnarray}$$=\sum_{i\in L\setminus J}{b_i\pmb{\gamma}_i}+\sum_{i\in J}{c_i\pmb{\beta}_i}+d_1\pmb{\gamma}_{n-1}+d_2\pmb{\gamma}_n,b_i>0,c_i\geq 0,d_1,d_2\in \mathbb{R}\}
+$$
+\begin{eqnarray}\ref{prz}
+S_{L\setminus J}=\textrm{span}\{\pmb{\gamma}_i,i\in L\setminus J\}
+\end{eqnarray}
+\begin{eqnarray}\label{zmienna}
+d=|L\setminus J|=n-2-|J|
+\end{eqnarray}
+Ponadto niech
+\begin{eqnarray}\label{macierz}
+\pmb{A}_{L\setminus J}
+\end{eqnarray}
+oznacza macierz wymiaru $n\times (n-2)$ taką, że pierwsze $d$ kolumn to wektory $\pmb{\gamma}_i,i\in L\setminus J$ natomiast pozostałe $n-2-d$ kolumn to wektory $\pmb{\beta}_i,i\in J.$
+
+Niech wektor obserwacji $\pmb{y}$ ma $n$-wymiarowy rozkład normalny z nieznaną wartością oczekiwaną $\pmb{f}\in \Theta$, gdzie $\Theta$ jest przestrzenią parametrów rozkładu, i znaną wariancją $\sigma^2$.
+Symbolem $\mathcal{L}(\pmb{f},\pmb{y})$ oznaczać będziemy funkcję wiarygodności
+\begin{eqnarray}
+\mathcal{L}(\pmb{f},\pmb{y})=(2\pi\sigma^2)^{-\frac{n}{2}}\exp{\left\{-\frac{1}{2\sigma^2}||\pmb{y}-\pmb{f}||^2\right\}}.
+\end{eqnarray}
+\begin{lm}\label{rozklad1}
+Niech $\pmb{Z}=(Z_1,Z_2,\dots,Z_n)^T\sim N(\pmb{0},\textbf{I})$ oraz niech $\hat{\pmb{Z}}$ będzie rzutem $\pmb{Z}$ na przestrzeń liniową $S$ wymiaru $d<n$. Ponadto niech $\pmb{A}$ będzie rzeczywistą macierzą wymiaru $m\times n$ taką, że każdy jej wiersz jest ortogonalny do przestrzeni $S$ oraz $m\leq n$ i $\textrm{rank} \pmb{A}=m$. Wtedy rozkładem warunkowym $\|\hat{\pmb{Z}}\|^2$ pod warunkiem $\pmb{AZ}\geq 0$ jest rozkład $\chi^2$ o $d$ stopniach swobody.
+\end{lm}
+\begin{proof}
+Niech $\pmb{v}_1,\pmb{v}_2,\dots,\pmb{v}_n$ będą wzjamnie ortonormalnymi wektorami w $\mathbb{R}^n$ takimi, że wektory $\pmb{v}_1,\pmb{v}_2,\dots,\pmb{v}_d$ rozpinają przestrzeń $S$. Niech $\pmb{V}$ oznacza macierz taką, której poszczególne kolumny są kolejno wektorami $\pmb{v}_1,\pmb{v}_2,\dots,\pmb{v}_n$ oraz niech $\pmb{a}=(a_1,a_2,\dots,a_n)^T$. Wektor $\pmb{Z}$ możemy zapisać jako $\pmb{Z}=\sum_{i=1}^n{a_i \pmb{v}_i}$, gdzie $a_i=\langle \pmb{v}_i, \pmb{Z}\rangle$. Stąd $a_i,i=1,2,\dots,n$ są niezależnymi zmiennymi losowymi o standardowym rozkładzie normalnym, bo dla dowolnego $i$ możemy napisać, że $a_i=v_i^T\pmb{Z}$, czyli $\pmb{a}=\pmb{V}^T\pmb{Z}$. Stąd $\pmb{a}\sim N(\pmb{0}, \pmb{V}^T\pmb{V})$, gdzie $\pmb{V}^T\pmb{V}=\pmb{I}$, bo wektory $\pmb{v}_1,\dots,\pmb{v}_n$ są wzajemnie ortonormalne. Ponadto $\hat{\pmb{Z}}=\sum_{i=1}^d{a_i \pmb{v}_i}$. Zatem $\|\hat{\pmb{Z}}\|^2=a_1^2+a_2^2+\dots +a_d^2$ i dlatego zmienna losowa $\|\hat{\pmb{Z}}\|^2$ ma rozkład $\chi^2$ o $d$ stopniach swobody. Macierz $\pmb{V}$ możemy zapisać jako $\pmb{V}=[\pmb{V}_1|\pmb{V}_2]$, gdzie $\pmb{V}_1$ jest macierzą wymiaru $n\times d$, oznaczmy też przez $\pmb{a}^1$ wektor $(a_1,a_2,\dots,a_d)^T$ a przez $\pmb{a}^2$ wektor $(a_{d+1},\dots,a_n)^T$. Wtedy $\pmb{Z}=\pmb{Va}=\pmb{V}_1\pmb{a}^1+\pmb{V}_2\pmb{a}^2$ a warunek $\pmb{AZ}\geq 0$ możemy zapisać jako $\pmb{AV}_1\pmb{a}^1+\pmb{AV}_2\pmb{a}^2\geq 0$. Zauważmy, że z założenia o ortogonalności wierszy macierzy $\pmb{A}$ do przestrzeni $S$ oraz konstrukcji macierzy $\pmb{V}$ dostajemy, że $\pmb{AV}_1=\pmb{0}$ oraz $\pmb{a}^1,\pmb{a}^2$ są niezależne. Zatem $P(\|\hat{\pmb{Z}}\|^2\leq a |\pmb{AZ}\geq 0)=P(\|\pmb{a}^1\|^2\leq a|\pmb{AV}_2\pmb{a}^2\geq 0)$. Pokażemy teraz, że zbiór $\{\omega\in \Omega\colon \pmb{AV}_2\pmb{a}^2(\omega)\geq 0)$ jest niezerowej miary. Zmienna losowa $\pmb{AV}_2\pmb{a}^2$ ma $m$-wymiarowy rozkład normalny $N(\pmb{0},\pmb{\Sigma})$, gdzie $\pmb{\Sigma}=\pmb{AV}_2\pmb{V}_2^T\pmb{A}^T=\pmb{AA}^T$, bo wiersze macierzy $\pmb{V}_2$ są wzajemnie ortonormalne. Ponadto z założeń dostajemy, że $\textrm{rank}\pmb{AA}^T=m$. Zatem nośnik zmiennej $\pmb{AV}_2\pmb{a}^2$ zawrty jest w $m$-wymiarowej przestrzeni i nie jest zawart w przestrzeni $(m-1)$-wymiarowej. Stąd i z symetrii rozkładu dostajemy, że $P(\pmb{AV}_2\pmb{a}^2\geq 0)=\frac{1}{2^{m-1}}\neq 0$. Zatem prawdopodobieństwo warunkowe $P(\|\hat{\pmb{Z}}\|^2\leq a |\pmb{AZ}\geq 0)$ istniej i ponadto  $$P(\|\pmb{a}^1\|^2\leq a|\pmb{AV}_2\pmb{a}^2\geq 0)=\frac{P(\|\pmb{a}^1\|^2\leq a\land\pmb{AV}_2\pmb{a}^2\geq 0)}{P(\pmb{AV}_2\pmb{a}^2\geq 0)}=$$ $$=\frac{P(\|\pmb{a}^1\|^2\leq a)P(\pmb{AV}_2\pmb{a}^2\geq 0)}{P(\pmb{AV}_2\pmb{a}^2\geq 0)}=P(\|\pmb{a}^1\|^2\leq a)=P(\chi^2_d\leq a)$$ co należało dowieść.
+\end{proof}
+Idea powyższego lemat została zaczerpnięta z \cite{meyer}.
+\begin{lm}\label{suma}
+Niech $\pmb{y}\in C_{L\setminus J}$ określonego wzorem (\ref{zbior}) dla pewngo zbioru $J\subset L=\{1,2,\dots,n-2\}$ oraz niech $a,b\in \mathbb{R}$. Wtedy wektor $\pmb{y}'=\pmb{y}+a\pmb{\gamma}_{n-1}+b\pmb{\gamma}_n$ należy do zbioru $C_{L\setminus J}$ oraz wektory reszt $\pmb{\rho}=\pmb{y}-\hat{\pmb{\theta}}$ i $\pmb{\rho}'=\pmb{y}'-\hat{\pmb{\theta}'}$ są sobie równe.
+\end{lm}
+\begin{proof}
+Jeśli $\pmb{y}\in C_{L\setminus J}$ to $\pmb{y}$ możemy zapisać jako $\pmb{y}=\sum_{i\in J}{c_i\pmb{\beta}_i}+\sum_{i\in L\setminus J}{b_i\pmb{\gamma}_i}+d_1\pmb{\gamma}_{n-1}+d_2\pmb{\gamma}_n,\ b_i>0, c_i\geq 0, d_1,d_2\in \mathbb{R}$. Wtedy $\pmb{y}'=\sum_{i\in J}{c_i\pmb{\beta}_i}+\sum_{i\in L\setminus J}{b_i\pmb{\gamma}_i}+(d_1+a)\pmb{\gamma}_{n-1}+(d_2+b)\pmb{\gamma}_n,\ b_i>0, c_i\geq 0, d_1,d_2\in \mathbb{R}$. Oczywiście $d_1+a,d_2+b\in \mathbb{R}$ zatem $\pmb{y}'\in C_{L\setminus J}$.
+
+Wektor $\pmb{\rho}$ jest postaci $\pmb{\rho}=\sum_{i\in L\setminus J}{b_i\pmb{\gamma}_i}$. Z postaci wktora $\pmb{y}'$ widzimy jednak, że $\pmb{\rho}'=\sum_{i\in L\setminus J}{b_i\pmb{\gamma}_i}=\pmb{\rho}$.
+\end{proof}
+Na koniec zostanie udowodnione twierdzenie nie mające bezpośredniego związku z postacią poszukiwanego testu, pokazujące jednak pewną ciekawą własność rzutów wektora obserwacji $\pmb{y}$.
+\begin{tw}\label{niezaleznosc}
+Niech wektor $\pmb{y}$ rozkład normalny $N(\pmb{0},\pmb{\Sigma})$. Wtedy rzuty tego wektora na przestrzenie $\textrm{span}\{\pmb{\gamma}_i,i\in L\setminus J\}$, $\textrm{span}\{\pmb{\beta}_i,i\in J\}$ oraz $\textrm{span}\{\pmb{\gamma}_{n-1},\pmb{\gamma}_n\}$, czyli wektory losowe $\pmb{y}-\hat{\pmb{\theta}}$ , $\hat{\pmb{\theta}}-\hat{\pmb{y}}$ i $\hat{\pmb{y}}$ dla ustalonego zbioru $J$ są stochastycznie niezależne.
+\end{tw}
+\begin{proof}
+Dla ustalonego stożka $C_{L\setminus J}$ mamy $\pmb{y}-\hat{\pmb{\theta}}= \sum_{i\in L\setminus J}{b_i\pmb{\gamma}_i}$ oraz  $\hat{\pmb{\theta}}-\hat{\pmb{y}}=\sum_{i\in J}{c_i\pmb{\beta}_i}$. Niech $S_1=\textrm{span}\{\pmb{\beta}_i,i\in J\},S_2=\textrm{span}\{\pmb{\gamma}_i,i\in L\setminus J\},S_3=\textrm{span}\{\pmb{\gamma}_{n-1},\pmb{\gamma}_n\}$. Bazę każdej z tych przestrzeni można zortonormalizować tak, by $S_1=\textrm{span}\{\pmb{v}_i,i\in J\},S_2=\textrm{span}\{\pmb{v}_i,i\in L\setminus J\},S_3=\textrm{span}\{\pmb{v}_{n-1},\pmb{v}_n\}$, gdzie wektory $\pmb{v}_1,\dots ,\pmb{v}_n$ są wzajemnie ortonormalne. Niech $V$ oznacza macierz, której kolumnami są wektory $\pmb{v}$. Wektor $\pmb{y}$ możemy zapisać jako $\pmb{y}=\sum_{i=1}^n{\langle v_i, y\rangle}=\sum_{i=1}^n{a_iv_i}$. Analogicznie jak w dowodzie lematu 2 możemy zdefiniować wektor $\pmb{a}=(a_1,a_2,\dots,a_n)^T$, który ma $n$-wymiarowy rozkład normalny $N(0,\pmb{I})$. Niech $\pmb{a}^1=(a_1,\dots,a_{n-d-2})^T$, $\pmb{a}^2=(a_{n-d-1},\dots,a_{n-2})^T$, $\pmb{a}^3=(a_{n-1},a_n)^T$ oraz zapiszmy macierz $\pmb{V}$ jako $[\pmb{V}_1|\pmb{V}_2|\pmb{V}_3]$. Wówczas $\pmb{y}=\pmb{V}_1\pmb{a}^1+\pmb{V}_2\pmb{a}^2+\pmb{V}_3\pmb{a}^3$ oraz $\pmb{y}-\hat{\pmb{\theta}}=\pmb{V}_2\pmb{a}^2, \hat{\pmb{\theta}}-\hat{\pmb{y}}=\pmb{V}_1\pmb{a}^1$ oraz $\hat{\pmb{y}}=\pmb{V}_3\pmb{a}^3$. Wektory $\pmb{a}^1$, $\pmb{a}^2$ i $\pmb{a}^3$ są niezależne, zatem wektory $\pmb{V}_1\pmb{a}^1$, $\pmb{V}_2\pmb{a}^2$ oraz $\pmb{V}_3\pmb{a}^3$ jako mierzalne funkcje tych wektorów również są niezależne dla ustalonego $C_{L\setminus J}$.
+\end{proof}
+
+\subsection{Statystyka testowa}
+Lematy udowodnione w poprzednim paragrafie posłużą do wyznaczenia rozkładu statystyki testowej zaproponowanego testu opartego na ilorazie wiarygodności. Przypomnijmy, że problem testowania hipotez, którym się zajmujemy ma postać
+\begin{eqnarray}\label{problem}
+H_0\colon f(x)=ax+b \qquad vs.\qquad H_1\colon f\in \mathcal{F},
+\end{eqnarray}
+gdzie $\mathcal{F}$ jest klasą funkcji wypukłych.
+
+Niech $\hat{\pmb{y}}$ oznacza estymator regresji liniowej, czyli rzut wektora danych $\pmb{y}$ na przestrzeń rozpinaną przez wektory $\pmb{\gamma}_{n-1},\pmb{\gamma}_n$, $\hat{\pmb{\theta}}$ oznacza estymator regresji wypukłej, będący rzutem wektora obserwacji na odpowiedni stożek wypukły. Ponadto oznaczmy przez $R_0=\sum_{i=1}^n{(y_i-\hat{y_i})^2}=\|\pmb{y}-\hat{\pmb{y}}\|^2$ oraz $R_1=\sum_{i=1}^n{(y_i-\hat{\theta_i})^2}=\|\pmb{y}-\hat{\pmb{\theta}}\|^2$. 
+\begin{uw}\label{uwaga}
+Powyższe estymatory $\hat{\pmb{y}}$ i $\hat{\pmb{\theta}}$, jako elementy minimalizujące kwadrat normy błędu, czyli elementy optymalne w sensie aproksymacji średniokwadratowej, wyznaczone zostały przy zastosowaniu metody najmniejszych kwadratów. Jednak przy założeniu normalności rozkładu wektora obserwacji estymatory wyznaczone tą metodą są tożsame z estymatorami wyznaczonymi przy pomocy metody największej wiarygodności. Rozważmy ogólny model $\pmb{x}=\phi(\pmb{x})+\pmb{\varepsilon}$, gdzie $\phi(\pmb{x})$ jest poszukiwanym parametrem, a wektor błędów $\pmb{\varepsilon}$ ma $n$-wymiarowy rozkład normalny $N(\pmb{0},\sigma^2\pmb{I})$ ze znaną wariancją. Stosując metodę namniejszych kwadratów dostajemy, że estymatorem $\phi(\pmb{x})$ jest wektor $\hat{\phi(\pmb{x})}$ minimalizujący wyrażenie $\sum_{i=1}^n(\pmb{x}_i-\phi(\pmb{x})_i)^2$, gdzie $\pmb{x}_i,\phi(\pmb{x})_i$ oznaczają kolejne współrzędne odpowiednio wektora $\pmb{x}$ i $\phi(\pmb{x})$. Stosując metodę największej wiarygodności przy założeniu normalności rozkładu wektora $\pmb{x}$ będziemy maksymalizować funkcję wiarygodności postaci $L(\phi(\pmb{x}),\pmb{x})=\Pi_{i=1}^n\frac{1}{\sqrt{2\pi \sigma^2}}\exp\{-\frac{1}{2\sigma^2}(\pmb{x}_i-\phi(\pmb{x})_i)^2\}=\frac{1}{(2\pi \sigma^2)^{\frac{n}{2}}}\exp\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(\pmb{x}_i-\phi(\pmb{x})_i)^2\}$. Maksymalizacja tej funkcji jest równoważna maksymalizacji jej logarytmu $l(\phi(\pmb{x}),\pmb{x})=\ln (2\pi \sigma^2)^{-\frac{n}{2}}-\frac{1}{2\sigma^2}\sum_{i=1}^n(\pmb{x}_i-\phi(\pmb{x})_i)^2$, co przy założeniu znajomości wariancji prowadzi do równoważnego zagadnienia minimalizacji wyrażenia $\sum_{i=1}^n(\pmb{x}_i-\phi(\pmb{x})_i)^2$, czyli tego samego, które otrzymaliśmy stosując metodę najmniejszych kwadratów. Zatem przy założeniu normalności rozkładu wektora obserwacji $\pmb{x}$ estymatory uzyskiwane obiema metodami są sobie równe.
+\end{uw}
+
+
+W rozważanym problemie hipotezę zerową możemy utożsamić z pewną podprzestrzenią parametrów $\Theta_0\subset \Theta$ a alternatywę z podprzestrzenią $\Theta_1\subset \Theta$. Określmy funkcję 
+$$
+l(\pmb{y})=\frac{\sup_{\pmb{f}\in \Theta} \mathcal{L}(\pmb{f},\pmb{y})}{\sup_{\pmb{f}\in \Theta_0} \mathcal{L}(\pmb{f},\pmb{y})}
+$$
+nazywaną ilorazem wiarygodności.
+Oczywiści dla dowlonego $\pmb{y}\in \mathbb{R}^n$ mamy, że $l(\pmb{y})\in [1,+\infty)$, ponadto duże wartości $l(\pmb{y})$ powinny sugerować, że hipoteza zerowa nie jest poprawna.
+\begin{df}\label{test}
+Testem hipotezy $H_0\colon \pmb{f}\in \Theta_0$ przy alternatywie $H_1\colon \pmb{f}\in \Theta_1$ opartym na ilorazie wiarygodności na poziomie istotności $\alpha$ nazywamy funkcję 
+$$
+\phi(\pmb{y})=\left\{\begin{array}{cl}
+1& \textrm{ gdy }l(\pmb{y})>c\\
+\xi& \textrm{ gdy }l(\pmb{y})=c\\
+0& \textrm { gdy }l(\pmb{y})<c
+\end{array}\right.,
+$$
+gdzie stałe $c,\ \xi$ są tak dobrane by rozmiar testu nie przekraczał $\alpha$.
+\end{df}
+Zatem zgdonie z definicją \ref{test} możemy rozważyć zbiór odrzucenia $C$ w naszym problemie (\ref{problem}) postaci
+\begin{displaymath}
+C=\phi^{-1}(\{1\})=\left\{\pmb{y}\in \mathbb{R}^n\colon \frac{\sup_{\pmb{f}\in\Theta}\mathcal{L}(\pmb{f},\pmb{y})}{\sup_{\pmb{f}\in \Theta_0}\mathcal{L}(\pmb{f},\pmb{y})}>c\right\}=\footnote{przejście możliwe dzięki uwadze \ref{uwaga}}
+\end{displaymath}
+$$
+=\left\{\pmb{y}\in\mathbb{R}^n\colon \frac{(2\pi\sigma^2)^{-\frac{n}{2}}\exp\{-\frac{1}{2\sigma^2}||\pmb{y}-\hat{\pmb{\theta}}||^2\}}{(2\pi\sigma^2)^{-\frac{n}{2}}\exp\{-\frac{1}{2\sigma^2}||\pmb{y}-\hat{\pmb{y}}||^2\}}>c\right\}=$$
+$$
+=\left\{\pmb{y}\in\mathbb{R}^n\colon\exp\left\{\frac{1}{2\sigma^2}\left(||\pmb{y}-\hat{\pmb{y}}||^2-||\pmb{y}-\hat{\pmb{\theta}}||^2\right)\right\}>c\right\}$$
+$$
+=\left\{\pmb{y}\in\mathbb{R}^n\colon \frac{||\pmb{y}-\hat{\pmb{y}}||^2-||\pmb{y}-\hat{\pmb{\theta}}||^2}{\sigma^2}>c'\right\}=$$
+$$
+=\left\{\pmb{y}\in\mathbb{R}^n\colon\frac{R_0-R_1}{\sigma^2}>c'\right\}.$$
+Zatem będziemy poszukiwać przy założeniu prawdziwości hipotezy zerowej $H_0$ rozkładu statystyki testowej postaci
+\begin{displaymath}
+M=\frac{R_0-R_1}{\sigma^2}.
+\end{displaymath}
+W kolejnych rozważaniach przez $D$ będziemy oznaczać zmienną losową reprezentującą liczność zbioru $L\setminus J$ (por. (\ref{zmienna})).
+\begin{tw}\label{statystyka}
+Przy założeniu prawdziwości hipotezy zerowej postawionego problemu (\ref{problem}) mamy
+\begin{displaymath}
+P(M\leq a)=\sum_{d=0}^{n-2}{P(\chi^2_{n-d-2}\leq a)P(D=d)},
+\end{displaymath}
+gdzie $\chi^2_0\equiv 0$, czyli rozkładem staystyki testowej $M$ jest mieszany rozkład $\chi^2$ z wagami $P(D=d)$.
+\end{tw}
+\begin{proof}
+Z lematu \ref{suma} możemy bez straty ogólności założyć, że $f(x)=0$ skąd $\pmb{y}=\pmb{\varepsilon}$. Dla dowolnej realizacji wektora $\pmb{\varepsilon}\in \mathbb{R}^n$ oznaczmy przez $L\setminus J$ taki zbiór indeksów, że $\pmb{\varepsilon}\in C_{L\setminus J}$ (por. (\ref{zbior})). Zatem wyrażenie $R_1=\|\pmb{y}-\hat{\pmb{\theta}}\|^2$ zależy poprzez $\hat{\pmb{\theta}}$ od wyboru zbioru $J$, który jest losowy, różne wartości wektora błędu $\pmb{\varepsilon}$ mogą umieścić wektor danych $\pmb{y}$ w różnych zbiorach $C_{L\setminus J}$. Zauważmy jednak, że z jednoznaczności przedstawienia wektora w zbiorze $C_{L\setminus J}$ zdarzenia postaci $\{\pmb{y}\in C_{L\setminus J}\}$, $J\in \mathcal{P}(L)$, gdzie $\mathcal{P}(L)$ oznacza zbiór potęgowy zbioru $L$, są wzajmnie rozłączne oraz ich suma stanowi całą przestrzeń zdarzeń elementarnych. Ponadto prawdopodobieństwa tych zdarzeń są niezerowe. Możemy zatem skorzystać z twierdzenia o prawdopodobieństwie całkowitym.
+\begin{displaymath}
+P(M\leq a)=\sum_{J\in \mathcal{P}(L)}{P(M\leq a|\pmb{y}\in C_{L\setminus J})P(\pmb{y}\in C_{L\setminus J})}.
+\end{displaymath}
+
+Następnie rozważmy jakie są rozkłady zmiennych losowych $\frac{R_1}{\sigma^2}$ oraz $\frac{R_0}{\sigma^2}$ przy założeniu prawdziwości hipotezy zerowej i przy ustalonym zbiorze $J$.
+
+
+Niech $\hat{\pmb{\varepsilon}}$ będzie rzutem wektora $\pmb{\varepsilon}$ na przestrzeń $S_{L\setminus J}$ (por. (\ref{prz})). Zauważmy, że macierz $\pmb{A}_{L\setminus J}$ (por. (\ref{macierz})) można zapisać jako $[\pmb{A}_1|\pmb{A}_2]$, gdzie macierz $\pmb{A}_1$ jest wymiaru $n\times d$. Zatem kolumny macierzy $\pmb{A}_1$ rozpinają $S_{L\setminus J}$, natomiast kolumny macierzy $\pmb{A}_2$ są ortogonalne do przestrzeni $S_{L\setminus J}$. Dodatkowo, gdy $\pmb{\varepsilon}\in C_{L\setminus J}$, zachodzi $\pmb{A}_1^T\pmb{\varepsilon} \geq 0$ oraz $\pmb{A}^T_2\pmb{\varepsilon} \geq 0$. Stąd na mocy lematu \ref{rozklad1} dostajemy, że rozkładem warunkowym $\frac{||\hat{\pmb{\varepsilon}}||^2}{\sigma^2}$ przy zadanym $J$ jest rozkład $\chi^2$ o $d$ stopniach swobody, gdzie $d=|L\setminus J|$. Jako że $R_1=||\hat{\pmb{\rho}}||^2$, gdzie $\hat{\pmb{\rho}}=\pmb{y}-\hat{\pmb{\theta}}$, otrzymujemy, że jeśli hipoteza zerowa $\pmb{\theta}\in \textrm{span}\{\pmb{\gamma}_{n-1},\pmb{\gamma}_{n}\}$ jest prawdziwa to rozkładem warunkowym $\frac{R_1}{\sigma^2}$ przy ustalonym zbiorze $J$ jest $\chi^2_d$, gdzie $d=|L\setminus J|$. 
+
+Zmienna losowa $\frac{R_0}{\sigma^2}$ jest rzutem wektora danych $\pmb{y}$ na przestrzeń rozpinaną przez wektory $\pmb{\beta}_i,\pmb{\gamma}_j,i\in J,j\in L\setminus J$ a zatem ma rozkład $\chi^2$ o $n-2$ stopniach swobody. 
+
+Rozważmy teraz wyrażenie $R_0-R_1$. Skorzystamy tutaj z następujących własności normy: dla dowolnych wektorów $\pmb{x},\pmb{y}$ i dowolnej liczby rzeczywistej $a$ mamy, że $\|\pmb{x}+\pmb{y}\|^2=\|\pmb{x}\|^2+\|\pmb{y}\|^2+2\langle \pmb{x},\pmb{y}\rangle$ oraz $\|a\pmb{x}\|^2=a^2\|\pmb{x}\|^2$.
+
+Zatem dla ustalonego zbioru $J$ dostajemy, że 
+$$
+R_0-R_1=\|\pmb{y}-\hat{\pmb{y}}\|^2-\|\pmb{y}-\hat{\pmb{\theta}}\|^2=\|\sum_{i\in L\setminus J}b_i\pmb{\gamma}_i+\sum_{i\in J}c_i\pmb{\beta}_i\|^2-\|\sum_{i\in L\setminus J}b_i\pmb{\gamma}_i\|^2=$$ $$=\sum_{i\in L\setminus J}b_i^2\|\pmb{\gamma}_i\|^2+\sum_{i\in J}c_i^2\|\pmb{\beta}_i\|^2+2\sum_{{i\in L\setminus J}\atop {j\in J}}b_ic_j\langle \pmb{\gamma}_i,\pmb{\beta}_j\rangle+2\sum_{{i,j\in L\setminus J}\atop {i\neq j}}b_ib_j\langle \pmb{\gamma}_i,\pmb{\gamma}_j\rangle +$$ $$+2\sum_{{i,j\in J}\atop {i\neq j}}c_ic_j\langle \pmb{\beta}_i,\pmb{\beta}_j\rangle -\sum_{i\in J}b_i^2\|\pmb{\gamma}_i\|-2\sum_{{i,j\in J}\atop {i\neq j}}b_ib_j\langle \pmb{\gamma}_i,\pmb{\gamma}_j\rangle=$$ $$= \sum_{i\in J}c_i^2\|\pmb{\beta}_i\|^2+2\sum_{{i,j\in J}\atop {i\neq j}}c_ic_j\langle \pmb{\beta}_i,\pmb{\beta}_j\rangle=\|\sum_{i\in J}c_i\pmb{\beta}_i\|^2=\|\hat{\pmb{y}}-\hat{\pmb{\theta}}\|^2,
+$$
+ bo $\langle \pmb{\gamma}_i,\pmb{\beta}_j\rangle =0$ dla $i\neq j$. Otrzymaliśmy zatem rzut wektora $\pmb{\varepsilon}$ na przestrzeń $\textrm{span}\{\pmb{\beta}_i,i\in J\}$ dla ustalonego zbioru $J$. Rzut ten może zostać przeskalowany o znaną wartość wariancji. Wtedy tak uzyskana zmianna losowa, na mocy lematu \ref{rozklad1}, ma rozkład $\chi^2$ o $n-d-2$ stopniach swobody. Liczba stopni swobody w tym rozkładzie zależy jedynie od liczności zbioru $L\setminus J$, natomiast nie zależy bezpośrednio od dokłanej jego postaci. Niech zatem $D$ będzie zdefiniowaną wcześniej zmienną losową reprezentującą liczność zbioru $L\setminus J$. Otrzymujemy wtedy, że rozkładem $\frac{R_0-R_1}{\sigma^2}$ pod warunkiem $D=d$ jest $\chi^2$ o $n-d-2$ stopniach swobody, co należało pokazać.
+\end{proof}
+Wartości prawdopodobieństw $P(D=d), d=0,1,\dots, n-2$ są wyliczane na podstawie względnych objętości zbiorów $C_{L\setminus J},J\in \mathcal{P}(L)$. Prawdopodobieństwo, że $\pmb{y}\in C_{L\setminus J}$, gdy hipoteza zerowa jest prawdziwa, jest równoważne prawdopodobieństwu, że wektor losowy o $n$-wymiarowym standardowym rozkładzie normalny należy do zbioru $C_{L\setminus J}$. Wyznaczenie wartości $P(D=d)$ jest dla dużych $n$ bardzo trudne i najczęściej stosuje się w tym celu pewne przybliżenia numeryczne.
+
+\section{Podsumowanie}
+W pracy została zaprezentowana konstrukcja testu statystycznego przeznaczonego do testowania problemu wyboru krzywej regresji następującej postaci
+$$
+H_0\colon f(x)=ax+b \quad vs.\quad H_1\colon f\in \mathcal{F},
+$$
+gdzie $\mathcal{F}$ jest klasą funkcji wypukłych.
+
+W wyniku rzutowania wektora obserwacji na wielościenny stożek wypukły powstały jako rezultat wymogu wypukłości funkcji $f$ otrzymano estymator regresji wypukłej, który pozwolił wyznaczyć rozkład statystyki testowej następującej postaci
+$$
+P(M\leq a)=\sum_{d=0}^{n-2}{P(\chi^2_{n-d-2}\leq a)P(D=d)},
+$$
+będący mieszanym rozkładem $\chi^2$ z wagami $P(D=d)$. Prawdopodobieństwa $P(D=d)$ wyznaczane są na podstawie względnych objętości zbiorów $C_{L\setminus J},J\in \mathcal{P}(L)$ w porównaniu do całej przestrzeni.
+Przedstwione rozważania zostały oparte przede wszytkim o wyniki przedstawione przez Meyer w pracy \cite{meyer}. 
+
+W niniejszej pracy zostały przeprowadzone przez autora dowody lematów \ref{ortogonalnosc} oraz \ref{suma} oraz twierdzenia \ref{niezaleznosc}, a także dodane zostały własne przykłady \ref{stozek} i \ref{stozek1}. Przeformułowano także twierdzenie \ref{rozklad1} głównie dodając założenie o rządzie macierzy $\pmb{A}$, uzasadniając niezerowość prawdopodobieństwa warunku i doprecyzowując rozkład wektora $\pmb{a}$. Dodano także uzasadnienie stosowalności wyznaczonych estymatorów w rozważanym problemie (uwaga \ref{uwaga}) i doprecyzowano dowód twierdzenia \ref{statystyka} głównie o dokładną postać wyrażenia $R_0-R_1$.
+\flushright
+{\small \textit{Kropka nie oznacza końca zdania.\\
+Ona daje możliwość coraz to lepszej kontynuacji.}} 
+\flushleft
+\end{document}
+

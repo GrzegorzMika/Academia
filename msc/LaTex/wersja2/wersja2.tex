@@ -1,0 +1,2083 @@
+\documentclass{mwart}
+\usepackage{polski}
+\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{eufrak}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{makeidx}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{lm}{Lemat}
+\newtheorem*{lem}{Lemat}
+\newtheorem{wn}{Wniosek}
+\newtheorem{prz}{Przykład}
+\newtheorem{uw}{Uwaga}
+\newtheorem{za}{Założenie}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\title{Nierówności wyrocznie dla problemów odwrotnych}
+\author{Grzegorz Mika}
+\begin{document}
+\maketitle
+\section{Streszczenie}
+W pracy rozważany będzie problem estymacji nieznanego elementu $f$ na podstawie niebezpośrednich i zaburzonych obserwacji. Niech $\Lambda$ będzie skończonym zbiorem estymatorów liniowych. Celem będzie konstrukcja metody wyboru estymatora z rodziny $\Lambda$ naśladującego estymator o minimalnym ryzyku w tej klasie. Okaże się, że można to osiągnąć poprzez minimalizację odpowiedniego wyrażenia związanego z estymatorem ryzyka. W pierwszej części pracy zostaną przedstawione wyniki dotyczące operatorów zwartych. W drugiej części wyniki zostaną uogólnione na przypadek operatorów, które niekoniecznie są zwarte. Głównym wynikiem pracy jest zaprezentowanie odpowiednich nieasymptotycznych nierówności wyroczni w obu przypadkach.
+\tableofcontents
+\section{Wstęp}
+Na początek wprowadzimy potrzebną notację i oznaczenia oraz opiszemy model, w którym będziemy pracować w dalszej części. 
+Niech $H$ oraz $G$ będą dwoma ośrodkowymi przestrzeniami Hilberta z iloczynem skalarnym oznaczanym odpowiednio $\langle \cdot,\cdot \rangle_H$ oraz $\langle \cdot,\cdot \rangle_G$ (lub gdy nie prowadzi to do nieporozumień krótko $\langle \cdot,\cdot \rangle$), natomiast $A$ niech będzie liniowym i ograniczonym operatorem między tymi przestrzeniami. Naszym celem jest znalezienie takiego $f\in H$, by mając dany $g\in G$, spełnić równanie
+\begin{displaymath}
+Af=g.
+\end{displaymath}
+\begin{df}(\cite{szkutnik}, str. 1)\\ Problem nazwiemy dobrze postawionym wg Hadamarda, gdy:
+\begin{itemize}
+\item dla dowolnego $g\in G$ istnieje $f\in H$ spełniający zadane równanie,
+\item rozwiązanie jest jedyne,
+\item rozwiązanie jest stabilne, czyli zależy w sposób ciągły od prawej strony równania.
+\end{itemize}
+\end{df}
+Jeżeli choć jeden z warunków powyższej definicji nie jest spełniony, problem nazywamy źle postawionym. W przypadku braku stabilności, operator odwrotny $A^{-1}$ jest nieograniczony, co może prowadzić do eksplozji rozwiązania nawet w przypadku niewielkiego zaburzenia wartości $g$.\\
+\indent W dalszej części obserwacje będą zaburzone przez pewien losowy szum, zatem przypuśćmy, że dysponujemy następującym modelem 
+\begin{equation}\label{Af}
+Y=Af+\epsilon\xi,
+\end{equation}
+w którym celem jest odzyskanie informacji na temat elementu $f$ na bazie zakłóconych obserwacji $Y$. Przez $\xi$ rozumieć będziemy odpowiednio zdefiniowany poniżej stochastyczny szum, natomiast przez $\epsilon>0$ jego poziom.
+\begin{df}(\cite{iphde}, str. 7)\\
+Stochastycznym błędem $\xi$ nazwiemy proces na przestrzeni Hilberta G, czyli ograniczony liniowy operator $\xi\colon G\to L^2(\Omega, \mathcal{F},\mathbb{P})$ taki, że dla dowolnych elementów $g_1,g_2\in G$ mamy zdefiniowane zmienne losowe $\langle \xi, g_i\rangle$ takie, że $\mathbb{E}\langle \xi, g_i\rangle =0$ oraz operator kowariancji $Cov_{\xi}$ określony jako ograniczony liniowy operator ($||Cov_{\xi}||\leq 1$) z przestrzeni $G$ w przestrzeń $G$ taki, że $ \langle Cov_{\xi}g_1,g_2\rangle=Cov(\langle \xi,g_1\rangle,\langle \xi,g_2\rangle)$. Przestrzeń $(\Omega, \mathcal{F},\mathbb{P})$ jest podstawową przestrzenią probabilistyczną, natomiast  $\mathcal{L}^2(\cdot)$ jest przestrzenią wszystkich funkcji całkowalnych z kwadratem na zadanej przestrzeni z miarą.
+\end{df}
+
+\begin{df}(\cite{iphde}, str. 8)\\
+Powiemy, że losowy błąd $\xi$ jest gaussowskim białym szumem, jeśli $Cov_{\xi}=I$ oraz indukowane zmienne losowe są gaussowskie, czyli dla dowolnych elementów $g_1,g_2,\dots,g_k\in G$ i dla dowolnego $k\in \mathbb{N}$ mamy, że $(\langle \xi,g_1\rangle,\langle \xi,g_2\rangle,\dots,\langle \xi,g_k\rangle)\sim\mathcal{N}_k(\pmb{0},\pmb{\Sigma})$. oraz $Cov(\langle \xi,g_i\rangle , \langle \xi , g_j\rangle)=\langle g_i, g_j\rangle$.
+\end{df}
+\begin{lm}\label{lemat1}(\cite{iphde}, str. 8)\\
+Niech $\xi$ będzie białym szumem w przestrzeni $G$ oraz niech $\{u_i\}_{i\in I}$ będzie ortonormalną bazą tej przestrzeni i niech $\xi_k=\langle \xi,u_k\rangle$. Wtedy $\{\xi_i\}_{i\in I}$ są niezależnymi zmiennymi losowymi o tym samym standardowym rozkładzie gaussowskim.
+\end{lm}
+\begin{proof}
+Z definicji $\xi_k=\langle \xi,u_k\rangle\sim \mathcal{N}(0,||u_k||^2)=\mathcal{N}(0,1)$ oraz $Cov(\langle \xi, u_n\rangle,\langle \xi, u_k\rangle)=\langle u_n,u_k\rangle=\delta_{nk}$, gdzie $\delta_{nk}$ oznacza symbol Kroneckera, co wraz z założeniem o łącznym rozkładzie gaussowskim kończy dowód.
+\end{proof}
+
+Zauważmy, że gdy $\xi$ jest białym szumem, to $Y$ nie jest elementem przestrzeni $G$, a staje się operatorem działającym na przestrzeni $G$ w następujący sposób
+\begin{displaymath}
+\forall {g\in G}\ \langle Y,g\rangle =\langle Af,g\rangle + \epsilon\langle \xi, g\rangle
+\end{displaymath}
+gdzie $\langle \xi, g\rangle\sim\mathcal{N}(0,||g||^2)$.\\
+
+Wprowadzimy teraz kilka faktów dotyczących operatorów liniowych na przestrzeniach Hilberta.
+
+Rozważmy element $A\in L(H,G)$  przestrzeni ograniczonych operatorów liniowych między dwoma przestrzeniami Hilberta $H,G$. Założymy, że $D(A)=\{f\in H\colon \exists_{g\in G}\ Af=g\}=H$.
+
+Operatorem sprzężonym do operatora $A$ nazywamy operator $A^*$ taki, że $\forall_{f\in H}\forall_{g\in G}\ \langle Af,g\rangle=\langle f,A^*g\rangle$, natomiast operator, który jest swoim własnym sprzężeniem nazwiemy samosprzężonym.
+
+
+Operator $A\colon H\to H$ jest nieujemny, gdy $\forall_{f\in H}\ \langle Af,f\rangle\geq 0$ oraz dodatni, gdy $\forall_{f\in H\setminus \{0\}}\ \langle Af,f\rangle> 0$.\\
+
+
+Estymatorem liniowym elementu $f$ w modelu (\ref{Af}) nazywamy estymator postaci $T(Y)$, gdzie $T$ jest pewnym operatorem z przestrzeni $L(G,H)$, a działanie operatora $T$ na proces $Y$ zdefiniowane jest warunkiem $\langle T(Y),h\rangle =\langle Y,T^*h\rangle$ dla dowolnego elementu $h\in H$.\\
+
+
+Poniższe twierdzenie pokazuje bardzo użyteczną możliwość rozkładu odpowiednich przestrzeni na pewne składowe wzajemnie ortogonalne.
+
+\begin{tw}(\cite{iphde}, str. 9, \cite{kaipo}, str. 10)\\
+Niech $A\in L(H,G)$. Wtedy
+\begin{itemize}
+\item $KerA=(RangeA^*)^{\perp}$ oraz $\overline{RangeA}=(KerA^*)^{\perp}$,
+\item jeśli $A$ jest iniektywny, to $A^*A$ też,
+\item $A^*A\in L(H)$ oraz $A^*A$ jest dodatni i samosprzężony.
+\end{itemize}
+\end{tw}
+\begin{proof}
+Zauważmy, że $RangeA^{\perp}=\{g\in G\colon \langle Af,g\rangle =0\ \forall f\in H\}$. Wtedy dla dowolnych $f\in KerA$ i $g\in G$ mamy, że $0=\langle Af,g\rangle=\langle f,A^*g\rangle$, a stąd $KerA=(RangeA^*)^{\perp}$. Zamieniając $A$ z $A^*$ otrzymujemy, że $KerA^*=RangeA^{\perp}$, czyli $(KerA^*)^{\perp}=(RangeA^{\perp})^{\perp}=\overline{RangeA}$, gdyż dla dowolnej przestrzeni Hilberta $H$ i dla dowolnej podprzestrzeni $A$ tej przestrzeni zachodzi, że $(A^{\perp})^{\perp}=\overline{A}$, ponieważ dopełnienie ortogonalne $A^{\perp}$ jest zbiorem domkniętym, co pokażemy korzystając z ciągłości iloczynu skalarnego. Niech $\{x_n\}$ będzie ciągiem Cauchy'ego elementów zbioru $A^{\perp}$ o granicy $x\in H$. Wtedy dla dowolnego elementu $y\in A$ zachodzi $\langle x,y\rangle=\langle x-x_n,y\rangle + \langle x_n,y\rangle=\langle x-x_n,y\rangle + 0\to 0$, gdy $n\to \infty$ co dowodzi, że $x\in A^{\perp}$.
+
+Korzystając z równości $\langle A^*Af,f\rangle=\langle Af,Af\rangle=||Af||^2$, widzimy, że $KerA=KerA^*A$.
+
+Analogicznie otrzymujemy, że $\langle A^*Af,f\rangle=\langle Af,Af\rangle=\langle f, A^*Af\rangle$ oraz $\langle A^*Af, f\rangle=||Af||^2\geq 0$, zatem operator $A^*A$ jest samosprzężony i nieujemny.
+\end{proof}
+\begin{wn}
+\begin{itemize}
+\item $H=KerA \oplus KerA^{\perp}=KerA\oplus \overline{RangeA^*}$,
+\item $G=\overline{RangeA}\oplus RangeA^{\perp}=\overline{RangeA}\oplus KerA^*$.
+\end{itemize}
+\end{wn}
+
+W pierwszej części pracy ograniczymy się do rozważania tylko zwartych operatorów liniowych, jednak dzięki temu uda się uzyskać dającą szerokie możliwości reprezentację według wartości singularnych. Założenie o zwartości badanego operatora jest naturalnym i często pojawiającym się założeniem w kontekście badania problemów odwrotnych w statystyce z uwagi na częste występowanie operatorów z tej klasy w praktycznych problemach, a także z uwagi na właśnie bardzo wygodną reprezentację. 
+
+\begin{df}(\cite{hindus}, str. 264)\\
+Operator $A\colon H \to G$ nazywamy zwartym, jeżeli dla każdego ograniczonego zbioru w $H$, jego obraz przez operator $A$ jest względnie zwarty w $G$, czyli jego domknięcie jest zwarte w $G$. Przez $K(H,G)$ będziemy oznaczać zbiór operatorów zwartych między przestrzeniami $H$ i $G$.
+\end{df}
+
+Przykładem operatorów zwartych są operatory całkowe postaci $\left(Ku\right)(x)=\int_a^bK(x,y)u(y)dy$, $x\in [a,b],\ u\in C([a,b])$, gdzie jądro $K(x,y)$ jest takie, że $\int_a^b\int_a^b|K(x,y)|^2dxdy<+\infty$ lub słabo osobliwe, czyli postaci $\frac{\mathcal{H}(x,y)}{|x-y|^{\alpha}}$, gdzie $\alpha\in (0,1)$ a funkcja $\mathcal{H}$ jest funkcją mierzalną i ograniczoną na odcinku $[a,b]$.
+
+Konsekwencją braku zwartości kuli jednostkowej w przestrzeniach nieskończenie wymiarowych jest bardzo istotna z punktu widzenia stabilności rozwiązania następująca uwaga
+\begin{uw}
+Jeżeli $A\in K(H,G)$ oraz $dimH=\infty$ to operator $A^{-1}$ jest nieograniczony, o ile istnieje.
+\end{uw}
+Fakt ten powoduje, że dla dowolnego zwartego operatora na przestrzeni nieskończenie wymiarowej, każdy związany z nim problem odwrotny jest źle postawiony.
+
+Poniżej bez dowodu przytaczamy znane twierdzenie dotyczące reprezentacji spektralnej dla operatorów zwartych i samosprzężonych potrzebne do wykazania istnienia reprezentacji według wartości singularnych dla operatorów zwartych, ale już niekoniecznie samosprzężonych.
+
+\begin{tw}[Reprezentacja spektralna]
+Niech $A$ będzie samosprzężonym operatorem zwartym na przestrzeni Hilberta $H$. Wtedy istnieje zupełny układ ortonormalnych wektorów własnych $E=\{f_j,j\in I\}\subset H$. Niech $J=\{j\in I\colon\lambda_j\neq 0\}$ oznacza zbiór tych indeksów dla których odpowiednie wartości własne są niezerowe, wtedy zbiór $J$ jest przeliczalny oraz 
+\begin{displaymath}
+\forall f\in H\ Af=\sum_{j\in J}\lambda_j\langle f,f_j\rangle f_j.
+\end{displaymath}
+Ponadto dla każdego $\delta>0$ zbiór $J_{\delta}=\{j\in I\colon |\lambda_j|\geq \delta\}$ jest skończony, czyli jedynym możliwym punktem skupienia zbioru wartości własnych jest zero.
+\end{tw}
+\begin{proof}
+Dowód w \cite{iphde}, str. 11.
+\end{proof}
+
+Możemy teraz wprowadzić reprezentację według wartości singularnych dla operatora zwartego.
+
+\begin{tw}[Reprezentacja według wartości singularnych]
+Niech $A\colon H\to G$ będzie operatorem zwartym między przestrzeniami Hilberta $H$ i $G$. Wtedy istnieją skończony lub zbieżny do zera ciąg liczb dodatnich $\{b_n\}_{n\in I}$ oraz układy ortonormalne $\{v_n\}_{n\in I}\subset H,\ \{u_n\}_{n\in I}\subset G$ takie, że
+\begin{itemize}
+\item $KerA^{\perp}=\overline{span\{v_n,\ n\in I\}}$,
+\item $\overline{RangeA}=\overline{span\{u_n,\ n\in I\}}$,
+\item $Af=\sum_nb_n\langle f, v_n\rangle u_n$ oraz $A^*g=\sum_nb_n\langle g, u_n\rangle v_n$.
+\end{itemize}
+Ponadto $g\in RangeA$ wtedy i tylko wtedy, gdy $g=\sum_n\langle g, u_n\rangle u_n$ oraz spełniony jest tzw. warunek Picarda
+\begin{displaymath} 
+\sum_nb_n^{-2}|\langle g, u_n\rangle|^2< \infty g.
+\end{displaymath}
+Wtedy rozwiązania równania $Af=g$ mają postać 
+\begin{displaymath}
+f=f_0+\sum_nb_n^{-1}\langle g, u_n\rangle v_n
+\end{displaymath}
+przy czym $f_0\in KerA$ jest dowolne.
+\end{tw}
+Układ $(u_n,v_n,b_n)$ nazywamy układem singularnym operatora $A$ a jego reprezentację w postaci $Af=\sum_n\lambda_n\langle f,v_n\rangle u_n$ nazywamy dekompozycją według wartości singularnym (\textit{singular value decomposition-- SVD}) operatora $A$.
+\begin{proof}(\cite{kaipo}, str. 11, \cite{szkutnik}, str. 10)\\
+Dowód twierdzenia opiera się na wykorzystaniu twierdzenia spektralnego do operatora $A^*A$.
+
+Operator $A^*A$ jest samosprzężony, zwarty i nieujemny, a zatem istnieją liczby $b_1^2\geq b_2^2\geq\dots\geq 0$ oraz wektory ortonormalne $v_n$ takie, że $A^*Av_n=b_n^2v_n$. Niech $I=\{n\colon b_n>0\}$ oraz przez $u_n$ oznaczmy znormalizowane obrazy wektorów $v_n$, czyli $u_n=b_n^{-1}Av_n$ dla $n\in I$. Zauważmy, że $\langle u_k,u_l\rangle=b_k^{-1}b_l^{-1}\langle Av_k, Av_l\rangle=b_k^{-1}b_l^{-1}\langle v_k,A^*Av_l\rangle=b_k^{-1}b_l^{-1}\langle v_k,b_l^2v_l\rangle=\delta_{kl}$.
+
+Korzystając w wykazanego wcześniej twierdzenia dostajemy, że $KerA^{\perp}=(KerA^*A)^{\perp}=\overline{RangeA^*A}=\overline{span\{v_n,\ n\in I\}}$.
+
+Analogicznie rozpatrując operator $AA^*$ z rozkładem spektralnym $AA^*u_n=b_n^2u_n$ dostajemy, że $\overline{RangeA}=\overline{span\{u_n,\ n\in I\}}$.
+
+Tożsamości $Af=\sum_nb_n\langle f, v_n\rangle u_n$ oraz $A^*g=\sum_nb_n\langle g, u_n\rangle v_n$ otrzymujemy, zauważając, że
+$Af=\sum_n\langle Af,u_n\rangle u_n=\sum_n\langle Af, b_n^{-1}Av_n\rangle u_n=\\ \sum_n\langle f,b_n^{-1}A^*Av_n\rangle u_n=\sum_n\langle f,b_n^{-1}b_n^2v_n\rangle u_n=\sum_n b_n\langle f,v_n\rangle u_n$ oraz drugą analogicznie.
+
+Z nierówności Bessela dostajemy, że $\sum_n|\langle f, v_n\rangle |^2<\infty$, bo $f\in H$ a stąd
+$\sum_n|\langle f,v_n\rangle|^2=\sum_nb_n^{-4}|\langle f,b_n^2v_n\rangle|^2=\sum_nb_n^{-4}|\langle f, A^*Av_n\rangle|^2=\sum_nb_n^{-4}|\langle Af,Av_n\rangle|^2=\sum_nb_n^{-2}|\langle g, b_n^{-1}Av_n\rangle|^2=\sum_nb_n^{-2}|\langle g, u_n\rangle|^2<\infty$. W drugą stronę wnioskujemy, że jeśli spełniony jest warunek Picarda to możemy wypisać jawny wzór na rozwiązanie,  gdyż odpowiedni szereg norm współczynników jest zbieżny i $g$ jest sumą swojego szeregu Fouriera..
+
+Ostatecznie możemy wnioskować, że $f=f_0+\sum_nb_n^{-1}\langle g, u_n\rangle v_n$, gdzie $f_0\in KerA$ jest rozwiązaniem, gdyż na mocy powyższych faktów mamy, że $Af=A(f_0+\sum_nb_n^{-1}\langle g, u_n\rangle v_n)=\sum_n\langle g, u_n\rangle b_n^{-1}Av_n=g$. Z drugiej strony, jeżeli $Af=g$, to mamy, że $g=\sum_n\langle g, u_n\rangle u_n$ oraz $Af=\sum_n b_n\langle f, v_n\rangle u_n$ zatem musi zachodzić, że $b_n\langle f, v_n\rangle = \langle g,u_n\rangle $ dla dowolnego $n\in \mathbb{N}$, czyli $f=\sum_n b_n^{-1}\langle g,u_n\rangle +f_0$, gdzie $f_0\in KerA$.
+\end{proof}
+
+Udało nam się zaprezentować działanie zwartego operatora w postaci jego rozwinięcia według wartości singularnym w postaci $Af=\sum_nb_n\langle f, v_n\rangle u_n$ oraz uzyskać postać szukanych rozwiązań w postaci $f=f_0+\sum_nb_n^{-1}\langle g, u_n\rangle v_n$. Jednak takie rozwiązanie sytuacji stawia przed nami nowe problemy, gdy $g$ jest znane tylko w przybliżeniu. Po pierwsze zauważmy, że jeżeli tylko $g$ posiada niezerowe składowe w przestrzeni ortogonalnej do domknięcia obrazu operatora $A$ równanie $Af=g$ nie może być spełnione dokładnie. Niech $P\colon G\to \overline{RangeA}$ będzie rzutem ortogonalnym, czyli $\forall_{g\in G}\ Pg=\sum_n\langle g,u_n\rangle u_n$. Wtedy dla dowolnego elementu $f\in H$ mamy, że $||Af-g||^2=||Af-Pg||^2+||(1-P)g||^2\geq ||(1-P)g||^2$.
+
+Drugi problem związany jest ze zbieżnością szeregu w warunku Picarda. Z twierdzenia o reprezentacji spektralnej operatora zwartego samosprzężonego wiemy, że liczby $b_n\to 0$ gdy $n\to \infty$, a zatem liczby $b_n^{-2}\to \infty$ gdy $n \to \infty$, a nie mamy żadnej gwarancji, że liczby $\langle g,u_n\rangle$ zbiegają do zera odpowiednio szybko by zrównoważyć ten przyrost w przypadku zaburzonej wartości $g$.
+
+
+W kolejnym kroku ograniczając się do badania operatorów zwartych w modelu białego szumu wprowadzimy równoważną formę wyjściowego zagadnienia 
+\begin{displaymath}
+Y=Af+\epsilon\xi
+\end{displaymath}
+w postaci modelu przestrzeni ciągowego.\\
+
+Rozważmy układ singularny $(u_n,v_n,b_n)$ operatora zwartego $A$ oraz niech $\xi$ będzie białym szumem. Możemy wtedy zapisać, rozpatrując działanie $Y$ na układ $\{u_n\}$, że
+\begin{displaymath}
+\langle Y,u_n\rangle=\langle Af,u_n\rangle +\epsilon\langle \xi, u_n\rangle=\langle Af,b_n^{-1}Av_n\rangle+\epsilon \xi_n=b_n^{-1}\langle A^*Af, v_n\rangle+\epsilon \xi_n=
+\end{displaymath}
+\begin{displaymath}
+b_n^{-1}\langle \sum_kb_k^2\langle f, v_k\rangle v_k, v_n\rangle +\epsilon\xi_n=b_n\theta_n+\epsilon\xi_n
+\end{displaymath}
+gdzie $\theta_n=\langle f,v_n\rangle$ są współczynnikami w rozwinięciu Fouriera funkcji $f$ w bazie $\{v_n\}$,a $\xi_n=\langle \xi, u_n\rangle$ są zgodnie z lematem \ref{lemat1} niezależnymi zmiennymi losowymi o standardowym rozkładzie normalnym.
+
+Oznaczając $y_n=\langle Y,u_n\rangle$ możemy wyjściowy problem $Y=Af+\epsilon\xi$ zapisać w równoważnej postaci modelu ciągowego jako
+\begin{displaymath}
+y_n=b_n\theta_n+\epsilon\xi_n,\ n=1,2,\dots.
+\end{displaymath}
+W tej postaci widać dokładnie trudności związane ze stochastycznymi problemami odwrotnymi. Jako że $b_n$ są wartościami osobliwymi operatora zwartego mamy, że $b_n\to 0$ gdy $n\to \infty$, czyli widać, że wraz ze wzrostem $n$ sygnał $b_n\theta_n$ staje się coraz słabszy i coraz trudniej estymować $\theta_n$. Dodatkową trudnością jest fakt, że naszym celem jest estymacja współczynników $\theta_n$ a nie współczynników $b_n\theta_n$, dlatego możemy zapisać równoważną postać problemu
+\begin{equation}\label{ssm}
+x_n=\theta_n+\epsilon\sigma_n\xi_n,\ n=1,2,\dots
+\end{equation}
+gdzie $x_n=y_n/b_n$ oraz $\sigma_n=b_n^{-1}$, czyli $\sigma_n\to \infty$ gdy $n\to \infty$. \\
+
+Korzystając z powyższego modelu wprowadzimy notację i pojęcia związane z konstrukcją rozważanych estymatorów i ich własnościami.\\
+Mając pełną i niezaburzoną informację o współczynnikach $\theta_n,\ n=1,2,\dots$ można by uzyskać pełną informację o poszukiwanym elemencie $f$ z dokładnością do składowej znajdującej się w dopełnieniu ortogonalnym jądra operatora $A$ kładąc $f=\sum_n\theta_nv_n$. W naturalny sposób można by zatem estymować współczynniki $\theta_n$ przez odpowiednie zaobserwowane wartości $x_n$, gdyż $\mathbb{E}_f(x_n)=\theta_n$. Uzasadnione może jednak być estymowanie współczynników rozwinięcia nie bezpośrednio przez zaobserwowane wartości, a przez przeskalowane w pewien sposób wartości, aby uwzględnić różne poziomy szumu. 
+\begin{df}
+Niech $\lambda=(\lambda_1,\lambda_2,\dots)$ będzie nielosowym ciągiem liczbowym. Estymatorem liniowym współczynników $\theta_n$ w modelu (\ref{ssm}) nazwiemy estymator $\hat{\theta}(\lambda)=(\hat{\theta}_1,\hat{\theta}_2,\dots)$, gdzie
+\begin{displaymath}
+\hat{\theta}_i=\lambda_ix_i,\ i=1,2,\dots.
+\end{displaymath}
+Ciąg $\lambda$ nazywać będziemy filtrem lub wagami.
+\end{df}
+Powyższa definicja jest przeformułowaniem ogólnej definicji estymatora liniowego w modelu obserwacji w białym szumie. 
+Przykładowo estymatory rzutowe estymujące poszukiwany element $f$ przez początkowe $N$ składników w rozwinięciu w szereg Fouriera za współczynniki przyjmując zaobserwowane wartości odpowiadają filtrom $\lambda=(\lambda_1,\lambda_2,\dots)$, w którym $\lambda_i=\pmb{1}_{\{i\leq N\}}$, gdzie $\pmb{1}_A$ oznacza indykator zbioru $A$. Innymi często stosowanymi wagami są wagi Tichonowa-- Phillipsa postaci $\lambda_i=\frac{1}{1+(i/w)^a}$, $w>0,\ a>0$ lub Pinskera postaci $\lambda_i=\max\{0,1-(i/w)^a\}$, $w>0,\ a>0$. \\
+
+Jakość estymatora $\hat{f}$ elementu $f$ mierzona będzie przy pomocy scałkowanego ryzyka średniokwadratowego.
+\begin{df}
+Scałkowanym ryzykiem średniokwadratowym estymatora $\hat{f}$ elementu $f$ nazywamy wyrażenie
+\begin{displaymath}
+\mathcal{R}(\hat{f},f)=\mathbb{E}_f||f-\hat{f}||^2.
+\end{displaymath}
+\end{df}
+W przypadku modelu (\ref{ssm}) estymator $\hat{f}$ możemy zapisać w postaci $\hat{f}=\sum_n\hat{\theta}_nv_n$. Wtedy dostajemy, że 
+\begin{displaymath}
+\mathcal{R}(\hat{f},f)=\mathbb{E}_f||f-\hat{f}||^2=\mathbb{E}_{\theta}\sum_n\left(\theta_n-\hat{\theta}_n\right)^2=\mathbb{E}_{\theta}||\theta-\hat{\theta}||^2,
+\end{displaymath}
+gdzie druga równość wynika z tożsamości Parsevala, a norma $||\cdot ||$ rozumiana jest odpowiednio w przestrzeni $\mathcal{L}^2$ lub $l^2$, natomiast wartość oczekiwana jest liczona odpowiednio względem $Y$ lub $X=(x_1,x_2,\dots)$, w zależności od przyjętego modelu obserwacji.\\
+Zatem w przypadku modelu (\ref{ssm}) analiza ryzyka $\mathcal{R}(\hat{f},f)$ jest równoważna analizie ryzyka $\mathcal{R}(\hat{\theta},\theta)=\mathbb{E}_{\theta}||\theta-\hat{\theta}||^2$. W przypadku estymatorów liniowych wyrażenie na ryzyko estymatora przyjmuje postać 
+\begin{displaymath}
+\mathbb{E}_{\theta}||\theta-\hat{\theta}||^2=\mathbb{E}_{\theta}\sum_{n=1}^{\infty}\left(\theta_n-\hat{\theta}_n(\lambda)\right)^2=\mathbb{E}_{\theta}\sum_{n=1}^{\infty}\left(\theta_n-\lambda_nx_n\right)^2=
+\end{displaymath}
+\begin{equation}\label{risk}
+=\sum_{n=1}^{\infty}(1-\lambda_n)^2\theta_n^2+\epsilon^2\sum_{n=1}^{\infty}\sigma_n^2\lambda_n^2.
+\end{equation}
+Pierwszy składnik odpowiednia za obciążenie estymatora, natomiast drugi za jego wariancję.\\
+\begin{df}(\cite{iphde}, str. 28)\\
+Ryzykiem minimaksowym w klasie funkcji $\mathcal{F}$ nazywamy wyrażenie 
+\begin{displaymath}
+r(\mathcal{F})=\inf_{\hat{f}}\sup_{f\in \mathcal{F}}\mathcal{R}(\hat{f},f),
+\end{displaymath}
+gdzie $\inf_{\hat{f}}$ wzięte jest po wszystkich możliwych estymatorach elementu $f$.
+\end{df}
+W przypadku nieparametrycznego podejścia do estymacji wyznaczenie estymatora realizującego ryzyko minimaksowe jest zwykle niemożliwe, dlatego poszukiwać będziemy estymatora asymptotycznie minimaksowego. 
+\begin{df}(\cite{iphde}, str. 28)\\
+Przypuśćmy, że istnieje estymator $\tilde{f}$, taki, że istnieją stałe $0<C_1\leq C_2<\infty$ takie, że gdy $\epsilon\to 0$, to zachodzi 
+\begin{displaymath}
+\sup_{f\in \mathcal{F}}\mathcal{R}(\tilde{f},f)\leq C_2a_{\epsilon}
+\end{displaymath}
+\begin{displaymath}
+\inf_{\hat{f}}\sup_{f\in \mathcal{F}}\mathcal{R}(\hat{f},f)\geq C_1a_{\epsilon},
+\end{displaymath}
+gdzie ciąg nieujemnych wartości $a_{\epsilon}$ jest taki, że $a_{\epsilon}\to 0$, gdy $\epsilon\to 0$.
+Mówimy wtedy, że estymator $\tilde{f}$ jest optymalny lub osiąga optymalne tempo zbieżności. W przypadku gdy $C_1=C_2$, mówimy, że estymator $\tilde{f}$ jest asymptotycznie minimaksowy.
+\end{df}
+Na koniec wprowadzimy jeszcze pewne pojęcia związane z założeniami o gładkości estymowanego elementu $f$ w zależności od własności wygładzających danego operatora. Niech zatem $f\in H$ i niech $A$ będzie operatorem zwartym. 
+\begin{df}
+Powiemy, że dla elementu $f$ zachodzi warunek źródłowy, jeżeli istnieje $w\in H$, $L>0$ oraz $\mu\geq 0$ takie, że
+\begin{displaymath}
+f=(A^*A)^{\mu}w\ oraz\ ||w||^2\leq L.
+\end{displaymath}
+Przez $H_{\mu,L}$ oznaczać będziemy klasę funkcji 
+takich, że
+\begin{displaymath}
+H_{\mu,L}=\left\{f\in H\colon f=(A^*A)^{\mu}w,\ w\in H,\ ||w||^2\leq L\right\}.
+\end{displaymath}
+\end{df}
+Mając do dyspozycji reprezentację spektralną operatora $A^*A$ oraz tzw. rachunek funkcyjny, pozwalający zdefiniować funkcję od operatora poprzez jego reprezentację spektralną (\cite{hindus}) dostaniemy równoważną postać warunku źródłowego. Zapiszmy
+\begin{displaymath}
+f=(A^*A)^{\mu}w=\sum_{k=1}^{\infty}b_k^{2\mu}w_kv_k,
+\end{displaymath}
+gdzie $w_k=\langle w,v_k\rangle$. Oznaczając przez $\theta_k=\langle f,v_k\rangle =b_k^{2\mu}w_k$ dostajemy, że 
+\begin{displaymath}
+||w||^2\leq L\Longleftrightarrow \sum_{k=1}^{\infty}w_k^2=\sum_{k=1}^{\infty}b_k^{-4\mu}\theta_k^2\leq L.
+\end{displaymath}
+Zatem założenie o warunku źródłowym jest równoważne założeniu, że współczynniki rozwinięcia Fouriera funkcji $f$ w odpowiedniej bazie wektorów singularnych należą do pewnej elispoidy w przestrzeni $l^2$. Oznaczmy taką elipsoidę przez
+\begin{displaymath}
+\Theta(a,L)=\left\{\theta\in l^2\colon \sum_{k=1}^{\infty}a_k^2\theta_k^2\leq L\right\},
+\end{displaymath}
+gdzie $L>0$ oraz ciąg $a=\{a_k\}$ jest ciągiem nieujemnych liczb rozbieżnym do nieskończoności.\\
+Wprowadzimy teraz pojęcie klasy Sobolewa funkcji.
+\begin{df}
+Niech $H$ będzie pewną przestrzenią Hilberta a $\{\phi_i\}$ układem ortonormalnym w tej przestrzeni. Klasą Sobolewa nazywamy klasę postaci 
+\begin{displaymath}
+\mathcal{W}(\alpha,L)=\left\{f\in H\colon f=\sum_{i=1}^{\infty}\theta_i\phi_i,\ \theta\in \Theta(\alpha,L)\right\}.
+\end{displaymath}
+gdzie ciąg $a$ jest taki, że 
+\begin{displaymath}
+a_i=\left\{{(i-1)^{\alpha},\ dla\ i\ nieparzystego,}\atop {i^{\alpha},\ dla\ i\ parzystego.}\right.
+\end{displaymath}
+\end{df}
+W przypadku, gdy $\alpha$ jest liczbą całkowitą, $H=\mathcal{L}^2[0,1]$ oraz $\{\phi_i\}$ jest układem trygonometrycznym, klasa Sobolewa ma równoważne przedstawienie postaci
+\begin{displaymath}
+\mathcal{W}(\alpha,L)=\left\{f\in H\colon\int_0^1\left(f^{(\alpha)}(t)\right)^2dt\leq L,\ f^{(j)}(0)=f^{(j)}(1)=0,\ j=0,1,\dots ,\alpha -1\right\},
+\end{displaymath}
+gdzie $f^{(\alpha)}$ jest rozumiane jako pochodna słaba funkcji $f$ rzędu $\alpha$. \\
+W przypadku problemów z wielomianowym tempem wzrostu współczynników $\sigma_k$, czyli takich, że $\sigma_k^{-1}=b_k=k^{-\beta}$ warunki źródłowe są równoważne warunkowi
+\begin{displaymath}
+\sum_{k=1}^{\infty}b_k^{-4\mu} \theta_k^2=\sum_{k=1}^{\infty}k^{4\mu\beta}\theta_k^2\leq L,
+\end{displaymath}
+czyli założeniu, że funkcja $f$ jest z klasy Sobolewa $\mathcal{W}(2\mu\beta,L)$.\\
+W przypadku problemów z wykładniczym tempem wzrostu współczynników $\sigma$, czyli takich, że $\sigma_k^{-1}=b_k=\exp(-\beta)$, warunki źródłowe prowadzą do warunku
+\begin{displaymath}
+\sum_{k=1}^{\infty}b_k^{-4\mu} \theta_k^2=\sum_{k=1}^{\infty}e^{4\mu\beta k}\theta_k^2\leq L,
+\end{displaymath}
+czyli założenia, że funkcja $f$ należy do klasy funkcji analitycznych postaci
+\begin{displaymath}
+\mathcal{A}(\alpha,L)=\left\{f\in H\colon f=\sum_{k=1}^{\infty}\theta_k\phi_k,\ \theta\in \Theta_{\mathcal{A}}^{\alpha}(a,L)\right\},
+\end{displaymath}
+gdzie  $\Theta_{\mathcal{A}}(\alpha,L)$, to elipsoida $\Theta (a,L)$ z ciągiem $a$ zdefiniowanym jako $a_k=\exp (\alpha k)$ z $\alpha = 2\mu \beta$.
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Wyrocznie}
+Przypuśćmy przez chwilę, że zajmujemy się estymacją współczynników $\theta_i$ w następującym modelu 
+\begin{displaymath}
+x_i=\theta_i+\sigma\epsilon_i,\ i=1,2,\dots,n,
+\end{displaymath}
+gdzie $\sigma$ jest stała dla wszystkich obserwacji, a $\epsilon_i$ są niezależnymi zmiennymi losowymi o standardowym rozkładzie normalnym. Będziemy je estymować przy pomocy estymatorów liniowych ze stałymi wagami, czyli postaci $\lambda X=(\lambda x_1,\lambda x_2,\dots, \lambda x_n)$. W takim przypadku ryzyko takiego estymatora wynosi 
+\begin{displaymath}
+\mathcal{R}(\hat{\theta},\theta)=(1-\lambda)^2||\theta||^2_n+n\lambda^2\sigma^2,
+\end{displaymath}
+gdzie $||\theta||_n^2=\sum_{i=1}^n\theta_i^2$.\\
+Ryzyko to jest minimalizowane przez ustalenie wag jako
+\begin{displaymath}
+\tilde{\lambda}=\frac{||\theta||^2_n`}{n\sigma^2+||\theta||^2_n}.
+\end{displaymath}
+Wtedy estymator $\tilde{\lambda}X$ osiąga minimalne ryzyko w rozważanej klasie estymatorów równe
+\begin{displaymath}
+\mathcal{R}(\tilde{\lambda}X,\theta)=\frac{||\theta||^2_n`}{n\sigma^2+||\theta||^2_n}=\inf_{\hat{\theta} \in \Lambda}\mathcal{R}(\hat{\theta},\theta),
+\end{displaymath}
+gdzie $\Lambda=\{\lambda X\colon \lambda\in [0,1]\}$ jest rozważaną klasą estymatorów, w której wystarczy ograniczyć się do rozważania wag z przedziału $[0,1]$, gdyż wagi spoza tego przedziału prowadzą do estymatorów niedopuszczalnych. Zauważmy jednak, że nie możemy zastosować tak wyznaczonego estymatora, gdyż korzysta on z niedostępnej dla nas informacji o estymowanym elemencie poprzez $||\theta||_n^2$. Minimalne ryzyko może zostać osiągnięte jedynie przez wyrocznię, która zna estymowany element. Naszym celem byłaby konstrukcja takiej metody wyznaczania wagi $\lambda$, która korzystając jedynie z informacji zawartej w obserwowanej próbie starałaby się naśladować zachowanie wyroczni w kontekście osiąganego ryzyka. Tak postawione zagadnienie rozwiązywane jest przez znalezienie estymatora $\theta^*$, którego ryzyko daje się kontrolować przez nieasymptotyczne nierówności wyrocznie postaci 
+\begin{equation}\label{oracle}
+\mathcal{R}(\theta^*,\theta)\leq C_1 \inf_{\hat{\theta} \in \Lambda}\mathcal{R}(\hat{\theta},\theta)+C_2(\Lambda,n), 
+\end{equation}
+gdzie stałe $C_1,C_2(\Lambda,n)$ nie zależą od estymowanego elementu, jednak stała $C_2(\Lambda,n)$ może zależeć od liczności rodziny $\Lambda$ bądź jej złożoności, gdy jest ona nieskończona oraz od wielkości próby $n$ (\cite{mitchell}, str. 177) . \\
+Dodatkowo pożądaną własnością takiego estymatora, która uzasadniałaby dodatkowo jego optymalne własności oraz wskazywałaby tempo zbieżności do estymatora asymptotycznie minimaksowaego, jest, by powyższa nierówność wyrocznia prowadziła do dokładnych nierówności postaci
+\begin{equation}\label{aoracle}
+\mathcal{R}(\theta^*,\theta)\leq(1+o(1))\inf_{\hat{\theta} \in \Lambda}\mathcal{R}(\hat{\theta},\theta)
+\end{equation}
+gdy $\sigma\to 0$.\\
+W przypadku rozważanego na początku rozdziału problemu poszukiwanym estymatorem naśladującym wyrocznię jest estymator Jamesa-- Steina z wagą
+\begin{displaymath}
+\lambda^*=1-\frac{(n-2)\sigma^2}{\sum_{i=1}^nx_i^2}
+\end{displaymath}
+spełniający nierówność wyrocznię postaci
+\begin{displaymath}
+\mathcal{R}(\lambda^*X,\theta)\leq 2\sigma^2+\mathcal{R}(\tilde{\lambda} X,\theta).
+\end{displaymath}
+Szczegółowe uzasadnienie można znaleźć w \cite{wasserman}, str. 156.
+
+W badanym w pracy zagadnieniu zaprezentowane zostaną analogiczne nierówności wyrocznie postaci (\ref{oracle}) i (\ref{aoracle}) dla wszystkich badanych klas operatorów. Mając je do dyspozycji można uzasadnić optymalny wybór parametrów wygładzających w przypadku na przykład estymatorów typu rzutowego, Tichonowa-- Phillipsa czy Pinskera.\\
+
+\section{Główne rezultaty I}\label{G1}
+Rezultaty uzyskane w tym rozdziale są rezultatami uzyskanymi w pracy \cite{cavalier1} z kilkoma modyfikacjami.\\
+\indent Przypuśćmy, że dysponujemy skończonym zbiorem filtrów $\Lambda=(\lambda^1,\dots, \lambda^N)$ i związanych z nimi estymatorów liniowych, gdzie $\lambda^i=(\lambda^i_1,\lambda^i_2,\dots),\ i=1,2,\dots, N$. Naszym celem będzie konstrukcja filtra opartego na obserwacjach $\lambda^*(X)=(\lambda^*_1,\lambda^*_2,\dots)$ o wartościach w zbiorze $\Lambda$ o asymptotycznie minimalnym ryzyku przy prawdziwej wartości $\theta$, który równocześnie naśladuje ryzyko najlepszego estymatora w tej klasie w każdej skończonej próbie. Okaże się, że filtr ten może zostać zdefiniowany jako element minimalizujący względem $\lambda \in \Lambda$ nieobciążony estymator ryzyka. Zgodnie z (\ref{risk}) ryzyko estymatora liniowego wyraża się wzorem
+\begin{displaymath}
+\mathcal{R}(\hat{\theta},\theta)=\sum_{n=1}^{\infty}(1-\lambda_n)^2\theta_n^2+\epsilon^2\sum_{n=1}^{\infty}\sigma_n^2\lambda_n^2.
+\end{displaymath}
+By minimalizacja ryzyka estymatora liniowego miała sens, trzeba założyć, że ryzyko jest skończone, a zatem należy dobierać filtry tak, by drugi człon był skończony. Ponadto założenie o dodatniości poniższej sumy implikuje, że żaden z rozważanych filtrów nie może być tożsamościowo równy zeru.
+\begin{za}
+\begin{displaymath}\label{ass1}
+\forall_{\lambda\in \Lambda}\ 0<\sum_{n=1}^{\infty}\sigma_n^2\lambda_n^2<\infty
+\end{displaymath}
+\end{za}
+Dodatkowo z postaci wyrażenia ma ryzyko widać, że wystarczy ograniczyć się do rozpatrywania wag takich, że $\forall_{\lambda\in \Lambda}\forall_i\ \lambda_i\in [0,1]$, gdyż w przeciwnym wypadku uzyskane estymatory stają się niedopuszczalne. Mimo tego narzucimy na rozważane wagi nieco słabsze wymagania.
+\begin{za}
+\begin{displaymath}\label{ass2}
+\max_{\lambda\in \Lambda}\sup_i|\lambda_i|\leq 1
+\end{displaymath}
+\end{za}
+Dopuszczenie ujemnych wartości dla wag pozwala rozpatrywać potencjalnie także wagi związane na przykład z estymatorami jądrowymi przyjmującymi czasem ujemne wartości co może być uzasadnione ich lepszym zachowaniem w badanym problemie (głębsza dyskusja w \cite{silverman}).\\
+\indent Ponadto będziemy zakładać skończoność poniższej sumy, by występujące później wyrażenia były skończone.
+\begin{za}\label{ass3}
+\begin{displaymath}
+\forall_{\lambda\in \Lambda}\ \sum_{n=1}^{\infty}\lambda_n\sigma_n^2<\infty.
+\end{displaymath}
+\end{za}
+\indent Kolejnym krokiem jest wyznaczenie nieobciążonego estymatora wyrażenia (\ref{risk}). W dalszym ciągu rozważań założymy, że poziom szumu $\epsilon$ jest znany, natomiast czynniki $\sigma_n$ związane są z rozważanym operatorem, którego pełna znajomość także jest zakładana. Pozostaje znalezienie nieobciążonego estymatora dla składników $\theta_n^2$. Zgodnie z modelem (\ref{ssm}) estymatorem takim jest $x_n^2-\sigma_n^2\epsilon^2$, gdyż $x_n\sim \mathcal{N}(\theta_n,\sigma_n^2\epsilon^2)$. Wstawiając to wyrażenie do wzoru opisującego ryzyko estymatora liniowego dostajemy
+\begin{displaymath}
+\sum_{n=1}^{\infty}(1-\lambda_n)^2(x_n^2-\sigma_n^2\epsilon^2)+\epsilon^2\sum_{n=1}^{\infty}\sigma_n^2\lambda_n^2=
+\end{displaymath}
+\begin{displaymath}
+=\sum_{n=1}^{\infty}(x_n^2-\sigma_n^2\epsilon^2)+\sum_{n=1}^{\infty}(\lambda_n^2-2\lambda_n)(x_n^2-\sigma_n^2\epsilon^2)+\epsilon^2\sum_{n=1}^{\infty}\sigma_n^2\lambda_n^2=
+\end{displaymath}
+\begin{displaymath}
+\sum_{n=1}^{\infty}(x_n^2-\sigma_n^2\epsilon^2)+\sum_{n=1}^{\infty}(\lambda_n^2-2\lambda_n)x_n^2+2\epsilon^2\sum_{n=1}^{\infty}\lambda_n\sigma_n^2.
+\end{displaymath}
+Jest to nieobciążony estymator ryzyka. Naszym celem jest jednak minimalizacja tego estymatora ze względu na wagi $\lambda_i$, stąd wystarczy ograniczyć się do rozpatrywania wyrażenia 
+\begin{equation}\label{ure}
+U(\lambda,X)=\sum_{n=1}^{\infty}(\lambda_n^2-2\lambda_n)x_n^2+2\epsilon^2\sum_{n=1}^{\infty}\lambda_n\sigma_n^2
+\end{equation}
+będącego nieobciążonym estymatorem $\mathcal{R}(\hat{\theta},\theta)-\sum_{n=1}^{\infty}\theta_n^2$. Wyrażenie to jest skończone gdyż, dla dowolnego $\theta=\{\theta_i\}_{i=1}^{\infty}$ i $\lambda$ spełniającego założenia \ref{ass1}-- \ref{ass3} oraz ciągu zmiennych losowych określonych jako $\sqrt{\lambda_i^2-2\lambda_i}x_i$ o rozkładzie $\mathcal{N}(\sqrt{\lambda_i^2-2\lambda_i}\theta_i,(\lambda_i^2-2\lambda_i)\sigma_i^2\epsilon^2)$ mamy
+\begin{displaymath}
+\sum_{i=1}^{\infty}(\lambda_i^2-2\lambda_i)\theta_i^2\leq 3\sum_{i=1}^{\infty}\theta_i^2<\infty,
+\end{displaymath}
+\begin{displaymath}
+\sum_{i=1}^{\infty}(\lambda_i^2-2\lambda_i)\sigma_i^2\epsilon^2=\epsilon^2\sum_{i=1}^{\infty}\lambda_i^2\sigma_i^2-2\epsilon^2\sum_{i=1}^{\infty}\lambda_i\sigma_i^2<\infty,
+\end{displaymath}
+co na mocy lematu \ref{druga} implikuje zbieżność $U(\lambda,X)$ w normie $L_2$.
+\begin{uw}
+Wariancja funkcjonału $U(\lambda,X)$ wyraża się wzorem
+\begin{displaymath}
+\mathbb{V}ar U(\lambda,X)=2\epsilon^4\sum_{n=1}^{\infty}\lambda_n^4\sigma_n^4-\sum_{n=1}^{\infty}\lambda_n^4\theta_n^4-2\epsilon^2\sum_{n=1}^{\infty}\theta_n^2\sigma_n^2\lambda_n^4+
+\end{displaymath}
+\begin{displaymath}
++8\epsilon^4\sum_{n=1}^{\infty}\sigma_n^4\lambda_n^2-4\sum_{n=1}^{\infty}\lambda_n^2\theta_n^4-8\epsilon^2\sum_{n=1}^{\infty}\lambda_n^2\sigma_n^2\theta_n^2-8\epsilon^4\sum_{n=1}^{\infty}\lambda_n^3\sigma_n^4+
+\end{displaymath}
+\begin{displaymath}
++4\sum_{n=1}^{\infty}\lambda_n^3\theta_n^4+8\epsilon^2\sum_{n=1}^{\infty}\theta_n^2\sigma_n^2\lambda_n^3\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 2\epsilon^4\sum_{n=1}^{\infty}\lambda_n^4\sigma_n^4+8\epsilon^4\sum_{n=1}^{\infty}\sigma_n^4\lambda_n^2.
+\end{displaymath}
+\end{uw}
+Wariancja ta jest skończona na mocy wcześniejszych założeń, gdyż zbieżność szeregu $\sum_{n=1}^{\infty}\lambda_n\sigma_n^2$ implikuje zbieżność szeregu $\sum_{n=1}^{\infty}\lambda_n^2\sigma_n^4$.
+
+Mając do dyspozycji odpowiednie wyrażenie związane z estymatorem ryzyka, możemy zdefiniować poszukiwany filtr wzorem
+\begin{equation}\label{estimator}
+\lambda^*=\arg\min_{\lambda\in \Lambda}U(\lambda,X).
+\end{equation}
+Dla tak zdefiniowanej metody wyboru wag pokazane i udowodnione zostaną nierówności wyrocznie.\\
+\indent Wprowadzimy następujące oznaczenia na występujące w późniejszych rozważaniach wielkości
+\begin{displaymath}
+\rho(\lambda)=\sup_n\sigma_n^2|\lambda_n|\left[\sum_{k=1}^{\infty}\sigma_k^4\lambda_k^4\right]^{-1/2},
+\end{displaymath}
+\begin{displaymath}
+\rho=\max_{\lambda\in \Lambda}\rho(\lambda),
+\end{displaymath}
+\begin{displaymath}
+S=\frac{\max_{\lambda\in\Lambda}\sup_n\sigma_n^2\lambda_n^2}{\min_{\lambda\in \Lambda}\sup_n\sigma_n^2\lambda_n^2},
+\end{displaymath}
+\begin{displaymath}
+M=\sum_{\lambda\in \Lambda}\exp\left(\frac{-1}{\rho(\lambda)}\right),
+\end{displaymath}
+\begin{displaymath}
+L_{\lambda}=\ln(NS)+\rho^2\ln^2(MS).
+\end{displaymath}
+Wielkość $\rho(\lambda)$ jest pewnym sposobem mierzenia wielkości poszczególnych filtrów biorącym pod uwagę zarówno tempo znikania dalekich wyrazów poprzez $\left[\sum_{k=1}^{\infty}\sigma_k^4\lambda_k^4\right]^{-1/2}$ jak i rozrzut wokół zera poprzez $\sup_n\sigma_n^2|\lambda_n|$. Parametry $S$ i $M$ mierzą natomiast zachowanie rodziny wag $\Lambda$. Liczbę $S$ można interpretować jako rozrzut bądź zmienność w rodzinie $\Lambda$ natomiast $M$ jest czynnikiem kontrolującym masywność tej rodziny (dalszy komentarz na temat znaczenia parametru $M$ można znaleźć w pracy \cite{birge}). Zauważmy ponadto, że na mocy założeń \ref{ass1} i \ref{ass3} wszystkie te wartości są liczbami skończonymi.\\
+
+Z założenia \ref{ass2} wynika następująca nierówność
+\begin{displaymath}
+\sum_{k=1}^{\infty}\sigma_k^4\lambda_k^4\leq\sum_{k=1}^{\infty}\sigma_k^4\lambda_k^2.
+\end{displaymath}
+Dodatkowo wymagać będziemy istnienia następującej stałej
+\begin{za}
+\begin{displaymath}\label{ass5}
+\exists_{C_1>0}\forall_{\lambda\in \Lambda}\ \sum_{k=1}^{\infty}\sigma_k^4\lambda_k^2\leq C_1\sum_{k=1}^{\infty}\sigma_k^4\lambda_k^4.
+\end{displaymath}
+\end{za}
+Oznacza to, że będziemy wymagać by obie sumy były tego samego rzędu.\\
+Jak widzieliśmy z postaci wariancji funkcjonału $U(\lambda, X)$ sumy $\epsilon^4\sum_{k=1}^{\infty}\sigma_k^4\lambda_k^4$ i $\epsilon^4\sum_{k=1}^{\infty}\sigma_k^4\lambda_k^2$ są głównymi jej składnikami. Z drugiej strony ze wzoru \ref{risk} mamy, że $\mathcal{R}(\hat{\theta},\theta)\geq \epsilon^2\sum_{k=1}^{\infty}\sigma_k^2\lambda_k^2$ oraz 
+\begin{equation}\label{rho}
+\frac{\left(\epsilon^4\sum_{k=1}^{\infty}\sigma_k^4\lambda_k^4\right)^{1/2}}{\epsilon^2\sum_{k=1}^{\infty}\sigma_k^2\lambda_k^2}\leq \rho,
+\end{equation}
+ponieważ z uwagi na założenie \ref{ass2}
+\begin{displaymath}
+\sum_{k=1}^{\infty}\sigma_k^4\lambda_k^4\leq \sum_{k=1}^{\infty}\sigma_k^4|\lambda_k|^3=\sum_{k=1}^{\infty}\sigma_k^2\lambda_k^2\cdot \sigma_k^2|\lambda_k|\leq \sup_k\sigma_k^2|\lambda_k|\leq\sum_{k=1}^{\infty}\sigma_k^2\lambda_k^2
+\end{displaymath}
+a stąd i z definicji $\rho(\lambda)$ dostajemy, że dla dowolnego $\lambda\in \Lambda$
+\begin{displaymath}
+\frac{\left(\epsilon^4\sum_{k=1}^{\infty}\sigma_k^4\lambda_k^4\right)^{1/2}}{\epsilon^2\sum_{k=1}^{\infty}\sigma_k^2\lambda_k^2}\leq \rho(\lambda)\leq\rho.
+\end{displaymath}
+Zatem parametr $\rho$ pozwala kontrolować wielkość stosunku odchylenia standardowego do wartości oczekiwanej funkcjonału $U(\lambda,X)$, czyli $\mathbb{V}ar^{1/2}U(\lambda,X)/\mathcal{R}(\hat{\theta},\theta)$ jednostajnie względem $\lambda$ i $\theta$.\\
+Dodatkowo z uwagi na fakt, że $\sup_k\sigma_k^2|\lambda_k|\leq \sqrt{\sum_{k=1}^{\infty}\sigma_k^4\lambda_k^2}$ i założenie \ref{ass5} mamy, że
+\begin{displaymath}
+\forall_{\lambda\in \Lambda}\ \rho(\lambda)\leq \sqrt{C_1}.
+\end{displaymath}
+Przed wypowiedzeniem głównego twierdzenia zauważmy jeszcze, że zawsze zachodzi związek
+\begin{displaymath}
+M\leq N,
+\end{displaymath}
+gdzie $N$ oznacza liczność rodziny $\Lambda$.\\
+W poniższych dwóch twierdzeniach zebrane są główne wyniki otrzymane dla rozważanych problemów odwrotnych z operatorami zwartymi.
+\begin{tw}\label{glowny1}
+Niech będą spełnione założenia \ref{ass1}-- \ref{ass5}. Wtedy dla dowolnego $\theta\in l^2$, dla dowolnego $B>B_0$ i dla estymatora liniowego $\theta^*$ z filtrem wybranym zgodnie z (\ref{estimator}) zachodzi
+\begin{displaymath}
+\mathbb{E}_{\theta}\norm{\theta^*-\theta}^2\leq (1+\gamma_1B^{-1})\min_{\lambda\in \Lambda}\mathcal{R}(\hat{\theta},\theta)+\gamma_2B\epsilon^2L_{\Lambda}\omega(B^2L_{\Lambda}),
+\end{displaymath}
+gdzie stałe $B_0>0,\gamma_1>0,\gamma_2>0$ zależą tylko od stałej $C_1$, wyrażenie $\min_{\lambda\in \Lambda}\mathcal{R}(\hat{\theta},\theta)$ rozumiane jest jako minimum wzięte po wszystkich estymatorach $\hat{\theta}$ postaci $\lambda X,\ \lambda\in \Lambda$, a funkcja $\omega(x)$ jest postaci
+\begin{displaymath}
+\omega(x)=\max_{\lambda\in \Lambda}\sup_k\left[\sigma_k^2\lambda_k^2\pmb{1}\left(\sum_{n=1}^{\infty}\sigma_n^2\lambda_n^2\leq x \sup_k\sigma_k^2\lambda_k^2\right)\right],\ x>0.
+\end{displaymath}
+\end{tw}
+\begin{tw}\label{glowny2}
+Niech będą spełnione założenia \ref{ass1}-- \ref{ass5}. Wtedy istnieją stałe $\gamma_3>0,\gamma_4>0$ zależące tylko od $C_1$, takie że dla dowolnego $\theta\in l^2$ i dla estymatora liniowego $\theta^*$ z filtrem wybranym zgodnie z (\ref{estimator}) zachodzi
+\begin{displaymath}
+\mathbb{E}_{\theta}\norm{\theta^*-\theta}^2\leq (1+\gamma_3\rho\sqrt{L_{\Lambda}})\min_{\lambda\in \Lambda}\mathcal{R}(\hat{\theta},\theta),
+\end{displaymath}
+o ile $\rho\sqrt{L_{\Lambda}}<\gamma_4$, a minimum rozumiane jest jak w poprzednim twierdzeniu.
+\end{tw}
+Zanim przejdziemy do dowodu powyższych twierdzeń podamy wniosek z twierdzenia \ref{glowny2}, który pozwoli wnioskować o asymptotycznej dokładności podanych nierówności wyroczni postaci (\ref{aoracle}).
+\begin{wn}
+Niech będą spełnione założenia \ref{ass1}-- \ref{ass5}. Ponadto niech zachodzi $\lim_{\epsilon\to 0}\rho^2\ln(NS)=0$. Wtedy istnieją stałe $\mathbb{C}_2>0,\mathbb{C}_3>0$ zależące tylko od stałej $C_1$, takie że dla $\rho^2\ln(NS)<\mathbb{C}_2$ i dla dowolnego $\theta\in l^2$ zachodzi
+\begin{displaymath}
+\mathbb{E}_{\theta}\norm{\hat{\theta}-\theta}^2\leq \left(1+\mathbb{C}_3\rho\sqrt{ln(NS)}\right)\min_{\lambda\in \Lambda}\mathcal{R}(\hat{\theta},\theta),
+\end{displaymath}
+gdzie estymator $\tilde{\theta}$ i minimum rozumiane są jak poprzednio.
+\end{wn}
+\begin{proof}
+Skoro zachodzi $\lim_{\epsilon\to 0}\rho^2\ln(NS)=0$, zatem ciąg ten jest ograniczony przez pewną stałą zależną tylko od $C_1$. Z twierdzenia $5$ mamy, że stała $\gamma_3$ zależy tylko od stałej $C_1$. Wystarczy zatem pokazać, że $L_{\Lambda}<C\ln(NS)$. 
+\begin{displaymath}
+L_{\Lambda}=\ln(NS)+\rho^2\ln^2(MS)\leq \ln(NS)+\rho^2\ln^2(NS)\leq (1+C_2)\ln(NS),
+\end{displaymath}
+gdyż $M\leq N$.
+\end{proof}
+Zatem warunek $\lim_{\epsilon\to 0}\rho^2\ln(NS)=0$ jest warunkiem wystarczającym do otrzymania dokładnych asymptotycznie nierówności wyroczni postaci (\ref{aoracle}).\\
+Zanim przejdziemy do dowodu twierdzeń \ref{glowny1} i \ref{glowny2} podamy trzy lematy z których będziemy korzystać, a których dowody znajdują się w rozdziale \ref{lematy}.
+\begin{lm}\label{lem1}
+Niech $\{\xi_i\}_{i=1}^{\infty}$ będzie ciągiem niezależnych zmiennych losowych o tym samym standardowym rozkładzie normalnym i niech $v=\{v_i\}_{i=1}^{\infty}\in l^2$ będzie losowym ciągiem mierzalnym względem tej samej przestrzeni co ciąg $\{\xi_i\}_{i=1}^{\infty}$ i takim, że przyjmuje on wartości w skończony zbiorze $V\subset l^2$ o liczności $N>1$. Wtedy dla dowolnego $K\geq 1$ zachodzi
+\begin{displaymath}
+\mathbb{E}\left|\sum_{k=1}^{\infty}v_k\xi_k\right|\leq \sqrt{2\ln (NK)}\left(\mathbb{E}||v||+\sqrt{2\mathbb{E}||v||^2/K}\right).
+\end{displaymath}
+\end{lm}
+
+\begin{lm}\label{lem2}
+Niech $\{\xi_i\}_{i=1}^{\infty}$ będzie ciągiem niezależnych zmiennych losowych o tym samym standardowym rozkładzie normalnym i niech $v=\{v_i\}_{i=1}^{\infty}\in l^2$ będzie losowym ciągiem mierzalnym względem tej samej przestrzeni co ciąg $\{\xi_i\}_{i=1}^{\infty}$ i takim, że przyjmuje on wartości w skończonym zbiorze $V\subset l^2$ o liczności $N>1$. Niech ponadto $v\neq 0$ dla każdego $v\in V$. Oznaczmy przez $m(v)=\sup_i |v_i|/||v||$, $m_V=\max_{v\in V}m(v)$ oraz 
+\begin{displaymath}
+M(q)=\sum_{v\in V}\exp (-q/m(v)),\ q>0.
+\end{displaymath}
+Wtedy istnieje stała $D$ zależna tylko od $q$, taka, że dla dowolnego $K\geq 1$ zachodzi
+\begin{displaymath}
+\mathbb{E}\left|\sum_{k=1}^{\infty}v_k(\xi_k^2-1)\right|\leq D\left(\sqrt{\ln (NK)}+m_V\ln (M(q)K)\right)\left(\mathbb{E}||v||+\sqrt{\mathbb{E}||v||^2/K}\right).
+\end{displaymath}
+\end{lm}
+
+\begin{lm}\label{lem3}
+Niech $\hat{\theta}_i=\hat{\lambda_i}(X)X_i$ będzie estymatorem liniowym z wagami z przedziału $[-1,1]$ przyjmującym wartości w zbiorze $\Lambda$. Oznaczmy przez 
+\begin{displaymath}
+\Delta^{\epsilon}[\lambda]=\epsilon^2L_{\Lambda}\sup_i\sigma_i^2\lambda_i^2,\ \lambda\in \Lambda.
+\end{displaymath}
+Wtedy istnieje absolutna stała $C>0$ taka, że dla dowolnego $B>0$ zachodzi
+\begin{displaymath}
+\mathbb{E}_{\theta}\norm{\hat{\theta}-\theta}^2\leq (1+4B^{-1})\mathbb{E}_{\theta}\mathcal{R}(\hat{\theta},\theta)+CB\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda (X)].
+\end{displaymath}
+\end{lm}
+Różnica w stałej $1+4B^{-1}$ w porównaniu do pracy \cite{cavalier1} jest wynikiem innego doboru stałych w dowodzie twierdzeń \ref{glowny1} i \ref{glowny2} z uwagi na niewłaściwe dobraną stałą w pracy \cite{cavalier1}. Różnica ta nie ma wpływa na ostateczny wydźwięk tych twierdzeń i wnioski z nich.
+
+Przejdziemy teraz do dowodów twierdzenia \ref{glowny1}, a później do dowodu twierdzenia \ref{glowny2}.
+\begin{proof}[Dowód twierdzenia \ref{glowny1}]
+Niech $\lambda^{\cdot},\ \lambda^*\in \Lambda$. Wtedy korzystając ze wzoru na różnicę kwadratów i szacowania $(a+b)^2\leq 2(a^2+b^2)$, można pokazać, że
+\begin{displaymath}
+[(1-\lambda_i^{\cdot})^2-(1-\lambda_i^*)^2]^2\leq 4[(1-\lambda_i^{\cdot})^2+(1-\lambda_i^*)^2][\lambda_i^{\cdot 2}+\lambda_i^{*2}].
+\end{displaymath}
+Niech teraz $\tilde{\lambda}\in \Lambda$ będzie takim filtrem, że związany z nim estymator jest wyrocznią, czyli $\tilde{\theta}=\arg \min_{\lambda\in \Lambda}\mathcal{R}(\hat{\theta},\theta)$, natomiast przez $\lambda^*$ oznaczmy filtr definiowany przez (\ref{estimator}) i konsekwentnie związany z nim estymator przez $\theta^*$.\\
+W rozpatrywanym modelu (\ref{ssm}) $x_i=\theta_i+\epsilon\sigma_i\xi_i$, zatem $x_i^2=\theta_i^2+\epsilon^2\sigma_i^2\xi_i^2+2\epsilon\sigma_i\theta_i\xi_i$.Wstawiając to wyrażenie do wzoru na nieobciążony estymator ryzyka (\ref{ure}) mamy
+\begin{displaymath}
+U[\lambda^*,X]=\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)(x_i^2-\epsilon^2\sigma_i^2)+\epsilon^2\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^{*2}=
+\end{displaymath}
+\begin{displaymath}
+=\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)(\theta_i^2+\epsilon^2\sigma_i^2\xi_i^2+2\epsilon\sigma_i\theta_i\xi_i-\epsilon^2\sigma_i^2)+\epsilon^2\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^{*2}=
+\end{displaymath}
+\begin{displaymath}
+=2\epsilon\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)\sigma_i\theta_i\xi_i+\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)(\theta_i^2+\epsilon^2\sigma_i^2\xi_i^2-\epsilon^2\sigma_i^2)+\epsilon^2\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^{*2}=
+\end{displaymath}
+\begin{displaymath}
+=2\epsilon\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)\sigma_i\theta_i\xi_i+\epsilon^2\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)\sigma_i^2(\xi_i^2-1)+
+\end{displaymath}
+\begin{displaymath}
++\left[\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)\theta_i^2+\epsilon^2\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^{*2}+\sum_{i=1}^{\infty}\theta_i^2\right]-\sum_{i=1}^{\infty}\theta_i^2=
+\end{displaymath}
+\begin{displaymath}
+=2\epsilon\sum_{i=1}^{\infty}(1-\lambda_i^*)^2\sigma_i\theta_i\xi_i-2\epsilon\sum_{i=1}^{\infty}\sigma_i\theta_i\xi_i-\sum_{i=1}^{\infty}\theta_i^2+\epsilon^2\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)\sigma_i^2(\xi_i^2-1)+\mathcal{R}(\theta^*,\theta).
+\end{displaymath}
+Obliczając wartość oczekiwaną powyższego wyrażenia dostajemy
+\begin{equation}\label{ryzyko}
+\mathbb{E}_{\theta}U[\lambda^*,X]=\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)-\sum_{i=1}^{\infty}\theta_i^2+
+\end{equation}
+\begin{displaymath}
++2\epsilon\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i^*)^2\sigma_i\theta_i\xi_i+\epsilon^2\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)\sigma_i^2(\xi_i^2-1).
+\end{displaymath}
+Znajdziemy teraz dolne oszacowania na dwa ostatnie składniki powyższego wyrażenia. Zauważmy, że 
+\begin{displaymath}
+\epsilon\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i^*)^2\sigma_i\theta_i\xi_i=\epsilon\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i^*)^2\sigma_i\theta_i\xi_i-0=
+\end{displaymath}
+\begin{displaymath}
+=\epsilon\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i^*)^2\sigma_i\theta_i\xi_i-\epsilon\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\tilde{\lambda_i})^2\sigma_i\theta_i\xi_i=
+\end{displaymath}
+\begin{displaymath}
+=\epsilon\mathbb{E}_{\theta}\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2-(1-\tilde{\lambda_i})^2]\sigma_i\theta_i\xi_i\geq
+\end{displaymath}
+\begin{displaymath}
+\geq -\epsilon\mathbb{E}_{\theta}\left|\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2-(1-\tilde{\lambda_i})^2]\sigma_i\theta_i\xi_i\right|.
+\end{displaymath}
+Korzystając z lematu \ref{lem1} z $K=S$ i $v_i=[(1-\lambda_i^*)^2-(1-\tilde{\lambda_i})^2]\sigma_i\theta_i$ dostajemy
+\begin{displaymath}
+-\epsilon\mathbb{E}_{\theta}\left|\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2-(1-\tilde{\lambda_i})^2]\sigma_i\theta_i\xi_i\right|\geq
+\end{displaymath}
+\begin{displaymath}
+\geq -\epsilon\sqrt{2\ln (NS)}\mathbb{E}_{\theta}\left(\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2-(1-\tilde{\lambda_i})^2]^2\sigma_i^2\theta_i^2\right)^{1/2}-
+\end{displaymath}
+\begin{displaymath}
+-2\epsilon\sqrt{\ln (NS)/S}\left(\mathbb{E}_{\theta}\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2-(1-\tilde{\lambda_i})^2]^2\sigma_i^2\theta_i^2\right)^{1/2}.
+\end{displaymath}
+Następnie korzystając z nierówności wskazanej na początku dowodu dostajemy dolne oszacowanie postaci
+\begin{displaymath}
+-2\epsilon\sqrt{2\ln (NS)}\mathbb{E}_{\theta}\left(\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2+(1-\tilde{\lambda_i})^2](\lambda_i^{*2}+\tilde{\lambda_i^2})\theta_i^2\sigma_i^2\right)^{1/2}-
+\end{displaymath}
+\begin{displaymath}
+-4\epsilon\sqrt{\ln (NS)/S}\left(\mathbb{E}_{\theta}\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2+(1-\tilde{\lambda_i})^2](\lambda_i^{*2}+\tilde{\lambda_i^2})\theta_i^2\sigma_i^2\right)^{1/2}
+\end{displaymath}
+W kolejnym kroku będziemy korzystać z nierówności $2ab\leq B^{-1}a^2+Bb^2$ zachodzącej dla dowolnego $B>0$ i najpierw oszacujemy pierwszy składnik powyższego wyrażenia.
+\begin{displaymath}
+2\epsilon\sqrt{2\ln (NS)}\mathbb{E}_{\theta}\left(\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2+(1-\tilde{\lambda_i})^2](\lambda_i^{*2}+\tilde{\lambda_i^2})\theta_i^2\sigma_i^2\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 2\epsilon\sqrt{2\ln (NS)}\mathbb{E}_{\theta}\left\{\sup_i\left\{(\lambda_i^{*2}+\tilde{\lambda_i^2})\sigma_i^2\right\} \sum_{i=1}^{\infty}[(1-\lambda_i^*)^2+(1-\tilde{\lambda_i})^2]\theta_i^2\right)^{1/2}=
+\end{displaymath}
+\begin{displaymath}
+=\mathbb{E}_{\theta}2\epsilon\sqrt{2\ln (NS)\sup_i\left\{(\lambda_i^{*2}+\tilde{\lambda_i^2})\sigma_i^2\right\}}\left(\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2+(1-\tilde{\lambda_i})^2]\theta_i^2\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 2B\epsilon^2 \ln (NS)\mathbb{E}_{\theta}\sup_i\left\{(\lambda_i^{*2}+\tilde{\lambda_i^2})\sigma_i^2\right\}+B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2+(1-\tilde{\lambda_i})^2]\theta_i^2\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 2B\epsilon^2 \ln (NS)\mathbb{E}_{\theta}\left(\sup_i\lambda_i^{*2}\sigma_i^2+\sup_i\tilde{\lambda_i^2}\sigma_i^2\right)+B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2+(1-\tilde{\lambda_i})^2]\theta_i^2.
+\end{displaymath}
+Analogicznie postępując z drugim wyrażeniem dostajemy
+\begin{displaymath}
+4\epsilon\sqrt{\ln (NS)/S}\left(\mathbb{E}_{\theta}\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2+(1-\tilde{\lambda_i})^2](\lambda_i^{*2}+\tilde{\lambda_i^2})\theta_i^2\sigma_i^2\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 4\epsilon\sqrt{\ln (NS)/S}\left(\mathbb{E}_{\theta}\sup_i\left\{(\lambda_i^{*2}+\tilde{\lambda_i^2})\sigma_i^2\right\}\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2+(1-\tilde{\lambda_i})^2]\theta_i^2\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 2\cdot 2\epsilon\sqrt{\ln (NS)/S} \left(\max_{\lambda\in \Lambda}\sup_i\left\{(\lambda_i^{2}+\tilde{\lambda_i^2})\sigma_i^2\right\}\right)^{1/2}\left(\mathbb{E}_{\theta}\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2+(1-\tilde{\lambda_i})^2]\theta_i^2\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 4B\epsilon^2\ln (NS)/S\max_{\lambda\in \Lambda}\sup_i\left\{(\lambda_i^{2}+\tilde{\lambda_i^2})\sigma_i^2\right\}+B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2+(1-\tilde{\lambda_i})^2]\theta_i^2.
+\end{displaymath}
+Zauważmy, że skoro
+\begin{displaymath}
+S=\frac{\max_{\lambda\in\Lambda}\sup_i\sigma_i^2\lambda_i^2}{\min_{\lambda\in\Lambda}\sup_i\sigma_i^2\lambda_i^2}
+\end{displaymath}
+to wyrażenie $\max_{\lambda\in \Lambda}\sup_i\left\{(\lambda_i^{2}+\tilde{\lambda_i^2})\sigma_i^2\right\}/S$ można oszacować przez
+\begin{displaymath}
+\max_{\lambda\in \Lambda}\sup_i\left\{(\lambda_i^{2}+\tilde{\lambda_i^2})\sigma_i^2\right\}/S=\frac{\min_{\lambda\in\Lambda}\sup_i\sigma_i^2\lambda_i^2}{\max_{\lambda\in\Lambda}\sup_i\sigma_i^2\lambda_i^2}\max_{\lambda\in \Lambda}\sup_i\left\{(\lambda_i^{2}+\tilde{\lambda_i^2})\sigma_i^2\right\}\leq
+\end{displaymath}
+\begin{displaymath}
+\frac{\min_{\lambda\in\Lambda}\sup_i\sigma_i^2\lambda_i^2\cdot \max_{\lambda\in\Lambda}\sup_i\sigma_i^2\lambda_i^2}{\max_{\lambda\in\Lambda}\sup_i\sigma_i^2\lambda_i^2}+\frac{\min_{\lambda\in\Lambda}\sup_i\sigma_i^2\lambda_i^2\cdot \sup_i\tilde{\lambda_i^2}\sigma_i^2}{\max_{\lambda\in\Lambda}\sup_i\sigma_i^2\lambda_i^2}=
+\end{displaymath}
+\begin{displaymath}
+=\min_{\lambda\in\Lambda}\sup_i\sigma_i^2\lambda_i^2+\frac{1}{S}\sup_i\tilde{\lambda_i^2}\sigma_i^2\leq\sup_i\lambda_i^{*2}\sigma_i^2+\sup_i\tilde{\lambda_i^2}\sigma_i^2,
+\end{displaymath}
+a więc także przez wartość oczekiwaną ostatniego wyrażenia. Zatem dostajemy oszacowanie postaci
+\begin{displaymath}
+4\epsilon\sqrt{\ln (NS)/S}\left(\mathbb{E}_{\theta}\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2+(1-\tilde{\lambda_i})^2](\lambda_i^{*2}+\tilde{\lambda_i^2})\theta_i^2\sigma_i^2\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 4B\epsilon^2 \ln (NS)\mathbb{E}_{\theta}\left(\sup_i\lambda_i^{*2}\sigma_i^2+\sup_i\tilde{\lambda_i^2}\sigma_i^2\right)+B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2+(1-\tilde{\lambda_i})^2]\theta_i^2,
+\end{displaymath}
+czyli takie samo z dokładnością do stałych jak dla czynnika pierwszego. Zatem możemy napisać, że 
+\begin{displaymath}
+\epsilon\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i^*)^2\sigma_i\theta_i\xi_i\geq 
+\end{displaymath}
+\begin{displaymath}
+\geq -6B\epsilon^2 \ln (NS)\mathbb{E}_{\theta}\left(\sup_i\lambda_i^{*2}\sigma_i^2+\sup_i\tilde{\lambda_i^2}\sigma_i^2\right)-2B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2+(1-\tilde{\lambda_i})^2]\theta_i^2
+\end{displaymath}
+Zachodzi również
+\begin{displaymath}
+\sum_{i=1}^{\infty}(1-\lambda_i^{*})^2\theta_i^2\leq \mathcal{R}(\theta^*,\theta)\ \textrm{oraz} \ln (NS)\leq L_{\Lambda}.
+\end{displaymath}
+Przy oznaczeniu $\Delta^{\epsilon}[\lambda]=\epsilon^2L_{\Lambda}\sup_i\sigma_i^2\lambda_i^2$ jak w lemacie \ref{lem3} prowadzi to do oszacowania postaci
+\begin{displaymath}
+-6B\epsilon^2 \ln (NS)\mathbb{E}_{\theta}\left(\sup_i\lambda_i^{*2}\sigma_i^2+\sup_i\tilde{\lambda_i^2}\sigma_i^2\right)-2B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}[(1-\lambda_i^*)^2+(1-\tilde{\lambda_i})^2]\theta_i^2\geq
+\end{displaymath}
+\begin{displaymath}
+\geq -6B\epsilon^2 \ln (NS)\mathbb{E}_{\theta}\left(\sup_i\lambda_i^{*2}\sigma_i^2+\sup_i\tilde{\lambda_i^2}\sigma_i^2\right)-2B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i^*)^2\theta_i^2-2B^{-1}\sum_{i=1}^{\infty}(1-\tilde{\lambda_i})^2\theta_i^2\geq
+\end{displaymath}
+\begin{equation}\label{szacowanie1}
+\geq -2B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i^*)^2\theta_i^2-2B^{-1}\mathcal{R}(\tilde{\theta},\theta)-6B\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]-6B\mathbb{E}_{\theta}\Delta^{\epsilon}[\tilde{\lambda}].
+\end{equation}
+
+Znajdziemy teraz oszacowanie dla składnika $\epsilon^2\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)\sigma_i^2(\xi_i^2-1)$. Zauważmy na początek, że z uwagi na to, że $|\lambda_i|\leq 1$ dla dowolnego $\lambda\in \Lambda$ z założenia \ref{ass2}, zachodzi $\lambda_i^2\leq (\lambda_i^2-2\lambda_i)^2\leq 9\lambda_i^2$. Do oszacowania analizowanego wyrażenia posłużymy się lematem \ref{lem2} z $K=S$, $q=3$ i $v_i=(\lambda_i^{*2}-2\lambda_i^*)\sigma_i^2$. Zatem
+\begin{displaymath}
+\epsilon^2\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)\sigma_i^2(\xi_i^2-1)\leq \epsilon^2\mathbb{E}_{\theta}\left|\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)\sigma_i^2(\xi_i^2-1)\right|\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \epsilon^2D\left(\sqrt{\ln (NS)}+m_V\ln (SM(3))\right)\left(\mathbb{E}_{\theta}||v||+\sqrt{\mathbb{E}_{\theta}||v||^2/S}\right).
+\end{displaymath}
+Oszacujemy teraz niektóre z elementów pojawiających się powyżej:
+\begin{displaymath}
+m(v)=\sup_i|v_i|/||v||=\frac{\sup_i|\lambda_i^{*2}-2\lambda_i^*|\sigma_i^2}{\sqrt{\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)^2\sigma_i^4}}\leq \frac{3\sup_i|\lambda_i|\sigma_i^2}{\sqrt{\sum_{i=1}^{\infty}\lambda_i^{*4}\sigma_i^4}}\leq 3\rho (\lambda),
+\end{displaymath}
+\begin{displaymath}
+M(3)=\sum_{v}\exp (-3/m(v))=\sum_{\lambda\in \Lambda}\exp (-3/m(v))\leq \sum_{\lambda\in \Lambda}\exp (-1/\rho(\lambda))=M,
+\end{displaymath}
+\begin{displaymath}
+m_V=\max_{v}m(v)\leq 3\rho=3\max_{\lambda\in \Lambda}\rho(\lambda).
+\end{displaymath}
+Stąd dostajemy, że 
+\begin{displaymath}
+\left(\sqrt{\ln (NS)}+m_V\ln (SM(3))\right)^2\leq \left(\sqrt{\ln (NS)}+3\rho\ln (MS)\right)^2\leq 
+\end{displaymath}
+\begin{displaymath}
+\leq 2\ln (NS)+6\rho^2\ln^2 (MS)\leq 6(\ln (NS)+\rho^2\ln^2 (MS)),
+\end{displaymath}
+a stąd
+\begin{displaymath}
+\sqrt{\ln (NS)}+m_V\ln (SM(3))\leq C\sqrt{L_{\Lambda}},
+\end{displaymath}
+gdzie $C$ jest pewną stałą. W dalszym ciągu rozważań wszystkie stałe generyczne zależne tylko od $C_1$ oznaczać będziemy przez $C$. Pozwala nam to oszacować badane wyrażenie od dołu przez
+\begin{displaymath}
+\epsilon^2\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)\sigma_i^2(\xi_i^2-1)\geq -\epsilon^2D\left(\sqrt{\ln (NS)}+m_V\ln (SM(3))\right)\left(\mathbb{E}_{\theta}||v||+\sqrt{\mathbb{E}_{\theta}||v||^2/S}\right)\geq
+\end{displaymath}
+\begin{displaymath}
+\geq -\epsilon^2C\sqrt{L_{\Lambda}}\mathbb{E}_{\theta}\left(\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)^2\sigma_i^4\right)^{1/2}-\epsilon^2C\sqrt{L_{\Lambda}}S^{-1/2}\left(\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)^2\sigma_i^4\right)^{1/2}\geq
+\end{displaymath}
+\begin{displaymath}
+\geq -\epsilon^23C\sqrt{L_{\Lambda}}\mathbb{E}_{\theta}\left(\sum_{i=1}^{\infty}\lambda_i^{*2}\sigma_i^4\right)^{1/2}-\epsilon^23C\sqrt{L_{\Lambda}}S^{-1/2}\left(\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\lambda_i^{*2}\sigma_i^4\right)^{1/2}\geq
+\end{displaymath}
+\begin{displaymath}
+\geq -\epsilon^2C\sqrt{C_1}\sqrt{L_{\Lambda}}\mathbb{E}_{\theta}\left(\sum_{i=1}^{\infty}\lambda_i^{*4}\sigma_i^4\right)^{1/2}-\epsilon^2C\sqrt{C_1}\sqrt{L_{\Lambda}}S^{-1/2}\left(\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\lambda_i^{*4}\sigma_i^4\right)^{1/2},
+\end{displaymath}
+z uwagi na to, że $(\lambda_i^{*2}-2\lambda_i^*)^2\leq 9\lambda_i^{*2}$ oraz założenie \ref{ass5}.\\
+W dalszej części skorzystamy z faktu, że $\forall_{\omega\in \Omega}\ \min_{\lambda\in \Lambda}\sup_i \lambda_i^2\sigma_i^2\leq \sup_i\lambda_i^{*2}\sigma_i^2=\sup_i\lambda_i^{*2}(\omega)\sigma_i^2$, a stąd $\min_{\lambda\in \Lambda}\sup_i \lambda_i^2\sigma_i^2\leq \mathbb{E}_{\theta}\sup_i\lambda_i^{*2}\sigma_i^2$.\\
+Analogicznie jak poprzednio
+\begin{displaymath}
+S^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^4\lambda_i^{*4}\leq \frac{\min_{\lambda\in \Lambda}\sup_i \lambda_i^2\sigma_i^2}{\max_{\lambda\in \Lambda}\sup_i \lambda_i^2\sigma_i^2}\mathbb{E}_{\theta}\sup_i\sigma_i^2\lambda_i^{*2}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^{*2}
+\end{displaymath}
+\begin{displaymath}
+\leq \frac{\min_{\lambda\in \Lambda}\sup_i \lambda_i^2\sigma_i^2}{\max_{\lambda\in \Lambda}\sup_i \lambda_i^2\sigma_i^2}\max_{\lambda\in \Lambda}\sup_i \lambda_i^2\sigma_i^2\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^{*2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \mathbb{E}_{\theta}\sup_i\sigma_i^2\lambda_i^{*2}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^{*2}.
+\end{displaymath}
+Podobnie dla drugiego wyrażenia
+\begin{displaymath}
+\mathbb{E}_{\theta}\left(\sum_{i=1}^{\infty}\sigma_i^4\lambda_i^{*4}\right)^{1/2}\leq \mathbb{E}_{\theta}\left(\sup_i\sigma_i^2\lambda_i^{*2}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^{*2}\right)^{1/2}.
+\end{displaymath}
+Ponownie korzystając z nierówności $2ab\leq B^{-1}a^2+Bb^2$ dostajemy
+\begin{displaymath}
+C\sqrt{L_{\Lambda}}\mathbb{E}_{\theta}\left(\sup_i\sigma_i^2\lambda_i^{*2}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^{*2}\right)^{1/2}=\mathbb{E}_{\theta}\left(2C\sqrt{L_{\Lambda}\sup_i\sigma_i^2\lambda_i^{*2}}\left(2\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^{*2}\right)^{1/2}\right)\leq
+\end{displaymath}
+\begin{displaymath}
+\leq B\mathbb{E}_{\theta}C^2L_{\Lambda}\sup_i\sigma_i^2\lambda_i^{*2}+2B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^{*2}.
+\end{displaymath}
+Podobnie dla drugiego wyrażenia
+\begin{displaymath}
+C\sqrt{L_{\Lambda}}\left(\mathbb{E}_{\theta}\sup_i\sigma_i^2\lambda_i^{*2}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^{*2}\right)^{1/2}=2\left(\mathbb{E}_{\theta}CL_{\Lambda}\sup_i\sigma_i^2\lambda_i^{*2}\right)^{1/2}\left(2\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^{*2}\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq B\mathbb{E}_{\theta}CL_{\Lambda}\sup_i\sigma_i^2\lambda_i^{*2}+2B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^{*2}.
+\end{displaymath}
+Łącząc oba oszacowania oraz wykorzystując oznaczenie $\Delta^{\epsilon}[\lambda]=\epsilon^2L_{\Lambda}\sup_i\sigma_i^2\lambda_i^2$ dostajemy
+\begin{displaymath}
+\epsilon\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)\sigma_i^2(\xi_i^2-1)\geq
+\end{displaymath}
+\begin{displaymath}
+\geq C\epsilon^2 B\mathbb{E}_{\theta}L_{\Lambda}\sup_i\sigma_i^2\lambda_i^{*2}-4\epsilon^2B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^{*2}=
+\end{displaymath}
+\begin{equation}\label{szacowanie2}
+=-CB\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]-4\epsilon^2B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^{*2}.
+\end{equation}
+Łącząc wyrażenia (\ref{szacowanie1}) oraz (\ref{szacowanie2}) dostajemy
+\begin{displaymath}
+2\epsilon\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i^*)^2\sigma_i\theta_i\xi_i+\epsilon^2\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)\sigma_i^2(\xi_i^2-1)\geq
+\end{displaymath}
+\begin{displaymath}
+\geq -4B^{-1}\mathbb{E}_{\theta}\left[\sum_{i=1}^{\infty}(1-\lambda_i^*)^2\theta_i^2+\epsilon^2\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^{*2}\right]-4B^{-1}\mathcal{R}(\tilde{\theta},\theta)-
+\end{displaymath}
+\begin{displaymath}
+-12B\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]-12B\Delta^{\epsilon}[\tilde{\lambda}]=
+\end{displaymath}
+\begin{equation}\label{szacowanie3}
+=-4B^{-1}\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)-4B^{-1}\mathcal{R}(\tilde{\theta},\theta)-CB\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]-CB\Delta^{\epsilon}[\tilde{\lambda}].
+\end{equation}
+Możemy teraz przejść do ostatecznego szacowania ryzyka badanego estymatora. Zgodnie z (\ref{ryzyko}) mamy wykorzystując oszacowania (\ref{szacowanie1}) i (\ref{szacowanie2}) (bądź od razu (\ref{szacowanie3}))
+\begin{displaymath}
+\mathbb{E}_{\theta}U[\lambda^*,X]=\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)-\sum_{i=1}^{\infty}\theta_i^2+
+\end{displaymath}
+\begin{displaymath}
++2\epsilon\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i^*)^2\sigma_i\theta_i\xi_i+\epsilon^2\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(\lambda_i^{*2}-2\lambda_i^*)\sigma_i^2(\xi_i^2-1)\geq
+\end{displaymath}
+\begin{displaymath}
+\geq \mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)-\sum_{i=1}^{\infty}\theta_i^2-4B^{-1}\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)-4B^{-1}\mathcal{R}(\tilde{\theta},\theta)-CB\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]-CB\Delta^{\epsilon}[\tilde{\lambda}].
+\end{displaymath}
+Zatem zachodzi
+\begin{displaymath}
+(1-4B^{-1})\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)\leq \mathbb{E}_{\theta}U[\lambda^*,X]+\sum_{i=1}^{\infty}\theta_i^2+4B^{-1}\mathcal{R}(\tilde{\theta},\theta)+CB\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]+CB\Delta^{\epsilon}[\tilde{\lambda}].
+\end{displaymath}
+Jednak, jako że filtr $\lambda^*$ był zdefiniowany w (\ref{estimator}) jako argument minimalizujący nieobciążony estymator ryzyka (\ref{ure}), musi zachodzić, że
+\begin{displaymath}
+\mathbb{E}_{\theta}U[\lambda^*,X]\leq \mathbb{E}_{\theta}U[\tilde{\lambda},X]=\mathcal{R}(\tilde{\theta},\theta)+\sum_{i=1}^{\infty}\theta_i^2.
+\end{displaymath}
+Dochodzimy zatem do oszacowania postaci 
+\begin{equation}\label{szacowanie4}
+(1-4B^{-1})\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)\leq (1+4B^{-1})\mathcal{R}(\tilde{\theta},\theta)+CB\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]+CB\Delta^{\epsilon}[\tilde{\lambda}].
+\end{equation}
+Zauważmy, że dla dowolnego $x>0$ zachodzi następujące oszacowanie
+\begin{displaymath}
+\sup_i\sigma_i^2\lambda_i^2=\sup_i\sigma_i^2\lambda_i^2\pmb{1}\left\{x\sup_i\sigma_i^2\lambda_i^2<\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^2\right\}+\sup_i\sigma_i^2\lambda_i^2\pmb{1}\left\{x\sup_i\sigma_i^2\lambda_i^2\geq \sum_{i=1}^{\infty}\sigma_i^2\lambda_i^2\right\}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \frac{1}{x}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^2+\max_{\lambda\in \Lambda}\sup_i\sigma_i^2\lambda_i^2\pmb{1}\left\{x\sup_i\sigma_i^2\lambda_i^2\geq \sum_{i=1}^{\infty}\sigma_i^2\lambda_i^2\right\}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \frac{1}{x}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^2+\omega (x)\leq \frac{1}{x\epsilon^2}\mathcal{R}(\hat{\theta},\theta)+\omega (x)\ \forall_{\lambda\in \Lambda}.
+\end{displaymath}
+Stąd dostajemy oszacowanie na składnik
+\begin{displaymath}
+\Delta^{\epsilon}[\lambda]=\epsilon^2 L_{\Lambda}\sup_i\sigma_i^2\lambda_i^2\leq \frac{L_{\Lambda}}{x}\mathcal{R}(\hat{\theta},\theta)+\epsilon^2L_{\Lambda}\omega (x).
+\end{displaymath}
+Wykorzystamy teraz powyższe nierówności dla nierówności (\ref{szacowanie4}).
+\begin{displaymath}
+(1-4B^{-1})\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)\leq (1+4B^{-1})\mathcal{R}(\tilde{\theta},\theta)+CB\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]+CB\Delta^{\epsilon}[\tilde{\lambda}]\leq 
+\end{displaymath}
+\begin{displaymath}
+\leq CB\frac{L_{\Lambda}}{x}\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)+CB\epsilon^2L_{\Lambda}\omega (x)+CB\epsilon^2L_{\Lambda}\omega (x)+CB\frac{L_{\Lambda}}{x}\mathcal{R}(\tilde{\theta},\theta)+(1+4B^{-1})\mathcal{R}(\tilde{\theta},\theta)=
+\end{displaymath}
+\begin{displaymath}
+=CB\frac{L_{\Lambda}}{x}\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)+CB\epsilon^2L_{\Lambda}\omega (x)+\left(CB\frac{L_{\Lambda}}{x}+1+4B^{-1}\right)\mathcal{R}(\tilde{\theta},\theta).
+\end{displaymath}
+Mamy stąd
+\begin{displaymath}
+\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)\leq \frac{CB\epsilon^2L_{\Lambda}\omega (x)}{1-4B^{-1}-CB\frac{L_{\Lambda}}{x}}+\frac{CB\frac{L_{\Lambda}}{x}+1+4B^{-1}}{1-4B^{-1}-CB\frac{L_{\Lambda}}{x}}\mathcal{R}(\tilde{\theta},\theta).
+\end{displaymath}
+Korzystając z lematu \ref{lem3} mamy ponadto, że
+\begin{displaymath}
+\mathbb{E}_{\theta}||\theta^*-\theta||^2\leq (1+4B^{-1})\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)+CB\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]\leq
+\end{displaymath}
+\begin{displaymath}
+\leq (1+4B^{-1}+CB\frac{L_{\Lambda}}{x})\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)+CB\epsilon^2L_{\Lambda}\omega (x).
+\end{displaymath}
+Niech teraz $x=B^2L_{\Lambda}$ oraz $\gamma=4+C$. Wtedy z powyższych nierówności dostajemy, że 
+\begin{displaymath}
+\mathbb{E}_{\theta}||\theta^*-\theta||^2\leq (1+\gamma B^{-1})\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)+CB\epsilon^2L_{\Lambda}\omega (B^2L_{\Lambda})\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \frac{1+\gamma B^{-1}}{1-\gamma B^{-1}}CB\epsilon^2L_{\Lambda}\omega (B^2L_{\Lambda})+CB\epsilon^2L_{\Lambda}\omega (B^2L_{\Lambda})+\frac{(1+\gamma B^{-1})^2}{1-\gamma B^{-1}}\mathcal{R}(\tilde{\theta},\theta).
+\end{displaymath}
+Zauważmy następnie, że z uwagi na fakt, że $\lim_{x\to \infty}\frac{x+\gamma}{x-\gamma}=1$, mamy, że 
+$B\frac{1+\gamma B^{-1}}{1-\gamma B^{-1}}=C'B$ dla pewnej stałej $C'$ zależnej tylko od $C_1$ (poprzez $\gamma$) o ile tylko $B>B_0$ dla pewnego $B_0>\gamma$. Analogicznie widzimy, że  $\frac{(1+\gamma B^{-1})^2}{1-\gamma B^{-1}}=(1+\gamma B^{-1})\cdot C''$ o ile znowu $B>B_0$. Zwiększając stałą $\gamma$ i oznaczając ją przez $\gamma_1$ dostajemy, że $\frac{(1+\gamma B^{-1})^2}{1-\gamma B^{-1}}=1+\gamma_1B^{-1}$. Ostatecznie prowadzi nas do nierówności 
+\begin{displaymath}
+\mathbb{E}_{\theta}||\theta^*-\theta||^2\leq (1+\gamma_1B^{-1})\mathcal{R}(\tilde{\theta},\theta)+\gamma_2B\epsilon^2L_{\Lambda}\omega (B^2L_{\Lambda}).
+\end{displaymath}
+Nierówność ta kończy dowód twierdzenia \ref{glowny1}.
+\end{proof}
+
+\begin{proof}[Dowód twierdzenia \ref{glowny2}]
+Będziemy stosować te same oznaczenia na estymator i wyrocznię jak w dowodzie twierdzenia \ref{glowny1}.\\
+Zauważmy na początek, że z uwagi (\ref{rho}) mamy 
+\begin{displaymath}
+\frac{\left(\sum_{k=1}^{\infty}\sigma_k^4\lambda_k^4\right)^{1/2}}{\sum_{k=1}^{\infty}\sigma_k^2\lambda_k^2}\leq \rho \Longrightarrow \frac{1}{\sum_{k=1}^{\infty}\sigma_k^2\lambda_k^2}\leq \frac{\rho}{\left(\sum_{k=1}^{\infty}\sigma_k^4\lambda_k^4\right)^{1/2}}.
+\end{displaymath}
+Zatem możemy oszacować wyrażenie $\frac{\sup_i \sigma_i^2\lambda_i^2}{\sum_{k=1}^{\infty}\sigma_k^2\lambda_k^2}$ w następujący sposób
+\begin{displaymath}
+\frac{\sup_i \sigma_i^2\lambda_i^2}{\sum_{k=1}^{\infty}\sigma_k^2\lambda_k^2}\leq \rho \frac{\sup_i \sigma_i^2\lambda_i^2}{\left(\sum_{k=1}^{\infty}\sigma_k^4\lambda_k^4\right)^{1/2}}\leq \rho^2
+\end{displaymath}
+korzystając z definicji $\rho$. Zauważmy ponadto, że dla dowolnego $\lambda\in \Lambda$ zachodzi
+\begin{displaymath}
+\mathcal{R}(\hat{\theta},\theta)=\sum_{i=1}^{\infty}(1-\lambda_i)\theta^2_i+\epsilon^2\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^2\geq \epsilon^2\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^2.
+\end{displaymath}
+Łącząc te dwie nierówności dostajemy, że
+\begin{displaymath}
+\epsilon^2\sup_i \sigma_i^2\lambda_i^2\leq \epsilon^2\rho^2\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^2\leq \rho^2\mathcal{R}(\hat{\theta},\theta).
+\end{displaymath}
+Pozwala nam to oszacować wyrażenie $\Delta^{\epsilon}[\lambda]$ dla dowolnego $\lambda\in \Lambda$ i dowolnego $\theta\in l^2$ przez
+\begin{displaymath}
+\Delta^{\epsilon}[\lambda]=\epsilon^2L_{\Lambda}\sup_i \sigma_i^2\lambda_i^2\leq \rho^2L_{\Lambda}\mathcal{R}(\hat{\theta},\theta).
+\end{displaymath}
+Następnie analogicznie jak w dowodzie twierdzenia \ref{glowny1} możemy dostać nierówność postaci (oszacowanie (\ref{szacowanie4}))
+\begin{displaymath}
+(1-4B^{-1})\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)\leq (1+4B^{-1})\mathcal{R}(\tilde{\theta},\theta)+CB\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]+CB\Delta^{\epsilon}[\tilde{\lambda}].
+\end{displaymath}
+Co prowadzi do nierówności
+\begin{displaymath}
+(1-4B^{-1})\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)\leq (1+4B^{-1})\mathcal{R}(\tilde{\theta},\theta)+CB\rho^2L_{\Lambda}\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)+CB\rho^2L_{\Lambda}\mathcal{R}(\tilde{\theta},\theta),
+\end{displaymath}
+a stąd dostajemy
+\begin{displaymath}
+\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)\leq\frac{1+4B^{-1}+CB\rho^2L_{\Lambda}}{1-4B^{-1}-CB\rho^2L_{\Lambda}}\mathcal{R}(\tilde{\theta},\theta).
+\end{displaymath}
+Ponownie korzystając z lematu \ref{lem3} dostajemy
+\begin{displaymath}
+\mathbb{E}_{\theta}||\theta^*-\theta||^2\leq (1+4B^{-1})\mathbb{E}_{\theta}\mathcal{R}(\theta^*,\theta)+CB\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]\leq
+\end{displaymath}
+\begin{displaymath}
+\leq (1+4B^{-1}+CB\rho^2L_{\Lambda})\mathcal{R}(\tilde{\theta},\theta).
+\end{displaymath}
+Łącząc te dwie nierówności mamy
+\begin{displaymath}
+\mathbb{E}_{\theta}||\theta^*-\theta||^2\leq \frac{(1+4B^{-1}+CB\rho^2L_{\Lambda})^2}{1-4B^{-1}-CB\rho^2L_{\Lambda}}\mathcal{R}(\tilde{\theta},\theta).
+\end{displaymath}
+Zauważmy, że istnieje taka stała $\gamma_4>0$, że jeśli tylko zachodzi $\rho^2L_{\Lambda}\leq \gamma_4$, to wybór $B$ jako $(\rho^2L_{\Lambda})^{-1/2}$ prowadzi do nierówności $4B^{-1}+CB\rho^2L_{\Lambda}<1/2$, a stąd $1-4B^{-1}-CB\rho^2L_{\Lambda}\geq 1/2$. czyli jest odcięte od zera. Wtedy wybór $B=(\rho^2L_{\Lambda})^{-1/2}$ prowadzi do nierówności
+\begin{displaymath}
+\mathbb{E}_{\theta}||\theta^*-\theta||^2\leq \frac{(1+(4+C)\rho\sqrt{L_{\Lambda}})^2}{1-(4+C)\rho\sqrt{L_{\Lambda}}}\mathcal{R}(\tilde{\theta},\theta),
+\end{displaymath}
+co, rozumując analogicznie do dowodu twierdzenia \ref{glowny2}, prowadzi do nierówności
+\begin{displaymath}
+\mathcal{R}(\tilde{\theta},\theta)\leq (1+\gamma_3\rho\sqrt{L_{\Lambda}})\mathcal{R}(\tilde{\theta},\theta),
+\end{displaymath}
+która kończy dowód.
+\end{proof}
+
+
+\section{Główne rezultaty II}
+Rezultaty zaprezentowane w tym rozdziale są modyfikacjami rezultatów uzyskanych w pracy \cite{cavalier2}.\\
+W tej części pracy podejmiemy próbę zbudowania analogicznych jak w rozdziale poprzednim nierówności wyroczni w przypadku, gdy w rozważanym problemie
+\begin{displaymath}
+Y=Af+\epsilon\xi
+\end{displaymath}
+operator $A$ jest operatorem niekoniecznie zwartym.\\
+
+Będziemy potrzebowali pojęcia operatora unitarnego.
+\begin{df}
+Niech $H,G$ będą ośrodkowymi przestrzeniami Hilberta. Operator $U\colon H\to G$ nazwiemy operatorem unitarnym, jeżeli jest ciągły, liniowy, bijektywny i zachodzi $U^*=U^{-1}$.
+\end{df}
+\begin{uw}
+Zauważmy, że jeżeli operator $U$ jest unitarny, to zachowuje on iloczyn skalarny, ponieważ dla dowolnych $f,g\in H$ zachodzi
+\begin{displaymath}
+\langle f,g\rangle =\langle U^{-1}Uf,g\rangle =\langle U^*Uf,g\rangle =\langle Uf,Ug\rangle.
+\end{displaymath}
+\end{uw}
+Jeżeli $\xi$ jest szumem na przestrzeni $H$, natomiast operator $T$ jest określony na tej samej przestrzeni, to możemy zdefiniować działanie operatora $T$ na $\xi$ w następujący sposób
+\begin{displaymath}
+\langle T\xi , f\rangle=\langle \xi, T^* f\rangle,\ \forall f\in TH.
+\end{displaymath}
+Ponadto, jeżeli operator kowariancji $\xi$ oznaczymy przez $\textbf{Cov}_{\xi}$, to operator kowariancji $T\xi$ jest postaci $\textbf{Cov}_{T\xi}=T\textbf{Cov}_{\xi}T^*$ (\cite{bissantz}, str. 2615). Wprowadźmy także następujące definicje
+\begin{df}(\cite{typek}, str. 102)\\
+Niech $\xi\colon H\to \L_2(T,\mathbb{T},\tau)$ będzie losowym szumem. Powiem, że $\xi$ ma skończony słaby drugi moment, jeżeli dla dowolnego $f\in H$ zachodzi $\int_T |\langle \xi, f\rangle |^2d\tau <\infty$ oraz, że ma skończony silny drugi moment, jeżeli $\int_T\norm{\xi}^2d\tau<\infty$. Oczywiście silny moment implikuje słaby.
+\end{df}
+\begin{df}(\cite{beska}, str. 13)\\
+Operator $T\colon H\to H$  nazwiemy operatorem śladowym, jeżeli istnieją ciągi $\{a_k\}_{k=1}^{\infty},\{b_k\}_{k=1}^{\infty}\subset H$ takie, że
+\begin{displaymath}
+\sum_{k=1}^{\infty}\norm{a_k}\norm{b_k}<\infty
+\end{displaymath}
+oraz 
+\begin{displaymath}
+\forall h\in H\ Ah=\sum_{k=1}^{\infty}\langle h,a_k\rangle b_k.
+\end{displaymath}
+\end{df}
+Okazuje się, że dla operatorów samosprzężonych można uogólnić twierdzenie o reprezentacji według wartości singularnych do następującej postaci (\cite{taylor}, str. 97)
+\begin{tw}\label{spectral}
+Niech $A$ będzie operatorem samosprzężonym na ośrodkowej przestrzeni Hilberta $H$. Wtedy istnieje przestrzeń mierzalna $(S,\mathcal{S},\mu )$, rzeczywista funkcja mierzalna $b$ określona na $S$, operator unitarny $U\colon H\to L_2(S,\mathcal{S},\mu )$, takie, że 
+\begin{displaymath}
+A=U^{-1}M_bU,
+\end{displaymath}
+gdzie $M_b$ jest operatorem mnożenia przez funkcję $b$ zdefiniowanym jako $(M_bg)(x)=b(x)g(x)$.
+\end{tw}
+Zauważmy, że samosprzężone operatory zwarte i ich reprezentacja według wartości singularnych jest specjalnym przypadkiem powyższego twierdzenia, gdzie $S=\mathbb{N}$, $L_2(S,\mathcal{S},\mu) =l^2(\mathbb{N},2^{\mathbb{N}},\mu )$ z $\mu$ jako miarą liczącą, funkcją $b$ taką, że $b(k)=b_k$ oraz operatorem $U$ przeprowadzającym funkcję $f$ w ciąg jej współczynników Fouriera względem bazy wektorów własnych.\\
+\indent Pierwszym krokiem jaki wykonamy przed dalszą analizą, będzie prekondycjonowanie problemu $Y=Af+\epsilon \xi$, czyli przekształcenie go do postaci 
+\begin{equation}\label{condition}
+A^*Y=A^*Af+\epsilon A^*\xi.
+\end{equation} 
+Podstawową korzyścią z takiego przekształcenia jest to, że w dalszej części możemy zajmować się już tylko i wyłącznie operatorami samosprzężonymi i dodatnimi. Fakt, że operator $A^*A$ jest dodatni implikuje, że funkcja $b$ z twierdzenia \ref{spectral} jest dodatnia $\mu$-- prawie wszędzie, a zatem operator mnożenia $M_b$ jest odwracalny i jego odwrotność ma postać $(M_b)^{-1}=M_{b^{-1}}$. Z drugiej strony wiadomo, że $f$ jest najlepszym rozwiązaniem w sensie minimalizacji kwadratu normy różnicy wyrażenia $Af-g$ wtedy i tylko wtedy, gdy zachodzi $A^*Af=A^*g$ (\cite{iphde}, str. 13).\\
+\indent Korzystając z twierdzenia spektralnego \ref{spectral} możemy rozważany model (\ref{condition})
+\begin{displaymath}
+A^*Y=A^*Af+\epsilon A^*\xi=U^{-1}M_bUf+\epsilon A^* \xi
+\end{displaymath} przekształcić do następującej postaci stosując operator $U$
+\begin{displaymath}
+UA^*Y=U(U^{-1}M_bU)f+\epsilon UA^*\xi,
+\end{displaymath}
+co można zapisać jako
+\begin{equation}\label{zb}
+Z=b\theta+\epsilon \eta,
+\end{equation}
+gdzie $Z=UA^*Y$, $\theta =Uf$ oraz $\eta =UA^*\xi$.\\
+Podobnie jak w przypadku operatorów zwartych możemy zapisać to wyrażenie w postaci analogicznej do (\ref{ssm})
+\begin{equation}\label{ssmg}
+X=\theta +\epsilon\sigma\eta,
+\end{equation}
+gdzie $\sigma\eta$ rozumiane jest jako $M_{b^{-1}}UA^*\xi$. Przejście z równości (\ref{zb}) do równości (\ref{ssmg}) rozumiane jest jako następujące przekształcenie równania operatorowego. Skoro (\ref{zb}) jest postaci $UA^*Y=M_bUf+\epsilon UA^*\xi$ , zatem mnożąc lewostronnie to równanie przez $M_{b^{-1}}$ dostajemy równanie $M_{b^{-1}}UA^*Y=M_{b^{-1}}M_bUf+\epsilon M_{b^{-1}}UA^*\xi$, co po oznaczeniu przez $X=M_{b^{-1}}UA^*Y$ prowadzi do równania (\ref{ssmg}), gdyż $M_{b^{-1}}M_b$ jest operatorem identycznościowym. Natomiast równanie (\ref{ssmg}) rozumiane jest tak, że dla dowolnego elementu $g\in L_2(S,\mathcal{S},\mu )$ obserwowana jest zmienna losowa $\langle X,g\rangle = \langle \theta,g\rangle +\epsilon \langle \eta, b^{-1}g\rangle$, gdzie z kolei $\langle \eta,  b^{-1}g\rangle$ jest zmienną losową z przestrzeni $L_2(\Omega,\mathcal{F},\mathbb{P})$.\\
+\indent Twierdzenie \ref{spectral} mówi tylko, że funkcja $b$ jest mierzalną funkcją rzeczywistą nie mówiąc nic więcej o jej zachowaniu. Zatem o źle postawionym problemie będziemy mogli mówić tylko wtedy, gdy $b\to 0$ w jakimś sensie.\\
+Przed dalszym rozumowaniem, udowodnimy, czym jest $\eta$. Okazuje się, że jest ona gaussowskim kolorowym szumem na przestrzeni $L_2(S,\mathcal{S},\mu )$.
+\begin{tw}
+Niech $\eta$ będzie określona jako $\eta=UA^*\xi$. Wtedy $\sqrt{\sigma} \eta$  jest gaussowskim białym szumem na przestrzeni $L_2(S,\mathcal{S},\mu )$.
+\end{tw}
+\begin{proof}
+Zauważmy na początek, że zachodzi $A=U^*M_{b^{1/2}}U$. A stąd mamy, że $\langle \sqrt{\sigma} \eta, F\rangle = \langle M_{b^{-1/2}}UA^*\xi, Uf\rangle =$ $\langle \xi,AU^*M_{b^{-1/2}}Uf\rangle \sim \mathcal{N}(0,||AU^*M_{b^{-1/2}}Uf||^2)$, gdzie $||AU^*M_{b^{-1/2}}Uf||^2=||U^*M_{b^{1/2}}UU^*M_{b^{-1/2}}Uf||^2=||f||^2$, gdyż $U^*=U^{-1}=U$. Natomiast operator kowariancji ma postać $\textbf{Cov}_{\sqrt{\sigma}\eta}=$\\ $M_{b^{-1/2}}UA^*\textbf{Cov}_{\xi}AU^*M_{b^{-1/2}}=M_{b^{-1/2}}M_bM_{b^{-1/2}}=I$, gdyż $\textbf{Cov}_{\xi}=I$.
+\end{proof}
+Niech teraz $\hat{\theta}$ oznacza estymator elementu $\theta$ w modelu (\ref{ssmg}) na podstawie obserwacji $X$. Wtedy estymatorem poszukiwanego elementu $f$ jest $U^{-1}\hat{\theta}=\hat{f}$ i możemy wyrazić ryzyko tego estymatora w następujący sposób
+\begin{displaymath}
+\mathcal{R}(\hat{f},f)=\mathbb{E}_f||\hat{f}-f||_H^2=\mathbb{E}_{\theta}||\hat{\theta}-\theta||_S^2=\mathbb{E}_{\theta}\int_S|\hat{\theta}-\theta |^2d\mu ,
+\end{displaymath}
+gdzie w drugiej równości skorzystaliśmy z faktu, że $U$ jest liniowym operatorem unitarnym, czyli zachowuje normę elementu.\\
+W pracy \cite{cavalier2} pracowano przy założeniu, że obserwacje zaburzone są przez błąd pochodzący z białego szumu. Jednak z uwagi na to, że w przestrzeni nieskończenie wymiarowej operator identycznościowy, będący operatorem kowariancji dla białego szumu, nie jest operatorem zwartym, czyli nie może być operatorem śladowym, a więc nie może mieć skończonego silnego drugiego momentu. Z drugiej strony, jeżeli opeartor kowariancji pewnego szumu jest operatorem śladowym, to wtedy szum ten posiada silny drugi moment (\cite{typek}, str. 175). Dlatego za \cite{bissantz} i korzystając ze wcześniejszego prekondycjonowania będziemy zakładać o operatorze $A$ i szumie $\xi$, że zachodzą następujące warunki gwarantujące skończoność drugich momentów regularyzowanego rozwiązania
+\begin{equation}\label{warunki}
+\forall f\in G\ \mathbb{E}\langle \xi, f\rangle =0\textrm{ oraz }\norm{\textbf{Cov}_{\xi}}\leq 1,
+\end{equation}
+\begin{displaymath}
+\mathbb{E}\norm{A^*\xi}^2<\infty.
+\end{displaymath}
+Jeżeli spełnione są powyższe dwa warunki, możliwe jest takie dobranie operatora $U$ w twierdzeniu \ref{spectral}, by zachodziło
+\begin{displaymath}
+\forall s\in S\ \pmb{V}ar(UK^*\xi (s))\leq b(s)
+\end{displaymath}
+oraz $b\in L_1(S,\mathcal{S},\mu)$ (\cite{bissantz}, str. 2616). Przykłady modeli spełniających powyższe warunki znajdują sie w rozdziale \ref{przyklad} oraz w \cite{bissantz}, str. 2620-- 2624.\\
+W ogólnym przypadku w związku ze złym uwarunkowaniem problemu $Z=Th+\epsilon\xi$ rozważane są estymatory elementu $h$  postaci 
+\begin{displaymath}
+\hat{h}_{\alpha}=\Phi_{\alpha}(T^*T)T^*Y,
+\end{displaymath}
+gdzie funkcja $\Phi_{\alpha}$ ma następujące własności (\cite{mair}, str. 1426)
+\begin{displaymath}
+\sup_{t\geq 0}\Phi_{\alpha}(t)<\infty\ \forall \alpha>0,
+\end{displaymath}
+\begin{displaymath}
+\sup_{\alpha>0,t\geq 0}t\Phi_{\alpha}(t)<\infty,
+\end{displaymath}
+\begin{displaymath}
+\Phi_{\alpha}(t)\to t^{-1},\ gdy\  \alpha\to 0,\ \forall t>0.
+\end{displaymath}
+W rozważanym przez nas problemie możemy rozważyć estymator liniowy elementu $\theta$ w postaci zaproponowanej powyżej, gdzie celem zachowania spójności ze wcześniejszymi oznaczeniami będziemy dalej pisać, że jest on postaci
+\begin{equation}\label{est}
+\hat{\theta}=\lambda X,
+\end{equation}
+gdzie $\lambda=\Phi_{\alpha}(A^*A)U^*M_b$ jest pewną nielosową funkcją, a funkcja $\Phi_{\alpha}$ zależy od konkretnego wyboru estymatora. Przykładowo dla estymatorów projekcyjnych funkcja $\Phi_{\alpha}$ przyjmuje postać
+\begin{displaymath}
+\Phi_{\alpha}(t)=\frac{1}{t}\pmb{1}_{[\alpha,\infty)}.
+\end{displaymath}
+Funkcję $\lambda$ będziemy konsekwentnie nazywać wagą lub filtrem. W dalszej części ograniczymy się tylko do rozważania rzeczywistych filtrów i przestrzeni. Możemy teraz wyznaczyć górne oszacowanie ryzyka estymatora postaci (\ref{est}). Warunki (\ref{warunki}) narzucone na postać szumu i operator $A$ gwarantują, że zarówno wyznaczone oszacowanie jak i samo ryzyko są skończone.
+\begin{displaymath}
+\mathcal{R}(\hat{\theta},\theta )= \mathbb{E}_{\theta}||\hat{\theta}-\theta||_2^2=\mathbb{E}_{\theta}\norm{\lambda\theta+\epsilon\lambda\sigma\eta-\theta}^2_2=
+\end{displaymath}
+\begin{displaymath}
+=\mathbb{E}_{\theta}\norm{\lambda\theta-\theta}^2_2+\mathbb{E}_{\theta}\norm{\epsilon\lambda\sigma\eta}^2_2=\norm{(1-\lambda)\theta}_2^2+\epsilon^2\mathbb{E}_{\theta}\norm{\lambda\sigma\eta}_2^2=
+\end{displaymath}
+\begin{displaymath}
+=\norm{(1-\lambda)\theta}_2^2+\epsilon^2\mathbb{E}_{\theta}\int_S\left(\lambda(s)\sigma(s)\eta(s)\right)^2d\mu=
+\end{displaymath}
+\begin{displaymath}
+=\norm{(1-\lambda)\theta}_2^2+\epsilon^2\int_S\lambda^2(s)\sigma^2(s)\mathbb{E}_{\theta}\eta^2(s)d\mu\leq 
+\end{displaymath}
+\begin{displaymath}
+\leq \norm{(1-\lambda)\theta}_2^2+\epsilon^2\int_S\lambda^2(s)\sigma(s)d\mu=\int_S(1-\lambda(s))^2\theta^2(s)d\mu+\epsilon^2\int_S\lambda^2(s)\sigma(s)d\mu
+\end{displaymath}
+W dalszej części będziemy omijać argumenty w funkcjach podcałkowych. Warto zauważyć, że w powyższym wyrażeniu w wyrażeniu $\epsilon^2\int_S\lambda^2\sigma d\mu$ składnik $\sigma$ związany ze złym uwarunkowaniem problemu występuje w potędze o jeden niższej niż w analogicznym wyrażeniu (\ref{risk}), jednak trzeba zauważyć, że oba modele różnią się charakterem szumu.
+\begin{df}
+Wprowadzimy następujące oznaczenie 
+\begin{displaymath}
+\Psi(\lambda,\theta)=\int_S(1-\lambda)^2\theta^2d\mu+\epsilon^2\int_S\lambda^2\sigma d\mu
+\end{displaymath}
+na wyrażenie będące odpowiednikiem wyrażenia (\ref{risk}) w modelu rozważanym w rozdziale \ref{G1}.
+\end{df}
+
+
+Podobnie jak w przypadku rozważanych wcześniej modeli z operatorem zwartym wyrażenie $X^2-\epsilon^2\sigma^2$ jest nieobciążonym estymatorem dla $\theta^2$, co prowadzi nas do analogicznej do (\ref{ure}) definicji nieobciążonego estymatora wyrażenia $\Psi(\lambda,\theta)$.
+\begin{df}
+Nieobciążonym estymatorem wyrażenia $\Psi(\lambda,\theta)$ w modelu (\ref{ssmg}) nazywamy wyrażenie
+\begin{equation}\label{ure1}
+\psi(\lambda,X)=\int_S(\lambda^2-2\lambda)(X^2-\epsilon^2\sigma^2)d\mu+ \epsilon^2\int_S\lambda^2\sigma d\mu,
+\end{equation}
+będące nieobciążonym estymatorem wyrażenia $\Psi(\lambda,\theta)-\int_S\theta^2d\mu $ dla estymatora postaci $\hat{\theta}=\lambda X$. Wyrażenie to jest skończone przy założeniu (\ref{assbig}).
+\end{df}
+Niech teraz badane filtry należą do pewnej skończonej rodziny $\Lambda=\{\lambda^1,\dots ,\lambda^N\}$. Naszym celem będzie wybór na podstawie obserwacji takiego filtra z tej rodziny, by związany z nim estymator naśladował ryzyko najlepszego estymatora w $\Lambda$.\\
+Analogicznie do rozważanego wcześniej przypadku wymagać będziemy, by odpowiednie człony występujące w wyrażeniu na $\Psi(\lambda,\theta)$  oraz jego estymator $\psi(\lambda, X)$ były skończone oraz by estymatory nie były zbyt duże. Założymy także skończoność wyrażeń występujących później w wyrażeniach występujących w nierównościach wyroczniach dla badanych estymatorów.
+\begin{za}\label{assbig}
+Załóżmy, że
+\begin{displaymath}
+\forall\ \lambda \in \Lambda\ 0<\int_S\sigma^2\lambda^2d\mu <\infty,
+\end{displaymath}
+\begin{displaymath}
+\max_{\lambda \in \Lambda}\norm{\lambda}_{\infty}\leq 1,
+\end{displaymath}
+\begin{displaymath}
+\forall\ \lambda \in \Lambda\ \int_S\lambda\sigma^2d\mu <\infty,
+\end{displaymath}
+\begin{displaymath}
+\forall\ \lambda \in \Lambda\ \int_S\sigma\lambda^2d\mu<\infty
+\end{displaymath}
+\begin{displaymath}
+\exists\ C_2>0\ \forall\ \lambda \in \Lambda\ \int_S \sigma^4\lambda^2 d\mu \leq C_2\int_S\sigma^3\lambda^4d\mu,
+\end{displaymath}
+\end{za}
+
+Wprowadzimy także potrzebne oznaczenia
+\begin{displaymath}
+\rho(\lambda)=\norm{\sigma^2\lambda}_{\infty}\left[\int_S\sigma^4\lambda^4d\mu\right]^{-1/2},
+\end{displaymath}
+\begin{displaymath}
+\rho=\max_{\lambda\in \Lambda}\rho(\lambda),
+\end{displaymath}
+\begin{displaymath}
+S=\frac{\max_{\lambda\in\Lambda}\norm{\sigma^2\lambda^2}_{\infty}}{\min_{\lambda\in \Lambda}\norm{\sigma^2\lambda^2}_{\infty}},
+\end{displaymath}
+\begin{displaymath}
+M=\sum_{\lambda\in \Lambda}\exp\left(\frac{-1}{\rho(\lambda)}\right),
+\end{displaymath}
+\begin{displaymath}
+L_{\lambda}=\ln(NS)+\rho^2\ln^2(MS).
+\end{displaymath}
+Interpretacje powyższych wyrażeń przenoszą się z rozważanego wcześniej dyskretnego przypadku.\\
+Mając już odpowiednie założenia możemy zdefiniować poszukiwany estymator naśladujący ryzyko najlepszego estymatora w klasie $\Lambda$. Ponownie wykorzystamy w tym celu zdefiniowane wcześniej wyrażenie $\psi(\lambda,X)$, który w pewien sposób przybliża górne ograniczenie na  ryzyko, które chcielibyśmy zminimalizować.
+\begin{df}
+Niech funkcjonał $\psi(\lambda,X)$ będzie zdefiniowany jak w (\ref{ure1}). Poszukiwanym filtrem jest element minimalizujący względem $\lambda\in \Lambda$ funkcjonał $\psi(\lambda,X)$, czyli
+\begin{equation}\label{estimator1}
+\lambda^*=\arg\min_{\lambda\in \Lambda}\psi(\lambda,X).
+\end{equation}
+\end{df}
+Przedstawimy teraz uogólnione wersje lematów \ref{lem1}, \ref{lem2} i \ref{lem3} na rozważany obecnie przypadek. Dowody znajdują się w części \ref{lematy}.
+\begin{lm}\label{lem4}
+Niech $\eta$ będzie gaussowskim szumem na przestrzeni Hilberta $L_2(S,\mathcal{S},\mu)$ z operatorem kowariancji postaci $TT^*$ dla pewnego ograniczonego operatora $T$ i o skończonym silnym drugim momencie i niech $v\in L_2(S,\mathcal{S},\mu)$ będzie losowym elementem tej przestrzeni ze skończonego zbioru $V\subset L_2(S,\mathcal{S},\mu)$ o liczności $N>1$. Wtedy dla dowolnego $K\geq 1$ zachodzi
+\begin{displaymath}
+\mathbb{E}\left|\langle \eta, v\rangle\right|\leq \norm{T} \sqrt{2\ln (NK)}\left(\mathbb{E}||v||_2+\sqrt{2\mathbb{E}||v||_2^2/K}\right).
+\end{displaymath}
+\end{lm}
+
+\begin{lm}\label{lem5}
+Niech $\eta$ będzie gaussowskim  szumem na przestrzeni Hilberta $L_2(S,\mathcal{S},\mu)$ z operatorem kowariancji postaci $TT^*$ dla pewnego ograniczonego operatora $T$ i o skończonym silnym drugim momencie i niech $v\in L_2(S,\mathcal{S},\mu)$ będzie losowym elementem tej przestrzeni ze skończonego zbioru $V\subset L_2(S,\mathcal{S},\mu)$ o liczności $N>1$. Niech ponadto $v\neq 0$ dla dowolnego $v\in V$. Oznaczmy przez $m(v)=\norm{v}_{\infty}/||v||_2$, $m_V=\max_{v\in V}m(v)$ oraz 
+\begin{displaymath}
+M(q)=\sum_{v\in V}\exp (-q/m(v)),\ q>0.
+\end{displaymath}
+Wtedy istnieje stała $D$ zależna tylko od $q$ i operatora $T$, taka, że dla dowolnego $K\geq 1$ zachodzi
+\begin{displaymath}
+\mathbb{E}\left|\langle \eta^2-1, v\rangle\right|\leq D\norm{T}^2\left(\sqrt{\ln (NK)}+m_V\ln (M(q)K)\right)\left(\mathbb{E}||v||+\sqrt{\mathbb{E}||v||^2/K}\right).
+\end{displaymath}
+\end{lm}
+\begin{lm}\label{lem6}
+Niech $\eta$ będzie gaussowskim  szumem na przestrzeni Hilberta $L_2(S,\mathcal{S},\mu)$ z operatorem kowariancji postaci $TT^*$ dla pewnego ograniczonego operatora $T$ i o skończonym silnym drugim momencie. Niech ponadto $\hat{\theta}=\hat{\lambda}(X)X$ będzie liniowym estymatorem z wagą z wartościami z przedziału $[-1,1]$ przyjmującym wartości w zbiorze $\Lambda$. Oznaczmy przez 
+\begin{displaymath}
+\Delta^{\epsilon}[\lambda]=\epsilon^2L_{\Lambda}\norm{\sigma^2\lambda^2}_{\infty},\ \lambda\in \Lambda.
+\end{displaymath}
+Wtedy istnieje stała $C>0$ zależna tylko od operatora $T$ taka, że dla dowolnego $B>0$ zachodzi
+\begin{displaymath}
+\mathbb{E}_{\theta}\norm{\hat{\theta}-\theta}_2^2\leq \max\{1,C_2\}(1+4B^{-1}\max\{1,\norm{T}^2\})\mathbb{E}_{\theta}\Psi(\hat{\lambda},\theta)+CB\norm{T}^2\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda (X)].
+\end{displaymath}
+\end{lm}
+
+Możemy teraz przejść do wypowiedzenia dwóch twierdzeń będących zarazem głównym wynikiem tego rozdziału i uogólnieniem twierdzeń \ref{glowny1} i \ref{glowny2} na przypadek, gdy badany problem może być modelowany jako (\ref{condition}). 
+
+
+\begin{tw}\label{glowny3}
+Niech założenie \ref{assbig} będzie spełnione. Wtedy dla dowolnego $\theta\in L_2(S,\mathcal{S},\mu)$, dla dowolnego $B>B_0$ i dla estymatora liniowego $\theta^*$ z filtrem wybranym zgodnie z (\ref{estimator1}) zachodzi
+\begin{displaymath}
+\mathbb{E}_{\theta}\norm{\theta^*-\theta}^2\leq \max \{1,C_2\}\left((1+\gamma_1B^{-1}\max\{1,\norm{A}^2\})\min_{\lambda\in \Lambda}\Psi(\lambda,\theta)+\gamma_2B\norm{A}^2\epsilon^2L_{\Lambda}\omega(B^2L_{\Lambda})\right),
+\end{displaymath}
+gdzie stałe $B_0>0,\gamma_1>0,\gamma_2>0$ zależą tylko od stałej $C_1$ i operatora $A$, wyrażenie $\min_{\lambda\in \Lambda}\Psi(\lambda,\theta)$ rozumiane jest jako minimum wzięte po wszystkich estymatorach $\hat{\theta}$ postaci $\lambda X,\ \lambda\in \Lambda$, a funkcja $\omega(x)$ jest postaci
+\begin{displaymath}
+\omega(x)=\max_{\lambda\in \Lambda}\norm{\sigma^2\lambda^2\pmb{1}\left(\int_S\sigma\lambda^2d\mu\leq x \norm{\sigma^2\lambda^2}_{\infty}\right)}_{\infty},\ x>0.
+\end{displaymath}
+\end{tw}
+\begin{tw}\label{glowny4}
+Niech założenie \ref{assbig} będzie spełnione. Wtedy istnieją stałe $\gamma_3>0,\gamma_4>0$ zależące tylko od $C_1$, takie że dla dowolnego $\theta\in L_2(S,\mathcal{S},\mu)$ i dla estymatora liniowego $\theta^*$ z filtrem wybranym zgodnie z (\ref{estimator1}) zachodzi
+\begin{displaymath}
+\mathbb{E}_{\theta}\norm{\theta^*-\theta}^2\leq \max \{1,C_2\}(1+\gamma_3\norm{A}^2\rho\sqrt{L_{\Lambda}})\min_{\lambda\in \Lambda}\Psi(\lambda,\theta),
+\end{displaymath}
+o ile $\rho\sqrt{L_{\Lambda}}<\gamma_4$, a minimum rozumiane jest jak w poprzednim twierdzeniu.
+\end{tw}
+
+Zanim udowodnimy powyższe twierdzenia, zauważmy, że nierówność występująca w tezie twierdzenia \ref{glowny3} możemy zapisać w postaci
+\begin{displaymath}
+\mathbb{E}_{\theta}\norm{\theta^*-\theta}^2\leq C'(1+\gamma_1B^{-1})\min_{\lambda\in \Lambda}\left(\mathbb{E}_{\theta}\norm{\lambda X-\theta}^2+pen_A(\lambda)\right)+\gamma_2B\norm{A}^2\epsilon^2L_{\Lambda}\omega(B^2L_{\Lambda})
+\end{displaymath}
+dla pewnej funkcji $pen_A\colon \Lambda \to \mathbb{R}_+$, która może być interpretowana jako funkcja kary w badanym problemie pojawiająca się w związku z brakiem zwartości ('skomplikowaniem') operatora $A$. Takie przedstawienie uzyskanego wyniku jest podobne do wyników uzyskanych w innych modelach (por. \cite{barron}, str. 378, \cite{loubes}, str. 181, \cite{loubes}, str. 668, \cite{giraud}, str. 37).
+
+
+\begin{proof}[Dowód twierdzenia \ref{glowny3}]
+Niech $TT^*$ będzie rozkładem Choleskiego operatora kowariancji $UA^*AU^*$ szumu $\eta$. Niech $\tilde{\lambda}\in \Lambda$ będzie takim filtrem, że związany z nim estymator jest wyrocznią, czyli $\tilde{\theta}=\arg \min_{\lambda\in \Lambda}\Psi(\lambda,\theta)$, natomiast przez $\lambda^*$ oznaczmy filtr definiowany przez (\ref{estimator1}) i związany z nim estymator przez $\theta^*$. Oznaczmy ponadto $\max\{1,C_2\}=C'$ oraz $\max\{1,\norm{T}^2\}=C''$.
+W rozpatrywanym modelu (\ref{ssmg}) $X=\theta+\epsilon\sigma\eta$. Dostajemy stąd, że 
+\begin{displaymath}
+\psi[\lambda^*,X]=2\epsilon\int_S(1-\lambda^*)^2\sigma \theta\eta d\mu-2\epsilon\int_S\sigma \theta \eta d\mu-\int_S\theta ^2d\mu+\epsilon^2\int_S(\lambda^{*2}-2\lambda^*)\sigma^2(\eta^2-1)+\Psi(\theta^*,\theta).
+\end{displaymath}
+A stąd mamy
+\begin{displaymath}
+\mathbb{E}_{\theta}\psi[\lambda^*,X]=\mathbb{E}_{\theta}\Psi(\lambda^*,\theta)-\int_S\theta ^2d\mu+
+\end{displaymath}
+\begin{displaymath}
++2\epsilon\mathbb{E}_{\theta}\int_S(1-\lambda^*)^2\sigma \theta \eta d\mu+\epsilon^2\mathbb{E}_{\theta}\int_S(\lambda^{*2}-2\lambda^*)\sigma^2(\eta^2-1)d\mu.
+\end{displaymath}
+Korzystając z wprowadzonych wcześniej lematów, oszacujemy dwa ostatnie składniki tego wyrażenia.\\
+Zauważmy, że zachodzi
+\begin{displaymath}
+\epsilon\mathbb{E}_{\theta}\int_S(1-\lambda^*)^2\sigma \theta \eta d\mu=
+\epsilon\mathbb{E}_{\theta}\int_S[(1-\lambda^*)^2-(1-\tilde{\lambda})^2]\sigma \theta \eta d\mu\geq
+\end{displaymath}
+\begin{displaymath}
+\geq -\epsilon\mathbb{E}_{\theta}\left|\int_S[(1-\lambda^*)^2-(1-\tilde{\lambda})^2]\sigma \theta \eta d\mu\right|.
+\end{displaymath}
+Korzystając z lematu \ref{lem4} z $K=S$ i $v=[(1-\lambda^*)^2-(1-\tilde{\lambda})^2]\sigma \theta $ dostajemy
+\begin{displaymath}
+-\epsilon\mathbb{E}_{\theta}\left|\int_S[(1-\lambda^*)^2-(1-\tilde{\lambda})^2]\sigma \theta \eta d\mu\right|\geq -\epsilon\norm{T}\sqrt{2\ln (NS)}\mathbb{E}_{\theta}\left(\int_S[(1-\lambda^*)^2-(1-\tilde{\lambda})^2]\sigma^2\theta ^2 d\mu\right)^{1/2}-
+\end{displaymath}
+\begin{displaymath}
+-2\epsilon\norm{T}\sqrt{\ln (NS)/S}\left(\mathbb{E}_{\theta}\int_S[(1-\lambda^*)^2-(1-\tilde{\lambda})^2]\sigma^2\theta ^2 d\mu\right)^{1/2}\geq
+\end{displaymath}
+\begin{displaymath}
+\geq -2\epsilon\norm{T}\sqrt{2\ln (NS)}\mathbb{E}_{\theta}\left(\int_S[(1-\lambda^*)^2+(1-\tilde{\lambda})^2](\lambda^{*2}+\tilde{\lambda^2})\theta ^2\sigma^2d\mu\right)^{1/2}-
+\end{displaymath}
+\begin{displaymath}
+-4\epsilon\norm{T}\sqrt{\ln (NS)/S}\left(\mathbb{E}_{\theta}\int_S[(1-\lambda^*)^2+(1-\tilde{\lambda})^2](\lambda^{*2}+\tilde{\lambda^2})\theta ^2\sigma^2 d\mu\right)^{1/2}.
+\end{displaymath}
+Korzystając  z nierówności $2ab\leq B^{-1}a^2+Bb^2$ zachodzącej dla dowolnego $B>0$ dla pierwszego składnika dostajemy
+\begin{displaymath}
+2\epsilon\norm{T}\sqrt{2\ln (NS)}\mathbb{E}_{\theta}\left(\int_S[(1-\lambda^*)^2+(1-\tilde{\lambda})^2](\lambda^{*2}+\tilde{\lambda^2})\theta ^2\sigma^2d\mu\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \mathbb{E}_{\theta}2\epsilon\norm{T}\sqrt{2\ln (NS)\norm{(\lambda^{*2}+\tilde{\lambda^2})\sigma^2}_{\infty}}\left(\int_S[(1-\lambda^*)^2+(1-\tilde{\lambda})^2]\theta ^2d\mu\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 2B\epsilon^2\norm{T}^2 \ln (NS)\mathbb{E}_{\theta}\norm{(\lambda^{*2}+\tilde{\lambda^2})\sigma^2}_{\infty}+B^{-1}\mathbb{E}_{\theta}\int_S[(1-\lambda^*)^2+(1-\tilde{\lambda})^2]\theta ^2d\mu\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 2B\epsilon^2\norm{T}^2 \ln (NS)\mathbb{E}_{\theta}\left(\norm{\lambda^{*2}\sigma^2}_{\infty}+\norm{\tilde{\lambda^2}\sigma^2}_{\infty}\right)+B^{-1}\mathbb{E}_{\theta}\int_S[(1-\lambda^*)^2+(1-\tilde{\lambda})^2]\theta ^2d\mu.
+\end{displaymath}
+Postępując podobnie z drugim wyrażeniem otrzymujemy
+\begin{displaymath}
+4\epsilon\norm{T}\sqrt{\ln (NS)/S}\left(\mathbb{E}_{\theta}\int_S[(1-\lambda^*)^2+(1-\tilde{\lambda})^2](\lambda^{*2}+\tilde{\lambda^2})\theta ^2\sigma^2 d\mu\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 4B\epsilon^2\norm{T}^2\ln (NS)/S\max_{\lambda\in \Lambda}\norm{(\lambda^{2}+\tilde{\lambda^2})\sigma^2}_{\infty}+B^{-1}\mathbb{E}_{\theta}\int_S[(1-\lambda^*)^2+(1-\tilde{\lambda})^2]\theta ^2d\mu.
+\end{displaymath}
+Korzystając z definicji wielkości $S$ mamy, że
+\begin{displaymath}
+\frac{\max_{\lambda\in \Lambda}\norm{(\lambda^{2}+\tilde{\lambda^2})\sigma^2}_{\infty}}{S}\leq 
+\norm{\lambda^{*2}\sigma^2}_{\infty}+\norm{\tilde{\lambda^2}\sigma^2}_{\infty}.
+\end{displaymath}
+A stąd mamy oszacowanie postaci
+\begin{displaymath}
+4\epsilon\norm{T}\sqrt{\ln (NS)/S}\left(\mathbb{E}_{\theta}\int_S[(1-\lambda^*)^2+(1-\tilde{\lambda})^2](\lambda^{*2}+\tilde{\lambda^2})\theta ^2\sigma^2 d\mu\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 4B\epsilon^2\norm{T}^2 \ln (NS)\mathbb{E}_{\theta}\left(\norm{\lambda^{*2}\sigma^2}_{\infty}+\norm{\tilde{\lambda^2}\sigma^2}_{\infty}\right)+B^{-1}\mathbb{E}_{\theta}\int_S[(1-\lambda^*)^2+(1-\tilde{\lambda})^2]\theta ^2d\mu.
+\end{displaymath}
+Jako, że zachodzi 
+$\ln (NS)\leq L_{\Lambda},$
+to łącząc powyższe dwa oszacowania dostajemy, że 
+\begin{displaymath}
+\epsilon\mathbb{E}_{\theta}\int_S(1-\lambda^*)^2\sigma\theta \eta d\mu\geq 
+\end{displaymath}
+\begin{displaymath}
+\geq -2B^{-1}\mathbb{E}_{\theta}\int_S(1-\lambda^*)^2d\mu-2B^{-1}\int_S(1-\tilde{\lambda})^2d\mu-6B\norm{T}^2\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]-6B\norm{T}^2\mathbb{E}_{\theta}\Delta^{\epsilon}[\tilde{\lambda}].
+\end{displaymath}
+
+Znajdziemy teraz oszacowanie dla składnika $\epsilon^2\mathbb{E}_{\theta}\left|\int_S(\lambda^{*2}-2\lambda^*)\sigma^2(\eta^2-1)d\mu\right|$. Zauważmy, że  dla dowolnego $\lambda\in \Lambda$ zachodzi $\lambda^2\leq (\lambda^2-2\lambda)^2\leq 9\lambda^2$ rozumiane jako nierówność funkcyjna zachodząca dla wszystkich argumentów funkcji $\lambda$. Posłużymy się teraz lematem \ref{lem5} z $K=S$, $q=3$ i $v=(\lambda^{*2}-2\lambda^*)\sigma^2$. 
+\begin{displaymath}
+\epsilon^2\mathbb{E}_{\theta}\left|\int_S(\lambda^{*2}-2\lambda^*)\sigma^2(\eta^2-1)d\mu\right|\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \epsilon^2\norm{T}^2D\left(\sqrt{\ln (NS)}+m_V\ln (SM(3))\right)\left(\mathbb{E}_{\theta}||v||+\sqrt{\mathbb{E}_{\theta}||v||^2/S}\right).
+\end{displaymath}
+Analogicznie jak w rozważanym wcześniej przypadku dekompozycji według wartości singularnych mamy, że
+\begin{displaymath}
+m(v)\leq 3\rho (\lambda),\ M(3)\leq M,\ m_V\leq 3\max_{\lambda\in \Lambda}\rho(\lambda)=3\rho.
+\end{displaymath}
+
+Stąd dostajemy, że 
+\begin{displaymath}
+\sqrt{\ln (NS)}+m_V\ln (SM(3))\leq C\sqrt{L_{\Lambda}},
+\end{displaymath}
+gdzie $C$ jest pewną stałą zależną tylko od $C_1$. Możemy teraz kontynuować szacowanie analizowanego wyrażenia.
+\begin{displaymath}
+\epsilon^2\norm{T}^2\mathbb{E}_{\theta}\int_S(\lambda^{*2}-2\lambda^*)\sigma^2(\eta^2-1)d\mu\geq
+\end{displaymath}
+\begin{displaymath}
+\geq  -\epsilon^2\norm{T}^2D\left(\sqrt{\ln (NS)}+m_V\ln (SM(3))\right)\left(\mathbb{E}_{\theta}||v||+\sqrt{\mathbb{E}_{\theta}||v||^2/S}\right)\geq
+\end{displaymath}
+\begin{displaymath}
+\geq -\epsilon^2\norm{T}^2C\sqrt{L_{\Lambda}}\mathbb{E}_{\theta}\left(\int_S(\lambda^{*2}-2\lambda^*)^2\sigma^4d\mu\right)^{1/2}-\epsilon^2\norm{T}^2C\sqrt{L_{\Lambda}}S^{-1/2}\left(\mathbb{E}_{\theta}\int_S(\lambda^{*2}-2\lambda^*)^2\sigma^4 d\mu\right)^{1/2}\geq
+\end{displaymath}
+\begin{displaymath}
+\geq -\epsilon^2\norm{T}^2C\sqrt{L_{\Lambda}}\mathbb{E}_{\theta}\left(\int_S\lambda^{*3}\sigma^4d\mu\right)^{1/2}-\epsilon^2\norm{T}^2C\sqrt{L_{\Lambda}}S^{-1/2}\left(\mathbb{E}_{\theta}\int_S\lambda^{*3}\sigma^4d\mu\right)^{1/2}.
+\end{displaymath}
+Korzystając z faktu, że $\min_{\lambda\in \Lambda}\norm{\lambda^2\sigma^2}_{\infty}\leq \mathbb{E}_{\theta}\norm{\lambda^{*2}\sigma^2}_{\infty}$ mamy, że
+\begin{displaymath}
+S^{-1}\mathbb{E}_{\theta}\int_S\sigma^3\lambda^{*4}d\mu\leq 
+ \mathbb{E}_{\theta}\norm{\sigma^2\lambda^{*2}}_{\infty}\mathbb{E}_{\theta}\int_S\sigma\lambda^{*2}d\mu.
+\end{displaymath}
+Podobnie dla drugiego wyrażenia
+\begin{displaymath}
+\mathbb{E}_{\theta}\left(\int_S\sigma^3\lambda^{*4}d\mu\right)^{1/2}\leq \mathbb{E}_{\theta}\left(\norm{\sigma^2\lambda^{*2}}_{\infty}\int_S\sigma\lambda^{*2}d\mu\right)^{1/2}.
+\end{displaymath}
+Ponownie korzystając z nierówności $2ab\leq B^{-1}a^2+Bb^2$ dostajemy
+\begin{displaymath}
+C\sqrt{L_{\Lambda}}\mathbb{E}_{\theta}\left(\norm{\sigma^2\lambda^{*2}}_{\infty}\int_S\sigma\lambda^{*2}d\mu\right)^{1/2}
+\leq B\mathbb{E}_{\theta}C^2L_{\Lambda}\norm{\sigma^2\lambda^{*2}}_{\infty}+2B^{-1}\mathbb{E}_{\theta}\int_S\sigma\lambda^{*2}d\mu.
+\end{displaymath}
+Możemy także zapisać
+\begin{displaymath}
+C\sqrt{L_{\Lambda}}\left(\mathbb{E}_{\theta}\norm{\sigma^2\lambda^{*2}}_{\infty}\mathbb{E}_{\theta}\int_S\sigma\lambda^{*2}d\mu\right)^{1/2}
+\leq B\mathbb{E}_{\theta}CL_{\Lambda}\norm{\sigma^2\lambda^{*2}}_{\infty}+2B^{-1}\mathbb{E}_{\theta}\int_S\sigma\lambda^{*2}d\mu.
+\end{displaymath}
+Łącząc oba te oszacowania dostajemy
+\begin{displaymath}
+\epsilon^2\mathbb{E}_{\theta}\int_S(\lambda^{*2}-2\lambda^*)\sigma^2(\eta^2-1)d\mu\geq
+-CB\norm{T}^2\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]-4\epsilon^2\norm{T}^2B^{-1}\mathbb{E}_{\theta}\int_S\sigma\lambda^{*2}d\mu.
+\end{displaymath}
+Powyższe rozważania pozwalają zapisać nam następujący wniosek
+\begin{displaymath}
+2\epsilon\mathbb{E}_{\theta}\int_S(1-\lambda^*)^2\sigma \theta \eta d\mu+\epsilon^2\mathbb{E}_{\theta}\int_S(\lambda^{*2}-2\lambda^*)\sigma^2(\eta^2-1)d\mu\geq
+\end{displaymath}
+\begin{displaymath}
+\geq -4B^{-1}\norm{T}^2\mathbb{E}_{\theta}\int_S\sigma\lambda^{*2}d\mu -4B^{-1}\norm{T}^2\int_S\sigma\tilde{\lambda}^2d\mu-CB\norm{T}^2\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]-CB\norm{T}^2\Delta^{\epsilon}[\tilde{\lambda}].
+\end{displaymath}
+Możemy teraz przejść do dalszych oszacowań.
+\begin{displaymath}
+\mathbb{E}_{\theta}\psi[\lambda^*,X]=\mathbb{E}_{\theta}\Psi(\lambda^*,\theta)-\int_S\theta ^2d\mu+
+\end{displaymath}
+\begin{displaymath}
++2\epsilon\mathbb{E}_{\theta}\int_S(1-\lambda^*)^2\sigma \theta_i \eta d\mu+\epsilon^2\mathbb{E}_{\theta}\int_S(\lambda^{*2}-2\lambda^*)\sigma^2(\eta^2-1)d\mu \geq
+\end{displaymath}
+\begin{displaymath}
+\geq \mathbb{E}_{\theta}\Psi(\lambda^*,\theta)-\int_S\theta ^2d\mu-4B^{-1}C''\mathbb{E}_{\theta}\Psi(\lambda^*,\theta)-
+\end{displaymath}
+\begin{displaymath}
+-4B^{-1}C''\Psi(\tilde{\lambda},\theta)-CB\norm{T}^2\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]-CB\norm{T}^2\Delta^{\epsilon}[\tilde{\lambda}].
+\end{displaymath}
+Zatem zachodzi, że
+\begin{displaymath}
+(1-4B^{-1}C''\mathbb{E}_{\theta}\Psi(\lambda^*,\theta)\leq 
+\end{displaymath}
+\begin{displaymath}
+\leq \mathbb{E}_{\theta}\psi[\lambda^*,X]+\int_S\theta ^2d\mu+4B^{-1}C''\Psi(\tilde{\lambda},\theta)+CB\norm{T}^2\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]+CB\norm{T}^2\Delta^{\epsilon}[\tilde{\lambda}].
+\end{displaymath}
+Jednak, jako że filtr $\lambda^*$ był zdefiniowany  jako argument minimalizujący nieobciążony estymator wyrażenia $\Psi$, musi zachodzić, że
+\begin{displaymath}
+\mathbb{E}_{\theta}\psi[\lambda^*,X]\leq \mathbb{E}_{\theta}\psi[\tilde{\lambda},X]=\Psi(\tilde{\lambda},\theta)+\int_S\theta ^2d\mu.
+\end{displaymath}
+Otrzymujemy zatem, że 
+\begin{displaymath}
+(1-4B^{-1}C'')\mathbb{E}_{\theta}\Psi(\lambda^*,\theta)\leq 
+\end{displaymath}
+\begin{displaymath}
+\leq 1+4B^{-1}C'')\Psi(\tilde{\lambda},\theta)+CB\norm{T}^2\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]+CB\norm{T}^2\Delta^{\epsilon}[\tilde{\lambda}].
+\end{displaymath}
+Zauważmy, że dla dowolnego $x>0$ zachodzi następujące oszacowanie
+\begin{displaymath}
+\norm{\sigma^2\lambda^2}_{\infty}=\norm{\sigma^2\lambda^2\pmb{1}\left\{x\norm{\sigma^2\lambda^2}_{\infty}<\int_S\sigma\lambda^2 d\mu\right\}}_{\infty}+\norm{\sigma^2\lambda^2\pmb{1}\left\{x\norm{\sigma\lambda^2}_{\infty}\geq \int_S\sigma\lambda^2 d\mu\right\}}_{\infty}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \frac{1}{x}\int_S\sigma\lambda^2 d\mu+\max_{\lambda\in \Lambda}\norm{\sigma^2\lambda^2\pmb{1}\left\{x\norm{\sigma^2\lambda^2}_{\infty}\geq \int_S\sigma\lambda^2 d\mu\right\}}_{\infty}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \frac{1}{x}\int_S\sigma\lambda^2 d\mu+\omega (x)\leq \frac{1}{x\epsilon^2}\Psi(\lambda,\theta)+\omega (x)\ \forall_{\lambda\in \Lambda}.
+\end{displaymath}
+Stąd dostajemy 
+\begin{displaymath}
+\Delta^{\epsilon}[\lambda]=\epsilon^2 L_{\Lambda}\norm{\sigma^2\lambda^2}_{\infty}\leq \frac{L_{\Lambda}}{x}\Psi(\lambda,\theta)+\epsilon^2L_{\Lambda}\omega (x).
+\end{displaymath}
+Wykorzystamy teraz powyższe nierówności do wyrażenia $(1-4B^{-1}C'')\mathbb{E}_{\theta}\Psi(\lambda^*,\theta)\leq (1+4B^{-1}C'')\Psi(\tilde{\lambda},\theta)+CB\norm{T}^2\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]+CB\norm{T}^2\Delta^{\epsilon}[\tilde{\lambda}]$.
+\begin{displaymath}
+(1-4B^{-1}C'')\mathbb{E}_{\theta}\Psi(\lambda^*,\theta)\leq (1+4B^{-1}C'')\Psi(\tilde{\lambda},\theta)+CB\norm{T}^2\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]+CB\norm{T}^2\Delta^{\epsilon}[\tilde{\lambda}]\leq 
+\end{displaymath}
+\begin{displaymath}
+\leq CB\norm{T}^2\frac{L_{\Lambda}}{x}\mathbb{E}_{\theta}\Psi(\lambda^*,\theta)+CB\norm{T}^2\epsilon^2L_{\Lambda}\omega (x)+\left(CB\norm{T}^2\frac{L_{\Lambda}}{x}+1+4B^{-1}C''\right)\Psi(\tilde{\lambda},\theta).
+\end{displaymath}
+Mamy stąd, że 
+\begin{displaymath}
+\mathbb{E}_{\theta}\Psi(\lambda^*,\theta)\leq \frac{CB\norm{T}^2\epsilon^2L_{\Lambda}\omega (x)}{1-4B^{-1}C''-CB\norm{T}^2\frac{L_{\Lambda}}{x}}+\frac{CB\norm{T}^2\frac{L_{\Lambda}}{x}+1+4B^{-1}C''}{1-4B^{-1}C''-CB\norm{T}^2\frac{L_{\Lambda}}{x}}\Psi(\tilde{\lambda},\theta).
+\end{displaymath}
+Korzystając z lematu \ref{lem6} mamy ponadto, że
+\begin{displaymath}
+\frac{1}{C'}\mathbb{E}_{\theta}||\theta^*-\theta||^2\leq (1+4B^{-1}C'')\mathbb{E}_{\theta}\Psi(\lambda^*,\theta)+CB\norm{T}^2\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]\leq
+\end{displaymath}
+\begin{displaymath}
+\leq (1+4B^{-1}C''+CB\norm{T}^2\frac{L_{\Lambda}}{x})\mathbb{E}_{\theta}\Psi(\lambda^*,\theta)+CB\norm{T}^2\epsilon^2L_{\Lambda}\omega (x).
+\end{displaymath}
+Niech teraz $x=B^2L_{\Lambda}$ oraz $\gamma$ będzie stałą zależną tylko od $C$ (zależące tylko od stałej $C_2$). Wtedy 
+\begin{displaymath}
+\frac{1}{C'}\mathbb{E}_{\theta}||\theta^*-\theta||^2\leq (1+\gamma B^{-1}C'')\mathbb{E}_{\theta}\Psi(\lambda^*,\theta)+CB\norm{T}^2\epsilon^2L_{\Lambda}\omega (B^2L_{\Lambda}\norm{T}^2)\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \frac{1+\gamma B^{-1}C''}{1-\gamma B^{-1}C''}CB\norm{T}^2\epsilon^2L_{\Lambda}\omega (B^2L_{\Lambda}\norm{T}^2)+CB\norm{T}^2\epsilon^2L_{\Lambda}\omega (B^2L_{\Lambda}\norm{T}^2)+\frac{(1+\gamma B^{-1}C'')^2}{1-\gamma B^{-1}C''}\Psi(\tilde{\lambda},\theta).
+\end{displaymath}
+Korzystając z faktu, że $\lim_{x\to \infty}\frac{x+\gamma}{x-\gamma}=1$, powyższe rozważania prowadzą nas do nierówności  
+\begin{displaymath}
+\frac{1}{C'}\mathbb{E}_{\theta}||\theta^*-\theta||^2\leq (1+\gamma_1B^{-1}C'')\Psi(\tilde{\lambda},\theta)+\gamma_2B\norm{T}^2\epsilon^2L_{\Lambda}\omega (B^2L_{\Lambda}),
+\end{displaymath}
+która kończy dowód twierdzenia \ref{glowny3}.
+\end{proof}
+
+\begin{proof}[Dowód twierdzenia \ref{glowny4}] 
+Będziemy stosować te same oznaczenia na estymator, wyrocznię i stałe jak w dowodzie twierdzenia \ref{glowny3}. 
+Wyrażenie $\frac{\norm{\sigma^2\lambda^2}_{\infty}}{\int_S\sigma^2\lambda^2 d\mu}$ możemy oszacować w następujący sposób
+\begin{displaymath}
+\frac{\norm{\sigma^2\lambda^2}_{\infty}}{\int_S\sigma^2\lambda^2 d\mu}\leq \rho \frac{\norm{\sigma^2\lambda^2}_{\infty}}{\left(\int_S\sigma^4\lambda^4 d\mu\right)^{1/2}}\leq \rho^2.
+\end{displaymath}
+Zauważmy ponadto, że dla dowolnego $\lambda\in \Lambda$ zachodzi, że
+\begin{displaymath}
+\Psi(\lambda,\theta)=\int_S(1-\lambda)^2\theta ^2 d\mu+\epsilon^2\int_S\sigma\lambda^2 d\mu\geq \epsilon^2\int_S\sigma\lambda^2 d\mu.
+\end{displaymath}
+Skąd dostajemy, że
+\begin{displaymath}
+\epsilon^2\norm{\sigma^2\lambda^2}_{\infty}\leq C_2 \rho^2\Psi(\lambda,\theta).
+\end{displaymath}
+Co z kolei prowadzi do oszacowania
+\begin{displaymath}
+\Delta^{\epsilon}[\lambda]=\epsilon^2L_{\Lambda}\norm{\sigma^2\lambda^2}_{\infty}\leq C_2\rho^2L_{\Lambda}\Psi(\lambda,\theta).
+\end{displaymath}
+W dowodzie twierdzenia \ref{glowny3} uzyskaliśmy nierówność następującej postaci
+\begin{displaymath}
+(1-4B^{-1}C'')\mathbb{E}_{\theta}\Psi(\lambda^*,\theta)\leq (1+4B^{-1}C'')\Psi(\tilde{\lambda},\theta)+CB\norm{T}^2\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]+CB\norm{T}^2\Delta^{\epsilon}[\tilde{\lambda}].
+\end{displaymath}
+Wykorzystując wyprowadzone oszacowanie mamy stąd, że
+\begin{displaymath}
+(1-4B^{-1})\mathbb{E}_{\theta}\Psi(\lambda^*,\theta)\leq (1+4B^{-1}C'')\Psi(\tilde{\lambda},\theta)+CBC_2\norm{T}^2\rho^2L_{\Lambda}\mathbb{E}_{\theta}\Psi(\lambda^*,\theta)+CBC_2\norm{T}^2\rho^2L_{\Lambda}\Psi(\tilde{\lambda},\theta),
+\end{displaymath}
+co prowadzi do
+\begin{displaymath}
+\mathbb{E}_{\theta}\Psi(\lambda^*,\theta)\leq\frac{1+4B^{-1}C''+CB\norm{T}^2\rho^2L_{\Lambda}}{1-4B^{-1}C''-CB\norm{T}^2\rho^2L_{\Lambda}}\Psi(\tilde{\lambda},\theta).
+\end{displaymath}
+Ponownie korzystając z lematu \ref{lem6} dostajemy, że
+\begin{displaymath}
+\frac{1}{C'}\mathbb{E}_{\theta}||\theta^*-\theta||^2\leq (1+4B^{-1}C'')\mathbb{E}_{\theta}\Psi(\lambda^*,\theta)+CB\norm{T}^2\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda^*]\leq
+\end{displaymath}
+\begin{displaymath}
+\leq (1+4B^{-1}C''+CB\norm{T}^2\rho^2L_{\Lambda})\Psi(\tilde{\lambda},\theta).
+\end{displaymath}
+Łącząc te dwie nierówności mamy
+\begin{displaymath}
+\frac{1}{C'}\mathbb{E}_{\theta}||\theta^*-\theta||^2\leq \frac{(1+4B^{-1}C''+CB\norm{T}^2\rho^2L_{\Lambda})^2}{1-4B^{-1}C''-CB\norm{T}^2\rho^2L_{\Lambda}}\Psi(\tilde{\lambda},\theta).
+\end{displaymath}
+Zauważmy teraz, że istnieje taka stała $\gamma_4>0$, że jeśli tylko zachodzi $\norm{T}^2\rho^2L_{\Lambda}\leq \gamma_4$, to wybór $B$ jako $(\rho^2L_{\Lambda})^{-1/2}$ prowadzi do nierówności $4B^{-1}C''+CB\norm{T}^2\rho^2L_{\Lambda}<\norm{T}^2 1/2$, a stąd $1-4B^{-1}-CB\norm{T}^2\rho^2L_{\Lambda}\geq 1/2$, czyli jest odcięte od zera. Wtedy wybór $B=(\rho^2L_{\Lambda})^{-1/2}$ prowadzi do nierówności
+\begin{displaymath}
+\frac{1}{C'}\mathbb{E}_{\theta}||\theta^*-\theta||^2\leq \frac{(1+C\norm{T}^2\rho\sqrt{L_{\Lambda}})^2}{1-C\norm{T}^2\rho\sqrt{L_{\Lambda}}}\Psi(\tilde{\lambda},\theta),
+\end{displaymath}
+która z kolei prowadzi nas do postulowanej na początku nierówności
+\begin{displaymath}
+\frac{1}{C'}\mathbb{E}_{\theta}||\theta^*-\theta||^2\leq (1+\gamma_3\norm{T}^2\rho\sqrt{L_{\Lambda}})\Psi(\tilde{\lambda},\theta),
+\end{displaymath}
+która kończy dowód twierdzenia \ref{glowny4}.
+\end{proof}
+
+
+\begin{wn}
+Niech założenie \ref{assbig} będzie spełnione, ponadto niech zachodzi $\lim_{\epsilon\to 0}\rho^2\ln(NS)=0$. Wtedy istnieją stałe $\mathbb{C}_2>0,\mathbb{C}_3>0$ zależące tylko od stałej $C_2$ i operatora $T=UA^*$, takie że dla $\rho^2\ln(NS)<\mathbb{C}_2$ i dla dowolnego $\theta\in L_2(S,\mathbb{S},\mu)$ zachodzi
+\begin{displaymath}
+\mathbb{E}_{\theta}||\theta^*-\theta||^2\leq \max\{1,C_2\}\left(1+\mathbb{C}_3\norm{T}^2\rho\sqrt{ln(NS)}\right)\min_{\lambda\in \Lambda}\Psi(\lambda,\theta),
+\end{displaymath}
+gdzie estymator $\tilde{\theta}$ i minimum rozumiane są jak poprzednio.
+\end{wn}
+
+
+
+
+
+
+
+
+\section{Przykład}\label{przyklad}
+
+
+
+
+
+
+
+
+
+\section{Lematy pomocnicze}\label{lematy}
+W rozdziale tym podamy dowody pomocniczych lematów użytych w pracy.
+\begin{lm}\label{pierwsza}
+Niech $\{X_i\}_{i=1}^{\infty}$ będzie ciągiem niezależnych zmiennych losowych o rozkładach odpowiednio $X_i\sim \mathcal{N}(0,s_i^2)$ i niech $\sum_{i=1}^{\infty}s_i^2=S<\infty$. Wtedy istnieje zmienna losowa $X\sim\mathcal{N}(0,S)$ taka, że $L_2- \lim_{n\to \infty}\sum_{i=1}^nX_i=X$.
+\end{lm}
+\begin{proof}
+Przestrzeń $L_2(\Omega,\mathcal{F},\mathbb{P})$ jest przestrzenią zupełną, więc wystarczy pokazać, że ciąg $\left\{\sum_{i=1}^{\infty}X_i\right\}_{n=1}^{\infty}$ jest ciągiem Cauchy'ego i graniczna zmienna losowa ma odpowiedni rozkład. Niech $n>m$, wtedy
+\begin{displaymath}
+0\leq \norm{\sum_{i=1}^{n}X_i-\sum_{i=1}^{m}X_i}_2^2=\norm{\sum_{i=m+1}^{n}X_i}_2^2\leq \sum_{m+1}^n\norm{X_i}_2^2=\sum_{m+1}^ns_i^2\to 0,\ n,m\to \infty,
+\end{displaymath}
+bo szereg $\sum_{i=1}^{\infty}s_i^2$ jest zbieżny. Zatem ciąg $\{X_i\}_{i=1}^{\infty}$ jest ciągiem Cauchy'ego, a zatem istnieje zmienna losowa $X$ taka, że $L_2- \lim_{n\to \infty}\sum_{i=1}^nX_i=X$ oraz z uwagi na niezależność zmiennych $X_i$, $\sum_{i=1}^nX_i\sim\mathcal{N}(0,\sum_{i=1}^ns_i^2)$, a jako, że zbieżność w normie $L_2$ implikuje słabą zbieżność dostajemy żądaną tezę o rozkładzie $X$.
+\end{proof}
+\begin{lm}\label{druga}
+Niech $\{X_i\}_{i=1}^{\infty}$ będzie ciągiem niezależnych zmiennych losowych o rozkładach odpowiednio $X_i\sim \mathcal{N}(\theta_i,\sigma_i^2)$ oraz niech szeregi $\sum_{i=1}^{\infty}\sigma_i^2$ i $\sum_{i=1}^{\infty}\theta_i^2$ będą zbieżne. Wtedy istnieje zmienna losowa $Y\in L_2(\Omega,\mathcal{F},\mathbb{P})$ taka, że $L_2- \lim_{n\to \infty}\sum_{i=1}^nX_i^2=Y$.
+\end{lm}
+\begin{proof}
+Przestrzeń $L_2(\Omega,\mathcal{F},\mathbb{P})$ jest przestrzenią zupełną, więc wystarczy pokazać, że ciąg $\left\{\sum_{i=1}^{n}X_i^2\right\}_{n=1}^{\infty}$ jest ciągiem Cauchy'ego. Niech $n>m$, wtedy mamy
+\begin{displaymath}
+0\leq \norm{\sum_{i=1}^{n}X_i^2-\sum_{i=1}^{m}X_i^2}_2^2=\norm{\sum_{i=m+1}^{n}X_i^2}_2^2\leq \sum_{m+1}^n\norm{X_i^2}_2^2.
+\end{displaymath}
+Zauważmy teraz, że $\norm{X_i^2}_2^2=\mathbb{E}X_i^4=\mathbb{E}\left((X_i-\mathbb{E}X_i)+\mathbb{E}X_i\right)^4=3\sigma_i^2+6\theta_i^2\sigma_i^2+\theta_i^4$. Założenie o zbieżności szeregów $\sum_{i=1}^{\infty}\sigma_i^2$ i $\sum_{i=1}^{\infty}\theta_i^2$ implikuje zbieżność szeregów $\sum_{i=1}^{\infty}\sigma_i^4$, $\sum_{i=1}^{\infty}\theta_i^4$ oraz $\sum_{i=1}^{\infty}\sigma_i^2\theta_i^2$, co wraz z poprzednim oszacowaniem pokazuje, że ciąg $\left\{\sum_{i=1}^{\infty}X_i^2\right\}_{n=1}^{\infty}$ jest ciągiem Cauchy'ego, co na mocy zupełności $L_2(\Omega,\mathcal{F},\mathbb{P})$ implikuje istnienie żądanej zmiennej losowej $Y$.
+\end{proof}
+\begin{lm}\label{szacowanie}
+Niech $\eta\colon H\to L_2(T,\mathbb{T},\tau)$ będzie gaussowskim szumem o skończonym silnym drugim momencie oraz niech $v$ będzie pewnym elementem z przestrzeni $H$ takim, że $\norm{v}_{\infty}<\infty$. Załóżmy, że zachodzi $\langle \eta, v\rangle\sim \mathcal{N}(0,1)$. Wtedy dla dowolnego $t>0$ zachodzi
+\begin{displaymath}
+\ln\mathbb{E}\exp\left(t\langle \eta^2 -1,v\rangle\right)\leq \frac{t^2\norm{v}^2_2}{1-t\norm{v}_{\infty}}.
+\end{displaymath}
+\end{lm}
+\begin{proof}
+Zachodzenie powyższego lematu pokazano, gdy $v$ jest funkcją prostą w \cite{laurent}, str. 1325. Jako że $\eta$ ma skończone drugie momenty i $v$ jest ograniczona, możemy zastosować metodę komplikacji by uzyskać żądaną tezę.
+\end{proof}
+Przejdziemy teraz do dowodów lematów użytych do dowodzenia głównych rezultatów pracy.
+\begin{proof} [Dowód lematu \ref{lem1}]
+Na początek zauważmy pewien użyteczny fakt. Niech $X\sim \mathcal{N}(0,1)$ będzie zmienną losową. Wtedy zachodzi oszacowanie
+\begin{displaymath}
+\mathbb{E}X^2\pmb{1}_{\{|X|>a\}}\leq \frac{2}{\sqrt{2\pi}}(a+a^{-1})e^{-a^2/2}\ \forall_{a>0}.
+\end{displaymath}
+Istotnie możemy napisać, że
+\begin{displaymath}
+\mathbb{E}X^2\pmb{1}_{\{|X|>a\}}=2\int_{a}^{\infty}\frac{1}{\sqrt{2\pi}}x^2e^{-x^2/2}dx=\frac{2}{\sqrt{2\pi}}\left[-xe^{-x^2/2}|_a^{\infty}+\int_a^{\infty}e^{-x^2/2}dx\right]\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \frac{2}{\sqrt{2\pi}}\left[ae^{-a^2/2}+\frac{1}{a}e^{-a^2/2}\right],
+\end{displaymath}
+gdzie skorzystaliśmy z nierówności $1-\Phi(x)\leq x^{-1}\phi(x)$ zachodzącej dla dowolnego $x>0$, gdzie $\Phi,\phi$ oznaczają odpowiednio dystrybuantę i gęstość standardowego rozkładu normalnego (\cite{feller}, str. 175).
+Przejdziemy teraz do dowodu właściwej części lematu.\\
+Oznaczmy przez $\zeta_v=\frac{1}{\norm{v}}\sum_{k=1}^{\infty}v_k\xi_k$. Wyrażenie to jest skończone na mocy lematu \ref{pierwsza} i faktu, że $v\in l^2$. Zachodzi oczywiście, że $|\zeta_v|\norm{v}=\left|\sum_{k=1}^{\infty}v_k\xi_k\right|$. Możemy zatem zapisać, że
+\begin{displaymath}
+\mathbb{E}\left|\sum_{k=1}^{\infty}v_k\xi_k\right|=\mathbb{E}|\zeta_v|\norm{v}\leq \mathbb{E}\norm{v}\max_{u\in V}|\zeta_u|=
+\end{displaymath}
+\begin{displaymath}
+\mathbb{E}\norm{v}\max_{u\in V}|\zeta_u|\pmb{1}_{\{\max_{u\in V}|\zeta_u|\leq \sqrt{2\ln (NK)}\}}+
+\end{displaymath}
+\begin{displaymath}
++\mathbb{E}\norm{v}\max_{u\in V}|\zeta_u|\pmb{1}_{\{\max_{u\in V}|\zeta_u|> \sqrt{2\ln (NK)}\}}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \sqrt{2\ln (NK)}\mathbb{E}\norm{v}+\mathbb{E}\norm{v}\max_{u\in V}|\zeta_u|\pmb{1}_{\{\max_{u\in V}|\zeta_u|> \sqrt{2\ln (NK)}\}}.
+\end{displaymath}
+Skorzystamy następnie dla drugiego członu z nierówności Cauchy'ego-- Schwarza.
+\begin{displaymath}
+\sqrt{2\ln (NK)}\mathbb{E}\norm{v}+\mathbb{E}\norm{v}\max_{u\in V}|\zeta_u|\pmb{1}_{\{\max_{u\in V}|\zeta_u|> \sqrt{2\ln (NK)}\}}\leq 
+\end{displaymath}
+\begin{displaymath}
+\leq \sqrt{2\ln (NK)}\mathbb{E}\norm{v}+\left(\mathbb{E}\norm{v}^2\right)^{1/2}\left(\mathbb{E}\max_{u\in V}|\zeta_u|^2\pmb{1}_{\{\max_{u\in V}|\zeta_u|> \sqrt{2\ln (NK)}\}}\right)^{1/2}.
+\end{displaymath}
+Rozważmy teraz funkcję $F(t)=t^2\pmb{1}_{\{t> \sqrt{2\ln (NK)}\}}$. Z uwagi na monotoniczność funkcji kwadratowej dla dodatnich argumentów zachodzi, że
+\begin{displaymath}
+F(\max_{uv\in V}|\zeta_u|)= \max_{u\in V}F(|\zeta_u|),
+\end{displaymath}
+Ponownie na mocy lematu \ref{pierwsza} i niezależności zmiennych losowych $\{\xi_i\}$ mamy, że zmienne losowe $\zeta_v$ mają takie same rozkłady normalne $\mathcal{N}(0,1)$ dla każdego $v\in V$. Zatem możemy napisać
+\begin{displaymath}
+\mathbb{E}\left|\sum_{k=1}^{\infty}v_k\xi_k\right|\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \sqrt{2\ln (NK)}\mathbb{E}\norm{v}+\left(\mathbb{E}\norm{v}^2\right)^{1/2}\left(\mathbb{E}\max_{u\in V}|\zeta_u|^2\pmb{1}_{\{\max_{u\in V}|\zeta_u|> \sqrt{2\ln (NK)}\}}\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \sqrt{2\ln (NK)}\mathbb{E}\norm{v}+\left(\mathbb{E}\norm{v}^2\right)^{1/2}\left(\sum_{u\in V}\mathbb{E}|\zeta_u|^2\pmb{1}_{\{|\zeta_u|> \sqrt{2\ln (NK)}\}}\right)^{1/2}=
+\end{displaymath}
+\begin{displaymath}
+=\sqrt{2\ln (NK)}\mathbb{E}\norm{v}+\left(\mathbb{E}\norm{v}^2\right)^{1/2}\left(N\mathbb{E}|\zeta_v|^2\pmb{1}_{\{|\zeta_v|> \sqrt{2\ln (NK)}\}}\right)^{1/2}
+\end{displaymath}
+Następnie korzystając z oszacowania pokazanego na początku dowodu z $a=\sqrt{2\ln (NK)}$ dostajemy, że
+\begin{displaymath}
+N\mathbb{E}|\zeta_v|^2\pmb{1}_{\{|\zeta_v|> \sqrt{2\ln (NK)}\}}\leq \frac{2N}{\sqrt{2\pi}}\left(\sqrt{2\ln (NK)}+\frac{1}{\sqrt{2\ln (NK)}}\right)\frac{1}{NK}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq  \frac{1}{K}\left(\sqrt{2\ln (NK)}+\frac{1}{\sqrt{2\ln (NK)}}\right)\leq  \frac{1}{K}\cdot 2\ln (NK),
+\end{displaymath}
+o ile tylko zachodzi, że $NK\geq 2$. Przy założeniu na $K$ jest to spełnione dla każdego nietrywialnego problemu z licznością $V>1$. Łącząc te nierówności dostajemy, że
+\begin{displaymath}
+\sqrt{2\ln (NK)}\mathbb{E}\norm{v}+\left(\mathbb{E}\norm{v}^2\right)^{1/2}\left(N\mathbb{E}|\zeta_v|^2\pmb{1}_{\{|\zeta_v|> \sqrt{2\ln (NK)}\}}\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \sqrt{2\ln (NK)}\mathbb{E}\norm{v}+\sqrt{2\ln (NK)}\left(\mathbb{E}\norm{v}^2\cdot \frac{1}{K}\right)^{1/2}
+\end{displaymath}
+co kończy dowód.
+\end{proof}
+
+
+\begin{proof}[Dowód lematu \ref{lem2}]
+Zauważmy na początek, że z nierówności Markowa dostajemy, że dla dowolnego $t>0$ zachodzi, że $P(X>\epsilon)\leq e^{-t\epsilon}\mathbb{E}e^{tX}$. Policzymy pomocniczo następującą wartość oczekiwaną, dla dowolnego $a\in (0,1/2)$
+\begin{displaymath}
+\mathbb{E}\exp (a\xi_i^2)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{ax^2}e^{-x^2/2}dx=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-\frac{x^2}{2}(1-2a)}dx=\sqrt{\frac{1}{1-2a}}.
+\end{displaymath}
+Niech teraz $\eta_v=\frac{1}{\sqrt{2}\norm{v}}\sum_{i=1}^{\infty}v_i(\xi_i^2-1)$. Wyrażenie to jest skończone na mocy lematu \ref{druga} oraz  faktu, że $v\in l^2$, a zatem szereg $\sum_{i=1}^{\infty}v_i$ jest skończony.  Korzystając z powyższych faktów możemy napisać dla dowolnego $t>0$ i dla ustalonego $u\in V$
+\begin{displaymath}
+P(\eta_u>x)\leq \exp(-tx)\mathbb{E}\exp(t\eta_u)=\exp(-tx)\mathbb{E}\exp\left(t\frac{1}{\sqrt{2}\norm{U}}\sum_{i=1}^{\infty}U_i(\xi_i^2-1)\right)=
+\end{displaymath}
+\begin{displaymath}
+=\exp(-tx)\prod_{i=1}^{\infty}\mathbb{E}\exp\left(t\frac{1}{\sqrt{2}\norm{u}}u_i(\xi_i^2-1)\right)=
+\end{displaymath}
+\begin{displaymath}
+=\exp(-tx)\prod_{i=1}^{\infty}\exp\left(-\frac{tu_i}{\sqrt{2}\norm{u}}\right)\mathbb{E}\exp\left(\frac{t}{\sqrt{2}\norm{u}}u_i\xi_i^2\right)=
+\end{displaymath}
+\begin{displaymath}
+=\exp(-tx)\prod_{i=1}^{\infty}\exp\left(-\frac{tu_i}{\sqrt{2}\norm{u}}\right)\sqrt{\frac{\norm{u}}{\norm{u}-\sqrt{2}tu_i}}=
+\end{displaymath}
+\begin{displaymath}
+=\exp(-tx)\prod_{i=1}^{\infty}\exp\left(-\frac{tu_i}{\sqrt{2}\norm{u}}-\frac{1}{2}\ln\left(1-\frac{\sqrt{2}tu_i}{\norm{u}}\right)\right).
+\end{displaymath}
+W powyższym wyrażeniu skorzystać będziemy chcieli z następującego rozwinięcia $-\ln (1-x)=\sum_{k=1}^{\infty}\frac{x^k}{k}$ dla $|x|<1$. Zatem musimy założyć dodatkowo, że $t<\frac{1}{\sqrt{2}m(u)}$. Stąd
+\begin{displaymath}
+\exp(-tx)\prod_{i=1}^{\infty}\exp\left(-\frac{tu_i}{\sqrt{2}\norm{u}}-\frac{1}{2}\ln\left(1-\frac{\sqrt{2}tu_i}{\norm{u}}\right)\right)=
+\end{displaymath}
+\begin{displaymath}
+=\exp(-tx)\prod_{i=1}^{\infty}\exp\left(-\frac{tu_i}{\sqrt{2}\norm{u}}+\frac{1}{2}\sum_{k=1}^{\infty}\frac{1}{k}\left(\frac{\sqrt{2}tu_i}{\norm{u}}\right)^k\right)=
+\end{displaymath}
+\begin{displaymath}
+=\exp(-tx)\exp \left(\sum_{i=1}^{\infty}\sum_{k=2}^{\infty}\frac{1}{2k}\left(\frac{\sqrt{2}tu_i}{\norm{u}}\right)^k\right)=
+\end{displaymath}
+\begin{displaymath}
+=\exp(-tx)\exp \left(\sum_{k=2}^{\infty}\sum_{i=1}^{\infty}\frac{1}{2k}\left(\frac{\sqrt{2}tu_i}{\norm{u}}\right)^k\right)=
+\end{displaymath}
+\begin{displaymath}
+=\exp(-tx)\exp \left(\sum_{k=2}^{\infty}\frac{(\sqrt{2}t)^k}{2k}\sum_{i=1}^{\infty}\left(\frac{u_i}{\norm{u}}\right)^2\left(\frac{u_i}{\norm{u}}\right)^{k-2}\right)=
+\end{displaymath}
+\begin{displaymath}
+\leq \exp(-tx)\exp \left(\sum_{k=2}^{\infty}\frac{(\sqrt{2}t)^k}{2k}(m(u))^{k-2}\frac{\sum_{i=1}^{\infty}u_i^2}{\norm{u}^2}\right)=
+\end{displaymath}
+\begin{displaymath}
+=\exp(-tx)\exp \left(\frac{1}{2m^2(u)}\sum_{k=2}^{\infty}\frac{1}{k}\left(\sqrt{2}tm(u)\right)^k\right)=
+\end{displaymath}
+\begin{displaymath}
+=\exp(-tx)\exp \left(-\frac{1}{2m^2(u)}\ln \left(1-\sqrt{2}tm(u)\right)-\frac{t}{\sqrt{2}m(u)}\right).
+\end{displaymath}
+Minimalizując ostatnie wyrażenie względem $t$ dostajemy, że w punkcie $t=\frac{1}{\sqrt{2}m(u)}-\frac{1}{2m^2(u)x+\sqrt{2}m(u)}$ osiągane jest minimum o wartości\\ $\exp\left(\frac{1}{2m^2(u)}\ln \left(1+\sqrt{2}m(u)x\right)-\frac{x}{\sqrt{2}m(u)}\right)$. Możemy zatem zapisać, że
+\begin{displaymath}
+P(\eta_u>x)\leq \exp\left(\frac{1}{2m^2(u)}\ln \left(1+\sqrt{2}m(u)x\right)-\frac{x}{\sqrt{2}m(u)}\right)=
+\end{displaymath}
+\begin{displaymath}
+=\exp\left(\frac{1}{2m^2(u)}\left(\ln \left(1+\sqrt{2}m(u)x\right)-\sqrt{2}m(u)x\right)\right).
+\end{displaymath}
+Zauważmy następnie, że zachodzi następująca zależność
+\begin{displaymath}
+\ln(1+z)-z=z\int_0^1\left(-\frac{tz}{1+tz}\right)dt\leq -\int_0^1\frac{tz^2}{1+z}dt=-\frac{z^2}{2(1+z)}.
+\end{displaymath}Zatem powyższe oszacowanie sprowadza się do postaci 
+\begin{displaymath}
+P(\eta_u>x)\leq \exp\left(-\frac{x^2}{2(1+\sqrt{2}m(u)x)}\right).
+\end{displaymath}
+Zauważmy, że zachodzi również $P(\eta_u <-x)=P(-\eta_u>x)=P(\eta_{-u}>x)$ i powyższe rozumowanie przenosi się na ten przypadek, a stąd dostajemy oszacowanie 
+\begin{displaymath}
+P(|\eta_u|>x)\leq 2\exp\left(-\frac{x^2}{2(1+\sqrt{2}m(u)x)}\right).
+\end{displaymath}
+Wyrażenie $-\frac{x^2}{2(1+\sqrt{2}m(u)x)}$ możemy ograniczyć w następujący sposób
+\begin{displaymath}
+-\frac{x^2}{2(1+\sqrt{2}m(u)x)}\leq \left\{{-\frac{x^2}{4},\ \sqrt{2}m(u)x<1}\atop{-\frac{x}{\sqrt{32}m(u)},\ \sqrt{2}m(u)x\geq  1}\right. .
+\end{displaymath}
+Zauważmy następnie, że dla nieujemnej zmiennej losowej $X$ zachodzi, że $\mathbb{E}X^2=2\int_0^{\infty}tP(X>t)dt$. Zatem dla dowolnego $ Q>0$ mamy, że
+\begin{displaymath}
+\mathbb{E}\eta_u^2\pmb{1}\{|\eta_u|>Q\}=2\int_Q^{\infty}tP(|\eta_u|>t)dt\leq 4\int_Q^{\infty}t\exp\left(-\frac{t^2}{2(1+\sqrt{2}m(u)t)}\right)dt\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 4\int_Q^{\frac{1}{\sqrt{2}m(u)}}t\exp\left(-\frac{t^2}{4}\right)dt+4\int_Q^{\infty}t\exp \left(\frac{-t}{\sqrt{32}m(u)}\right)dt\leq
+\end{displaymath}
+\begin{displaymath}
+\leq C\exp\left(-\frac{Q^2}{4}\right)+CQ\exp\left(-\frac{Q}{\sqrt{32}m(u)}\right),
+\end{displaymath}
+Gdy $Q\leq \frac{1}{\sqrt{2}m(u)}$. Natomiast gdy $Q>\frac{1}{\sqrt{2}m(u)}$ całkę $4\int_Q^{\infty}t\exp\left(-\frac{t^2}{2(1+\sqrt{2}m(u)t)}\right)dt$ można oszacować przez $CQ\exp\left(-\frac{Q}{\sqrt{32}m(u)}\right)$, co z uwagi na to, że $C\exp\left(-\frac{Q^2}{4}\right)\geq 0$ prowadzi do tego samego oszacowania.
+Następnie możemy zapisać, że
+\begin{displaymath}
+\sum_{u\in V}\exp\left(-\frac{Q}{\sqrt{32}m(u)}\right)=\sum_{u\in V}\exp\left(-\frac{q}{m(u)}\right)\exp \left(-\frac{Q/\sqrt{32}-q}{m(u)}\right)\leq 
+\end{displaymath}
+\begin{displaymath}
+\leq M(q)\exp \left(-\frac{Q/\sqrt{32}-q}{m_V}\right),
+\end{displaymath}
+o ile $Q>q\sqrt{32}$.\\
+Będziemy teraz postępować analogicznie jak w dowodzie poprzedniego lematu dla dowolnego $Q>q\sqrt{32}$.
+\begin{displaymath}
+\mathbb{E}\left|\sum_{i=1}^{\infty}v_i(\xi_i^2-1)\right|=\mathbb{E}\left|\sqrt{2}\norm{v}|\eta_v|\right|\leq \sqrt{2}\mathbb{E}\norm{v}\max_{v\in V}|\eta_v|\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \sqrt{2}\mathbb{E}\norm{v}\max_{u\in V}|\eta_u|\pmb{1}\{\max_{u\in V}|\eta_u|\leq Q\}+\sqrt{2}\mathbb{E}\norm{v}\max_{u\in V}|\eta_u|\pmb{1}\{\max_{u\in V}|\eta_u|> Q\}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \sqrt{2}Q\mathbb{E}\norm{v}+\sqrt{2}\mathbb{E}\norm{v}\max_{u\in V}|\eta_u|\pmb{1}\{\max_{u\in V}|\eta_u|> Q\}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \sqrt{2}Q\mathbb{E}\norm{v}+\left(2\mathbb{E}\norm{v}^2\right)^{1/2}\left(\mathbb{E}\max_{u\in V}|\eta_u|^2\pmb{1}\{\max_{u\in V}|\eta_u|> Q\}\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \sqrt{2}Q\mathbb{E}\norm{v}+\left(2\mathbb{E}\norm{v}^2\right)^{1/2}\left(\sum_{u\in V}\mathbb{E}|\eta_u|^2\pmb{1}\{\max_{u\in V}|\eta_u|> Q\}\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \sqrt{2}Q\mathbb{E}\norm{v}+\left(2\mathbb{E}\norm{v}^2\right)^{1/2}\left(\sum_{u\in V}\left(C\exp\left(-\frac{Q^2}{4}\right)+CQ\exp \left(-\frac{Q}{\sqrt{32}m(u)}\right)\right)\right)^{1/2}\leq 
+\end{displaymath}
+\begin{displaymath}
+\leq \sqrt{2}Q\mathbb{E}\norm{v}+\left(2\mathbb{E}\norm{v}^2\right)^{1/2}\left(NC\exp\left(-\frac{Q^2}{4}\right)+CQM(q)\exp \left(-\frac{Q/\sqrt{32}-q}{m_V}\right)\right)^{1/2}.
+\end{displaymath}
+Przyjmując teraz $Q=2\sqrt{\ln (NK)}+\sqrt{32}m_V\ln (M(q)K)+q\sqrt{32}$ dostajemy, że powyższe oszacowanie sprowadza się do następującej postaci
+\begin{displaymath}
+\left(2\sqrt{2}\sqrt{\ln (NK)}+8m_V\ln (M(q)K)+8q\right)\mathbb{E}\norm{v}+\left(2\mathbb{E}\norm{v}^2\right)^{1/2}\cdot
+\end{displaymath}
+\begin{displaymath}
+\left(NC\exp\left(-\ln (NK)\right)\exp\left(-8m^2_V\ln^2 (M(q)K)-8q-8\sqrt{2}q\sqrt{\ln (NK)}-32qm_V\ln (M(q)K)-\right.\right.
+\end{displaymath}
+\begin{displaymath}
+\left.\left.-8\sqrt{2}\sqrt{\ln (NK)}m_V\ln (M(q)K)\right)+CM(q)\left(2\sqrt{\ln (NK)}+\sqrt{32}m_V\ln (M(q)K)+q\sqrt{32}\right)\right.
+\end{displaymath}
+\begin{displaymath}
+\left. \exp\left(-\ln (M(q)K)\right)\exp \left(-\frac{\sqrt{\ln (NK)}}{2\sqrt{2}m_V}\right)\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq D\left(\sqrt{\ln (NK)}+m_V\ln (M(q)K)\right)\left(\mathbb{E}\norm{v}+\left(\frac{1}{K}\mathbb{E}\norm{v}^2\right)^{1/2}\right),
+\end{displaymath}
+dla pewnej stałej $D$ zależnej tylko od $q$ i operatora $T$.\\
+Nierówność ta kończy dowód lematu.
+\end{proof}
+
+
+\begin{proof}[Dowód lematu \ref{lem3}]
+Przypomnijmy, że w naszym modelu (\ref{ssm}) mamy $x_i=\theta_i+\epsilon\sigma_i\xi_i$, a stąd $x_i^2=\theta^2_i+\epsilon^2\sigma^2_i\xi_i^2+2\epsilon\theta_i\sigma_i\xi_i$. \\
+Zgodnie z definicją możemy zapisać, że
+\begin{displaymath}
+\mathbb{E}_{\theta}\norm{\hat{\theta}-\theta}^2=\mathbb{E}_{\theta}\left[\sum_{i=1}^{\infty}\left(\lambda_i(X)x_i-\theta_i\right)^2\right]=
+\end{displaymath}
+\begin{displaymath}
+=\mathbb{E}_{\theta}\left[\sum_{i=1}^{\infty}\lambda_i^2(X)x_i^2+\sum_{i=1}^{\infty}\theta_i^2-2\sum_{i=1}^{\infty}\lambda_i(X)x_i\theta_i\right]=
+\end{displaymath}
+\begin{displaymath}
+=\mathbb{E}_{\theta}\left[\sum_{i=1}^{\infty}\lambda_i^2(X)\left(\theta^2_i+\epsilon^2\sigma^2_i\xi_i^2+2\epsilon\theta_i\sigma_i\xi_i\right)+\sum_{i=1}^{\infty}\theta_i^2-2\sum_{i=1}^{\infty}\lambda_i(X)\theta_i\left(\theta_i+\epsilon\sigma_i\xi_i\right)\right]=
+\end{displaymath}
+\begin{displaymath}
+=\mathbb{E}_{\theta}\left[\sum_{i=1}^{\infty}(1-\lambda_i(X))^2\theta_i^2-2\epsilon\sum_{i=1}^{\infty}(1-\lambda_i(X))\theta_i\lambda_i(X)\sigma_i\xi_i+\right.
+\end{displaymath}
+\begin{displaymath}
++\left.\epsilon^2\sum_{i=1}^{\infty}\lambda_i^2(X)\sigma_i^2(\xi^2_i-1)+\epsilon^2\sum_{i=1}^{\infty}\lambda_i^2(X)\sigma_i^2\right]=
+\end{displaymath}
+\begin{displaymath}
+=\mathbb{E}_{\theta}\mathcal{R}(\hat{\theta},\theta)-2\epsilon\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i(X))\theta_i\lambda_i(X)\sigma_i\xi_i+\epsilon^2\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\lambda_i^2(X)\sigma_i^2(\xi^2_i-1).
+\end{displaymath}
+Następnie korzystając z pierwszego z lematów z $K=S$ oszacujemy wyrażenie $\epsilon\mathbb{E}_{\theta}\left|\sum_{i=1}^{\infty}(1-\lambda_i(X))\theta_i\lambda_i(X)\sigma_i\xi_i\right|$. Ciągiem $v_i$ jest tym razem ciąg $(1-\lambda_i(X))\theta_i\lambda_i(X)\sigma_i$.
+\begin{displaymath}
+\epsilon\mathbb{E}_{\theta}\left|\sum_{i=1}^{\infty}(1-\lambda_i(X))\theta_i\lambda_i(X)\sigma_i\xi_i\right|\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \epsilon\sqrt{2\ln (NS)}\mathbb{E}_{\theta}\left(\sum_{i=1}^{\infty}(1-\lambda_i(X))^2\theta_i^2\lambda_i^2(X)\sigma_i^2\right)^{1/2}+
+\end{displaymath}
+\begin{displaymath}
++2\epsilon\sqrt{\ln (NS)}S^{-1/2}\left(\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i(X))^2\theta_i^2\lambda_i^2(X)\sigma_i^2\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \epsilon\sqrt{2\ln (NS)}\mathbb{E}_{\theta}\sup_i\sigma_i|\lambda_i(X)|\left(\sum_{i=1}^{\infty}(1-\lambda_i(X))^2\theta_i^2\right)^{1/2}+
+\end{displaymath}
+\begin{displaymath}
++2\epsilon\sqrt{\ln (NS)}S^{-1/2}\max_{\lambda\in \Lambda}\sup_i\sigma_i|\lambda_i|\left(\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i(X))^2\theta_i^2\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \frac{1}{2}\epsilon^2B\ln (NS)\mathbb{E}_{\theta}\sup_i\sigma_i^2\lambda_i^2(X)+B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i(X))^2\theta_i^2+
+\end{displaymath}
+\begin{displaymath}
++\epsilon^2B\ln (NS)\frac{\max_{\lambda\in \Lambda}\sup_i\sigma_i^2\lambda_i^2}{S}+B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i(X))^2\theta_i^2,
+\end{displaymath}
+gdzie skorzystaliśmy z nierówności $2ab\leq Ba^2+B^{-1}b^2$ spełnionej dla dowolnego $B>0$.
+Zauważmy, że skoro $S=\frac{\max_{\lambda\in \Lambda}\sup_i\sigma_i^2\lambda_i^2}{\min_{\lambda\in \Lambda}\sup_i\sigma_i^2\lambda_i^2}$ zatem $\frac{\max_{\lambda\in \Lambda}\sup_i\sigma_i^2\lambda_i^2}{S}=\min_{\lambda\in \Lambda}\sup_i\sigma_i^2\lambda_i^2$, a stąd powyższe wyrażenie redukuje się do postaci
+\begin{displaymath}
+2B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i(X))^2\theta_i^2+\frac{1}{2}\epsilon^2B\ln (NS)\mathbb{E}_{\theta}\sup_i\sigma_i^2\lambda_i^2(X)+\epsilon^2B\ln (NS)\min_{\lambda\in \Lambda}\sup_i\sigma_i^2\lambda_i^2\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 2B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i(X))^2\theta_i^2+\frac{1}{2}B\mathbb{E}_{\theta}\left(\epsilon^2\ln (NS)\sup_i\sigma_i^2\lambda_i^2(X)\right)+
+\end{displaymath}
+\begin{displaymath}
++B\mathbb{E}_{\theta}\left(\epsilon^2\ln (NS)\sup_i\sigma_i^2\lambda_i^2(X)\right)\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 2B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i(X))^2\theta_i^2+\frac{3}{2}B\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda(X)].
+\end{displaymath}
+Następnie będziemy szacować wyrażenie $\epsilon^2\mathbb{E}_{\theta}\left|\sum_{i=1}^{\infty}\lambda_i^2(X)\sigma_i^2(\xi^2_i-1)\right|$ korzystając z drugiego z lematów z $K=S$, $q=1$ i ciągu $v_i=\lambda_i^2(X)\sigma_i^2$. Ponadto zachodzi 
+\begin{displaymath}
+m(v)=\sup_i\frac{|v_i|}{\norm{v}}=\sup_i\lambda_i^2(X)\sigma_i^2\left(\sum_{k=1}^{\infty}\lambda_k^4(X)\sigma_k^4\right)^{-1/2}\leq \rho (\lambda(X)),
+\end{displaymath}
+a stąd $m_V\leq \rho$ oraz $M(1)\leq M$ i możemy szacować wyrażenie $\sqrt{\ln (NS)}+m_V\ln (M(1)S)$ przez $\sqrt{2L_{\Lambda}}$. Możemy zatem zapisać, że
+\begin{displaymath}
+\epsilon^2\mathbb{E}_{\theta}\left|\sum_{i=1}^{\infty}\lambda_i^2(X)\sigma_i^2(\xi^2_i-1)\right|\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \epsilon^2D\left(\sqrt{\ln (NS)}+m_V\ln (M(1)S)\right)\left(\mathbb{E}_{\theta}\left(\sum_{i=1}^{\infty}\lambda_i^4(X)\sigma_i^4\right)^{1/2}+\left(\frac{1}{S}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\lambda_i^4(X)\sigma_i^4\right)^{1/2}\right)\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \epsilon^2D\sqrt{2L_{\Lambda}}\mathbb{E}_{\theta}\left(\sum_{i=1}^{\infty}\lambda_i^4(X)\sigma_i^4\right)^{1/2}+\frac{\epsilon^2D\sqrt{2L_{\Lambda}}}{\sqrt{S}}\left(\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\lambda_i^4(X)\sigma_i^4\right)^{1/2}.
+\end{displaymath}
+Zauważmy, że zachodzi następujący związek
+\begin{displaymath}
+S^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^4\lambda_i^4(X)\leq \frac{\min_{\lambda\in \Lambda}\sup_i \lambda_i^2\sigma_i^2}{\max_{\lambda\in \Lambda}\sup_i \lambda_i^2\sigma_i^2}\mathbb{E}_{\theta}\sup_i\sigma_i^2\lambda_i^2(X)\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^2(X)
+\end{displaymath}
+\begin{displaymath}
+\leq \frac{\min_{\lambda\in \Lambda}\sup_i \lambda_i^2\sigma_i^2}{\max_{\lambda\in \Lambda}\sup_i \lambda_i^2\sigma_i^2}\max_{\lambda\in \Lambda}\sup_i \lambda_i^2\sigma_i^2\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^2(X)\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \mathbb{E}_{\theta}\sup_i\sigma_i^2\lambda_i^2(X)\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^2(X).
+\end{displaymath}
+Korzystając z tego faktu i ponownie z nierówności $2ab\leq Ba^2+B^{-1}b^2$ z $B>0$ dostajemy
+\begin{displaymath}
+\epsilon^2D\sqrt{2L_{\Lambda}}\mathbb{E}_{\theta}\left(\sum_{i=1}^{\infty}\lambda_i^4(X)\sigma_i^4\right)^{1/2}+\frac{\epsilon^2D\sqrt{2L_{\Lambda}}}{\sqrt{S}}\left(\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\lambda_i^4(X)\sigma_i^4\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \epsilon^2D\sqrt{2L_{\Lambda}}\mathbb{E}_{\theta}\left(\sum_{i=1}^{\infty}\lambda_i^4(X)\sigma_i^4\right)^{1/2}+\epsilon^2D\sqrt{2L_{\Lambda}}\left(\mathbb{E}_{\theta}\sup_i\sigma_i^2\lambda_i^2(X)\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^2(X)\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \mathbb{E}_{\theta}\frac{\epsilon^2BD^2L_{\Lambda}}{4}\sup_i\sigma_i^2\lambda_i^2(X)+2\epsilon^2B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^2(X)+
+\end{displaymath}
+\begin{displaymath}
++\mathbb{E}_{\theta}\frac{\epsilon^2BD^2L_{\Lambda}}{4}\sup_i\sigma_i^2\lambda_i^2(X)+2\epsilon^2B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^2(X)=
+\end{displaymath}
+\begin{displaymath}
+=4\epsilon^2B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^2(X)+\frac{\epsilon^2BD^2}{2}\mathbb{E}_{\theta}L_{\Lambda}\sup_i\sigma_i^2\lambda_i^2(X)\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 4\epsilon^2B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^2(X)+\frac{BD^2}{2}\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda(X)].
+\end{displaymath}
+Łącząc te oszacowania dostajemy, że
+\begin{displaymath}
+\mathbb{E}_{\theta}\norm{\hat{\theta}-\theta}^2\leq \mathbb{E}_{\theta}\mathcal{R}(\hat{\theta},\theta)-2\epsilon\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i(X))\theta_i\lambda_i(X)\sigma_i\xi_i+\epsilon^2\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\lambda_i^2(X)\sigma_i^2(\xi^2_i-1)\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \mathbb{E}_{\theta}\mathcal{R}(\hat{\theta},\theta)+4B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}(1-\lambda_i(X))^2\theta_i^2+\frac{3}{2}B\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda(X)]+
+\end{displaymath}
+\begin{displaymath}
++4\epsilon^2B^{-1}\mathbb{E}_{\theta}\sum_{i=1}^{\infty}\sigma_i^2\lambda_i^2(X)+\frac{BD^2}{2}\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda(X)]=
+\end{displaymath}
+\begin{displaymath}
+=(1+4B^{-1})\mathbb{E}_{\theta}\mathcal{R}(\hat{\theta},\theta)+CB\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda (X)],
+\end{displaymath}
+co kończy dowód lematu.
+\end{proof}
+
+
+
+
+
+
+
+\begin{proof}[Dowód lematu \ref{lem4}]
+W dowodzie lematu ponownie skorzystamy z oszacowania 
+\begin{displaymath}
+\mathbb{E}X^2\pmb{1}_{\{|X|>a\}}\leq \frac{2}{\sqrt{2\pi}}(a+a^{-1})e^{-a^2/2}\ \forall_{a>0}
+\end{displaymath}
+zachodzącego dla zmiennych losowych o standardowym rozkładzie normalnym oraz z własności
+\begin{displaymath}
+F(\max_{v\in V}|\zeta_v|)\leq \sum_{v\in V}F(|\zeta_v|)
+\end{displaymath}
+dla funkcji postaci $F(t)=t^2\pmb{1}_{\{t> \sqrt{2\ln (NK)}\}}$.\\
+Oznaczmy przez $\zeta_v=\frac{\langle \eta ,v\rangle}{\norm{T^*v}_2}$. Zauważmy, że z faktu, że $\eta$ jest gaussowskim  szumem  z operatorem kowariancji postaci $TT^*$, może być przedstawiona jako $T\xi$, gdzie $\xi$ jest gaussowskim białym szumem. Wynika stąd, że $\zeta_v$ ma standardowy rozkład normalny $\mathcal{N}(0,1)$. Możemy teraz napisać, że
+\begin{displaymath}
+\mathbb{E}\left|\langle \eta , v\rangle\right|=\mathbb{E}|\zeta |\norm{T^*v}_2\leq\mathbb{E}|\zeta |\norm{T^*}\norm{v}_2\leq \norm{T^*} \mathbb{E}\norm{v}_2\max_{v\in V}|\zeta_v|=
+\end{displaymath}
+\begin{displaymath}
+=\norm{T^*}\mathbb{E}\norm{v}_2\max_{v\in V}|\zeta_v|\pmb{1}_{\{\max_{v\in V}|\zeta_v|\leq \norm{T^*}\sqrt{2\ln (NK)}\}}+\norm{T^*}\mathbb{E}\norm{v}_2\max_{v\in V}|\zeta_v|\pmb{1}_{\{\max_{v\in V}|\zeta_v|> \sqrt{2\ln (NK)}\}}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \norm{T^*}\sqrt{2\ln (NK)}\mathbb{E}\norm{v}_2+\norm{T^*}\mathbb{E}\norm{v}_2\max_{v\in V}|\zeta_v|\pmb{1}_{\{\max_{v\in V}|\zeta_v|> \sqrt{2\ln (NK)}\}}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \norm{T^*}\sqrt{2\ln (NK)}\mathbb{E}\norm{v}_2+\norm{T^*}\left(\mathbb{E}\norm{v}_2^2\right)^{1/2}\left(\mathbb{E}\max_{v\in V}|\zeta_v|^2\pmb{1}_{\{\max_{v\in V}|\zeta_v|> \sqrt{2\ln (NK)}\}}\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \norm{T^*}\sqrt{2\ln (NK)}\mathbb{E}\norm{v}_2+\norm{T^*}\left(\mathbb{E}\norm{v}_2^2\right)^{1/2}\left(\sum_{v\in V}\mathbb{E}|\zeta_v|^2\pmb{1}_{\{|\zeta_v|> \sqrt{2\ln (NK)}\}}\right)^{1/2}=
+\end{displaymath}
+\begin{displaymath}
+=\norm{T^*}\sqrt{2\ln (NK)}\mathbb{E}\norm{v}_2+\norm{T^*}\left(\mathbb{E}\norm{v}_2^2\right)^{1/2}\left(N\mathbb{E}|\zeta_v|^2\pmb{1}_{\{|\zeta_v|> \sqrt{2\ln (NK)}\}}\right)^{1/2}.
+\end{displaymath}
+Korzystając ze wspomnianego na początku oszacowania z $a=\sqrt{2\ln (NK)}$ dostajemy, że
+\begin{displaymath}
+\norm{T^*}\sqrt{2\ln (NK)}\mathbb{E}\norm{v}_2+\norm{T^*}\left(\mathbb{E}\norm{v}_2^2\right)^{1/2}\left(N\mathbb{E}|\zeta_v|^2\pmb{1}_{\{|\zeta_v|> \sqrt{2\ln (NK)}\}}\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \norm{T^*}\sqrt{2\ln (NK)}\left(\mathbb{E}||v||_2+\sqrt{2\mathbb{E}||v||_2^2/K}\right)=\norm{T}\sqrt{2\ln (NK)}\left(\mathbb{E}||v||_2+\sqrt{2\mathbb{E}||v||_2^2/K}\right),
+\end{displaymath}
+ gdyż $\norm{T^*}=\norm{T}$, co kończy dowód.
+\end{proof}
+
+
+\begin{proof}[Dowód lematu \ref{lem5}]
+Jeżeli $\eta$ jest gaussowskim szumem z operatorem kowariancji $TT^*$ to można go przedstawić w postaci $T\xi$, gdzie $\xi$ jest gaussowskim białym szumem. Oznaczmy $\zeta_v=\frac{1}{\norm{T^*v}_2^2}\langle \eta^2-1,v\rangle$. Zauważmy, że tak zdefiniowana zmienna losowa spełnia założenia lematu \ref{szacowanie} z $v=\frac{v}{\norm{T^*v}_2}$. Z nierówności Markowa dostajemy, że dla dowolnego $t>0$ i $x>0$ zachodzi i ustalonego $u\in V$
+\begin{displaymath}
+\ln P(\zeta_u>x)\leq -tx+\ln\mathbb{E}\exp\left(\frac{t}{\norm{T^*u}_2^2}\langle \eta^2-1,u\rangle\right)\leq
+\end{displaymath}
+\begin{displaymath}
+\leq -tx+\frac{\left(\frac{t}{\norm{T^*u}}\right)^2\norm{u}_2^2}{1-\frac{t}{\norm{T^*u}_2}\norm{u}_{\infty}}\leq -tx+\frac{\left(\frac{t}{\norm{T^*u}_2}\right)^2\norm{u}_2^2}{1-\frac{t}{\norm{T^*u}_2}\norm{u}_{2}m(u)}.
+\end{displaymath}
+Zauważmy następnie, że dla dowolnego $a>0$ i $t\in [0,\frac{1}{\sqrt{2}a})$ zachodzi nierówność
+\begin{displaymath}
+\frac{t^2}{1-at}\leq \frac{-1}{a^2}\ln(1-\sqrt{2}at)-\frac{\sqrt{2}t}{a}.
+\end{displaymath}
+Dostajemy zatem następującą nierówność
+\begin{displaymath}
+P(\zeta_u>x)\leq \exp(-tx)\exp\left(-\frac{1}{m^2(u)}\ln\left(1-\frac{\sqrt{2}m(u)\norm{u}_2}{\norm{T^*u}_2}t\right)-\frac{\sqrt{2}\norm{u}_2}{\norm{T^*u}_2m(u)}t\right),
+\end{displaymath}
+o ile $t<\frac{\norm{T^*u}}{\sqrt{2}m(u)\norm{u}_2}.$ Zauważmy, że nierówność ta sprowadza się do analogicznej nierówności z dowodu lematu \ref{lem2}, gdy operator $T$ jest operatorem identycznościowym, jak w przypadku białego szumu.
+Minimalizując prawą stronę powyższego wyrażenia względem $t$ dostajemy, że w punkcie $t_{min}=\frac{\norm{T^*u}}{\sqrt{2}m(u)\norm{u}_2}-\frac{1}{m^2(u)x+\frac{\sqrt{2}m(u)\norm{u}_2}{\norm{T^*u}}} $ osiągane jest minimum o wartości 
+\begin{displaymath}
+\exp\left(-\frac{\norm{T^*u}_2x}{\sqrt{2}m(u)\norm{u}_2}+\frac{1}{m^2(u)}\ln\left(1+\frac{\norm{T^*u}_2m(u)x}{\sqrt{2}\norm{u}}\right) \right)=
+\end{displaymath}
+\begin{displaymath}
+=\exp\left(\frac{1}{m^2(u)}\left(\ln \left(1+\frac{\norm{T^*u}_2m(u)}{\sqrt{2}\norm{u}_2}x\right)-\frac{\norm{T^*u}_2m(u)}{\sqrt{2}\norm{u}_2}\right)\right)\leq 
+\end{displaymath}
+\begin{equation}\label{sukces}
+\leq \exp\left(\frac{-\frac{\norm{T^*u}_2^2}{\norm{u}^2_2}x^2}{1+\frac{\norm{T^*u}m(u)}{\sqrt{2}\norm{u}_2}x}\right),
+\end{equation}
+gdzie ponownie skorzystaliśmy z nierówności $\ln (1+z)-z\leq -\frac{z^2}{2(1+z)}$ zachodzącej dla dodatnich $z$.
+Powyższe rozważania będą wykorzystane tylko w przypadku, gdy operator $T^*$ jest operatorem ograniczonym i odwracalnym, co gwarantuje istnienie stałych $c,C>0$ takich, że dla dowolnego $v$ zachodzi (\cite{sobolev}, str. 216)
+\begin{displaymath}
+c\norm{u}_2\leq \norm{Tu}_2\leq C\norm{u}_2.
+\end{displaymath}
+W dalszym ciągu rozważań największą ze stałych $c$ dla których zachodzi powyższa nierówność będzie oznaczać przez $\norm{t}$, natomiast najmniejszą ze stałych $C$ przez $\norm{T}$. Oczywiście stała $\norm{T}$ jest normą operatora $T$. Przy takich oznaczeniach oszacowanie (\ref{sukces}) przyjmuje postać 
+\begin{displaymath}
+\exp\left(\frac{-\norm{t}^2x^2}{1+2^{-1/2}\norm{T}m(u)x}\right).
+\end{displaymath}
+Zauważmy, że powyższe wyrażenie można oszacować następująco w zależności od wielkości $x$.
+\begin{displaymath}
+\exp\left(\frac{-\norm{t}^2x^2}{1+2^{-1/2}\norm{T}m(u)x}\right)\leq \left\{{\frac{-\norm{t}^2x^2}{2},\ gdy\ 2^{-1/2}\norm{T}m(u)x<1,}\atop {\frac{-\norm{t}^2x}{\sqrt{2}\norm{T}m(u)}},\ gdy\ 2^{-1/2}\norm{T}m(u)x\geq 1.\right.
+\end{displaymath}
+Ostatecznie prowadzi nas to do następującego oszacowania
+\begin{displaymath}
+P(\zeta_u>x)\leq \left\{{\frac{-\norm{t}^2x^2}{2},\ gdy\ 2^{-1/2}\norm{T}m(u)x<1,}\atop {\frac{-\norm{t}^2x}{\sqrt{2}\norm{T}m(u)}},\ gdy\ 2^{-1/2}\norm{T}m(u)x\geq 1.\right.
+\end{displaymath}
+Zauważmy, że zachodzi również $P(\zeta_u <-x)=P(-\zeta_u>x)=P(\zeta_{-u}>x)$ i powyższe rozumowanie przenosi się na ten przypadek, a stąd dostajemy oszacowanie 
+\begin{displaymath}
+P(|\zeta_u|>x)\leq 2\left\{{\frac{-\norm{t}^2x^2}{2},\ gdy\ 2^{-1/2}\norm{T}m(u)x<1,}\atop {\frac{-\norm{t}^2x}{\sqrt{2}\norm{T}m(u)}},\ gdy\ 2^{-1/2}\norm{T}m(u)x\geq 1.\right.
+\end{displaymath}
+Następnie korzystając z uzyskanego oszacowania możemy zapisać dla dowolnego $\frac{\sqrt{2}}{\norm{T}m(u)}\geq Q>0$
+\begin{displaymath}
+\mathbb{E}\zeta_u^2\pmb{1}\{|\zeta_u|>Q\}=2\int_Q^{\infty}zP\left(|\zeta_u|>z\right)dz\leq 4\int_Q^{\infty}z\exp\left(\frac{-\norm{t}^2z^2}{1+2^{-1/2}\norm{T}m(u)z}\right)dt\leq 
+\end{displaymath}
+\begin{displaymath}
+\leq 4\int_Q^{\frac{\sqrt{2}}{\norm{T}m(u)}}z\exp \left(\frac{-\norm{t}^2z^2}{2}\right)dz+4\int_Q^{\infty}z\exp\left(\frac{-\norm{t}^2z}{\sqrt{2}\norm{T}m(u)}\right)dz\leq
+\end{displaymath}
+\begin{displaymath}
+\leq C \exp \left(\frac{-\norm{t}^2Q^2}{2}\right)+CQ\exp\left(\frac{-\norm{t}^2Q}{\sqrt{2}\norm{T}m(u)}\right).
+\end{displaymath}
+Podobnie jak w dowodzie lematu \ref{lem2} nierówność tą możemy uogólnić dla dowolnego $Q>0$.
+Zauważmy następnie, że zachodzi
+\begin{displaymath}
+\sum_{u\in V}\exp\left(\frac{-\norm{t}^2Q}{\sqrt{2}\norm{T}m(u)}\right)=\sum_{u\in V}\exp\left(-\frac{q}{m(u)}\right)\exp\left(-\frac{\norm{t}Q/(\sqrt{2}\norm{T})-q}{m(u)}\right)\leq
+\end{displaymath}
+\begin{displaymath}
+\leq M(q)\exp\left(-\frac{\norm{t}Q/(\sqrt{2}\norm{T})-q}{m_V}\right),
+\end{displaymath}
+o ile $Q>\frac{\sqrt{2}q\norm{T}}{\norm{t}}$. Niech zatem $Q>\frac{\sqrt{2}q\norm{T}}{\norm{t}}$, wtedy 
+\begin{displaymath}
+\mathbb{E}\left| \langle \eta^2-1, u\rangle\right|=\mathbb{E}\norm{T^*u}^2_2|\zeta_u|\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \norm{T}^2\mathbb{E}\norm{u}^2_2|\zeta_u| \leq \norm{T}^2\mathbb{E}\norm{u}^2_2\max_{u\in V}|\zeta_u|\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \norm{T}^2\mathbb{E}\norm{u}^2_2\max_{u\in V}|\zeta_u|\pmb{1}\{\max_{u\in V}|\zeta_u|\leq Q\}+\norm{T}^2\mathbb{E}\norm{u}^2_2\max_{u\in V}|\zeta_u|\pmb{1}\{\max_{u\in V}|\zeta_u|> Q\}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \norm{T}^2\mathbb{E}\norm{u}^2_2Q+\norm{T}^2\left(\mathbb{E}\norm{v}^4_2\right)^{1/2}\left(\mathbb{E}\max_{u\in V}|\zeta_u|^2\pmb{1}\{\max_{u\in V}|\zeta_u|> Q\}\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq  \norm{T}^2\mathbb{E}\norm{u}^2_2Q+\norm{T}^2\left(\mathbb{E}\norm{v}^4_2\right)^{1/2}\left(\sum_{u\in V}\mathbb{E}|\zeta_u|^2\pmb{1}\{\max_{u\in V}|\zeta_u|> Q\}\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \norm{T}^2\mathbb{E}\norm{u}^2_2Q+\norm{T}^2\left(\mathbb{E}\norm{v}^4_2\right)^{1/2}\left(\sum_{u\in V}\left(C \exp \left(\frac{-\norm{t}^2Q^2}{2}\right)+CQ\exp\left(\frac{-\norm{t}^2Q}{\sqrt{2}\norm{T}m(u)}\right)\right)\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \norm{T}^2\mathbb{E}\norm{u}^2_2Q+\norm{T}^2\left(\mathbb{E}\norm{v}^4_2\right)^{1/2}\left(NC \exp \left(\frac{-\norm{t}^2Q^2}{2}\right)+CQM(q)\exp\left(-\frac{\norm{t}Q/(\sqrt{2}\norm{T})-q}{m_V}\right)\right)^{1/2}
+\end{displaymath}
+Przyjmując teraz $Q=\frac{1}{\norm{v}}\left(\frac{\sqrt{2}}{\norm{t}^2}\sqrt{\ln (NK)}+\frac{\sqrt{2}\norm{T}}{\norm{t}}m_V\ln(M(q)K)\right)+\frac{\sqrt{2}q\norm{T}}{\norm{t}}$ dostajemy tezę.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{proof}[Dowód lematu \ref{lem6}]
+Oznaczmy przez $C'=\max\{1,C_2\}$. Zauważmy, że z faktu istnienia stałej $C_2$ wynika
+\begin{displaymath}
+\int_S\lambda\sigma^2d\mu\leq \int_S\frac{\lambda^2\sigma^4}{\lambda\sigma^2}d\mu\leq C_2 \int_S\frac{\lambda^4\sigma^3}{\lambda\sigma^2}d\mu=C_2\int_S\lambda^3\sigma d\mu\leq C_2\int_S\lambda^2\sigma d\mu.
+\end{displaymath}
+
+
+Przypomnijmy, że w naszym modelu (\ref{ssmg}) mamy, że $X=\theta+\epsilon\sigma\eta$, a stąd $X^2=\theta^2+\epsilon^2\sigma^2\eta^2+2\epsilon\theta\sigma\eta$.
+\begin{displaymath}
+\mathbb{E}_{\theta}\norm{\hat{\theta}-\theta}^2=\mathbb{E}_{\theta}\left[\int_S\left(\lambda(X)X-\theta\right)^2d\mu\right]=
+\end{displaymath}
+\begin{displaymath}
+=\mathbb{E}_{\theta}\left[\int_S\lambda^2(X)X^2d\mu+\int_S\theta^2d\mu-2\int_S\lambda(X)X\theta d\mu\right]=
+\end{displaymath}
+\begin{displaymath}
+=\mathbb{E}_{\theta}\left[\int_S\lambda^2(X)\left(\theta^2+\epsilon^2\sigma^2\eta^2+2\epsilon\theta\sigma\eta\right)d\mu+\int_S\theta^2d\mu-2\int_S\lambda(X)\theta\left(\theta+\epsilon\sigma\eta\right)d\mu\right]=
+\end{displaymath}
+\begin{displaymath}
+=\mathbb{E}_{\theta}\left[\int_S(1-\lambda(X))^2\theta^2d\mu-2\epsilon\int_S(1-\lambda(X))\theta\lambda(X)\sigma\eta d\mu+\right.
+\end{displaymath}
+\begin{displaymath}
++\left.\epsilon^2\int_S\lambda^2(X)\sigma^2(\eta^2-1)d\mu+\epsilon^2\int_S\lambda^2(X)\sigma^2d\mu\right]\leq 
+\end{displaymath}
+\begin{displaymath}
+\leq \mathbb{E}_{\theta}C'\Psi(\lambda,\theta)-2\epsilon\mathbb{E}_{\theta}\int_S(1-\lambda(X))\theta\lambda(X)\sigma\eta d\mu+\epsilon^2\mathbb{E}_{\theta}\int_S\lambda^2(X)\sigma^2(\eta^2-1)d\mu.
+\end{displaymath}
+Następnie korzystając z pierwszego z lematów z $K=S$ oszacujemy wyrażenie $\epsilon\mathbb{E}_{\theta}\left|\int_S(1-\lambda (X))\theta \lambda (X)\sigma\eta d\mu\right|$. 
+\begin{displaymath}
+\epsilon\mathbb{E}_{\theta}\left|\int_S(1-\lambda (X))\theta \lambda (X)\sigma\eta d\mu\right|\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \epsilon\norm{T}\sqrt{2\ln (NS)}\mathbb{E}_{\theta}\left(\int_S(1-\lambda(X))^2\theta ^2\lambda^2(X)\sigma^2d\mu\right)^{1/2}+
+\end{displaymath}
+\begin{displaymath}
++2\epsilon\norm{T}\sqrt{\ln (NS)}S^{-1/2}\left(\mathbb{E}_{\theta}\int_S(1-\lambda(X))^2\theta ^2\lambda^2(X)\sigma^2d\mu\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \epsilon\norm{T}\sqrt{2\ln (NS)}\mathbb{E}_{\theta}\norm{\sigma^2\lambda^2(X)}_{\infty}\left(\int_S(1-\lambda(X))^2\theta ^2d\mu\right)^{1/2}+
+\end{displaymath}
+\begin{displaymath}
++2\epsilon\norm{T}\sqrt{\ln (NS)}S^{-1/2}\max_{\lambda\in \Lambda}\norm{\sigma^2\lambda^2(X)}_{\infty}\left(\mathbb{E}_{\theta}\int_S(1-\lambda(X))^2\theta ^2d\mu\right)^{1/2}.
+\end{displaymath}
+\begin{displaymath}
+\leq \frac{1}{2C'}\epsilon^2\norm{T}^2B\ln (NS)\mathbb{E}_{\theta}\norm{\sigma^2\lambda^2(X)}_{\infty}+B^{-1}C'\mathbb{E}_{\theta}\int_S(1-\lambda(X))^2\theta ^2d\mu+
+\end{displaymath}
+\begin{displaymath}
++\epsilon^2\frac{1}{C'}\norm{T}^2B\ln (NS)\frac{\max_{\lambda\in \Lambda}\norm{\sigma^2\lambda^2(X)}_{\infty}}{S}+B^{-1}C'\mathbb{E}_{\theta}\int_S(1-\lambda(X))^2\theta ^2d\mu,
+\end{displaymath}
+gdzie korzystaliśmy z nierówności $2ab\leq C'B^{-1}a^2+BC'^{-1}b^2$ zachodzącej dla dowolnego $B>0$.\\
+Ponownie możemy zauważyć, że skoro $S=\frac{\max_{\lambda\in \Lambda}\norm{\sigma^2\lambda^2(X)}_{\infty}}{\min_{\lambda\in \Lambda}\norm{\sigma^2\lambda^2(X)}_{\infty}}$ zatem $\frac{\max_{\lambda\in \Lambda}\norm{\sigma^2\lambda^2(X)}_{\infty}}{S}=\min_{\lambda\in \Lambda}\norm{\sigma^2\lambda^2(X)}_{\infty}$, a stąd powyższe wyrażenie redukuje się do postaci
+\begin{displaymath}
+2B^{-1}C'\mathbb{E}_{\theta}\int_S(1-\lambda(X))^2\theta ^2d\mu+\frac{1}{2C'}\epsilon^2\norm{T}^2B\ln (NS)\mathbb{E}_{\theta}\norm{\sigma^2\lambda^2(X)}_{\infty}+\epsilon^2B\frac{1}{C'}\norm{T}^2\ln (NS)\min_{\lambda\in \Lambda}\norm{\sigma^2\lambda^2(X)}_{\infty}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 2B^{-1}C'\mathbb{E}_{\theta}\int_S(1-\lambda(X))^2\theta ^2d\mu+\frac{3}{2C'}B\norm{T}^2\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda(X)].
+\end{displaymath}
+Następnie będziemy szacować drugie z  wyrażeń, czyli $\epsilon^2\mathbb{E}_{\theta}\left|\int_S\lambda^2(X)\sigma^2(\eta^2-1)d\mu\right|$ korzystając z lematu \ref{lem5}.  Zauważmy na początek, że 
+\begin{displaymath}
+m(v)=\frac{\norm{v}_{\infty}}{\norm{v}_2}\leq \rho (\lambda),
+\end{displaymath}
+a stąd $m_V\leq\rho$ oraz $M(1)\leq M$ i możemy szacować wyrażenie $\sqrt{\ln (NS)}+m_V\ln (M(1)S)$ przez $\sqrt{2L_{\Lambda}}$. Zachodzi zatem
+\begin{displaymath}
+\epsilon^2\mathbb{E}_{\theta}\left|\int_S\lambda^2(X)\sigma^2(\eta^2-1)d\mu\right|\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \epsilon^2D\sqrt{C_2}\norm{T}^2\sqrt{2L_{\Lambda}}\mathbb{E}_{\theta}\left(\int_S\lambda^4(X)\sigma^3d\mu\right)^{1/2}+\frac{\epsilon^2D\sqrt{C_2}\norm{T}^2\sqrt{2L_{\Lambda}}}{\sqrt{S}}\left(\mathbb{E}_{\theta}\int_S\lambda^4(X)\sigma^3\mu\right)^{1/2}.
+\end{displaymath}
+Analogicznie do poprzednich rozważań zachodzi
+\begin{displaymath}
+S^{-1}\mathbb{E}_{\theta}\int_S\sigma^3\lambda^4(X)d\mu\leq 
+\end{displaymath}
+\begin{displaymath}
+\leq \mathbb{E}_{\theta}\norm{\sigma^2\lambda^2(X)}_{\infty}\mathbb{E}_{\theta}\int_S\sigma\lambda^2(X)d\mu.
+\end{displaymath}
+Dostajemy stąd następujące oszacowanie
+\begin{displaymath}
+\epsilon^2D\sqrt{C_2}\norm{T}^2\sqrt{2L_{\Lambda}}\mathbb{E}_{\theta}\left(\int_S\lambda^4(X)\sigma^3d\mu\right)^{1/2}+\frac{\epsilon^2D\sqrt{C_2}\norm{T}^2\sqrt{2L_{\Lambda}}}{\sqrt{S}}\left(\mathbb{E}_{\theta}\int_S\lambda^4(X)\sigma^3\mu\right)^{1/2} \leq
+\end{displaymath}
+\begin{displaymath}
+\leq \epsilon^2D\sqrt{C_2}\norm{T}^2\sqrt{2L_{\Lambda}}\mathbb{E}_{\theta}\left(\int_S\lambda^4(X)\sigma^3d\mu\right)^{1/2}+\epsilon^2D\sqrt{C_2}\norm{T}^2\sqrt{2L_{\Lambda}}\left(\mathbb{E}_{\theta}\norm{\sigma^2\lambda^2(X)}_{\infty}\mathbb{E}_{\theta}\int_S\sigma\lambda^2(X)d\mu\right)^{1/2}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq \mathbb{E}_{\theta}\frac{\epsilon^2BD^2C_2\norm{T}^4L_{\Lambda}}{4C'}\norm{\sigma^2\lambda^2(X)}_{\infty}+2\epsilon^2B^{-1}C'\norm{T}^2\mathbb{E}_{\theta}\int_S\sigma\lambda^2(X)d\mu+
+\end{displaymath}
+\begin{displaymath}
++\mathbb{E}_{\theta}\frac{\epsilon^2BD^2C_2\norm{T}^4L_{\Lambda}}{4C'}\norm{\sigma^2\lambda^2(X)}_{\infty}+2\epsilon^2B^{-1}C'\norm{T}^2\mathbb{E}_{\theta}\int_S\sigma\lambda^2(X)d\mu=
+\end{displaymath}
+\begin{displaymath}
+=4\epsilon^2B^{-1}C'\norm{T}^2\mathbb{E}_{\theta}\int_S\sigma\lambda^2(X)d\mu+\frac{\epsilon^2BD^2C_2\norm{T}^2}{2C'}\mathbb{E}_{\theta}L_{\Lambda}\norm{\sigma^2\lambda^2(X)}_{\infty}\leq
+\end{displaymath}
+\begin{displaymath}
+\leq 4\epsilon^2B^{-1}C'\norm{T}^2\mathbb{E}_{\theta}\int_S\sigma\lambda^2(X)d\mu+\frac{BD^2C_2\norm{T}^2}{2C'}\mathbb{E}_{\theta}\Delta^{\epsilon}[\lambda(X)].
+\end{displaymath}
+Łącząc te oszacowania dostajemy tezę lematu.
+\end{proof}
+
+
+
+
+
+
+
+%\newpage
+\begin{thebibliography}{100}
+\bibitem{iphde} P. Alquier,	E. Gautier, G. Stoltz, \emph{Inverse Problems and High-Dimensional Estimation}	Springer-Verlag, 2011, wydanie zbiorowe,
+\bibitem{barron} A. Barron, L. Birge, P. Massart, \emph{Risk bounds for model selection via penalization}, Probab. Theory Relat. Fields, 113, 1999, pp. 301-- 413,
+\bibitem{beska} M. Beśka, \emph{Wykład monograficzny. Dodatek},
+\bibitem{birge} L. Birge, \emph{Model selection via testing: an alternative to (penalized) maximum likelihood estimators}, Ann. I. H. Poincaré, PR 42, 2006, pp. 273–325,
+\bibitem{birge2} L. Birge, \emph{Statistical estimation with model selection}, arXiv, 2006, The Brouwer Lecture, 2005,
+\bibitem{bissantz} N. Bissantz, T. Hohange, A. Munk, F. Ruymgaart, \emph{Convergence rates of general regularization methods for statistical inverse problems and applications}, SIAM J. Numer. Anal., Vol. 45, No. 6, 2007, pp. 2610-2636,
+\bibitem{cavalier2}  L. Cavalier, \emph{Inverse problems with non-compact operators}, Journal of Statistical Planning and
+Inference, 136, 2006, pp. 390-- 400,
+\bibitem{cavalier1} L. Cavalier, G. K. Golubev, D. Picard, A.B. Tsybakov, \emph{Oracle inequalities for inverse problems}, The Annals of Statistics, Vol. 30, No. 3, 2002, pp. 843–874,	
+\bibitem{feller} W. Feller, \emph{An Introduction to Probability Theory and Its Applications. Volume 1}, John Wiley and Sons, 1968,
+\bibitem{giraud} C. Giraud, \emph{Introduction to High-- Dimensional Statistics}, CRC Press, 2015,
+\bibitem{halmos}  P. R. Halmos, \emph{What does the spectral theorem say?}, The American Mathematical Monthly, Vol. 70, No. 3, 1963, pp. 241-247,
+\bibitem{hida} T. Hida, \emph{Brownian Motion}, Springer, 1980,
+\bibitem{laurent} B.Laurent, P. Massart, \emph{Adaptive estimation of a quadratic functional by model selection}, The Annals of Statistics, Vol. 28, No. 5, 2000, pp. 1302-- 1338,
+\bibitem{loubes} J.-- M. Loubes, C. Ludena, \emph{Penalized estimators for non linear inverse problems}, ESAIM: PS Vol. 14, 2010, pp. 173-- 191,
+\bibitem{loubes1} J.-- M. Loubes, C. Ludena, \emph{Adaptive complexity regularization for linear inverse problems}, Electronic Journal of Statistics, Vol. 2, 2008, pp. 661-- 677, 
+\bibitem{sobolev} L. A. Lusternik, V. J. Sobolew, \emph{Elements of functional analysis}, John Wiley and Sons, 1974,
+\bibitem{mair} B. A. Mair, F. H. Ruymgaart, \emph{Statistical inverse estimation in Hilbert scales}, SIAM J. Appl. Math, Vol. 56, No. 5, 1996, pp. 1424-- 1444,
+\bibitem{kaipo}
+J. Kaipio, E. Somersalo, \emph{Statistical and Computational Inverse Problems}, Springer, 2004,
+\bibitem{mitchell} C. Mitchell, S. van de Geer, \emph{ General oracle inequalities for model selection}, Electron. J. Statist, 3 (2009), pp. 176-204,
+\bibitem{silverman} B. W. Silverman, \emph{Density Estimation for Statistics and Data Analysis}, Springer-Science+Business Media, B.Y., 1986,
+\bibitem{szkutnik}
+Z. Szkutnik, \emph{Statystyczne problemy odwrotne}, notatki do wykładu,
+\bibitem{taylor} M. E. Taylor, \emph{Partial Differential Equations II. Qualitative Studies of Linear Equations}, Springer Science+Business Media, 2011,
+\bibitem{typek} N. N. Vakhania, V. I. Tarieladze, \emph{Probability Distributions on Banach Spaces}, D. Reidel Publishing Company, 1987,
+\bibitem{hindus}
+H. Lal Vasudeva, \emph{Elements of Hilbert Spaces and Operator Theory}, Springer Verlag, 2017,
+\bibitem{wasserman}
+L. Wasserman, \emph{All of Nonparametric Statistics},	Springer Science+Business Media, Inc.,	2006,
+
+\end{thebibliography}
+\end{document}

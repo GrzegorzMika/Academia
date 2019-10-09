@@ -1,0 +1,331 @@
+\documentclass{beamer}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{polski}
+\usepackage{amsfonts}
+\usepackage{eufrak}
+\usepackage{indentfirst}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\usetheme{AGH}
+
+\title{Nierówności wyrocznie dla problemów odwrotnych}
+\subtitle{Praca magisterska}
+\author{Grzegorz Mika}
+\institute{Wydział Matematyki Stosowanej}
+
+\date{5 września 2018}
+
+\begin{document}
+
+\titleframe[pl]
+
+\begin{frame}\frametitle{Plan prezentacji}
+\begin{itemize}
+\item Przedstawienie problemu 
+\vspace{3mm}
+\item Cel pracy
+\vspace{3mm}
+\item Nierówności wyrocznie w modelu z operatorem zwartym
+\vspace{3mm}
+\item Nierówności wyrocznie w ogólnym modelu
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Przedstawienie problemu}
+\begin{block}{Problem}
+Niech $A\colon \mathbb{H}\to \mathbb{G}$ będzie operatorem liniowym i ograniczonym między ośrodkowymi przestrzeniami Hilberta. Rozważmy problem
+\begin{displaymath}
+Af = g.
+\end{displaymath}
+Cel: mając dany $g \in \mathbb{G}$ znajdź $f \in \mathbb{H}$  by spełnione było powyższe równanie.
+\end{block}
+\begin{block}{Stochastyczny problem odwrotny}
+Równanie zaburzone przez losowy szum
+\begin{displaymath}
+Y = Af + \epsilon\xi,\ \epsilon > 0.
+\end{displaymath}
+\end{block}
+\end{frame}
+
+\begin{frame}\frametitle{Przedstawienie problemu}
+\begin{block}{Dobrze i źle postawione problemy}
+Problem nazwiemy dobrze postawionym w sensie Hadamarda, gdy:
+\begin{itemize}
+\item dla dowolnego $g\in G$ istnieje $f\in H$ spełniający zadane równanie,
+\item rozwiązanie jest jedyne,
+\item rozwiązanie jest stabilne, czyli zależy w sposób ciągły od prawej strony równania.
+\end{itemize}
+Problem nazwiemy źle postawionym, gdy nie jest dobrze postawiony.
+\end{block}
+\end{frame}
+
+\begin{frame}\frametitle{Błąd stochastyczny}
+\begin{block}{Błąd stochastyczny}
+Stochastycznym błędem $\xi$ nazwiemy proces na przestrzeni Hilberta G, czyli ograniczony liniowy operator $\xi\colon G\to L_2(\Omega, \mathcal{F},\mathbb{P})$ taki, że dla dowolnych elementów $g_1,g_2\in G$ mamy zdefiniowane zmienne losowe $\langle \xi, g_i\rangle$ takie, że $\mathbb{E}\langle \xi, g_i\rangle =0$. Operator kowariancji $\textbf{Cov}_{\xi}$ określony jest jako ograniczony liniowy operator ($||\textbf{Cov}_{\xi}||\leq 1$) z przestrzeni $G$ w przestrzeń $G$ taki, że $ \langle \textbf{Cov}_{\xi}g_1,g_2\rangle=\textbf{Cov}(\langle \xi,g_1\rangle,\langle \xi,g_2\rangle)$. 
+\end{block}
+\end{frame}
+
+
+\begin{frame}\frametitle{Błąd stochastyczny}
+\begin{block}{Działania na szumie}
+Niech $T$ będzie operatorem na przestrzeni $H$. Wtedy można zdefiniować szum $T\xi$ przez
+\begin{displaymath}
+\langle T\xi , f\rangle=\langle \xi, T^* f\rangle,\ \forall f\in TH.
+\end{displaymath}
+Operator kowariancji $T\xi$ jest postaci $\textbf{Cov}_{T\xi}=T\textbf{Cov}_{\xi}T^*$.
+\end{block}
+\begin{block}{Estymator liniowy}
+Estymatorem liniowym elementu $f$ w powyższym modelu nazywamy estymator postaci $TY$, gdzie $T$ jest pewnym operatorem z przestrzeni $L(G,H)$. 
+\end{block}
+\end{frame}
+
+
+\begin{frame}\frametitle{Cel pracy}
+\begin{center}
+Niech $\Lambda$ będzie skończonym zbiorem estymatorów liniowych.
+\end{center}
+\begin{block}{Cel}
+Wybór z rodziny $\Lambda$ estymatora naśladującego estymator o minimalnym ryzyku w tej klasie.
+\end{block}
+\begin{block}{Nierówności wyrocznie}
+Niech $\mathcal{R}(\theta^*,\theta)$ oznacza ryzyko estymatora $\theta^*$. Będziemy poszukiwać metody wyboru $\theta^*$ z $\Lambda$ tak, by udało się skonstruować nierówność następującej postaci
+\begin{displaymath}
+\mathcal{R}(\theta^*,\theta)\leq C_1 \inf_{\hat{\theta} \in \Lambda}\mathcal{R}(\hat{\theta},\theta)+C_2(\Lambda,n).
+\end{displaymath}
+\end{block}
+\end{frame}
+
+
+\begin{frame}\frametitle{Model z operatorem zwartym}
+\begin{center}
+Niech w problemie $Y=Af+\epsilon\xi$ $A$ będzie operatorem zwartym.
+\end{center}
+\begin{block}{Uwaga}
+Jeżeli $A\colon \mathbb{H}\to \mathbb{G}$ jest zwarty i $dim \mathbb{H} = \infty$, to $A^{-1}$ jest nieciągły, o ile istnieje, czyli problem $Af = g$ jest źle postawiony dla dowolnego operatora zwartego.
+\end{block}
+\end{frame}
+
+\begin{frame}\frametitle{Model z operatorem zwartym}
+\begin{block}{Reprezentacja według wartości singularnych}
+Istnieją skończony lub zbieżny do zera ciąg liczb dodatnich $\{b_n\}_{n\in I}$ oraz układy ortonormalne $\{v_n\}_{n\in I}\subset H,\ \{u_n\}_{n\in I}\subset G$ takie, że zachodzi
+\begin{itemize}
+\item $KerA^{\perp}=\overline{span\{v_n,\ n\in I\}}$, $\overline{RangeA}=\overline{span\{u_n,\ n\in I\}}$,
+\item $Af=\sum_nb_n\langle f, v_n\rangle u_n$ oraz $A^*g=\sum_nb_n\langle g, u_n\rangle v_n$.
+\end{itemize}
+Przy pewnych dodatkowych warunkach rozwiązania równania $Af=g$ mają postać 
+\begin{displaymath}
+f=f_0+\sum_nb_n^{-1}\langle g, u_n\rangle v_n,\ f_0\in KerA.
+\end{displaymath}
+\end{block}
+\end{frame}
+
+\begin{frame}\frametitle{Model z operatorem zwartym}
+\begin{block}{Model ciągowy}
+Problem $Y = Af +\epsilon\xi$ ma reprezentację postaci
+\begin{displaymath}
+x_n=\theta_n+\epsilon\sigma_n\xi_n,\ n=1,2,\dots
+\end{displaymath}
+gdzie $x_n=y_n/b_n = \langle Y, u_n\rangle /b_n$, $\theta_n = \langle f, v_n\rangle$ oraz $\sigma_n=b_n^{-1}$.
+\end{block}
+\begin{block}{Estymator liniowy}
+W powyższym modelu estymator liniowy ma postać $\hat{\theta}(\lambda)=(\hat{\theta}_1,\hat{\theta}_2,\dots)$, gdzie
+\begin{displaymath}
+\hat{\theta}_i=\lambda_ix_i,\ i=1,2,\dots
+\end{displaymath}
+dla pewnego nielosowego ciągu liczbowego $\lambda=(\lambda_1,\lambda_2,\dots)$.
+\end{block}
+\end{frame}
+
+\begin{frame}\frametitle{Model z operatorem zwartym}
+\begin{block}{Ryzyko}
+Ryzyko estymatora $\theta^*$ w powyższym modelu wyraża się jako 
+\begin{displaymath}
+\begin{split}
+\mathcal{R}(\hat{f},f)& = \mathbb{E}_{\theta}||\theta-\hat{\theta}||^2  \\
+&=\sum_{n=1}^{\infty}(1-\lambda_n)^2\theta_n^2+\epsilon^2\sum_{n=1}^{\infty}\sigma_n^2\lambda_n^2.
+\end{split}
+\end{displaymath}
+\end{block}
+\begin{block}{Nieobciążony estymator ryzyka}
+Nieobciążonym estymatorem $\mathcal{R}(\hat{\theta},\theta)-\sum_{n=1}^{\infty}\theta_n^2$ nazwiemy wyrażenie
+\begin{displaymath}
+U(\lambda,X)=\sum_{n=1}^{\infty}(\lambda_n^2-2\lambda_n)x_n^2+2\epsilon^2\sum_{n=1}^{\infty}\lambda_n\sigma_n^2
+\end{displaymath}
+\end{block}
+\end{frame}
+
+
+\begin{frame}\frametitle{Model z operatorem zwartym}
+\begin{block}{Oznaczenia}
+\begin{displaymath}
+\begin{split}
+&\rho=\max_{\lambda\in \Lambda}\sup_n\sigma_n^2|\lambda_n|\left[\sum_{k=1}^{\infty}\sigma_k^4\lambda_k^4\right]^{-1/2},\\
+&S=\frac{\max_{\lambda\in\Lambda}\sup_n\sigma_n^2\lambda_n^2}{\min_{\lambda\in \Lambda}\sup_n\sigma_n^2\lambda_n^2},\ M=\sum_{\lambda\in \Lambda}\exp\left(\frac{-1}{\rho(\lambda)}\right),\\
+&L_{\lambda}=\ln(NS)+\rho^2\ln^2(MS).
+\end{split}
+\end{displaymath}
+\end{block}
+\begin{block}{Metoda}
+\begin{displaymath}
+\lambda^*=\arg\min_{\lambda\in \Lambda}U(\lambda,X)
+\end{displaymath}
+\end{block}
+\end{frame}
+
+
+\begin{frame}\frametitle{Model z operatorem zwartym}
+\begin{center}
+Przy odpowiednich założeniach zachodzą następujące nierówności dla estymatora $\theta^*$ wybranego zaproponowaną metodą.
+\end{center}
+\begin{block}{Wyniki}
+Dla dowolnego $\theta\in l^2$ i dla dowolnego $B>B_0$ istnieją stałe $\gamma_1,\gamma_2,\gamma_3,\gamma_4$ takie, że zachodzi
+\begin{displaymath}
+\begin{split}
+\bullet\ \mathbb{E}_{\theta}\norm{\theta^*-\theta}^2&\leq (1+\gamma_1B^{-1})\min_{\lambda\in \Lambda}\mathcal{R}(\hat{\theta},\theta)+\gamma_2B\epsilon^2L_{\Lambda}\omega(B^2L_{\Lambda})\\
+\bullet\ \mathbb{E}_{\theta}\norm{\theta^*-\theta}^2&\leq (1+\gamma_3\rho\sqrt{L_{\Lambda}})\min_{\lambda\in \Lambda}\mathcal{R}(\hat{\theta},\theta),
+\end{split}
+\end{displaymath}
+o ile $\rho\sqrt{L_{\Lambda}}<\gamma_4$. Funkcja $\omega(x)$ jest postaci
+\begin{center}
+$\omega(x)=\max_{\lambda\in \Lambda}\sup_k\left[\sigma_k^2\lambda_k^2\pmb{1}\left(\sum_{n=1}^{\infty}\sigma_n^2\lambda_n^2\leq x \sup_k\sigma_k^2\lambda_k^2\right)\right],\ x>0.$
+\end{center}
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}\frametitle{Model z dowolnym operatorem}
+\begin{center}
+Niech w problemie $Y=Af+\epsilon\xi$ $A$ będzie dowolnym operatorem liniowym i ograniczonym.
+\end{center}
+\begin{block}{Prekondycjonowanie problemu}
+W miejsce problemu 
+\begin{displaymath}
+Y=Af+\epsilon\xi
+\end{displaymath}
+rozważać będziemy problem
+\begin{displaymath}
+A^*Y=A^*Af+\epsilon A^*\xi.
+\end{displaymath}
+\end{block}
+\end{frame}
+
+\begin{frame}\frametitle{Model z dowolnym operatorem}
+\begin{block}{Twierdzenie spektralne}
+Niech $A$ będzie operatorem samosprzężonym na ośrodkowej przestrzeni Hilberta $H$. Wtedy istnieją $\sigma$-- zwarta przestrzeń mierzalna $(S,\mathcal{S},\mu )$ z miarą Radona $\mu$, rzeczywista funkcja mierzalna $b$ określona na $S$ i operator unitarny $U\colon H\to L_2(S,\mathcal{S},\mu )$, takie, że 
+\begin{displaymath}
+A=U^{-1}M_bU,
+\end{displaymath}
+gdzie $M_b$ jest operatorem mnożenia przez funkcję $b$ zdefiniowanym jako $(M_bg)(x)=b(x)g(x)$
+\end{block}
+\end{frame}
+
+\begin{frame}\frametitle{Model z dowolnym operatorem}
+\begin{block}{Postać}
+Problem $Y=Af+\epsilon\xi$ można zapisać w postaci
+\begin{displaymath}
+X=\theta +\epsilon\sigma\eta,
+\end{displaymath}
+gdzie $\theta =Uf$, $\sigma\eta = M_{b^{-1}}UA^*\xi$ oraz $X = M_{b^{-1}}UA^*Y$.
+\end{block}
+\begin{block}{Estymator}
+W powyższym modelu estymator liniowy $\hat{\theta}$ przyjmuje postać 
+\begin{displaymath}
+\hat{\theta}=\lambda X,
+\end{displaymath}
+gdzie $\lambda$ jest pewną nielosową funkcją. 
+\end{block}
+\end{frame}
+
+
+\begin{frame}\frametitle{Model z dowolnym operatorem}
+\begin{block}{Założenia na szum}
+Załóżmy, że zachodzą następujące warunki gwarantujące skończoność drugich momentów regularyzowanego rozwiązania
+\begin{displaymath}
+\forall g\in G\hspace{0.5cm}  \mathbb{E}\langle \xi, g\rangle =0\textrm{ oraz }\norm{\textbf{Cov}_{\xi}}\leq 1,
+\end{displaymath}
+\begin{displaymath}
+\mathbb{E}\norm{A^*\xi}^2<\infty.
+\end{displaymath}
+Jeżeli spełnione są powyższe dwa warunki, możliwe jest takie dobranie miary $\mu$ i  operatora $U$ w twierdzeniu spektralnym, by zachodziło
+\begin{displaymath}
+\forall s\in S\hspace{0.5cm} \textbf{Var}(UA^*\xi (s))\leq b(s)
+\end{displaymath}
+\end{block}
+\end{frame}
+
+
+\begin{frame}\frametitle{Model z dowolnym operatorem}
+\begin{block}{Oszacowanie na ryzyko}
+Przy założeniach na szum ryzyko estymatora $\hat{\theta}$ można oszacować 
+\begin{displaymath}
+\mathcal{R}(\hat{\theta},\theta ) \leq \int_S(1-\lambda(s))^2\theta^2(s)d\mu+\epsilon^2\int_S\lambda^2(s)\sigma(s)d\mu.
+\end{displaymath}
+\end{block}
+\begin{block}{Oznaczenie}
+Wprowadźmy oznaczenie 
+\begin{displaymath}
+\Psi(\lambda,\theta) = \int_S(1-\lambda(s))^2\theta^2(s)d\mu+\epsilon^2\int_S\lambda^2(s)\sigma(s)d\mu.
+\end{displaymath}
+\end{block}
+\end{frame}
+
+\begin{frame}\frametitle{Model z dowolnym operatorem}
+\begin{block}{Empiryczne oszacowanie ryzyka}
+Wprowadźmy następującą wielkość
+\begin{displaymath}
+\psi(\lambda,X)=\int_S(\lambda^2-2\lambda)X^2 d\mu+ 2\epsilon^2\int_S\lambda\sigma d\mu.
+\end{displaymath}
+Zachodzi następująca zależność
+\begin{displaymath}
+\mathbb{E}\psi (\lambda,X)\leq \Psi(\lambda,\theta)-\int_S\theta^2d\mu.
+\end{displaymath}
+\end{block}
+\end{frame}
+
+
+\begin{frame}\frametitle{Model z dowolnym operatorem}
+\begin{block}{Metoda}
+Poszukiwany estymator $\theta^*$ będzie konstruowany tak, by filtr był wybierany z rodziny $\Lambda$ zgodnie z zasadą
+\begin{displaymath}
+\lambda^*=\arg\min_{\lambda\in \Lambda}\psi(\lambda,X)
+\end{displaymath}
+\end{block}
+\end{frame}
+
+\begin{frame}\frametitle{Model z dowolnym operatorem}
+\begin{center}
+\tiny{
+Przy odpowiednich założeniach, oznaczeniach analogicznych do modelu z operatorem zwartym i estymatorze $\theta^*$ wybranym zgodnie z zaproponowaną metodą można pokazać następujące nierówności}
+\end{center}
+\begin{block}{Wyniki}
+\scriptsize{Dla dowolnego $\theta\in L_2(S,\mathcal{S},\mu)$, dla dowolnego $B>B_0$ istnieją stałe $\gamma_1, \gamma_2,\gamma_3, \gamma_4$ takie, że zachodzi}
+\small{\begin{displaymath}
+\begin{split}
+\bullet\ \mathbb{E}_{\theta}&\norm{\theta^*-\theta}^2 \leq \max \{1,C_2\}(1+\gamma_1B^{-1}\max\{1,\norm{A}^2\})\min_{\lambda\in \Lambda}\Psi(\lambda,\theta)\\
+ &\hspace{21mm} + \max \{1,C_2\}\gamma_2B\max\{1,\norm{A}^2\}\epsilon^2L_{\Lambda}\omega(B^2L_{\Lambda})\\
+\bullet\ \mathbb{E}_{\theta}&\norm{\theta^*-\theta}^2\leq \max \{1,C_2\}(1+\gamma_3\max\{1,\norm{A}^2\}\sqrt{ \rho L_{\Lambda}})\min_{\lambda\in \Lambda}\Psi(\lambda,\theta),
+\end{split}
+\end{displaymath}}
+\scriptsize{o ile $\rho\sqrt{L_{\Lambda}}<\gamma_4$. Funkcja $\omega(x)$ jest postaci}
+\small{\begin{center}
+$
+\omega(x)=\max_{\lambda\in \Lambda}\norm{\sigma^2\lambda^2\pmb{1}\left(\int_S\sigma\lambda^2d\mu\leq x \norm{\sigma^2\lambda^2}_{\infty}\right)}_{\infty},\ x>0.$
+\end{center}}
+\end{block}
+\end{frame}
+
+
+
+
+\begin{frame}\frametitle{Koniec}
+\begin{center}
+\huge{\textbf{Dziękuję za uwagę!}}
+\end{center}
+\end{frame}
+\end{document}
