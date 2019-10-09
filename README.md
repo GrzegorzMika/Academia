@@ -12,6 +12,7 @@
   [LinkedIn profile](https://www.linkedin.com/in/grzegorzwmika/)
 
 ## Teaching
+- Consultation: Friday, 10:15-11:30, 410, D13
 - Stochastic processes (2019/2020)  
     - [Zestaw 1](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw1_PS_2020.pdf)  
     - [Zestaw 2](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw2_PS_2020.pdf)
