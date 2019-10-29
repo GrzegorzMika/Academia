@@ -22,7 +22,7 @@
   
 ### Talks & Posters
 - Grzegorz Mika (2018), _"Nierówności wyrocznie w problemach odwrotnych"_, seminar talk
-- Grzegorz Mika (2018), [_"Dekonwolucja zaborzonego sygnału. Podejście przez wyrocznie"_](https://github.com/GrzegorzMika/Academia/blob/master/posters/2018/dwumian/dwumian.pdf), DwuMian, 2018
+- Grzegorz Mika (2018), [_"Dekonwolucja zaburzonego sygnału. Podejście przez wyrocznie"_](https://github.com/GrzegorzMika/Academia/blob/master/posters/2018/dwumian/dwumian.pdf), DwuMian, 2018
 - Grzegorz Mika (2018), [_"Stochastyczne problemy odwrotne. Definicje i zastosowania"_](https://github.com/GrzegorzMika/Academia/blob/master/presentations/2018/wspolczesne_oblicza_matematyki/Oblicza.pdf), Współczesne oblicza matematyki, 2018
 - Grzegorz Mika (2017), _"Estymacja przez testowanie z selekcją modelu (na podstawie prac L.
 Birgé i in.)"_, seminar talk 
