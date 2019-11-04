@@ -39,6 +39,7 @@ Birgé i in.)"_, seminar talk
 - Stochastic processes (2019/2020)  
     - [Zestaw 1](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw1_PS_2020.pdf)  
     - [Zestaw 2](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw2_PS_2020.pdf)
+    - [Zestaw 3](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw3_PS_2020.pdf)
 - For information about previous semesters please see [here]()
 
 <!---
