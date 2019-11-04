@@ -30,6 +30,33 @@ następująco
 \end{zd}
 
 \begin{zd}
+	Określmy proces $Z(n)$ w następujący sposób
+	\begin{displaymath}
+		Z(n) = Z(n-1) + L(n), Z(0) = 0,\  \mathbb{P}(L(n) = 1)  = \mathbb{P}(L(n) = -1),
+	\end{displaymath}
+	gdzie zmienne $L(n)$ są niezależne między sobą.\\
+	Udowodnij, że następujące procesy są martyngałami względem filtracji $\mathcal{F} = \sigma\left(Z(0), Z(1), \dots, Z(n)\right)$:
+	\begin{itemize}
+		\item $Z(n), \ n= 0, 1, \dots$
+		\item $Z(n)^2 - n, \ n= 0, 1, \dots$,
+		\item $ (-1)^2\cos \left(\pi Z(n)\right), \ n= 0, 1, \dots.$
+	\end{itemize}
+\end{zd}
+
+\begin{zd}
+Niech $\{X_n\}_{n=1}^{\infty}$ będzie ciągiem niezależnych zmiennych losowych o tym samym rozkładzie $\mathcal{N}\left(-a, 1\right),\ a >0$.
+\begin{itemize}
+\item Dla jakiej wartości $h\in \mathbb{R}$ proces $Y_n = \exp \left(h\sum_{i = 1}^nX_i\right)$ względem filtracji naturalnej?
+\item Dal jakich wartości $h$ proces ten jest sub- lub supermartyngałem?
+\item Niech $h=2a$ i niech $x > 0$. Określmy $S_n = \sum_{i=1}^nX_i$. Udowodnij, że zachodzi
+\begin{displaymath}
+\mathbb{P}\left(\sup_nS_n > x\right) \leq e^{-2ax}.
+\end{displaymath}
+\end{itemize}
+\end{zd}
+
+
+\begin{zd}
 Niech $X_1, X_2, X_3, \dots$ będą niezależnymi, całkowalnymi i o wartości oczekiwanej równej 1. Niech $S_n = X_1\cdot X_2\cdot \dots \cdot X_n$. Udowodnij, że $S_n$ jest martyngałem względem filtracji generowanej przez zmienne $X_i$ .
 \end{zd}
 
