@@ -34,7 +34,7 @@ następująco
 		Z(n) = Z(n-1) + L(n), Z(0) = 0,\  \mathbb{P}(L(n) = 1)  = \mathbb{P}(L(n) = -1),
 	\end{displaymath}
 	gdzie zmienne $L(n)$ są niezależne między sobą.\\
-	Udowodnij, że następujące procesy są martyngałami względem filtracji $\mathcal{F} = \sigma\left(Z(0), Z(1), \dots, Z(n)\right)$:
+	Udowodnij, że następujące procesy są martyngałami względem filtracji $\mathcal{F}_n = \sigma\left(Z(0), Z(1), \dots, Z(n)\right)$:
 	\begin{itemize}
 		\item $Z(n), \ n= 0, 1, \dots$
 		\item $Z(n)^2 - n, \ n= 0, 1, \dots$,
@@ -45,8 +45,8 @@ następująco
 \begin{zd}
 Niech $\{X_n\}_{n=1}^{\infty}$ będzie ciągiem niezależnych zmiennych losowych o tym samym rozkładzie $\mathcal{N}\left(-a, 1\right),\ a >0$.
 \begin{itemize}
-\item Dla jakiej wartości $h\in \mathbb{R}$ proces $Y_n = \exp \left(h\sum_{i = 1}^nX_i\right)$ względem filtracji naturalnej?
-\item Dal jakich wartości $h$ proces ten jest sub- lub supermartyngałem?
+\item Dla jakiej wartości $h\in \mathbb{R}$ proces $Y_n = \exp \left(h\sum_{i = 1}^nX_i\right)$ jest martyngałem względem swojej filtracji naturalnej?
+\item Dla jakich wartości $h$ proces ten jest sub- lub supermartyngałem?
 \item Niech $h=2a$ i niech $x > 0$. Określmy $S_n = \sum_{i=1}^nX_i$. Udowodnij, że zachodzi
 \begin{displaymath}
 \mathbb{P}\left(\sup_nS_n > x\right) \leq e^{-2ax}.
@@ -56,7 +56,7 @@ Niech $\{X_n\}_{n=1}^{\infty}$ będzie ciągiem niezależnych zmiennych losowych
 
 
 \begin{zd}
-Niech $X_1, X_2, X_3, \dots$ będą niezależnymi, całkowalnymi i o wartości oczekiwanej równej 1. Niech $S_n = X_1\cdot X_2\cdot \dots \cdot X_n$. Udowodnij, że $S_n$ jest martyngałem względem filtracji generowanej przez zmienne $X_i$ .
+Niech $X_1, X_2, X_3, \dots$ będą niezależnymi, całkowalnymi zmiennymi losowymi o wartości oczekiwanej równej 1. Niech $S_n = X_1\cdot X_2\cdot \dots \cdot X_n$. Udowodnij, że $S_n$ jest martyngałem względem filtracji generowanej przez zmienne $X_i$ .
 \end{zd}
 
 \begin{zd}
@@ -71,13 +71,13 @@ Niech $X_1, X_2, X_3, \dots$ będzie ciągiem niezależnych zmiennych losowych o
 oraz niech $\{\mathcal{F}_n\}$ będzie filtracją generowaną przez zmienne losowe $X_i$. Niech $S_n = X_1 + X_2 + \dots +X_n$. Udowowdnij
 \begin{itemize}
 \item $M_n = \left(q/p\right)^{S_n}$ jest martyngałem względem $\{\mathcal{F}_n\}$,
-\item dla $\lambda >0 $ wyznacz stałą $C = C(\lambda)$ taką, że proces $Z_n^{\lambda} = C^n\lambda^{S_n}$ jest amrtyngałem względem $\{\mathcal{F}_n\}$.
+\item dla $\lambda >0 $ wyznacz stałą $C = C(\lambda)$ taką, że proces $Z_n^{\lambda} = C^n\lambda^{S_n}$ jest martyngałem względem $\{\mathcal{F}_n\}$.
 \end{itemize}
 \end{zd}
 
 
 \begin{zd}
-Udowodnij, że suma martyngałów jest martyngałem.
+Udowodnij, że suma procesów będących martyngałem względem tej samej filtracji jest martyngałem względem tej filtracji. Co gdy procesy te są martyngałami względem różnych filtracji?
 \end{zd}
 
 \begin{zd}

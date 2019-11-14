@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7230) (preloaded format=pdflatex 2019.11.3)  4 NOV 2019 17:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7230) (preloaded format=pdflatex 2019.11.3)  14 NOV 2019 15:44
 entering extended mode
 **./Zestaw3_PS_2020.tex
 (Zestaw3_PS_2020.tex
@@ -460,6 +460,12 @@ re±lony nast¦puj¡co
  []
 
 
+Overfull \hbox (0.37721pt too wide) in paragraph at lines 60--61
+\T1/aer/m/it/10 Udowodnij, »e $\OML/cmm/m/it/10 S[]$ \T1/aer/m/it/10 jest marty
+ngaªem wzgl¦dem filtracji generowanej przez zmienne
+ []
+
+
 Overfull \hbox (10.20721pt too wide) in paragraph at lines 64--65
 \T1/aer/bx/n/10 Zadanie 6. \T1/aer/m/it/10 Niech $\OML/cmm/m/it/10 X[]; X[]; X[
 ]; [] $ \T1/aer/m/it/10 b¦dzie ci¡giem niezale»nych zmiennych losowych
@@ -507,7 +513,7 @@ ts/type1/public/amsfonts/cm/cmsy10.pfb></home/grzegorz/.miktex/texmfs/install/f
 onts/type1/public/amsfonts/cm/cmsy7.pfb></home/grzegorz/.miktex/texmfs/install/
 fonts/type1/public/amsfonts/cm/cmti10.pfb></home/grzegorz/.miktex/texmfs/instal
 l/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Zestaw3_PS_2020.pdf (2 pages, 130009 bytes).
+Output written on Zestaw3_PS_2020.pdf (2 pages, 130193 bytes).
 PDF statistics:
  58 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
