@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7230) (preloaded format=pdflatex 2019.11.3)  17 NOV 2019 17:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7230) (preloaded format=pdflatex 2019.11.3)  17 NOV 2019 18:24
 entering extended mode
-**./Zestaw3_PS_2020.tex
-(Zestaw3_PS_2020.tex
+**./Zestaw4_PS_2020.tex
+(Zestaw4_PS_2020.tex
 LaTeX2e <2019-10-01> patch level 1
 (/home/grzegorz/.miktex/texmfs/install/tex/latex/mwcls/mwart.cls
 Document Class: mwart 2017/05/13 v0.75 A LaTeX document class (MW)
@@ -344,8 +344,8 @@ LaTeX Font Info:    Trying to load font information for T1+aer on input line 10
 (/home/grzegorz/.miktex/texmfs/install/tex/latex/ae/t1aer.fd
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
 ))))
-(Zestaw3_PS_2020.aux)
-\openout1 = `Zestaw3_PS_2020.aux'.
+(Zestaw4_PS_2020.aux)
+\openout1 = `Zestaw4_PS_2020.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
@@ -430,7 +430,7 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-(Zestaw3_PS_2020-concordance.tex)
+(Zestaw4_PS_2020-concordance.tex)
 LaTeX Font Info:    Trying to load font information for U+msa on input line 18.
 
 
@@ -447,76 +447,51 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Warning: No \author given.
 
 
-Overfull \hbox (14.46924pt too wide) in paragraph at lines 21--22
-\T1/aer/bx/n/10 Zadanie 1. \T1/aer/m/it/10 Znajd¹ posta¢ filtracji generowanej 
-przez proces $\OML/cmm/m/it/10 X\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 n; !\OT1/cmr/
-m/n/10 ) = \OML/cmm/m/it/10 ![][][]$\T1/aer/m/it/10 . 
+Overfull \hbox (7.56749pt too wide) in paragraph at lines 23--24
+\T1/aer/bx/n/10 Definicja 2. \T1/aer/m/it/10 Filtracj¦ $\OMS/cmsy/m/n/10 fF[]g[
+]$ \T1/aer/m/it/10 nazywamy prawostronnie ci¡gª¡, je»eli $\OMS/cmsy/m/n/10 8[] 
+F[] \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (5.66225pt too wide) in paragraph at lines 25--27
-\T1/aer/m/it/10 Udowodnij, »e martyngaªem wzgl¦dem tej filtracji jest proces ok
-re±lony nast¦puj¡co 
+Overfull \hbox (5.99951pt too wide) in paragraph at lines 26--27
+\T1/aer/bx/n/10 Definicja 3. \T1/aer/m/it/10 Mówimy, »e filtracja $\OMS/cmsy/m/
+n/10 fF[]g[]$ \T1/aer/m/it/10 speªnia zwykªe (standardowe) warunki,
  []
 
 
-Overfull \hbox (0.37721pt too wide) in paragraph at lines 60--61
-\T1/aer/m/it/10 Udowodnij, »e $\OML/cmm/m/it/10 S[]$ \T1/aer/m/it/10 jest marty
-ngaªem wzgl¦dem filtracji generowanej przez zmienne
- []
-
-
-Overfull \hbox (10.20721pt too wide) in paragraph at lines 64--65
-\T1/aer/bx/n/10 Zadanie 6. \T1/aer/m/it/10 Niech $\OML/cmm/m/it/10 X[]; X[]; X[
-]; [] $ \T1/aer/m/it/10 b¦dzie ci¡giem niezale»nych zmiennych losowych
- []
-
-
-Overfull \hbox (10.20721pt too wide) in paragraph at lines 68--69
-\T1/aer/bx/n/10 Zadanie 7. \T1/aer/m/it/10 Niech $\OML/cmm/m/it/10 X[]; X[]; X[
-]; [] $ \T1/aer/m/it/10 b¦dzie ci¡giem niezale»nych zmiennych losowych
+Overfull \hbox (16.0265pt too wide) in paragraph at lines 64--65
+\T1/aer/bx/n/10 Zadanie 4. \T1/aer/m/it/10 Niech $\OMS/cmsy/m/n/10 f\OML/cmm/m/
+it/10 []\OMS/cmsy/m/n/10 g$ \T1/aer/m/it/10 b¦dzie ci¡giem momentów stopu. Udo
+wodnij, »e momentami
  []
 
 [1
 
 {/home/grzegorz/.miktex/texmfs/data/pdftex/config/pdftex.map}]
-Overfull \hbox (2.06091pt too wide) in paragraph at lines 93--94
-\T1/aer/m/it/10 probabilistycznej co proces $\OML/cmm/m/it/10 M[]$ \T1/aer/m/it
-/10 i niech b¦dzie procesem przewidywalnym. Okre±lmy
- []
-
-
-Overfull \hbox (14.4776pt too wide) in paragraph at lines 106--107
-\T1/aer/m/it/10 funkcja wypukªa martyngaªy wzgl¦dem pewnej filtracji jest subma
-rtyngaªem wzgl¦dem
- []
-
-[2] (Zestaw3_PS_2020.aux) ) 
+(Zestaw4_PS_2020.aux) ) 
 Here is how much of TeX's memory you used:
  3791 strings out of 494415
- 52527 string characters out of 3174393
- 114146 words of memory out of 3000000
+ 52526 string characters out of 3174393
+ 113146 words of memory out of 3000000
  7800 multiletter control sequences out of 15000+200000
  19351 words of font info for 45 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 53i,7n,32p,463b,243s stack positions out of 5000i,500n,10000p,200000b,50000s
-</home/grzegorz/.miktex/texmfs/install/fonts/type1/p
-ublic/amsfonts/cm/cmbx10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1
-/public/amsfonts/cm/cmex10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/typ
-e1/public/amsfonts/cm/cmmi10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/t
-ype1/public/amsfonts/cm/cmmi5.pfb></home/grzegorz/.miktex/texmfs/install/fonts/
-type1/public/amsfonts/cm/cmmi7.pfb></home/grzegorz/.miktex/texmfs/install/fonts
-/type1/public/amsfonts/cm/cmr10.pfb></home/grzegorz/.miktex/texmfs/install/font
-s/type1/public/amsfonts/cm/cmr17.pfb></home/grzegorz/.miktex/texmfs/install/fon
-ts/type1/public/amsfonts/cm/cmr7.pfb></home/grzegorz/.miktex/texmfs/install/fon
-ts/type1/public/amsfonts/cm/cmsy10.pfb></home/grzegorz/.miktex/texmfs/install/f
-onts/type1/public/amsfonts/cm/cmsy7.pfb></home/grzegorz/.miktex/texmfs/install/
-fonts/type1/public/amsfonts/cm/cmti10.pfb></home/grzegorz/.miktex/texmfs/instal
-l/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home/grzegorz/.miktex/texmfs
-/install/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on Zestaw3_PS_2020.pdf (2 pages, 135922 bytes).
+ 53i,7n,32p,356b,243s stack positions out of 5000i,500n,10000p,200000b,50000s
+</home/grzegorz/.miktex/texmfs/install/fonts/type1/publi
+c/amsfonts/cm/cmbx10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/pub
+lic/amsfonts/cm/cmex10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/p
+ublic/amsfonts/cm/cmmi10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1
+/public/amsfonts/cm/cmmi7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type
+1/public/amsfonts/cm/cmr10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/typ
+e1/public/amsfonts/cm/cmr17.pfb></home/grzegorz/.miktex/texmfs/install/fonts/ty
+pe1/public/amsfonts/cm/cmr7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/
+type1/public/amsfonts/cm/cmsy7.pfb></home/grzegorz/.miktex/texmfs/install/fonts
+/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on Zestaw4_PS_2020.pdf (1 page, 112687 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
+ 47 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  5 words of extra memory for PDF output out of 10000 (max. 10000000)
 

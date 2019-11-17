@@ -39,7 +39,7 @@ następująco
 	\begin{itemize}
 		\item $Z(n), \ n= 0, 1, \dots$
 		\item $Z(n)^2 - n, \ n= 0, 1, \dots$,
-		\item $ (-1)^2\cos \left(\pi Z(n)\right), \ n= 0, 1, \dots.$
+		\item $ (-1)^n\cos \left(\pi Z(n)\right), \ n= 0, 1, \dots.$
 	\end{itemize}
 \end{zd}
 
@@ -85,6 +85,10 @@ Udowodnij, że suma procesów będących martyngałem względem tej samej filtra
 Udowodnij, że wartość oczekiwana martyngału względem zadanej filtracji jest stała w czasie.
 \end{zd}
 
+\begin{df}
+Proces $X$ nazywamy przewidywalnym względem filtracji $\{\mathcal{F}_t\}_{n\in \mathbb{N}}$, jeżeli dla dowolonego $n$ $X_{n+1}$ jest $\mathcal{F}_{n}$ mierzalna.
+\end{df}
+
 \begin{zd}
 Niech $M_t$ będzie martyngałem całkowalnym z kwadratem względem filtracji $\{\mathcal{F}_n\}_{n=1}^{\infty}$. Niech proces $Y_t$ będzie skonstruowany na tej samej przestrzeni probabilistycznej co proces $M_t$ i niech będzie procesem przewidywalnym. Określmy proces $N$ jako
 \begin{displaymath}
@@ -93,6 +97,10 @@ N_t = N_0 + \sum_{k=1}^tY_k\left(M_k - M_{k-1}\right)
 jest martyngałem pod warunkiem, że $N_0$ jest $\mathcal{F}_0$-mierzalna.\\
 Co trzeba założyć na temat całkowalności procesu $Y$?
 \end{zd}
+
+\begin{df}
+Proces $X$ nazyway submartyngałem (supermartyngałem) względem filtracji $\{\mathcal{F}_t\}_{t\in T}$, gdy $\forall_{s <t}\ X_s \leq \ (\geq)\ \mathbb{E}\left(X_t|\mathcal{F}_s\right)$.
+\end{df}
 
 \begin{zd}
 Wykazać, że przy odpowiednich założeniach co do całkowalności funkcja wypukła martyngały względem pewnej filtracji jest submartyngałem względem tej filtracji oraz że funkcja wypukła i niemalejąca przekształca submartyngał w submartyngał.
