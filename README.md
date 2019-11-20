@@ -43,6 +43,7 @@ Birgé i in.)"_, seminar talk
     - [Zestaw 4](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw4_PS_2020.pdf)
 - For information about previous semesters please see [here]()
 
+[![HitCount](http://hits.dwyl.io/GrzegorzMika/Academia.svg)](http://hits.dwyl.io/GrzegorzMika/Academia)
 <!---
 ## Welcome to GitHub Pages
 
