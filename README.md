@@ -44,6 +44,7 @@ Birgé i in.)"_, seminar talk
 - For information about previous semesters please see [here]()
 
 [![HitCount](http://hits.dwyl.io/GrzegorzMika/Academia.svg)](http://hits.dwyl.io/GrzegorzMika/Academia)
+
 <!---
 ## Welcome to GitHub Pages
 
