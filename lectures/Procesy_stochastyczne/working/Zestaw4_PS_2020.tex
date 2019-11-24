@@ -78,8 +78,33 @@ Niech $T=[0,\infty)$, a $X_{{t}}$ procesem ${\mathcal{F}}_{{t}}$-adaptowalnym o 
 Wykaż, że jeśli $\tau$ i $\sigma$ są momentami zatrzymania, to zdarzenia $\{\tau<\sigma\},\{\tau=\sigma\}$ i $\{\tau\leq\sigma\}$ należą do ${\mathcal{F}}_{{\tau}}$, ${\mathcal{F}}_{{\sigma}}$ i ${\mathcal{F}}_{{\tau\wedge\sigma}}$.
 \end{zd}
 
+\begin{zd}
+	Niech będzie dana przestrzeń probabilistyczna $(\Omega, \mathcal{F}, \mathbb{P})$ z filtracją zupełną $\{\mathcal{F}_n\}$. Niech $\tau, \sigma$ będą dwoma momentami Markowa o skończonych wartościach takimi, że istnieje $t_0 \geq 0$, takie, że $\mathbb{P}(\tau \geq t_0) = \mathbb{P}(\sigma \geq t_0) = 1$. Niech $A\in \mathcal{F}_{t_0}$. Sprawdź, czy momentem stopu jest zmienna losowa
+	\begin{displaymath}
+	U = \tau \cdot\pmb{1}_A + \sigma \cdot \pmb{1}_{A'}
+	\end{displaymath}
+	względem podanej filtracji.
+\end{zd}
 
-\begin{flushright}
-To be continued...
-\end{flushright}
+\begin{zd}
+	Niech $0 < \tau_1 < \tau_2 < \dots < \tau_n < \dots $ będzie rosnącym do nieskończoności ciągiem momentów stopu o skończonych wartościach. Niech $N_t = \sum_{i = 1}^{\infty}\pmb{1}_{\{t \geq \tau_i\}}.$ Niech ponadto $\{U_i\}_{i \in \mathbb{N}}$ będzie ciągiem niezależnych zmiennych losowych takim, że jest on niezależny od procesu $N$. Załóżmy, że $\sup_i\mathbb{E}|U_i|< \infty$ oraz $\mathbb{E}U_i = 0$ dla dowolnego $i$. Udowodnij, że wtedy proces
+	\begin{displaymath}
+		Z_t = \sum_{i = 1}^{\infty}U_i\pmb{1}_{\{t \geq \tau_i\}}
+	\end{displaymath}
+	jest martyngałem.
+\end{zd}
+
+\begin{zd}
+Niech $X$ będzie procesem adaptowanym. Udowodnij, że $X$ jest martyngałem, jeżeli jest całkowalny i dla każdego ograniczonego momentu stopu $\tau$ zachodzi $\mathbb{E}X_{\tau} = \mathbb{E}_0$.
+\end{zd}
+
+\begin{zd}
+Niech proces $X$ będzie martyngałem i niech $\tau$ będzie momentem stopu.
+\begin{itemize}
+\item Udowodnij, że proces zastopowany $X^{\tau}_t = X(\min\{t, \tau\})$ jest martyngałem.
+\item NIech $\sigma$ będzie momentem stopu takim, że $\sigma \leq \tau$ i niech $\tau,\ \sigma$ będą ograniczone. Udowodnij, że $\mathbb{E}\left(X_{\tau}|\mathcal{F}_{\sigma}\right) = X_{\sigma}$ prawie na pewno.
+\item Przypuśćmy, że istnieje całkowalna zmienna losowa $Y$ taka, że dla dowolnego $t$, $|X_t| \leq Y$ i niech $\tau$ będzie momentem stopu skończonym prawie wszędzie. Udowodnij, że $\mathbb{E}X_{\tau} = \mathbb{E}X_0 $.
+\item Niech $X$ będzie procesem takim, że istnieje stała $M$ taka, że $|X_{n-1} - X_n| \leq M$ dla dowolnego $n$ i niech $\tau$ będzie momentem stopu takim, że $\mathbb{E}\tau < \infty$. Udowodnij, że wtedy $\mathbb{E}X_{\tau} = \mathbb{E}X_0$.
+\end{itemize}
+\end{zd}
 \end{document}

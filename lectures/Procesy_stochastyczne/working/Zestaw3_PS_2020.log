@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7230) (preloaded format=pdflatex 2019.11.3)  17 NOV 2019 17:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250) (preloaded format=pdflatex 2019.11.3)  24 NOV 2019 16:58
 entering extended mode
 **./Zestaw3_PS_2020.tex
 (Zestaw3_PS_2020.tex
@@ -486,6 +486,13 @@ Overfull \hbox (2.06091pt too wide) in paragraph at lines 93--94
  []
 
 
+Overfull \hbox (9.31578pt too wide) in paragraph at lines 96--99
+\T1/aer/m/it/10 Udowodnij, »e proces $\OML/cmm/m/it/10 N$ \T1/aer/m/it/10 jest 
+martyngaªem pod warunkiem, »e $\OML/cmm/m/it/10 N[]$ \T1/aer/m/it/10 jest $\OMS
+/cmsy/m/n/10 F[]$\T1/aer/m/it/10 -mierzalna. 
+ []
+
+
 Overfull \hbox (14.4776pt too wide) in paragraph at lines 106--107
 \T1/aer/m/it/10 funkcja wypukªa martyngaªy wzgl¦dem pewnej filtracji jest subma
 rtyngaªem wzgl¦dem
@@ -514,7 +521,7 @@ onts/type1/public/amsfonts/cm/cmsy7.pfb></home/grzegorz/.miktex/texmfs/install/
 fonts/type1/public/amsfonts/cm/cmti10.pfb></home/grzegorz/.miktex/texmfs/instal
 l/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home/grzegorz/.miktex/texmfs
 /install/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on Zestaw3_PS_2020.pdf (2 pages, 135922 bytes).
+Output written on Zestaw3_PS_2020.pdf (2 pages, 135963 bytes).
 PDF statistics:
  62 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

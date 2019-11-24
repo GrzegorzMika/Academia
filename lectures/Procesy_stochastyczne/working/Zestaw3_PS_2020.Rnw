@@ -91,9 +91,9 @@ Proces $X$ nazywamy przewidywalnym względem filtracji $\{\mathcal{F}_t\}_{n\in 
 \begin{zd}
 Niech $M_t$ będzie martyngałem całkowalnym z kwadratem względem filtracji $\{\mathcal{F}_n\}_{n=1}^{\infty}$. Niech proces $Y_t$ będzie skonstruowany na tej samej przestrzeni probabilistycznej co proces $M_t$ i niech będzie procesem przewidywalnym. Określmy proces $N$ jako
 \begin{displaymath}
-N_t = N_0 + \sum_{k=1}^tY_k\left(M_k - M_{k-1}\right)
+N_t = N_0 + \sum_{k=1}^tY_k\left(M_k - M_{k-1}\right).
 \end{displaymath}
-jest martyngałem pod warunkiem, że $N_0$ jest $\mathcal{F}_0$-mierzalna.\\
+Udowodnij, że proces $N$ jest martyngałem pod warunkiem, że $N_0$ jest $\mathcal{F}_0$-mierzalna.\\
 Co trzeba założyć na temat całkowalności procesu $Y$?
 \end{zd}
 
