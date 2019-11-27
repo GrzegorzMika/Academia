@@ -101,7 +101,7 @@ Niech $X$ będzie procesem adaptowanym. Udowodnij, że $X$ jest martyngałem, je
 Niech proces $X$ będzie martyngałem i niech $\tau$ będzie momentem stopu.
 \begin{itemize}
 \item Udowodnij, że proces zastopowany $X^{\tau}_t = X(\min\{t, \tau\})$ jest martyngałem.
-\item NIech $\sigma$ będzie momentem stopu takim, że $\sigma \leq \tau$ i niech $\tau,\ \sigma$ będą ograniczone. Udowodnij, że $\mathbb{E}\left(X_{\tau}|\mathcal{F}_{\sigma}\right) = X_{\sigma}$ prawie na pewno.
+\item Niech $\sigma$ będzie momentem stopu takim, że $\sigma \leq \tau$ i niech $\tau,\ \sigma$ będą ograniczone. Udowodnij, że $\mathbb{E}\left(X_{\tau}|\mathcal{F}_{\sigma}\right) = X_{\sigma}$ prawie na pewno.
 \item Przypuśćmy, że istnieje całkowalna zmienna losowa $Y$ taka, że dla dowolnego $t$, $|X_t| \leq Y$ i niech $\tau$ będzie momentem stopu skończonym prawie wszędzie. Udowodnij, że $\mathbb{E}X_{\tau} = \mathbb{E}X_0 $.
 \item Niech $X$ będzie procesem takim, że istnieje stała $M$ taka, że $|X_{n-1} - X_n| \leq M$ dla dowolnego $n$ i niech $\tau$ będzie momentem stopu takim, że $\mathbb{E}\tau < \infty$. Udowodnij, że wtedy $\mathbb{E}X_{\tau} = \mathbb{E}X_0$.
 \end{itemize}
