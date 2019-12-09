@@ -29,6 +29,7 @@ Birgé i in.)"_, seminar talk
 - Grzegorz Mika (2017), [_"Zastosowanie metod MCMC do modeli wyceny"_](https://github.com/GrzegorzMika/Academia/blob/master/presentations/2017/krakowska_konferencja_matematyki_finansowej/MCMC.pdf), VI Krakowska konferencja Matematyki Finansowej, 2017
 
 ### Participant
+- [_XLV Konferencja Statystyka Matematyczna_](https://www.impan.pl/en/activities/banach-center/conferences/19-xlvstatistic), 2-6 December 2019, Będlewo, Poland
 - [_Why R? 2019 Conference_](http://whyr.pl/2019/), 26-29 September 2019, Warszawa, Poland
 - [_Jubileuszowy zjazd matematyków polskich w 100-lecie PTM_](https://100latptm.matinf.uj.edu.pl/), 3-7 September 2019, Kraków, Poland
 - [_Statistics conference in honor of Add Van der Vaart's 60th birthday_](http://pub.math.leidenuniv.nl/~schmidthieberaj/aadbirthday/), 17-21 June 2019, Leiden, The Netherlands
