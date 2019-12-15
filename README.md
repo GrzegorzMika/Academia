@@ -4,13 +4,13 @@
 ## Contact
 
 - **University address:**  
-  AGH University of Science and Technology  
-  ul. Gramatyka 8a - D13  
-  Room 410
+  > AGH University of Science and Technology  
+  > ul. Gramatyka 8a - D13  
+  > Room 410
 - **e-mail address:**  
-  grzegorz.mika@agh.edu.pl
+  > grzegorz.mika@agh.edu.pl
 - **LinkedIn**  
-  [LinkedIn profile](https://www.linkedin.com/in/grzegorzwmika/)
+  > [LinkedIn profile](https://www.linkedin.com/in/grzegorzwmika/)
 
 ## Research
 
