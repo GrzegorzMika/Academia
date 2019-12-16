@@ -42,6 +42,8 @@ Birgé i in.)"_, seminar talk
     - [Zestaw 2](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw2_PS_2020.pdf)
     - [Zestaw 3](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw3_PS_2020.pdf)
     - [Zestaw 4](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw4_PS_2020.pdf)
+    - [Zestaw 5](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw5_PS_2020.pdf)
+    - [Zagadnienia do egzaminu/kolokwium teoretycznego](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zagadnienia.pdf)
 - For information about previous semesters please see [here]()
 
 [![HitCount](http://hits.dwyl.io/GrzegorzMika/Academia.svg)](http://hits.dwyl.io/GrzegorzMika/Academia)
