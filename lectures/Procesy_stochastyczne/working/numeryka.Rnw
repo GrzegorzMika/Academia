@@ -1,0 +1,44 @@
+\documentclass{mwart}
+%\usepackage{polski}
+%\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{zd}{Zadanie}
+\title{Procesy stochastyczne \\ Zadania numeryczne}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\maketitle
+\textbf{Zasady:}
+\begin{itemize}
+\item Celem zadań przede wszystkim jest motywacja do dalszych poszukiwań i badań w zakresie procesów stochastycznych.
+\item Ilość możliwych punktów do uzyskania za dane zadanie podana jest obok jego numerka.
+\item Na pełne rozwiązanie składa się opis metody, przeliczony przykład oraz replikowany, działający kod wykorzystany do stworzenia przykładu.
+\item Implenetacja możliwa jest w jednym z jązyków: C, C++, Python, R, Julia.
+\item W przypadku wykorzystywania dodatkowych bibliotek wymagane jest podanie wykorzystanej wersji.
+\item Rozwiązania można nadsyłać do końca semestru.
+\end{itemize}
+\begin{zd}
+Opisz i na wybranym przykładzie pokaż metodę symulacji niejednorodnego procesu Poissona.
+\end{zd}
+\begin{zd}
+
+\end{zd}
+\begin{zd}
+
+\end{zd}
+\begin{zd}
+
+\end{zd}
+\begin{zd}
+
+\end{zd}
+\begin{thebibliography}{10}
+
+\end{thebibliography}
+\end{document}
