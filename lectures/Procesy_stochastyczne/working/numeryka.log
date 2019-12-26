@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250) (preloaded format=pdflatex 2019.11.3)  20 DEC 2019 07:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250) (preloaded format=pdflatex 2019.11.3)  26 DEC 2019 17:49
 entering extended mode
 **./numeryka.tex
 (numeryka.tex
@@ -451,36 +451,59 @@ t podanie
  []
 
 
-Overfull \hbox (22.71815pt too wide) in paragraph at lines 28--29
-\T1/aer/bx/n/10 Zadanie 1. \T1/aer/m/it/10 Opisz i na wybranym przykªadzie poka
-» metod¦ symulacji niejednorodnego
+Overfull \hbox (43.10718pt too wide) in paragraph at lines 34--35
+\T1/aer/bx/n/10 Zadanie 3 \T1/aer/m/n/10 (15 pkt)\T1/aer/bx/n/10 . \T1/aer/m/it
+/10 Opisz i na przykªadzie przedstaw metod¦ symulacji jednowymiarowego
  []
 
 
-LaTeX Warning: Empty `thebibliography' environment on input line 44.
+Overfull \hbox (21.1375pt too wide) in paragraph at lines 37--38
+\T1/aer/bx/n/10 Zadanie 4 \T1/aer/m/n/10 (12 pkt)\T1/aer/bx/n/10 . \T1/aer/m/it
+/10 Opisz i na przykªadzie (najlepiej procesu Ornsteina- Uhlenbecka)
+ []
+
+
+Overfull \hbox (46.9185pt too wide) in paragraph at lines 37--38
+\T1/aer/m/it/10 przdstaw metod¦ symulacji trajektorii (path) procesu b¦d¡cego r
+ozwi¡zaniem stochastycznego
+ []
+
+
+Underfull \hbox (badness 2111) in paragraph at lines 45--46
+[]\T1/aer/m/n/9 Martin Haugh, \T1/aer/m/it/9 Simulating Stochastic Differential
+ Equations\T1/aer/m/n/9 , Monte-Carlo
+ []
+
+
+Underfull \hbox (badness 1472) in paragraph at lines 46--47
+[]\T1/aer/m/n/9 C.C. Paige, George P.H. Styan, Peter G. Wachter, \T1/aer/m/it/9
+ Computation of the
+ []
 
 [1
 
 {/home/grzegorz/.miktex/texmfs/data/pdftex/config/pdftex.map}] (numeryka.aux) )
  
 Here is how much of TeX's memory you used:
- 3798 strings out of 494415
- 52481 string characters out of 3174393
- 108121 words of memory out of 3000000
- 7800 multiletter control sequences out of 15000+200000
- 23992 words of font info for 52 fonts, out of 3000000 for 9000
+ 3810 strings out of 494415
+ 52557 string characters out of 3174393
+ 110133 words of memory out of 3000000
+ 7805 multiletter control sequences out of 15000+200000
+ 27741 words of font info for 59 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 53i,7n,32p,300b,243s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 53i,7n,32p,330b,243s stack positions out of 5000i,500n,10000p,200000b,50000s
 </home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pf
 b></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.
 pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi1
 0.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr
 10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cm
 r17.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/c
-mti10.pfb>
-Output written on numeryka.pdf (1 page, 72322 bytes).
+mr9.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/c
+mti10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm
+/cmti9.pfb>
+Output written on numeryka.pdf (1 page, 112450 bytes).
 PDF statistics:
- 31 PDF objects out of 1000 (max. 8388607)
+ 39 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  5 words of extra memory for PDF output out of 10000 (max. 10000000)
 
