@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250) (preloaded format=pdflatex 2019.11.3)  11 JAN 2020 13:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250) (preloaded format=pdflatex 2019.11.3)  12 JAN 2020 18:16
 entering extended mode
 **./kolokwium_B2.tex
 (kolokwium_B2.tex
@@ -452,8 +452,8 @@ LaTeX Warning: No \author given.
 (kolokwium_B2.aux) ) 
 Here is how much of TeX's memory you used:
  3791 strings out of 494415
- 52477 string characters out of 3174393
- 107124 words of memory out of 3000000
+ 52478 string characters out of 3174393
+ 109124 words of memory out of 3000000
  7800 multiletter control sequences out of 15000+200000
  19351 words of font info for 45 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
@@ -465,12 +465,15 @@ ic/amsfonts/cm/cmmi10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/pu
 blic/amsfonts/cm/cmmi7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/p
 ublic/amsfonts/cm/cmr10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/
 public/amsfonts/cm/cmr17.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1
+/public/amsfonts/cm/cmr5.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1
 /public/amsfonts/cm/cmr7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1
 /public/amsfonts/cm/cmsy10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/typ
-e1/public/amsfonts/cm/cmti10.pfb>
-Output written on kolokwium_B2.pdf (1 page, 86532 bytes).
+e1/public/amsfonts/cm/cmsy7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/ty
+pe1/public/amsfonts/cm/cmti10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/
+type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on kolokwium_B2.pdf (1 page, 113136 bytes).
 PDF statistics:
- 43 PDF objects out of 1000 (max. 8388607)
+ 55 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  5 words of extra memory for PDF output out of 10000 (max. 10000000)
 

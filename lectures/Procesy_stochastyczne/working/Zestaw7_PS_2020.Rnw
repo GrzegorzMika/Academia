@@ -33,6 +33,13 @@
 	\end{itemize}
 \end{zd}
 
+\begin{zd}
+Niech proces $X$ będzie określony jako $X_t = tW_t - \int_0^tW_sds$. Czy proces $X$ jest martyngałem?
+\end{zd}
+
+\begin{zd}
+Wyznacz gęstość zmiennej losowej $X = W(s) + W(t)$, gdzie $0\leq s\leq t$..
+\end{zd}
 
 \begin{zd}
 	Określmy następujący proces (most Browna)
@@ -50,17 +57,30 @@
 \begin{zd}
 	Niech $W_t = (W_t^1, W_t^2)$, gdzie $\{W_t^1\}, \{W_t^2\}$ są niezależnymi procesami Wienera. Dla $R > 0$ i $t > 0$ znajdź $\mathbb{P}\left(||W_t|| < R	\right)$, gdzie $||\cdot||$ jest normą euklidesową w $\mathbb{R}^2$. Oblicz $\lim_{t \to \infty}\mathbb{P}\left(||W_t|| < R	\right)$.
 \end{zd}
-\begin{zd}
-	Sprawdź, czy następujące procesy są procesami Wienera:
-	\begin{itemize}
-		\item $-W_t$,
-		\item $c^{-1/2}W_{ct}$, $c>0$,
-		\item $Y_t = tW_{1/t},\ t> 0$ i $Y_0 = 0$,
-		\item $W_{T+t} - W_T, \ T > 0$.
-	\end{itemize}
-\end{zd}
+
 \begin{zd}
 	Niech $\{L_n\}$ będzie ciągiem niezależnych zmiennych losowych takich, że $\mathbb{P}\left(L_n = 1\right) = \mathbb{P}\left(L_n = -1\right)$ dla każdego $n\in\mathbb{N}$. Określmy $h = \frac{1}{N}$ oraz proces $X_n = h^{\alpha}L_n$. Pokaż, że dla $\alpha \in (0,1/2)$ $\sum_{k=1}^NX_k \to 0$ w $L_2$, natomiast dla $\alpha \in (1/2, \infty)$ $\sum_{k=1}^NX_k \to \infty$ w $L_2$. Co dostajemy dla $\alpha = 1/2$?
+\end{zd}
+
+\begin{zd}
+Udowodnij, że proces Winera ma własnośc Markowa.
+\end{zd}
+
+\begin{zd}
+Niech $T_a$ będzie czasem, jaki upłynie zanim proces Wienera $WW$ dotknie poziomu $a\in \mathbb{R}$.
+\begin{itemize}
+\item Znajdź $\mathbb{P}\left(T_2 \leq 8\right)$.
+\item Wyznacz medianę $T_2$.
+\end{itemize}
+\end{zd}
+
+\begin{zd}
+Niech proces $M$ będzie zadany jako $M_t = \sup_{0 \leq s \leq t}W(s)$. Wyznacz
+\begin{itemize}
+\item $\mathbb{P}\left(M_4 \leq 2\right)$,
+\item gęstość $M_4$,
+\item średnią oraz medianę $M_4$.
+\end{itemize}
 \end{zd}
 
 \begin{zd}
@@ -73,6 +93,14 @@
 	\end{displaymath}
 \end{zd}
 
+\begin{zd}
+Procesem Wienera z dryftem $\mu$ i wariancją $\sigma^2$ nazywamy proces $X_t = \mu t+ \sigma W(t)$.
+\begin{itemize}
+\item Wykaż, że proces $X$ ma niezależne i stacjonarne przyrosty.
+\item Znajdź rozkład $X(t)$.
+\item Sprawdź, czy proces $X$ jest martyngałem.
+\end{itemize}
+\end{zd}
 
 
 \end{document}

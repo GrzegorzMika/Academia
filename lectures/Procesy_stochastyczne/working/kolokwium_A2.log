@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250) (preloaded format=pdflatex 2019.11.3)  12 JAN 2020 18:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250) (preloaded format=pdflatex 2019.11.3)  12 JAN 2020 18:31
 entering extended mode
-**./Zestaw7_PS_2020.tex
-(Zestaw7_PS_2020.tex
+**./kolokwium_A2.tex
+(kolokwium_A2.tex
 LaTeX2e <2019-10-01> patch level 1
 (/home/grzegorz/.miktex/texmfs/install/tex/latex/mwcls/mwart.cls
 Document Class: mwart 2017/05/13 v0.75 A LaTeX document class (MW)
@@ -344,8 +344,8 @@ LaTeX Font Info:    Trying to load font information for T1+aer on input line 10
 (/home/grzegorz/.miktex/texmfs/install/tex/latex/ae/t1aer.fd
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
 ))))
-(Zestaw7_PS_2020.aux)
-\openout1 = `Zestaw7_PS_2020.aux'.
+(kolokwium_A2.aux)
+\openout1 = `kolokwium_A2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
@@ -430,7 +430,7 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-(Zestaw7_PS_2020-concordance.tex)
+(kolokwium_A2-concordance.tex)
 LaTeX Font Info:    Trying to load font information for U+msa on input line 18.
 
 
@@ -446,51 +446,30 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 LaTeX Warning: No \author given.
 
-
-Overfull \hbox (5.48575pt too wide) in paragraph at lines 59--60
-\T1/aer/bx/n/10 Zadanie 7. \T1/aer/m/it/10 Niech $\OML/cmm/m/it/10 W[] \OT1/cmr
-/m/n/10 = (\OML/cmm/m/it/10 W[]; W[]\OT1/cmr/m/n/10 )$\T1/aer/m/it/10 , gdzie $
-\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 W[]\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OMS
-/cmsy/m/n/10 f\OML/cmm/m/it/10 W[]\OMS/cmsy/m/n/10 g$ \T1/aer/m/it/10 s¡ niezal
-e»nymi procesami
- []
-
-
-Overfull \hbox (0.89832pt too wide) in paragraph at lines 79--80
-\T1/aer/bx/n/10 Zadanie 11. \T1/aer/m/it/10 Niech proces $\OML/cmm/m/it/10 M$ \
-T1/aer/m/it/10 b¦dzie zadany jako $\OML/cmm/m/it/10 M[] \OT1/cmr/m/n/10 = [][] 
-\OML/cmm/m/it/10 W\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s\OT1/cmr/m/n/10 )$\T1/aer/
-m/it/10 . Wyznacz 
- []
-
 [1
 
-{/home/grzegorz/.miktex/texmfs/data/pdftex/config/pdftex.map}] [2]
-(Zestaw7_PS_2020.aux) ) 
+{/home/grzegorz/.miktex/texmfs/data/pdftex/config/pdftex.map}]
+(kolokwium_A2.aux) ) 
 Here is how much of TeX's memory you used:
  3791 strings out of 494415
- 52526 string characters out of 3174393
- 114146 words of memory out of 3000000
+ 52478 string characters out of 3174393
+ 108124 words of memory out of 3000000
  7800 multiletter control sequences out of 15000+200000
  19351 words of font info for 45 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 53i,7n,32p,460b,243s stack positions out of 5000i,500n,10000p,200000b,50000s
-</home/grzegorz/.miktex/texmfs/install/fonts/type1/publi
-c/amsfonts/cm/cmbx10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/pub
-lic/amsfonts/cm/cmex10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/p
-ublic/amsfonts/cm/cmmi10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1
-/public/amsfonts/cm/cmmi7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type
-1/public/amsfonts/cm/cmr10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/typ
-e1/public/amsfonts/cm/cmr17.pfb></home/grzegorz/.miktex/texmfs/install/fonts/ty
-pe1/public/amsfonts/cm/cmr5.pfb></home/grzegorz/.miktex/texmfs/install/fonts/ty
-pe1/public/amsfonts/cm/cmr7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/ty
-pe1/public/amsfonts/cm/cmsy10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/
-type1/public/amsfonts/cm/cmsy7.pfb></home/grzegorz/.miktex/texmfs/install/fonts
-/type1/public/amsfonts/cm/cmti10.pfb></home/grzegorz/.miktex/texmfs/install/fon
-ts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Zestaw7_PS_2020.pdf (2 pages, 130159 bytes).
+ 53i,7n,32p,304b,243s stack positions out of 5000i,500n,10000p,200000b,50000s
+</home/grzegorz/.miktex/texmfs/install/fonts/type1/public/a
+msfonts/cm/cmbx10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public
+/amsfonts/cm/cmmi10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/publ
+ic/amsfonts/cm/cmmi7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/pub
+lic/amsfonts/cm/cmr10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/pu
+blic/amsfonts/cm/cmr17.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/p
+ublic/amsfonts/cm/cmr7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/p
+ublic/amsfonts/cm/cmsy10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1
+/public/amsfonts/cm/cmti10.pfb>
+Output written on kolokwium_A2.pdf (1 page, 86019 bytes).
 PDF statistics:
- 58 PDF objects out of 1000 (max. 8388607)
+ 39 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  5 words of extra memory for PDF output out of 10000 (max. 10000000)
 
