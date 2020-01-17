@@ -16,7 +16,7 @@
 \SweaveOpts{concordance=TRUE}
 \maketitle
 \begin{zd}
-Niech $0 \leq s \leq t$. Wyznacz rozkład warunkowy $W(t)$ pod warunkiem $W(s)$.
+NIech $W$ będzie procesem Wienera i niech $0 \leq s \leq t$. Wyznacz rozkład warunkowy $W(t)$ pod warunkiem $W(s)$.
 \end{zd}
 
 \begin{zd}
@@ -29,7 +29,7 @@ Niech $W$ będzie procesem Wienera. Wyznacz
 \end{zd}
 
 \begin{zd}
-Niech $B$ będzie mostem Browna. Udowodnij, że $W_t = (t+1)B_{t/(t+1)}$ jest procesem Wienera na półprostej $[0, +\infty)$.
+Niech $N^1,\ N^2$ będą dwoma niezależnymi procesami Poissona z intensywnością $\lambda$ i niech $\rho \in [0, 1]$. Określmy proces $X_t = \rho N_t^1 + \sqrt{1 - \rho^2}N^2_t$ dla dowolnego $t\geq 0$. Czy proces $X$ jest procesem Poissona?
 \end{zd}
 
 \begin{zd}
