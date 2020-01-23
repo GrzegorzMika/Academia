@@ -49,6 +49,7 @@ Birgé i in.)"_, seminar talk
     - [Additional exercises](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/numeryka.pdf)
     - [Zagadnienia teoretyczne](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/wylosowane.pdf)
     - [Zestaw 7](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw7_PS_2020.pdf)
+    - [Kolokwium 2](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Kolokwium2.pdf)
 - For information about previous semesters please see [here]()
 
 [![HitCount](http://hits.dwyl.io/GrzegorzMika/Academia.svg)](http://hits.dwyl.io/GrzegorzMika/Academia)
