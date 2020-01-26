@@ -52,5 +52,11 @@ Birgé i in.)"_, seminar talk
     - [Kolokwium 2](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Kolokwium2.pdf)
 - For information about previous semesters please see [here]()
 
+## Other
+- Reviewer in [Manning Publications Co.](https://www.manning.com/)
+- Support of cutting-edge science research under [BOINC](https://boinc.berkeley.edu/) programme:
+  - Search for weak astrophysical signals from spinning neutron stars using data from the LIGO gravitational-wave detectors, the Arecibo radio telescope, and the Fermi gamma-ray satellite under [Einstein@Home](https://einsteinathome.org/) reaserch programme.
+
+
 [![HitCount](http://hits.dwyl.io/GrzegorzMika/Academia.svg)](http://hits.dwyl.io/GrzegorzMika/Academia)
 
