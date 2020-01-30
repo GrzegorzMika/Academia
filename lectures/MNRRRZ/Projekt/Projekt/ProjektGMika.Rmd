@@ -1,0 +1,200 @@
+---
+title: "Metody numeryczne dla równań różniczkowych zwyczajnych"
+author: "Grzegorz Mika"
+date: "02.06.2019"
+output: pdf_document
+---
+
+ ```{r utils, echo = FALSE}
+if (!require("Deriv")) install.packages("Deriv")
+library("Deriv")
+source("Utils.R")
+```
+
+## Problem początkowy
+
+Rozważmy problem początkowy postaci
+$$ y'(t) = y(t)\cdot \exp(-t)$$
+$$y(0) = 1,$$
+którego rozwiązaniem analitycznym jest funkcja
+$$y(t) = \exp\left(1-\exp(-t)\right).$$
+Zapisując to równanie w ogólnej postaci
+
+$$y'(t) = f\left(t, y(t)\right), y(t_0)=y_0$$
+
+dostajemy, że funkcja $f$ jest postaci
+
+$$f(t,x) = x\exp(-t).$$
+
+
+Funkcja ta jest ciągła na całym obszarze $\mathbb{R}^2$ zatem posiada on rozwiązanie (zapisane powyżej). Znajdziemy teraz maksymalny obszar z twierdzenia Peano na którym funkcja ta posiada rozwiązanie.
+
+ Niech
+$$ \Omega = \left\{(t,x)\colon |t|<\alpha, |x-1|<\beta\right\}.$$
+Wtedy powyższe równanie ma rozwiązanie na przedziale $[t-\eta, t+\eta]$, gdzie 
+$$\eta = \min\left\{\alpha, \frac{\beta}{M}\right\}$$ 
+oraz 
+
+$$ M = \sup\left\{\left|f(t,x)\right|\colon (t,x)\in \Omega\right\}.$$
+Proste przeliczenie wskazuje, że
+
+$$ M = (\beta + 1)\exp(-\alpha).$$
+Zatem 
+$$\eta = \min\left\{\alpha, \frac{\beta}{\beta + 1}\exp(\alpha)\right\},$$
+co z kolei dla dużych wartości $\alpha, \beta$, którymi jesteśmy zainteresowani, daje następującą równość
+$$\eta = \alpha.$$
+Wartości $\alpha$ nie mają żadnego ograniczenia, zatem na dowolnym przedziale postaci $[t-\alpha, t+\alpha],\ \alpha \in \mathbb{R}$ równanie to posiada rozwiązanie.
+
+Funkcja $f$ jest również lipschitzowska na każdym obszarze $\Omega =  \left\{(t,x)\colon |t|<\alpha, |x-1|<\beta\right\}$ ze stałą $L = \exp(-\alpha)$, zatem zgodnie z twierdzeniem Picarda powyższy problem ma jednoznaczne rozwiązanie na pewnym przedziale $[t_0-\eta, t_0+\eta]$, gdzie tym razem 
+$$ \eta = \min\left\{\alpha, \frac{\beta}{M}, \frac{1}{L}\right\}=\min\left\{\alpha, \frac{\beta}{\beta + 1}\exp(\alpha), \exp(\alpha)\right\} = \min\left\{\alpha, \frac{\beta}{\beta + 1}\exp(\alpha)\right\}.$$
+Czyli dostajemy dokładnie ten sam przedział, co w przypadku poszukiwania jednoznacznego rozwiązania.
+
+***
+ 
+Do numerycznego rozwiązania powyższego problemu zastosujemy dwie metody
+
+* metodę Taylora,
+* dwukrokowy schemat punktu środkowego.
+ 
+Metoda Taylora jest postaci
+$$x_{k+1}=x_k+hf_k + \frac{h^2}{2}\left(f_{t,k} + f_{x,k}f_k\right),$$
+gdzie $f_k = f(t_k, x_k),\ f_{t,k} = f'_t(t_k, x_k),\ f_{x,k} = f'_x(t_k, x_k)$. Natomiast dwukrokowy schemat punktu środkowego jest postaci
+$$ x_{k+2} = x_k + 2hf_{k+1},$$
+gdzie ponownie $f_{k+1} = f(t_{k+1}, x_{k+1})$.
+
+
+Zbadajmy rząd tych metod. Przypomnijmy, że schemat $k$- krokowy jest rzędu $p$, jeżeli jego błąd lokalny $e_h = O(h^{p+1})$, gdzie 
+$$e_h = \sup_{t\in [t_0, T-kh]}\left|x(t+kh) - \Phi\left(t, \dots, t+kh, x(t), \dots, x(t+kh)\right)\right|$$
+dla funkcji $x\in C^q\left([t_0, T)\right)$.
+
+Rozważając metodę Taylora zachodzą następujące oszacowania
+
+$$ \left|x(t_{k+1}) - x(t_k) -hf(t_k, x(t_k)) - \frac{h^2}{2}\left(f_t(t_k, x(t_k)) + f_x(t_k, x(t_k))f(t_k, x(t_k))\right)\right|$$
+
+$$ =\left|x(t_k)+x'(t_k)h+x''(t_k)\frac{h^2}{2} + x'''(\theta)\frac{h^3}{6} - x(t_k)-x'(t_k)h - \frac{h^2}{2}\left(f_t(t_k, x(t_k)) + f_x(t_k, x(t_k))f(t_k, x(t_k))\right)\right| $$
+
+$$ =\left|x'''(\theta)\frac{h^3}{6} \right|= O(h^3), $$
+
+dla $t\in[t_0, T]$ i dla pewnego $T > t_0$ i funkcji $x\in C^3\left([t_0, T]\right)$, gdyż 
+$$ x'' = f_t+f_xx'.$$
+
+Rozważając dwukrokową metodę punktu środkowego zachodzą następujące oszacowania
+
+$$ \left| x(t_{k+2}) - x(t_k) - 2hf(t_{k+1}, x(t_{k+1})) \right| 
+= \left|x(t_k+2h) - x(t_k) - 2hx'(t_k + h)\right|$$
+
+$$ =\left| x(t_k+h)+x'(t_k+h)h-\frac{h^2}{2}x''(\theta) - x(t_k) - 2hx'(t_k+h)\right|$$
+
+$$ \leq \left| x'(\theta)h-x'(t_k+h)h-\frac{h^2}{2}x''(\theta)\right| 
+\leq \left|x''(\theta)-\frac{h^2}{2}x''(\theta)\right|$$
+
+$$\leq \left|cx'''(\theta)h^3\right| = O(h^3), $$
+dla $t\in[t_0, T]$ i dla pewnego $T > t_0$ i funkcji $x\in C^3\left([t_0, T]\right)$. Przez $\theta$ oznaczony został pewien punkt pośredni w przedziale $(t_k +h, t_k +2h)$ lub $(t_k, t_k +h)$ i może się on różnić z lini na linię.
+
+Na podstawie powyższych rozważań widzimy, że obie metody dla funkcji odpowiednio gładkich mają rząd równy $2$.
+
+
+Prezentacja rozwiązania uzyskanego numerycznie na przedziale $[0, 10]$ metodą Taylora wraz z porównaniem z prawdziwym rozwiązaniem jest przedstawiona na wykresie poniżej dla ilości kroków między 10 a 1 000 000. Rozwiązanie przedstawione jest przy pomocy lini czarnej, natomiast prawdziwa funkcja przedstawiona jest przy pomocy lini czerwonej.
+
+```{r Taylor, }
+RHS <- "x * exp(-t)"
+True <- "exp(1 - exp(-t))"
+LowerLimit <- 0
+UpperLimit <- 10
+x0 <- 1
+
+Solution(
+  RHS = RHS, Lower = LowerLimit, Upper = UpperLimit,
+  x0 = x0, True = True, method = "Taylor"
+)
+```
+
+Rozwiązanie uzyskane przy pomocy dwukrokowej methody punktu środkowego jest przedstawione na wykresie poniżej, gdzie kolor lini ma to samo znaczenie co w przypadku wykresu obrazującego rozwiązanie uzyskane zmodyfikowaną metodą Eulera. Dla uzyskania drugiego punktu startowego dla tej metody zastosowano przybliżenie metodą Eulera z podziałem w pierwszym odcinku na 1 000 000 kroków.
+
+```{r MidPoint, }
+RHS <- "x * exp(-t)"
+True <- "exp(1 - exp(-t))"
+LowerLimit <- 0
+UpperLimit <- 10
+x0 <- 1
+
+Solution(
+  RHS = RHS, Lower = LowerLimit, Upper = UpperLimit,
+  x0 = x0, True = True, method = "MidPoint"
+)
+```
+
+Dla obu metod już aproksymacja z użyciem 100 kroków daje bardzo dobre rezultaty.
+
+Ponadto widzimy, że eksperymentalnie wyznaczony rząd tych metod jest odpowiednio równy 2 dla metody Taylora i również 2 dla dwukrokowej metody punktu środkowego, co zgadza się z wynikami teoretycznymi.
+
+
+## Problem początkowy dla układu dwóch równań
+
+Rozważmy układ liniowy dwóch równań różniczkowych następującej postaci
+
+$$ \left\{{x'=-4x+y} \atop {y' =-4x -4y}\right.$$
+z warunkiem początkowym 
+
+$$\left( x(0), y(0)\right) = \left(1,2\right), $$
+
+którego rozwiązaniem dokładnym jest układ funkcji postaci
+
+$$\left\{ {x(t) = e^{-4t}\left(\cos(2t) + \sin(2t)\right)} \atop {y(t) = e^{-4t}\left(2\cos(2t) - 2\sin(2t)\right)}\right. .$$
+Do numerycznego rozwiązania tego problemu zastosujemy jawną metodę Rungego-Kutty drugiego rzędu (metodę punktu środkowego) postaci
+
+$$ x_{k+1} = x_k + hf\left(t_k + \frac{h}{2}, x_k + \frac{1}{2}k_1 \right),$$
+gdzie $k_1 = hf(t_k, x_k)$. 
+
+
+Celem wyznaczenia obszaru absolutnej stabilności rozważmy układ testowy
+
+$$\left\{ {x(t) = \lambda x} \atop {x(0) = \eta}\right. $$
+mający rozwiązanie $x(t) = \eta\exp(\lambda t)$. Układ testowy ma tą własność, że dla $Re\lambda < 0$, $|x(t)|\to 0, \ t\to \infty$. 
+
+W przypadku rozważanej metody mamy, że
+
+$$ x_{k+1} = x_k + hf\left(t_k + \frac{h}{2}, x_k + \frac{h}{2}f_k\right) = x_k +\lambda h x_k + \frac{\lambda^2h^2}{2}x_k = \left(1+\hat{h} + \frac{\hat{h}^2}{2}\right)x_k, $$
+gdzie $\hat{h} = \lambda h$. Zatem dla jawnej metody Rungego-Kutty 2. rzędu obszar absolutnej stabilności ma posatać 
+
+$$ \left\{\hat{h}\in \mathbb{C}\colon \left|1+\hat{h} + \frac{\hat{h}^2}{2}\right| < 1\right\}. $$
+
+Rozważając macierz główną rozważanego układu równań i znajdując jej wartości własne mamy
+
+$$ \left| {-4-\lambda} \atop {-4}\right.\left. {1} \atop {-4-\lambda} \right| = \lambda^2 + 8\lambda + 20 = (\lambda - (-4-2i))(\lambda - (-4 + 2i)). $$
+Niezależnie od wyboru pierwiastka dostajemy ten sam obszar absolutnej stabilności dla rozważanego układu równań postaci
+
+$$ \left\{\hat{h}\in \mathbb{C}\colon \left|1+\hat{h} + \frac{\hat{h}^2}{2}\right| < 1\right\} = \left\{h\in\mathbb{R}\colon \left|1-6h+8h^2 + 6ih\right| < 1\right\} $$
+
+$$ = \left\{h\in\mathbb{R}\colon (1-6h+8h^2)^2 + (6h)^2 < 1\right\} =\left\{h\in\mathbb{R}\colon 0< h < \frac{1}{2} (1 + \frac{\left(\sqrt{2046} - 36\right)^{1/3}}{6^{2/3}} -\frac{5}{(6 (\sqrt{2046} - 36))^{1/3}}\right\}  $$
+
+$$ \approx \left\{h\in\mathbb{R}\colon 0< h < 0.1619\right\}.$$
+
+```{r utils2dim, echo=FALSE}
+source("Utils_2dim.R")
+```
+
+Jak widać z poniższych wykresów obie funkcje, $x$ i $y$, będące rozwiązaniem powyższego układu równań zbiegają do zera wraz ze wzrostem argumentu.
+
+```{r setup}
+x0 <- 1
+y0 <- 2
+dx <- "-4*x+y"
+dy <- "-4*x-4*y"
+x <- "exp(-4*t) * (cos(2*t) + sin(2*t))"
+y <- "exp(-4*t)*(2*cos(2*t) - 2*sin(2*t))"
+```
+```{r plots, echo = FALSE}
+grid <- data.frame(grid = seq(0, 10, by = 0.001))
+functions <- Constructor(x, y, dx, dy)
+plot(grid$grid, functions$x(grid$grid), main = "Funkcja x", xlab = "grid", ylab = "x", type = "l")
+plot(grid$grid, functions$y(grid$grid), main = "Funkcja y", xlab = "grid", ylab = "y", type = "l")
+```
+
+Rozwiązanie uzyskane z zastosowaniem zaproponowanej metody Rungego-Kutty 2. rzędu zaprezentowane jest na poniższych wykresach dla różnych wartości kroku z oraz spoza obszaru absolutnej stabilności, jak również zaprezentowany jest błąd kwadratowy otrzymanego rozwiązania dla różnych wartości kroku.
+
+```{r solution2dim}
+Solution(functions, grid, x0, y0, method = "RK2")
+```
+
+Z uwagi na mały błąd rozwiązania dla kroków większych, jednak bliskich obszarowi absolutnej stabilności dla rozpatrywanego układu równań nie widać dokładnego zachowania się rozwiązania, jednak gdy przyjrzeć mu się dokładnie, widać pewną okresowość (pętlę) dla rozwiązań z krokiem bliskim brzegu obszaru absolutnej stabilności, natomiast dla kroków wyraźnie oddalonych od tego obszaru rozwiązanie numeryczne w żaden sposób nie przybliża rozwiązania prawdziwego.
