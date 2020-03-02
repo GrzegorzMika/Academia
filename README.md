@@ -38,20 +38,12 @@ Birgé i in.)"_, seminar talk
 ## Teaching
 - Consultation: Friday, 10:15-11:30, 410, D13
 - Stochastic processes (2019/2020)  
-    - [Zestaw 1](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw1_PS_2020.pdf)  
-    - [Zestaw 2](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw2_PS_2020.pdf)
-    - [Zestaw 3](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw3_PS_2020.pdf)
-    - [Zestaw 4](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw4_PS_2020.pdf)
-    - [Zestaw 5](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw5_PS_2020.pdf)
-    - [Zestaw 6](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw6_PS_2020.pdf)
-    - [Zagadnienia do egzaminu/kolokwium teoretycznego](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zagadnienia.pdf)
-    - [Kolokwium 1](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Kolokwium1.pdf)
-    - [Additional exercises](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/numeryka.pdf)
-    - [Zagadnienia teoretyczne](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/wylosowane.pdf)
-    - [Zestaw 7](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Zestaw7_PS_2020.pdf)
-    - [Kolokwium 2](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/Kolokwium2.pdf)
-    - [Uaktualnine zagadnienia do egzminu](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/ProcesyStochastyczne0.pdf)
-    - [Proponowane oceny z ćwiczeń](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Procesy_stochastyczne/OcenyPS.pdf)
+    - [Zestaw 1](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw1_lato2020.pdf)  
+    - [Zestaw 2](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw2_lato2020.pdf)
+    - [Zestaw 3](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw3_lato2020.pdf)
+    - [Zestaw 4](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw4_lato2020.pdf)
+    - [Zestaw 5](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw5_lato2020.pdf)
+    - [Zestaw 6](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw6_lato2020.pdf)
 - For information about previous semesters please see [here]()
 
 ## Other
