@@ -133,7 +133,7 @@ Ponadto widzimy, że eksperymentalnie wyznaczony rząd tych metod jest odpowiedn
 
 Rozważmy układ liniowy dwóch równań różniczkowych następującej postaci
 
-$$ \left\{{x'=-4x+y} \atop {y' =-4x -4y}\right.$$
+%$$ \left\{{x'=-4x+y} \atop {y' =-4x -4y}\right.$$
 z warunkiem początkowym 
 
 $$\left( x(0), y(0)\right) = \left(1,2\right), $$
