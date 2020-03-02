@@ -1,16 +1,16 @@
-*2018/2019*
+**2018/2019**
 
-  **Winter**
+  *Winter*
   
   - Stochastic processes (60h)
   - Programming and Language of Programming II (30h)
   
-*2019/2020*
+**2019/2020**
 
-  **Winter**
+  *Winter*
   
   - Stochastic processes (60h)
   
-  **Summer**
+  *Summer*
   
   - Mathematical analysis (30h)
