@@ -36,15 +36,15 @@ Birgé i in.)"_, seminar talk
 - [_SatRday_](https://gdansk2019.satrdays.org/), 17-18 May 2019, Gdańsk, Poland
 
 ## Teaching
-- Consultation: Friday, 10:15-11:30, 410, D13
-- Stochastic processes (2019/2020)  
+- Consultation: individually (please contact via email)
+- Mathematical analysis (2020)  
     - [Zestaw 1](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw1_lato2020.pdf)  
     - [Zestaw 2](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw2_lato2020.pdf)
     - [Zestaw 3](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw3_lato2020.pdf)
     - [Zestaw 4](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw4_lato2020.pdf)
     - [Zestaw 5](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw5_lato2020.pdf)
     - [Zestaw 6](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw6_lato2020.pdf)
-- For information about previous semesters please see [here]()
+- For information about previous semesters please see [here](https://github.com/GrzegorzMika/Academia/blob/master/lectures/lectures.md)
 
 ## Other
 - Reviewer in [Manning Publications Co.](https://www.manning.com/)
