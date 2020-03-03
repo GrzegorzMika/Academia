@@ -47,6 +47,7 @@ Birgé i in.)"_, seminar talk
 - For information about previous semesters please see [here](https://github.com/GrzegorzMika/Academia/blob/master/lectures/lectures.md)
 
 ## Other
+- Memeber of the [Bernoulli Society for Mathematical Statistics and Probability](http://www.bernoulli-society.org)
 - Reviewer in [Manning Publications Co.](https://www.manning.com/)
 - Support of cutting-edge science research under [BOINC](https://boinc.berkeley.edu/) programme:
   - Search for weak astrophysical signals from spinning neutron stars using data from the LIGO gravitational-wave detectors, the Arecibo radio telescope, and the Fermi gamma-ray satellite under [Einstein@Home](https://einsteinathome.org/) reaserch programme.
