@@ -39,7 +39,7 @@ Birgé i in.)"_, seminar talk
 - Consultation: individually (please contact via email)
 - Mathematical analysis (2020)  
     - [Zestaw 1](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw1_lato2020.pdf)  
-    - [Zestaw 2](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw2_lato2020.pdf)
+    - [Zestaw 2](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/Zestaw2_lato2020.pdf)
     - [Zestaw 3](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/Zestaw3_lato2020.pdf)
     - [Zestaw 4](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/Zestaw4_lato2020.pdf)
     - [Zestaw 5](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/Zestaw5_lato2020.pdf)
