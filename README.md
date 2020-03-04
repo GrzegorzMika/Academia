@@ -42,8 +42,8 @@ Birgé i in.)"_, seminar talk
     - [Zestaw 2](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw2_lato2020.pdf)
     - [Zestaw 3](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw3_lato2020.pdf)
     - [Zestaw 4](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw4_lato2020.pdf)
-    - [Zestaw 5](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw5_lato2020.pdf)
-    - [Zestaw 6](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw6_lato2020.pdf)
+    - [Zestaw 5](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/Zestaw5_lato2020.pdf)
+    - [Zestaw 6](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/Zestaw6_lato2020.pdf)
 - For information about previous semesters please see [here](https://github.com/GrzegorzMika/Academia/blob/master/lectures/lectures.md)
 
 ## Other
