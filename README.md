@@ -36,6 +36,9 @@ Birgé i in.)"_, seminar talk
 - [_SatRday_](https://gdansk2019.satrdays.org/), 17-18 May 2019, Gdańsk, Poland
 
 ## Teaching
+
+**Na zajęcia zapraszam na platformę [UPEL AGH](https://upel.agh.edu.pl/wiet/)**
+
 - Consultation: individually (please contact via email)
 - Mathematical analysis (2020)  
     - [Zestaw 1](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw1_lato2020.pdf)  
