@@ -37,7 +37,7 @@ Birgé i in.)"_, seminar talk
 
 ## Teaching
 
-**Na zajęcia zapraszam na platformę [UPEL AGH](https://upel.agh.edu.pl/wiet/)**
+**Na zajęcia zapraszam na platformę [UPEL AGH](https://upel.agh.edu.pl/wiet/) w środy o godzinie 9.35** 
 
 - Consultation: individually (please contact via email)
 - Mathematical analysis (2020)  
