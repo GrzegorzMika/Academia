@@ -37,16 +37,9 @@ Birgé i in.)"_, seminar talk
 
 ## Teaching
 
-**Na zajęcia zapraszam na platformę [UPEL AGH](https://upel.agh.edu.pl/wiet/) w środy o godzinie 9.35** 
-
-- Consultation: individually (please contact via email)
-- Mathematical analysis (2020)  
-    - [Zestaw 1](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/zestaw1_lato2020.pdf)  
-    - [Zestaw 2](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/Zestaw2_lato2020.pdf)
-    - [Zestaw 3](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/Zestaw3_lato2020.pdf)
-    - [Zestaw 4](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/Zestaw4_lato2020.pdf)
-    - [Zestaw 5](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/Zestaw5_lato2020.pdf)
-    - [Zestaw 6](https://github.com/GrzegorzMika/Academia/blob/master/lectures/Analiza/Zestaw6_lato2020.pdf)
+- Konsultacje: indywidualnie (proszę o kontak mailowy)
+- Procesy stochastyczne (2020/21)  
+- Bazy danych (2020/21)
 - For information about previous semesters please see [here](https://github.com/GrzegorzMika/Academia/blob/master/lectures/lectures.md)
 
 ## Other

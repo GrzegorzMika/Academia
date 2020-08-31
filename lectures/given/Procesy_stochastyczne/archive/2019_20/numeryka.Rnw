@@ -1,0 +1,47 @@
+\documentclass{mwart}
+%\usepackage{polski}
+%\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{zd}{Zadanie}
+\title{Procesy stochastyczne \\ Zadania numeryczne}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\maketitle
+\textbf{Zasady:}
+\begin{itemize}
+\item Celem zadań przede wszystkim jest motywacja do dalszych poszukiwań i badań w zakresie procesów stochastycznych.
+\item Ilość możliwych punktów do uzyskania za dane zadanie podana jest obok jego numerka.
+\item Na pełne rozwiązanie składa się opis metody, przeliczony przykład oraz replikowany, działający kod wykorzystany do stworzenia przykładu.
+\item Implenetacja możliwa jest w jednym z jązyków: C, C++, Python, R, Julia.
+\item W przypadku wykorzystywania dodatkowych bibliotek wymagane jest podanie wykorzystanej wersji.
+\item Rozwiązania można nadsyłać do końca semestru.
+\end{itemize}
+\begin{zd}[15 pkt]
+Opisz i na wybranym przykładzie pokaż metodę symulacji niejednorodnego procesu Poissona (\it{non-homogeneous Poisson process}) .
+\end{zd}
+\begin{zd}[10 pkt]
+Opisz i na wybranym przykładzie pokaż metodę symulacji dwuwymiarowego jednorodnego procesu Poissona (\it{two-dimensional homogeneous Poisson process}).
+\end{zd}
+\begin{zd}[15 pkt]
+Opisz i na przykładzie przedstaw metodę symulacji jednowymiarowego procesu dyfuzji ze skokami (\it{diffusion-jump process}).
+\end{zd}
+\begin{zd}[12 pkt]
+Opisz i na przykładzie (najlepiej procesu Ornsteina- Uhlenbecka) przdstaw metodę symulacji trajektorii (\it{path}) procesu będącego rozwiązaniem stochastycznego równania różniczkowego (\it{stochastic differential equations, SDE}).
+\end{zd}
+\begin{zd}[7 pkt]
+Zaprezentuj i porównaj metody numerycznego (iteracyjne i nie) wyznaczania rozkładu stacjonarnego dla łańcucha Markowa ze skończoną przestrzenią stanów (\it{stationary distribution of Markov chain}). Jesli to możliwe za[rezentuj graficznie zbieżność rozkładu do rozkładu stacjonarnego.
+\end{zd}
+\begin{thebibliography}{10}
+\bibitem{poisson} Sheldon M. Ross, \emph{Introduction to Probability Models}, Academic Press, 2019.
+\bibitem{poisson2} Raghu Pasupathy, \emph{Generating Nonhomogeneous Poisson Processes}, Department of Industrial \& Systems Engineering, Virginia Tech.
+\bibitem{sde} Martin Haugh, \emph{Simulating Stochastic Differential Equations}, Monte-Carlo Simulation, Columbia University.
+\bibitem{MC} C.C. Paige, George P.H. Styan, Peter G. Wachter, \emph{Computation of the stationary distribution of a markov chain}, Journal of Statistical Computation and Simulation, 1975.
+\end{thebibliography}
+\end{document}

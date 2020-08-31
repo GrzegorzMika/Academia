@@ -1,0 +1,468 @@
+---
+title: "R Shiny - Course given at ENSAI (2017)"
+author: "Lafaye de Micheaux Pierre"
+output:
+  html_document: default
+  html_notebook: default
+  pdf_document:
+    citation_package: natbib
+    includes:
+      in_header: header.tex
+    keep_tex: yes
+    toc: yes
+header-includes: \usepackage{amsmath}
+---
+
+# Introduction
+
+**What is Shiny?**
+
+- Open Sourced by RStudio November 2012
+- A way to create a user interface for R
+- enables experienced R programmers to produce graphical user interfaces with customized algorithms under the hood.  This gives point-and-click functionality to others, enabling complex analysis for those who are not advanced programmers
+- Interactive web applications around your R analyses
+- Zero HTML/CSS/JavaScript knowledge is requiredâ¦
+- ... but fully customizable and extensible with HTML/CSS/JavaScript
+- Modern web UI with attractive defaults
+- Designed to integrate with existing JavaScript libraries
+- Uses a _reactive programming_ model which allows dramatically simpler code than traditional UI or web programming
+- Applications can be deployed to the cloud (ShinyApps.io) or on-premises (Shiny Server), with both free and commercial options available
+- Vibrant and active community
+- Web sockets for communication between client and server
+
+The best way to have an idea of the possibilities offered by R/Shiny is to have a quick look at the following galleries (where you can find, and study, the associated R code!):
+
+- [Official Rstudio Shiny Gallery](http://shiny.rstudio.com/gallery/)
+- [Show me Shiny](http://www.showmeshiny.com/)
+- [K-means](https://jcheng.shinyapps.io/kmeans/)
+- [Super Zips](https://jcheng.shinyapps.io/superzip/) (with source: https://github.com/jcheng5/superzip)
+- [Radiant](https://vnijs.shinyapps.io/radiant/) (with source: https://github.com/radiant-rstats)
+- [CRAN logs](https://gist.github.com/jcheng5/e28025240c41b2fb2c80)
+
+Explore now for a few minutes these galleries:
+
+- Interactive visualizations
+- Start simple
+- Widgets
+- Application layout
+- Dynamic user interface
+- Reactive programming
+- Advanced Shiny
+- Interactive plots
+- Shiny Server Pro
+- Internationalization
+
+**Note:** Another way is to use the `runExample()` function. The Shiny package has eleven built-in examples that each demonstrate how Shiny works. Each example is a self-contained Shiny app. For example
+```{r, eval=FALSE}
+library(shiny)
+runExample("01_hello") # a histogram
+runExample("02_text") # tables and data frames
+runExample("03_reactivity") # a reactive expression
+runExample("04_mpg") # global variables
+runExample("05_sliders") # slider bars
+runExample("06_tabsets") # tabbed panels
+runExample("07_widgets") # help text and submit buttons
+runExample("08_html") # Shiny app built from HTML
+runExample("09_upload") # file upload wizard
+runExample("10_download") # file download wizard
+runExample("11_timer") # an automated timer
+```
+
+
+Due credits: in this course, we will explore material that can be found at these URL:
+
+- http://stcorp.nl/R_course/tutorial_shiny.html
+- http://shiny.rstudio.com/
+- http://shiny.rstudio.com/tutorial/
+- http://www.showmeshiny.com/
+- https://www.rstudio.com/products/shiny/shiny-user-showcase/
+- http://datascience.la/shiny-r-made-interactive-user-2014/
+- http://user2016.org/tutorials/02.html
+- http://www.lisa.stat.vt.edu/?q=node/7934
+- http://datasociety.co/courses/interactive-visualizations/
+- http://www.hanselsolutions.com/blog/surf-talk/shiny-surf.html
+- https://docs.google.com/file/d/0BwRD5kJje-9TVEdYNXluZmY5M00/edit?usp=sharing
+- http://rpubs.com/jcheng/useR-2014
+
+# Prerequisites
+
+You need a good knowledge about the R software: try [this quiz](http://shiny.rstudio.com/tutorial/quiz/) to check your skills. If you want to improve your basic R skill, see for instance [this book](http://link.springer.com/book/10.1007%2F978-1-4614-9020-3).
+
+You also need a good knowledge about [`ggplot2`](http://ggplot2.org/). Download the [Data Visualization Cheat Sheet](https://www.rstudio.com/resources/cheatsheets/).
+
+Some basic knowledge about HTML, Javascript and CSS might help.
+
+The Shiny (client) software can run on Windows/MacOS/Linux. Works best with Chrome.
+
+If not already done, [download](https://www.rstudio.com/products/rstudio/download3/) and install the last version of RStudio, which appears to be 1.0.136 at the date this course is prepared (This information is found from RStudio via the menu Help/About RStudio.)
+
+Also, from Rstudio:
+```{r, eval=FALSE}
+install.packages("shiny")
+```
+
+Download the [Shiny Cheat Sheet](https://www.rstudio.com/resources/cheatsheets/).
+
+# Your first Shiny app
+
+Launch RStudio, then go to File/New File/Shiny Web App...
+
+The following window pops up.
+
+![](Images/fig1.png)
+
+Change the entries as follows:
+
+- Application Name: My_First_Shiny_App
+- Application type: Multiple File (ui.R/server.R)
+- Create within directory: ~
+
+When you click on Create, this should open two new tabs in RStudio: ui.R and server.R. The corresponding files are stored in ~/My_First_Shiny_App. They already contain some R code that we will comment (and modify) in a while.
+
+But, first let's execute this code to see what happens. Select the ui.R (or the server.R) tab in RStudio. Then click on the ![Run App](Images/fig2.png) button. This should launch a web app in your favorite web browser. You can then interact with a slider to choose the number of bins to use in order to draw a histogram of the "Old Faithful Geyser Data". Change the slider value and observe how the histogram is redrawn.
+
+![Geyser example](Images/fig_Geyser.png)
+
+**Note 1:** You should also see in the console of RStudio a red message displayed. On my laptop, it is: "Listening on http://127.0.0.1:3452". This means that in the background, RStudio launches _locally_ a Shiny daemon web server on the port 3452. (This port number might be different on your computer.) This can be checked for example under Linux by typing the following command in a terminal and noting that the STATE is "open":
+
+```{bash, eval=FALSE}
+[lafaye 15:16:51 ~] nmap localhost -p 3452
+
+Starting Nmap 6.47 ( http://nmap.org ) at 2016-12-28 15:17 CET
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.000027s latency).
+Other addresses for localhost (not scanned): 127.0.0.1
+PORT     STATE SERVICE
+3452/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 0.05 seconds
+```
+
+**Note 2:** Your R session will be busy while the Hello Shiny app is active, so you will not be able to run any R commands. R is monitoring the app and executing the appâs reactions. To get your R session back, hit escape or click the stop sign icon (found in the upper right corner of the RStudio console panel).
+
+# Let's comment the R code in the ui.R/server.R files
+
+First, note that a full description of all Shiny functions (e.g., the ones used in the code of our current versions of ui.R and server.R) is given at the [Shiny reference pages](http://shiny.rstudio.com/reference/shiny/latest/). Have a look at this webpage to see how it is organized.
+
+
+**Some vocabulary:** "A typical web application consists of a number of _user interface (UI) elements_, say a button or a checkbox. Each of these elements can be interacted with, for example you can push the button. This button push then triggers an action, running a piece of code. This can then change the state of the web application, for example retrieve a piece of information from the server or draw a picture in the application. This style of programming is called _event-driven programming_. The piece of code that is executed based on an event is called an _event handler_."
+
+## The structure of Shiny apps
+
+"Shiny apps follow typical structure of web applications. However, as a user you only have to specify which UI elements you want to show, and the underlying R code that draws a plot, shows some text, or a table. These pieces of information are stored in two **interacting codes (script)** stored in the following files:
+
+- `ui.R`, for the user interface (ui) elements, and
+- `server.R`, for the content code."
+
+The `ui.R` code creates the options a user can change, and controls what is displayed on the app.
+
+- This code also creates a list object (named `input`) to store all options
+- The UI operates using "output" pieces created by the server.
+
+Ther `server.R` code runs everything that responds to the changes made by the user in the app.
+
+- The server operates using the "input" list created by the UI, and creates an "output" list to store all rendered objects and values.
+- This code is reactive. This means that every time you change any option in the interface, shiny will scan through the server for any instance where that option is mentioned, and re run the corresponding code.
+
+**Note:** As of version 0.10.2, Shiny supports single-file applications. You no longer need to build separate server.R and ui.R files for your app; you can just create a file called app.R that contains both the server and UI components. You can learn more about building a Shiny app in a single file here, however this tutorial will focus on the two file structure for building a Shiny app.
+
+As you can see, the `ui.R` file starts (after some comments) with the instruction:
+```{r, eval=FALSE}
+library(shiny)
+```
+that will load the `shiny` package. Next, a call to the `shinyUI()` function is made. This is not really necessary as can be read in the [documentation](http://shiny.rstudio.com/reference/shiny/latest/shinyUI.html) of this function:
+
+"Historically this function was used in ui.R files to register a user interface with Shiny. It is no longer required as of Shiny 0.10; simply ensure that the last expression to be returned from ui.R is a user interface. This function is kept for backwards compatibility with older applications. It returns the value that is passed to it."
+
+You can thus remove it. But leave the `fluidPage` stuff.
+
+The `fluidPage()` function creates fluid page layouts. A fluid page layout consists of rows which in turn include columns. Rows exist for the purpose of making sure their elements appear on the same line (if the browser has adequate width). Columns exist for the purpose of defining how much horizontal space within a 12-unit wide grid its elements should occupy. Fluid pages scale their components in realtime to fill all available browser width.
+
+Our current fluidPage contains two rows:
+
+- The first one builds a title thanks to the 
+`titlePanel()` function. This row only displays "Old Faithful Geyser Data".
+- The second one is created via the ` sidebarLayout()` function. It contains a sidebar (on the left) and a main area. The sidebar is displayed with a distinct background color (light blue) and typically contains input controls (currently only a slider input). The main area occupies by default 2/3 of the horizontal width and typically contains outputs (currently our histogram).
+
+![Layout](Images/fig0.png)
+
+The help page for this latter function is [here](http://shiny.rstudio.com/reference/shiny/latest/sidebarLayout.html). Have a look at it. From it, you can also access the `sidebarPanel()` and `mainPanel()` help pages.
+
+In our case, the sidePanel contains only one UI element: a `sliderInput`. The mainPanel also contains one input element: a `plotOutput`. 
+Look at the description of these functions [here](http://shiny.rstudio.com/reference/shiny/latest/).
+
+**Note:** You can run a Shiny app by giving the name of its directory to the function runApp. For example if your Shiny app is in a directory called my_app, run it with the following code:
+
+```{r, eval=FALSE}
+library(shiny)
+runApp("my_app")
+```
+If you would like your app to display in showcase mode, you can run `runApp("my_app", display.mode = "showcase")`.
+
+## HTML Content
+
+You can use one of Shiny's HTML tag functions. These functions parallel common [HTML5 tags](http://www.w3schools.com/tags/tag_hn.asp). Let's try out a few of them.
+
+|**shiny function** | **HTML5 equivalent** | **creates**                     |
+|------------|-------------|-------------------------------------------------|
+| `p()`      |	`<p>`      | A paragraph of text                             |
+| `h1()`     | 	`<h1>`     | A first level header                            |
+| `h2()`     |	`<h2>`     | A second level header                           |
+| `h3()`     |	`<h3>`     | A third level header                            |
+| `h4()`     |	`<h4>`     | A fourth level header                           |
+| `h5()`     |	`<h5>`     | A fifth level header                            |
+| `h6()`     |	`<h6>`     | A sixth level header                            |
+| `a()`      |	`<a>`      | A hyper link                                    |
+| `br()`     | 	`<br>`     | A line break (e.g. a blank line)                |
+| `div()`    |	`<div>`    | A division of text with a uniform style         |
+| `span()`   |	`<span>`   | An in-line division of text with a uniform style|
+| `pre()`    |	`<pre>`    | Text âas isâ in a fixed width font              |
+| `code()`   | 	`<code>`   | A formatted block of code                       |
+| `img()`    |	`<img>`    | An image                                        |
+| `strong()` | 	`<strong>` | Bold text                                       |
+| `em()`     |	`<em>`     | Italicized text                                 |
+| `HTML()`   |             | Directly passes a character string as HTML code |
+
+## Integrating dynamic content
+
+If only the `ui.R` file was present, no dynamic content would be available. This is the purpose of the `server.R` file to add interactivity.
+
+At this point, we have to explain how the `ui.R` and `server.R` files communicate.
+
+In the `server.R` file, we see a _rendering function_ called `renderPlot()`, as well as two interesting pieces of code: `output$distPlot` and `input$bins`. Note that `distPlot` is the ID (_outputId_) used when we called the `plotOutput()` function, while `bins` is the ID (_inputId_) used when we called the `sliderInput()` function. Consult the help pages for these two functions.
+
+**It is through these ID that Shiny couples the UI elements defined in `ui.R` to the dynamic content in `server.R`.**
+
+The `input` variable of the `shinyServer()` functions contains all the UI elements, the `output` variable returns the dynamic content to the UI.
+
+**Exercise 1:** Modify the `ui.R` and `server.R` files so as to add a `textInput` in the sidebarPanel (below the sliderInput) that will enable you to modify the title of the histogram. The histogram should now be created using the functions `ggplot()`, `geom_histogram()` and `ggtitle()` from the [`ggplot2`](http://www.cookbook-r.com/Graphs/) R package.
+
+## Important note on code execution
+
+The location of code in `server.R` determines how often it is run, and thus impacts the performance of the app. There are three zones where code is run more or less often:
+
+
+```{r, eval=FALSE}
+
+# Zone 1
+library(shiny)
+library(ggplot2)
+
+shinyServer(function(input, output) {
+  # Zone 2
+  output$distPlot <- renderPlot({
+    # Zone 3 : run each time a user changes a widget that output$map relies on
+  })
+})
+```
+
+- **Zone 1**, this code is only executed once when the app is started. Loading libraries is typically done here, as are reading large static datasets.
+- **Zone 2**, this code is ran each time a user requests/visits the app. This can for example be used to load data for the last $x$ days, as this will be different for each user.
+- **Zone 3**, this code is ran each time a change is detected in the UI. This typically contains plotting code and such, or data that is requested based on changes in the UI (date range for example).
+If you put your code in the wrong zone, the appâs performance can be seriously impacted. For example, if reading a large static dataset is put into Zone 3, this large dataset will be read each time the plot needs to be redrawn.
+
+Examples/exercises below will help to clarify these notions.
+
+## Reactive expressions
+
+Normally, Shiny automatically reruns the code in the different zones as explained above. But consider the following fictitious example where two lines were added in Zone 3:
+
+```{r, eval=FALSE}
+# Zone 1
+library(shiny)
+library(ggplot2)
+
+shinyServer(function(input, output) {
+  # Zone 2
+  output$distPlot <- renderPlot({
+    # Zone 3
+    dat <- get_data(input$ui_element1, input$ui_element2)
+    plot(dat, input$ui_element3)
+  })
+})
+```
+
+The (hypothetical, user-defined) `get_data()` function is called each time any of the three UI elements is updated (since it is in Zone 3). However, if only `ui_element3` is updated the data should not be reloaded (to prevent time loss). This is where _reactive expressions_ come in, as seen below:
+
+```{r, eval=FALSE}
+# Zone 1
+library(ggplot2)
+
+shinyServer(function(input, output) {
+  # Zone 2
+  input_data <- reactive({
+    dat <- get_data(input$ui_element1, input$ui_element2)
+  })
+  output$distPlot <- renderPlot({
+    # Zone 3
+    plot(input_data(), input$ui_element3)
+  })
+})
+```
+
+We wrap the data loading in a _reactive block_, and in the plotting refer to the new function `input_data()`. The advantage of this approach is that for a reactive expression Shiny first checks if the data actually needs to be updated or not. If only `ui_element3` is updated, the reactive simply returns the previously stored data (i.e., caching), and the plot is redrawn without the costly step of re-reading the data.
+
+At this point, you might want to have a better look at the Shiny cheatsheet that you downloaded previously.
+
+# Exercises
+
+**Exercise 2.** Open a new Shiny app in RStudio (File > New project > New directory > Shiny Web Application), which is essentially a new project in itself. Then edit the `ui.R` and `server.R` files to obtain the example given below (the actual plot is of `mtcars$mpg` as a function of `mtcars$wt`). Use the `ggplot2` package to make the plot. For this exercise, no interactivity is required. In the next couple of excercises you will build a visualisation app for the `mtcars` dataset.
+
+![](Images/fig3.png)
+
+**Exercise 3.** Add another dropdown menu in the sidebar. The two dropdown menus should now select which variables from `mtcars` will be respectively plotted on the $x$ and $y$ axes. Tip: have a look at `aes_string()` from `ggplot2`. Also, the `textInput` in the sidebarPanel should now be connected interactively to the actual title of the plot. And the names of the two variables selected should now be displayed above the plot in an interactive manner ("You selected variables ... and ..."). 
+
+**Exercise 4.** Add a checkbox which enables the user to choose whether or not to include a `stat_smooth()` call (from `ggplot2` package).
+
+**Exercise 5.** Add a checkbox and a dropdown menu that allow the user to toggle the use of facetting and select which variable to facet with. Tip: see for instance [this web page](http://www.cookbook-r.com/Graphs/Facets_%28ggplot2%29/).
+
+In the next couple of excercises we will build a stock price visualisation app (inspired by Shiny tutorial).
+
+**Exercise 6.** We will download the stock price data using [`getSymbols()`](http://www.quantmod.com/documentation/getSymbols.html) from the [`quantmod`](http://www.quantmod.com/) package. Ensure that the value of the argument `auto.assign` is set to `FALSE`, and you can use the `from` and `to` input arguments to select time. Extract stockprice data for AAPL (Apple), YHOO (Yahoo), and GS (Goldman Sachs). Create a chart of that data by calling the `candleChart()` function from `quantmod` on the resulting object from `getSymbols()`. Change the theme from black to white.
+
+**Exercise 7.** Create a new Shiny app, and create a `ui.R` file that results in this user interface:
+
+![](Images/fig4.png)
+
+The list of possible stock symbols is AAPL (Apple), YHOO (Yahoo), and GS (Goldman Sachs). The themes that can be selected are white and black. Select appropriate defaults for the data range.
+
+Create a `server.R` file that loads the data for the selected stock symbol, and the selected data range using `getSymbols()` and plots it using `candleChart()`.
+
+Ensure that you have used a reactive expression for reading the stock data. Ensure that the theme of the graph can be changed without reloading the data.
+
+**Exercise 8.** Design a Shiny app to investigate the effects of sample size $n$, standard deviation $sigma$, etc for the following function:
+```{r eval=FALSE}
+fit.true <- function(n = 100, sigma = 10, intercept = 0, slope = 5, 
+                     min = -10, max = 10, legend = "topleft") {
+   x <- runif(n, min = min, max = max)
+   y <- rnorm(n, mean = int + slope * x, sd = sigma)
+   mod <- lm(y ~ x)
+   plot(x, y, pch = 20, las = 1)
+   abline(a = int, b = slope)
+   abline(a = mod$coef[1], b = mod$coef[2], col = 'red')
+   legend(legend, c(paste("y = ", int, " + ", slope, " x, True Model", sep = ""),
+      paste("y = ", round(mod$coef[1],2), " + ", round(mod$coef[2], 2), 
+            " x, Estimated Model ", sep = "")), lty = c(1, 1), col = c('lack', 'red'))
+}
+```
+
+**Exercise 9.** Challenge. Will you be able to retrieve automatically all data from [diamondse](http://www.diamondse.info/diamond-prices.asp) and then recreate the same web app? If yes, send me your solution!
+
+**Exercice 10.** Propose some nice app for data extracted [here](https://websenti.u707.jussieu.fr/sentiweb/?page=table).
+
+**Exercise 11.** Propose some nice app for data (e.g., real time) extracted [here](https://data.ratp.fr).
+
+# Custom UI
+
+See this [webpage](https://shiny.rstudio.com/articles/html-ui.html).
+
+You can make your own User Interface using HTML directly.  In this case there is no `ui.R` file. The structure of files/folders should be the following:
+
+```
+ < application-dir >
+|-- www/
+    |-- css/
+    |-- js/
+    |-- index.html
+|-- server.R
+```
+
+Binding between shiny inputs/outputs and HTML elements is done by:
+
+- HTML form elements are boundto `input` slots using their HTML `name` attribute
+
+ `<select name="dist">`
+
+ `<input type="number" name="n" value="500" min="1" max="1000" /> `
+
+- Output is rendered into HTML elements on `id` attributes
+
+ `<pre id="summary" class="shiny-text-output"></pre>`
+ 
+ `<div id="plot" class="shiny-plot-output" style="width: 100%; height: 400px"></div>`
+ 
+ `<div id="table" class="shiny-html-output"></div>`
+ 
+Have a look at the `index.html` file in the `08_html/` subfolder of `Examples/`. Try to understand the connection between this file and the `server.R` file.
+ 
+
+# Isolate
+
+Sometimes you don't want things running automatically as soon as you change an input.
+With the previous example typing in 123 for the number of points gives a graph for $n=1$, then $n=12$, then $n=123$.
+
+We can use the `actionButton` to get around this.
+
+`server.R`:
+```{r, eval=FALSE}
+data <- reactive({       
+   dist <- switch(input$dist,
+           norm = rnorm,
+           unif = runif,
+           lnorm = rlnorm,
+           exp = rexp,
+           rnorm)
+
+   input$goButton
+
+   isolate(dist(input$n))
+})
+```
+
+`ui.R`:
+```{r, eval=FALSE}
+downloadButton()
+```
+
+# Images
+
+It is easy to insert images on your webpage:
+
+`img(src = "my_image.png", height = 72, width = 72)`
+
+# Control widgets 
+
+A widget is a web element that your users can interact with. Widgets provide a way for your users to send messages to the Shiny app. We have already encountered several widgets.
+
+The standard Shiny widgets are:
+
+| **function**           | **widget**                                      |
+| -----------------------|-------------------------------------------------|
+| `actionButton()`       |	Action Button                                  |
+| `checkboxGroupInput()` |	A group of check boxes                         |
+| `checkboxInput()`      |	A single check box                             |
+| `dateInput()`          |	A calendar to aid date selection               |
+| `dateRangeInput()`     | 	A pair of calendars for selecting a date range |
+| `fileInput()`          | 	A file upload control wizard                   |
+| `helpText()`           | 	Help text that can be added to an input form   |
+| `numericInput()`       | 	A field to enter numbers                       |
+| `radioButtons()`       | 	A set of radio buttons                         |
+| `selectInput()`        | 	A box with choices to select from              |
+| `sliderInput()`        | 	A slider bar                                   |
+| `submitButton()`       | 	A submit button                                |
+| `textInput()`          | 	A field to enter text                          |
+
+# Share your apps 
+
+You can now build a useful Shiny app, but how can you share it with others?
+
+You have two basic options:
+
+1. Share your Shiny app as two files: `server.R` and `ui.R`. This is the simplest way to share an app, but it works only if your users have R (and Shiny) on their own computer (and know how to use it). Users can use these scripts to launch the app from their own R session, just like you've been launching the apps.
+
+2. Share your Shiny app as a web page. This is definitely the most user friendly way to share a Shiny app. Your users can navigate to your app through the internet with a web browser. They will find your app fully rendered, up to date, and ready to go.
+
+## Share as two R files
+
+Anyone with R can run your Shiny app. They will need a copy of your server.R and ui.R files, as well as any supplementary materials used in your app (e.g., www folders or helpers.R files).
+
+## Share as a web page
+
+RStudio offers three ways to host your Shiny app as a web page:
+
+- [Shinyapps.io](http://shinyapps.io/)
+- Shiny Server
+- Shiny Server Pro
+
+The first one is the easiest to use. It comes with several formula (from $0/month to $299/month). The second one lets you install (for free) a Shiny server on your own web server. This  [guide](https://github.com/rstudio/shiny-server/blob/master/README.md) might help you. Finally, [Shiny Server Pro](http://www.rstudio.com/shiny/server/) allows you to install (not free) a Shiny Server with many [more features](https://www.rstudio.com/products/shiny/shiny-server/) on your own web server.
+

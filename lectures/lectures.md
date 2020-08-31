@@ -14,3 +14,10 @@
   *Summer*
   
   - Mathematical analysis (30h)
+  
+**2020/2021**
+
+  *Winter*
+  
+  - Stochastic processes (60h)
+  - Databases (60h)

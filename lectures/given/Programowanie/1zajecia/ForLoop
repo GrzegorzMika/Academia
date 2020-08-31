@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    // sum of natural number
+    int i, m;
+    int sum = 0;
+
+    i = 1;
+
+    for(i = 1; i <= m; i++){
+    sum+=i;
+    }
+
+    printf("%d", sum);
+
+    return 0;
+}

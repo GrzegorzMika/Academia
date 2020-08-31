@@ -1,0 +1,54 @@
+---
+title: "Untitled"
+author: "Grzegorz Mika"
+date: "25 05 2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+Rozważmy problem początkowy postaci
+\begin{equation} y'(t) = -y(t)\cdot \tan (t) + \frac{1}{\cos (t)}\end{equation}
+$$y(0) = 0,$$
+którego rozwiązaniem analitycznym jest funkcja
+$$y(t) = \sin(t).$$
+Zapisując to równanie w ogólnej postaci
+
+$$y'(t) = f\left(t, y(t)\right), y(t_0)=y_0$$
+
+dostajemy, że funkcja $f$ jest postaci
+
+$$f(t,x) = -x\tan(t) + \frac{1}{\cos (t)}.$$
+
+Ze względu na $t$ jest ona ciągła wszędzie za wyjątkiem punktów postaci $t = \pm \frac{\pi}{2}, \pm \frac{3\pi}{2}, \dots$.
+
+***
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Do rozwiązania powyższego problemu zastosujemy dwie metody
+* jednokrokowy schemat Heuna,
+* dwukrokowy schemat punktu środkowego.
+
+
+* jednokrokowy schemat Heuna,
+* dwukrokowy schemat punktu środkowego.

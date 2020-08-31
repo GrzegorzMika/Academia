@@ -1,0 +1,63 @@
+\documentclass{article}
+%\usepackage{polski}
+%\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{zd}{Zadanie}
+\newtheorem{zdt}[zd]{Zadanie*}
+\title{Nowe zadania}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\noindent Zadanie 1. 
+\begin{itemize}
+\item Zbadaj zbieżność szeregu:
+\begin{itemize}
+\item $\sum_{n=1}^{\infty}\frac{\sqrt{n^2 + \sqrt{n}} - \sqrt{n^2-\sqrt{n}}}{\sqrt{n}}$,
+\item $\sum_{n=1}^{\infty}\frac{(n!)^n}{n^{n^2}}$,
+\item $\sum_{n=1}^{\infty}(-1)^n\frac{\sqrt{n}}{n+100}.$
+\end{itemize}
+\item Zbadaj zbieżność punktową i jednostajną szeregu $\sum_{n=1}^{\infty}\frac{1}{2^{n-1}\sqrt{1+nx}}$ dla $x \geq 0$.
+\end{itemize}
+Zadanie 3.
+\begin{itemize}
+\item Funkcję $f(x)  = \pi -x $ określoną na przedziale $(0, \pi)$ rozwinąć w szereg Fouriera samych sinusów.
+\end{itemize}
+
+\noindent Zadanie 1. 
+\begin{itemize}
+\item Zbadaj zbieżność szeregu:
+\begin{itemize}
+\item $\sum_{n=1}^{\infty}\frac{(n!)^2}{2^{n^2}}$,
+\item $\sum_{n=1}^{\infty}\frac{e^{1/n}}{n}$
+\item $\sum_{n=1}^{\infty}\frac{(-1)^n}{n+\sqrt{n}}.$
+\end{itemize}
+\item Zbadaj zbieżność punktową i jednostajną szeregu $\sum_{n=1}^{\infty}\frac{\ln (1+nx)}{nx^n}$ dla $x \geq 2$.
+\end{itemize}
+Zadanie 3.
+\begin{itemize}
+\item Funkcję $f(x)  = \sin x $ określoną na przedziale $[0, \pi]$ rozwinąć w szereg Fouriera samych cosinusów.
+\end{itemize}
+
+
+\noindent Zadanie 1. 
+\begin{itemize}
+\item Zbadaj zbieżność szeregu:
+\begin{itemize}
+\item $\sum_{n=1}^{\infty}\frac{1}{\ln^n(n+1)}$,
+\item $\sum_{n=1}^{\infty}\frac{1}{\sqrt[4]{n(n+1)(n+2)(n+3)}}$,
+\item $\sum_{n=1}^{\infty}(-1)^n\frac{n+2}{n^2+3}.$
+\end{itemize}
+\item Zbadaj zbieżność punktową i jednostajną szeregu $\sum_{n=1}^{\infty}\frac{e^{-n^2x^2}}{n^2}$ dla $x \in \mathbb{R}$.
+\end{itemize}
+Zadanie 3.
+\begin{itemize}
+\item Funkcję $f(x)  = x^2 $ określoną na przedziale $(0, \pi)$ rozwinąć w szereg Fouriera samych sinusów.
+\end{itemize}
+
+\end{document}

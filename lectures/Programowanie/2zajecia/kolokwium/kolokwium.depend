@@ -1,6 +1,0 @@
-# depslib dependency file v1.0
-1547418530 source:/home/grzegorz/Pulpit/Doktorat/Prowadzone/Programowanie/2zajecia/kolokwium/main.cpp
-	<iostream>
-	<fstream>
-	<string.h>
-

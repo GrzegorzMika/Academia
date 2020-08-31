@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+\usepackage{polski}
+\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{zd}{Zadanie}
+\title{Procesy stochastyczne\\ Zestaw zadań nr 3}
+\begin{document}
+\maketitle
+\begin{zd}
+Niech $T$ będzie momentem stopu względem pewnej filtracji $\{\mathcal{F}_n\}_{n\in T},\ T = \mathbb{N}$. Które z następujących zmiennych losowych są również momentami stopu względem tej filtracji?
+\begin{itemize}
+	\item $T + c, \ c > 0$,
+	\item $T - c, \ c >0$,
+	\item $T^2$
+\end{itemize}
+\end{zd}
+
+\begin{zd}
+	Niech $T, S$ będą momentami stopu takimi, że $S \leq T$ prawie na pewno. Wykaż, że $\mathcal{F}_{S}\ \subset \mathcal{F}_{T}$. 
+\end{zd}
+\begin{zd}
+	Niech $S, T$ będą momentami stopu. Udowodnij, że zachodzi $\mathcal{F}_{\min\{T,S\}} = \mathcal{F}_{T} \cap \mathcal{F}_{S}$.
+\end{zd}
+\begin{zd}
+		Niech $T, S$ będą momentami stopu. Czy momentem stopu jest zmienna losowa $T + S$ lub $T - S$?
+\end{zd}
+
+\begin{zd}
+	Niech $\{T_n\}$ będzie ciągiem momentów stopu. Udowodnij, że momentami stopu są również następujące zmienne losowe:
+	\begin{itemize}
+		\item $\sup_nT_n$,
+		\item $\inf_n T_n$,
+		\item $\liminf_n T_n$,
+		\item $\limsup_n T_n$.
+	\end{itemize}
+\end{zd}
+
+\begin{zd}
+	Niech $0 < T_1 < T_2 < \dots < T_n < \dots $ będzie rosnącym do nieskończoności ciągiem momentów stopu o skończonych wartościach. Niech $N_t = \sum_{i = 1}^{\infty}\pmb{1}_{\{i \geq T_i\}}.$ Niech ponadto $\{U_i\}_{i \in \mathbb{N}}$ będzie ciągiem niezależnych zmiennych losowych takim, że jest on niezależny od procesu $N$. Załóżmy, że $\sup_i\mathbb{E}|U_i|< \infty$ oraz $\mathbb{E}U_i = 0$ dla dowolnego $i$. Udowodnij, że wtedy proces 
+	\begin{displaymath}
+		Z_t = \sum_{i = 1}^{\infty}U_i\pmb{1}_{\{t \geq T_i\}}
+	\end{displaymath}
+	jest martyngałem.
+\end{zd}
+
+
+\begin{zd}
+	Niech $S, T$ będą momentami Markowa  i niech $Z$ będzie całkowalną zmienną losową na pewnej przestrzeni probabilistycznej z miarą $\mathbb{P}$. Wykaż, że na zbiorze $\{T \leq S\}$ $\mathbb{P}$ - prawie na pewno zachodzi
+	\begin{displaymath}
+		\mathbb{E}(Z|\mathcal{F_T}) = \mathbb{E}(Z|\mathcal{F}_{\min\{T,S\}}).
+	\end{displaymath}
+\end{zd}
+\begin{df}
+	Niech będzie dana przestrzeń probabilistyczna  $(\Omega, \mathcal{F}, \mathbb{P})$ z filtracją $\{\mathcal{F}_t\}_{t\in T}$. Momentem stopu względem tej filtracji nazywamy zmienną losową $T\colon \Omega \to T \cup {\infty}$ taką, że dla dowolnego $t\in T$ zachodzi 
+	\begin{displaymath}
+		\{T \leq t\} \in \mathcal{F}_t.
+	\end{displaymath}
+\end{df}
+\begin{zd}
+	Niech $T\colon \Omega \to [0,\infty]$ będzie momentem stopu względem filtracji $\{\mathcal{F}_t\}_{t\in [0,\infty]}$. Dla jakich $\alpha \in \mathbb{R}$ istnieje niepusty podzbiór $T_{\alpha} \subset [0,\infty]$ taki, że $S = \log(\alpha T)$ jest momentem stopu względem filtracji $\{\mathcal{F}_t\}_{t\in [0,\infty]}$. Podaj postać $T_{\alpha}$.
+\end{zd}
+
+
+\begin{zd}
+	Niech będzie dana przestrzeń probabilistyczna $(\Omega, \mathcal{F}, \mathbb{P})$ z filtracją zupełną $\{\mathcal{F}_n\}$. Niech $T, S$ będą dwoma momentami Markowa o skończonych wartościach takimi, że istnieje $t_0 \geq 0$, takie, że $\mathbb{P}(T \geq t_0) = \mathbb{P}(S \geq t_0) = 1$. Niech $A\in \mathcal{F}_{t_0}$. Sprawdź, czy momentem stopu jest zmienna losowa 
+	\begin{displaymath}
+	U = T\cdot\pmb{1}_A + S\cdot \pmb{1}_{A'}
+	\end{displaymath}
+	względem podanej filtracji.
+\end{zd}
+
+
+\end{document}
