@@ -29,6 +29,8 @@ Birgé i in.)"_, seminar talk
 - Grzegorz Mika (2017), [_"Zastosowanie metod MCMC do modeli wyceny"_](https://github.com/GrzegorzMika/Academia/blob/master/presentations/2017/krakowska_konferencja_matematyki_finansowej/MCMC.pdf), VI Krakowska konferencja Matematyki Finansowej, 2017
 
 ### Participant
+- [_eRUM 2020_](https://2020.erum.io/), 17-20 June 2020, ~~Milano, Italy~~, moved to virtual event
+- [_Mathematical Methods of Modern Statistics 2_](https://www.cirm-math.com/cirm-virtual-event-2146.html), 15-19 June 2020, ~~Luminy, France~~, moved to virtual event
 - [_XLV Konferencja Statystyka Matematyczna_](https://www.impan.pl/en/activities/banach-center/conferences/19-xlvstatistic), 2-6 December 2019, Będlewo, Poland
 - [_Why R? 2019 Conference_](http://whyr.pl/2019/), 26-29 September 2019, Warszawa, Poland
 - [_Jubileuszowy zjazd matematyków polskich w 100-lecie PTM_](https://100latptm.matinf.uj.edu.pl/), 3-7 September 2019, Kraków, Poland
