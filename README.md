@@ -42,7 +42,7 @@ Birgé i in.)"_, seminar talk
 - Konsultacje: indywidualnie (proszę o kontak mailowy)
 - Procesy stochastyczne (2020/21)  
 - Bazy danych (2020/21)
-  - Informacje przydatne na start - [tutaj]((https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Bazy_danych/Intro.html))
+  - Informacje przydatne na start - [tutaj](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Bazy_danych/Intro.pdf)
 - For information about previous semesters please see [here](https://github.com/GrzegorzMika/Academia/blob/master/lectures/lectures.md)
 
 ## Other

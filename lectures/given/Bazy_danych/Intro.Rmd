@@ -2,7 +2,7 @@
 title: "Instalacja i konfiguracja DataGrip"
 # author: "Grzegorz Mika"
 # date: "2020-09-10"
-output: html_document
+output: pdf_document
 ---
 
 ## Instalacja i wstępna konfiguracja
