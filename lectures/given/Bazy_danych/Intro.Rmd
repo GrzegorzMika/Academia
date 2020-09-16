@@ -1,13 +1,25 @@
 ---
-title: "Instalacja i konfiguracja DataGrip"
+title: "Bazy danych - intro"
 # author: "Grzegorz Mika"
 # date: "2020-09-10"
 output: pdf_document
 ---
 
+## Kwestie organizacyjne
+
+1. Materiały, prezentacje, skrypty itp. dostępne będą we wspólnym folderze na Google Drivie. Liczę, że nie będzie problemów w postaci różnych "sprytnych" zagrań jak usuwanie plików - cała historia zapisuje się na Google Drivie!
+
+2. Dostęp do dysku jest pod tym [linkiem](https://bit.ly/2ZJqzix) (wymagane jest konto Google, w razie gdy ktoś nie ma, można założyć za darmo).
+
+3. Zajęcia będą odbywać się z wykorzystaniem Google Meet. Zaproszenia na spotkania będą wysyłane na adres e-mail, który został podany prowadzącemu (nie musi to być mail uczelniany, jeżeli ktoś chce na przykład widzieć zajęcia w kalendarzu).
+
+## Wymagania
+
 ## Instalacja i wstępna konfiguracja
 
-1. W pierwszym kroku należy zawnioskować o darmową licencję dostępną dla studentów do DataGrip pod tym [linkiem](https://www.jetbrains.com/community/education/#students).
+Do pracy z bazami danych będziemy używać oprogramowania DataGrip firmy JetBrains. W przypadku studentów możliwe jest otrzymanie darmowej licencji. Proces ten jak i konfiguracja opisana jest poniżej. Oczywiście nieoznacza to, że nie można korzystać z innego oprogramowania, jeśli ktoś ma swoje ulubione środowisko. 
+
+1. W pierwszym kroku należy zawnioskować o darmową licencję dostępną dla studentów do DataGrip pod tym [linkiem](https://www.jetbrains.com/community/education/#students) (jeśli link nie działa, trzeba pobrać plik i może wtedy zadziała).
 
 2. Po wybraniu **"Apply with university address"** wypełniamy wymagane pola podając swój akademicki adres e-mail i klikamy **"Apply for free products"**.
 

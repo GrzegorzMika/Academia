@@ -1,0 +1,18 @@
+---
+title: "Procesy stochastyczne - intro"
+# author: "Grzegorz Mika"
+# date: "2020-09-10"
+output: pdf_document
+---
+
+## Kwestie organizacyjne
+
+1. Materiały, prezentacje, skrypty itp. dostępne będą we wspólnym folderze na Google Drivie. Liczę, że nie będzie problemów w postaci różnych "sprytnych" zagrań jak usuwanie plików - cała historia zapisuje się na Google Drivie! Zestawy zadań umieszczane będą również na [stronie](https://grzegorzmika.github.io/Academia/).
+
+2. Dostęp do dysku jest pod tym [linkiem](https://bit.ly/32yOHX8) (wymagane jest konto Google, w razie gdy ktoś nie ma, można założyć za darmo).
+
+3. Zajęcia będą odbywać się z wykorzystaniem Google Meet. Zaproszenia na spotkania będą wysyłane na adres e-mail, który został podany prowadzącemu (nie musi to być mail uczelniany, jeżeli ktoś chce na przykład widzieć zajęcia w kalendarzu).
+
+## Wymagania
+
+
