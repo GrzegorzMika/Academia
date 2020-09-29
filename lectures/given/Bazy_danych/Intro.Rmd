@@ -17,23 +17,9 @@ output: pdf_document
 
 ## Instalacja i wstępna konfiguracja
 
-Do pracy z bazami danych będziemy używać oprogramowania DataGrip firmy JetBrains. W przypadku studentów możliwe jest otrzymanie darmowej licencji. Proces ten jak i konfiguracja opisana jest poniżej. Oczywiście nieoznacza to, że nie można korzystać z innego oprogramowania, jeśli ktoś ma swoje ulubione środowisko. 
+Do nauki będziemy wykorzystywać bazy danych tworze na serwarach AGH.
 
-1. W pierwszym kroku należy zawnioskować o darmową licencję dostępną dla studentów do DataGrip pod tym [linkiem](https://www.jetbrains.com/community/education/#students) (jeśli link nie działa, trzeba pobrać plik i może wtedy zadziała).
-
-2. Po wybraniu **"Apply with university address"** wypełniamy wymagane pola podając swój akademicki adres e-mail i klikamy **"Apply for free products"**.
-
-3. W kolejnym kroku zakładamy konto na JetBrains używając podanego wcześniej adresu e-mail.
-
-4. W pojawiającym się oknie rozwijamy listę pod **"Download"** i pobieramy DataGrip'a.
-
-5. Po pobraniu nawigujemy do pobranego folderu i postępujemy zgodnie z instrukcjami zamieszczonymi w pliku **"Install-{}-tar.txt"**, gdzie {} zmienia się w zależności od systemu operacyjnego naszego komuptera. W przypadku jedynego, słusznego systemu Linux jest to **"Install-Linux-tar.txt"**. 
-
-6. W momencie, gdy wyskakuje okienko **"License Activation"** bądź wybrania licencji, logujemy się na utworzone w punkcie 3. konto. 
-
-7. Wybieramy pasujący nam kolor interfejsu.
-
-8. Jako preferowany dialekt wybieramy `MySQL`
+1. 
 
 ## Połaczenie z bazą danych
 
