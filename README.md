@@ -39,7 +39,7 @@ Birgé i in.)"_, seminar talk
 
 ## Teaching
 
-- Konsultacje: indywidualnie (proszę o kontak mailowy)
+- Konsultacje: środa, 17:45-19:15 na platformie MS Teams
 - Procesy stochastyczne (2020/21)  
   - Informacje przydatne na start - [tutaj](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Procesy_intro.pdf)
 - Bazy danych (2020/21)

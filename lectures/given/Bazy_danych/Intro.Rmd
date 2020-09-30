@@ -9,17 +9,75 @@ output: pdf_document
 
 1. Materiały, prezentacje, skrypty itp. dostępne będą we wspólnym folderze na Google Drivie. Liczę, że nie będzie problemów w postaci różnych "sprytnych" zagrań jak usuwanie plików - cała historia zapisuje się na Google Drivie!
 
-2. Dostęp do dysku jest pod tym [linkiem](https://bit.ly/2ZJqzix) (wymagane jest konto Google, w razie gdy ktoś nie ma, można założyć za darmo).
+2. Dostęp do dysku jest pod linkiem przesłanym we wstępnym mailu (wymagane jest konto Google, w razie gdy ktoś nie ma, można założyć za darmo).
 
-3. Zajęcia będą odbywać się z wykorzystaniem Google Meet. Zaproszenia na spotkania będą wysyłane na adres e-mail, który został podany prowadzącemu (nie musi to być mail uczelniany, jeżeli ktoś chce na przykład widzieć zajęcia w kalendarzu).
+3. Zajęcia będą odbywać się z wykorzystaniem platformy MS Teams. Zaproszenia na zajęcia wysłane są dla kanałów stworzonych osobno dla grupy 1 i 2.
+
+4. Do kanałów dla poszczególnych grup proszę dołączać zgodnie z tym, w zajęciach której grupy będzie się uczestniczyć - domyślnie powinna być to grupa przypisana w USOS, w razie potrzeby zmiany grupy, proszę o informację.
 
 ## Wymagania
+
+1. Zaliczenie przedmiotu opierać się będzie na dwóch kolokwiach, projekcie i aktywności.
+
+2. Przewidziane są dwa kolokwia po 20 pkt.
+
+3. Za wykonanie projektu można dostać do 60 pkt.
+
+4. Aktywność doliczana jest do całkowitej sumy punktów.
+
+5. W celu zaliczenia wymagane jest zdobycie conajmnje 51% możliwych do zdobycia punktów, czyli 51 pkt.
 
 ## Instalacja i wstępna konfiguracja
 
 Do nauki będziemy wykorzystywać bazy danych tworze na serwarach AGH.
 
-1. 
+1. Logujemy się na stronę [Panel AGH](https://panel.agh.edu.pl/index.php).
 
-## Połaczenie z bazą danych
+2. Z lewej strony wybieramy zakładkę **MySQL**.
 
+3. Klikamy *Utwórz nową bazę danych*.
+
+4. Do bazy zalogować możemy się na dwa sposoby:
+
+    a. (*Wersja minimalna*) ponad tabelką z dostępnymi bazami danych znajduje się link przekierowujący do **phpMyAdmin** i logujemy się przy pomocy danych znajdujących się w tabeli,
+    
+    b. (*Wersja rozszerzona*) do bazy danych zalogujemy się przy pomocy VPN (tunelowanie sieci) i IDE (edytor) przeznaczonego dla baz danych. Szczegóły opisane są poniżej. 
+ 
+## Połącznie w wersji rozszerzonej
+
+1. Konfiguracja VPN'a:
+
+    a. ze strony [Panel AGH](https://panel.agh.edu.pl/index.php) z zakładki **VPN AGH** pobieramy plik konfiguracyjny naciskając *Pobierz konfigurację VPN na rok akademicki xxxx/xx*,
+    
+    b. instalujemy i konfigurujemy program **OpenVPN** zgodnie z informacjami podanymi w [Instrukcji konfiguracji](http://panel.agh.edu.pl/docs/openvpn/) na stronie Panelu AGH,
+    
+    c. w przypadku systemu Linux potrzebne jest zainstalowanie odpowiednich bibliotek przy pomocy polecenia `sudo apt-get install libssl-dev liblzo2-dev libpam0g-dev`. Należy pamiętać, że późniejsze uruchomienie VPN'a wymaga uprawnień `root'a`, czyli może być wywołane przy pomocy polecenia `sudo openvpn VPN-AGH.xxxx.ovpn`.
+
+2. Pobranie i konfiguracja DataGrip'a:
+
+    a. w pierwszym kroku należy zawnioskować o darmową licencję dostępną dla studentów do DataGrip pod tym [linkiem](https://www.jetbrains.com/community/education/#students) (jeśli link nie działa, trzeba pobrać plik i może wtedy zadziała),
+
+    b. po wybraniu **"Apply with university address"** wypełniamy wymagane pola podając swój akademicki adres e-mail i klikamy **"Apply for free products"**,
+
+    c. w kolejnym kroku zakładamy konto na JetBrains używając podanego wcześniej adresu e-mail,
+    d. w pojawiającym się oknie rozwijamy listę pod **"Download"** i pobieramy DataGrip'a,
+    e. po pobraniu nawigujemy do pobranego folderu i postępujemy zgodnie z instrukcjami zamieszczonymi w pliku **"Install-{}-tar.txt"**, gdzie {} zmienia się w zależności od systemu operacyjnego naszego komuptera. W przypadku jedynego, słusznego systemu Linux jest to **"Install-Linux-tar.txt"**,
+    f. w momencie, gdy wyskakuje okienko **"License Activation"** bądź wybrania licencji, logujemy się na utworzone w punkcie c konto,
+    g. wybieramy pasujący nam kolor interfejsu,
+    h. jako preferowany dialekt wybieramy `MySQL`.
+
+3. Połącznie DataGrip'a do bazy:
+
+    a. uruchamiamy VPN,
+    
+    b. uruchamiamy DataGrip'a zgodnie z instrukcją umieszczoną w pliku **README** w folderze gdzie został on pobrany,
+    
+    c. wybieramy File -> New -> Data Source -> MariaDB,
+    
+    d. w pojawiającym się okienku wpisujemy jakąś sensowną nazwę w polu *Name*, w polu host wpisujemy *mysql.agh.edu.pl*, zostawiamy defaultowy *Port*, w polu *User* i *Password* wpisujemy dane z tabeli ze strony Panelu AGH,
+    
+    e. naciskamy **Test connection**,
+    
+    f. w przypadku pojawiania się błędu dotyczącego strefy czasowej, należy w zakładce **Advanced**, w polu **serverTimezone** wpisać `GMT+1`,
+    
+    g. jeżeli po naciśnięciu **Test connection** widzimy zielony znaczek, naciskamy **OK**.
