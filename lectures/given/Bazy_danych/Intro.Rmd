@@ -25,7 +25,7 @@ output: pdf_document
 
 4. Aktywność doliczana jest do całkowitej sumy punktów.
 
-5. W celu zaliczenia wymagane jest zdobycie conajmnje 51% możliwych do zdobycia punktów, czyli 51 pkt.
+5. W celu zaliczenia wymagane jest zdobycie co najmnje 51% możliwych do zdobycia punktów, czyli 51 pkt.
 
 ## Instalacja i wstępna konfiguracja
 

@@ -11,8 +11,18 @@ output: pdf_document
 
 2. Dostęp do dysku jest pod tym [linkiem](https://bit.ly/32yOHX8) (wymagane jest konto Google, w razie gdy ktoś nie ma, można założyć za darmo).
 
-3. Zajęcia będą odbywać się z wykorzystaniem Google Meet. Zaproszenia na spotkania będą wysyłane na adres e-mail, który został podany prowadzącemu (nie musi to być mail uczelniany, jeżeli ktoś chce na przykład widzieć zajęcia w kalendarzu).
+3. Zajęcia będą odbywać się z wykorzystaniem platformy MS Teams. Zaproszenia na zajęcia wysłane są dla kanałów stworzonych osobno dla grupy 1 i 2.
+
+4. Do kanałów dla poszczególnych grup proszę dołączać zgodnie z tym, w zajęciach której grupy będzie się uczestniczyć - domyślnie powinna być to grupa przypisana w USOS, w razie potrzeby zmiany grupy, proszę o informację.
 
 ## Wymagania
+
+1. Zalicznie przedmiotu odbywać się będzie na bazie dwóch kolowkiów i aktywności.
+
+2. Przewidziane są dwa kolokwia po 50 punktów.
+
+3. Aktywność doliczana jest do całkowitej sumy punktów.
+
+4. W celu zaliczenia wymagane jest zdobycie co najmnje 51% możliwych do zdobycia punktów, czyli 51 pkt.
 
 
