@@ -1,0 +1,61 @@
+\documentclass{mwart}
+%\usepackage{polski}
+%\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{zd}{Zadanie}
+\newtheorem{zdt}[zd]{Zadanie*}
+\title{Zestaw 1}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\maketitle
+\begin{zd}
+Wykazać, że jeżeli $\left(X_a)_{a\in A}\right)$ jest ciągiem zmiennych losowych, $A$ jest zbiorem nieprzeliczalnym, to $\sup_AX_a$ nie musi być zmienną losową.
+\end{zd}
+
+\begin{zd}
+Pokazać, że dowolny rozkład prawdopodobieństwa $\mu$ może mieć conajwyżej przeliczalną licznę punktów skoku.
+\end{zd}
+
+\begin{zd}
+Niech $\mu$ będzie rozkładem prawdopodobieństwa o dystrybuancie $F$, gdzie $F$ jest dana wzorem
+\begin{displaymath}
+F(x) = (0.1+x)\pmb{1}_{x\in[0; 0.5)} + (0.4+x)\pmb{1}_{x\in[0.5; 0.55]} + \pmb{1}_{x\in[0.55; \inf]}.
+\end{displaymath}
+Znajdź $\mu(\{0.5\})$, $\mu([0; 0.5])$, $\mu((0; 0.55))$.
+\end{zd}
+
+\begin{zd}
+Niech $\mu$ będzie rozkładem prawdopodobieństwa na $\mathbb{R}$. Pokaż, że $x_0\in \mathbb{R}$ jest punktem skoku rozkładu $\mu$ wtedy i tylko wtedy, gdy dystrybuantu rozkładu $]mu$ jest nieciągła w $x_0$.
+\end{zd}
+
+\begin{zd}
+Niech $X$ będzie zmienną losową o rozkładzie wykładniczym z parametrem $\alpha$. Wyznacz rozkład zmiennej losowej $Y$ zdanej jako $Y=3X-5$.
+\end{zd}
+
+\begin{zd}
+Niech zmienna losowa $U$ ma rozkład jednostajny na odcinku $[0, 2]$. Wyznacz rozkład zmiennych $Y=\min(X, X^2)$ i $Z=\max(1, X)$.
+\end{zd}
+
+\begin{zd}
+Niech zmienna losowa $X$ ma standardowy rozkład normalny. Wyznacz dystrybuantę i gęstośc zmiennych losowych $Y=\exp{X}$ i $Z=X^2$.
+\end{zd}
+
+\begin{zd}
+Niech $X$będzie nieujemną zminną losową. Udowodnij, że $\mathbb{E}X = \int_{0}^{\infty}\mathbb{P}\left(X \geq t\right)dt$
+\end{zd}
+
+\begin{zd}
+Niech $X$ będzie zmienną losową o nośniku na liczbach dodatnich całkowitych. Wykaż, że $\mathbb{E}X = \sum_{n=1}^{\infty}\mathbb{P}\left(X \geq n\right)$.
+\end{zd}
+
+\begin{zd}
+Oblicz wartość oczekiwaną zmiennej losowej o rozkładzie geometrycznym z parametrem $p$.
+\end{zd}
+\end{document}
