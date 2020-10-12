@@ -28,7 +28,7 @@ Znajdź $\mu(\{0.5\})$, $\mu([0; 0.5])$, $\mu((0; 0.55))$.
 \end{zd}
 
 \begin{zd}
-Niech $\mu$ będzie rozkładem prawdopodobieństwa na $\mathbb{R}$. Pokaż, że $x_0\in \mathbb{R}$ jest punktem skoku rozkładu $\mu$ wtedy i tylko wtedy, gdy dystrybuantu rozkładu $]mu$ jest nieciągła w $x_0$.
+Niech $\mu$ będzie rozkładem prawdopodobieństwa na $\mathbb{R}$. Pokaż, że $x_0\in \mathbb{R}$ jest punktem skoku rozkładu $\mu$ wtedy i tylko wtedy, gdy dystrybuantu rozkładu $\mu$ jest nieciągła w $x_0$.
 \end{zd}
 
 \begin{zd}
