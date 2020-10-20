@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.3.7)  18 OCT 2020 20:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.3.7)  20 OCT 2020 17:43
 entering extended mode
 **./Zestaw2.tex
 (Zestaw2.tex
@@ -453,11 +453,11 @@ h zmi-en-nych losowych
  []
 
 
-Overfull \hbox (36.38898pt too wide) in paragraph at lines 69--70
+Overfull \hbox (3.07532pt too wide) in paragraph at lines 69--70
 \T1/aer/m/it/10 o jed-nakowym rozkªadzie ta-kich, »e $\U/msb/m/n/10 E\OML/cmm/m
-/it/10 X[] < \OMS/cmsy/m/n/10 1$\T1/aer/m/it/10 , $\OML/cmm/m/it/10 mathbbEX[] 
-\OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 1$\T1/aer/m/it/10 , to $\U/msb/m/n/10 P [] \
-OT1/cmr/m/n/10 =
+/it/10 X[] < \OMS/cmsy/m/n/10 1$\T1/aer/m/it/10 , $\U/msb/m/n/10 E\OML/cmm/m/it
+/10 X[] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 1$\T1/aer/m/it/10 , to $\U/msb/m/n/1
+0 P [] \OT1/cmr/m/n/10 =
  []
 
 
@@ -493,7 +493,7 @@ m/cmsy7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/
 cm/cmti10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfont
 s/symbols/msbm10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/
 amsfonts/symbols/msbm7.pfb>
-Output written on Zestaw2.pdf (1 page, 143259 bytes).
+Output written on Zestaw2.pdf (1 page, 142101 bytes).
 PDF statistics:
  63 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
