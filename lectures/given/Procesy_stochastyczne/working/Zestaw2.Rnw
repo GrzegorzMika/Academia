@@ -37,7 +37,7 @@ Niech $X$, $Y$ będą niezależnymi wektorami losowymi, Wykaż, że $\mathbb{P}\
 \end{zd}
 
 \begin{zd}
-Niech $\mathbb{P}(B) > 0$. Udowodnij, że $\mathbb{P}(A|B)$ jako funkcja $A$, przy ustalonym $B$ jest prawdopodobieństwem
+Niech $\mathbb{P}(B) > 0$. Udowodnij, że $\mathbb{P}(A|B)$ jako funkcja $A$, przy ustalonym $B$ jest prawdopodobieństwem.
 \end{zd}
 
 \begin{zd}
@@ -61,7 +61,7 @@ Korzystając z nierówności Bernsteina, udowodnij, że w schemacie Bernoulliego
 \end{zd}
 
 \begin{zd}
-Jeśli $VarX_n \leq C < \infty$ dal dowolnego $n$ oraz współczynniki korelacji $\rho (X_i, X_j) \to 0$, gdy $|i-j|\to \infty$, to ciąg $(X_n)$ spełnia SPWL.
+Jeśli $VarX_n \leq C < \infty$ dla dowolnego $n$ oraz współczynniki korelacji $\rho (X_i, X_j) \to 0$, gdy $|i-j|\to \infty$, to ciąg $(X_n)$ spełnia SPWL.
 \end{zd}
 
 \begin{zd}
@@ -73,11 +73,30 @@ Niech $X_1, X_2, \dots \in L^2\left(\Omega \right)$ będą nieskorelowanymi zmie
 \end{zd}
 
 \begin{zd}
-Niech $(A_n)$ będą niezależnymi zdarzeniami losowymi i niech $p_n = \mathbb{P}(A_n)$. Wykaż, że wtedy $\frac{\pmb{1}_{A_1} + \pmb{1}_{A_2} + \dots + \pmb{1}_{A_n}}{n} - \frac{p_1 + p_2 + \dots p_n}{n} \xrightarrow{P} 0$
+Niech $(A_n)$ będą niezależnymi zdarzeniami losowymi i niech $p_n = \mathbb{P}(A_n)$. Wykaż, że wtedy $\frac{\pmb{1}_{A_1} + \pmb{1}_{A_2} + \dots + \pmb{1}_{A_n}}{n} - \frac{p_1 + p_2 + \dots p_n}{n} \xrightarrow{P} 0$.
 \end{zd}
 
 \begin{zd}
 Niech $(X_n)$ będą niezależnymi zmiennymi losowymi takimi, że $\mathbb{P}(X_n=1)=\mathbb{P}(X_n=-1) = p_n$ i $\mathbb{P}(X_n=0)=1-2p_n$. Znajdź warunek konieczny i wystarczający, by ciąg $(X_n)$ spełniał MPWL.
 \end{zd}
 
+\begin{zd}
+Niech $X_n \rightsquigarrow \mathcal{N}(0, 1)$ oraz $Y_n x\xrightarrow{P} \sigma$. Udowodnij, że wtedy $X_nY_n \rightsquigarrow \mathcal{N}(0, \sigma^2)$
+\end{zd}
+
+\begin{zd}
+Niech $(X_n)$, $(Y_n)$ będzie ciągiem niezależnych wektorów losowych. Udowodnij, że jeżeli $X_n \rightsquigarrow X$ i $Y_n \rightsquigarrow Y$, to $(X_n, Y_n) \rightsquigarrow (X, Y)$.
+\end{zd}
+
+\begin{zd}
+Niech dla dowolnego $n$ $X_n$ i $X$ posiadają rozkład duskretny skupiony na liczbach całkowitych. Udowodnij, że $X_n \rightsquigarrow X$ wtedy i tylko wtedy, gdy $\mathbb{P}(X_n=x) \to \mathbb{P}(X=x)$ dla każdego całkowitego $x$.
+\end{zd}
+
+\begin{zd}
+Niech $\sqrt{n}(T_n-\theta)$ ma granicę według rozkładu. Udowodnij, że $T_n$ zbiega według prawdopodobieństwa do $\theta$.
+\end{zd}
+
+\begin{zd}
+Niech $\mathbb{E}X_n \to \mu$ i $VarX_n \to 0$. Udowodnij, że wtedy $X_n$ zbiega według prawdopodobieństwa do $\mu$.
+\end{zd}
 \end{document}
