@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.3.7)  26 OCT 2020 09:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.3.7)  27 OCT 2020 09:18
 entering extended mode
 **./Zestaw2.tex
 (Zestaw2.tex
@@ -446,14 +446,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Warning: No \author given.
 
 
-Overfull \hbox (1.23749pt too wide) in paragraph at lines 69--70
-\T1/aer/bx/n/10 Zadanie 11. \T1/aer/m/it/10 Wyka», »e je±li $\OT1/cmr/m/n/10 (\
+Overfull \hbox (1.23749pt too wide) in paragraph at lines 73--74
+\T1/aer/bx/n/10 Zadanie 12. \T1/aer/m/it/10 Wyka», »e je±li $\OT1/cmr/m/n/10 (\
 OML/cmm/m/it/10 X[]\OT1/cmr/m/n/10 )$ \T1/aer/m/it/10 jest ci¡giem nieza-le»nyc
 h zmi-en-nych losowych
  []
 
 
-Overfull \hbox (3.07532pt too wide) in paragraph at lines 69--70
+Overfull \hbox (3.07532pt too wide) in paragraph at lines 73--74
 \T1/aer/m/it/10 o jed-nakowym rozkªadzie ta-kich, »e $\U/msb/m/n/10 E\OML/cmm/m
 /it/10 X[] < \OMS/cmsy/m/n/10 1$\T1/aer/m/it/10 , $\U/msb/m/n/10 E\OML/cmm/m/it
 /10 X[] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 1$\T1/aer/m/it/10 , to $\U/msb/m/n/1
@@ -461,7 +461,7 @@ Overfull \hbox (3.07532pt too wide) in paragraph at lines 69--70
  []
 
 
-Overfull \hbox (75.92076pt too wide) in paragraph at lines 73--74
+Overfull \hbox (75.92076pt too wide) in paragraph at lines 77--78
 \T1/aer/m/it/10 losowymi o wspól-nie ogranic-zonej wari-ancji. Udowod-nij, »e w
 t-edy $[] []
  []
@@ -494,7 +494,7 @@ public/amsfonts/cm/cmti10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type
 1/public/amsfonts/symbols/msam10.pfb></home/grzegorz/.miktex/texmfs/install/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb></home/grzegorz/.miktex/texmfs/inst
 all/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on Zestaw2.pdf (2 pages, 152748 bytes).
+Output written on Zestaw2.pdf (2 pages, 153092 bytes).
 PDF statistics:
  70 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

@@ -65,6 +65,10 @@ Jeśli $VarX_n \leq C < \infty$ dla dowolnego $n$ oraz współczynniki korelacji
 \end{zd}
 
 \begin{zd}
+Niech $(X_n)$ będzie ciągiem zmiennych losowych takim, że dla dowolnego $n$ $VarX_n \leq C < \infty$ oraz $X_n$ zależy tylko od $X_{n-1}$ i $X_{n+1}$ a niezależy od innych elementów. Udowodnij, że ciąg ten spełnia SPWL.
+\end{zd}
+
+\begin{zd}
 Wykaż, że jeśli $(X_n)$ jest ciągiem niezależnych zmiennych losowych o jednakowym rozkładzie takich, że $\mathbb{E}X_1^- < \infty$, $\mathbb{E}X_1^+ = \infty$, to $\mathbb{P}\left(\lim_n\frac{S_n}{n} = \infty\right) = 1$.
 \end{zd}
 
@@ -81,7 +85,7 @@ Niech $(X_n)$ będą niezależnymi zmiennymi losowymi takimi, że $\mathbb{P}(X_
 \end{zd}
 
 \begin{zd}
-Niech $X_n \rightsquigarrow \mathcal{N}(0, 1)$ oraz $Y_n x\xrightarrow{P} \sigma$. Udowodnij, że wtedy $X_nY_n \rightsquigarrow \mathcal{N}(0, \sigma^2)$
+Niech $X_n \rightsquigarrow \mathcal{N}(0, 1)$ oraz $Y_n \xrightarrow{P} \sigma$. Udowodnij, że wtedy $X_nY_n \rightsquigarrow \mathcal{N}(0, \sigma^2)$
 \end{zd}
 
 \begin{zd}
@@ -89,7 +93,7 @@ Niech $(X_n)$, $(Y_n)$ będzie ciągiem niezależnych wektorów losowych. Udowod
 \end{zd}
 
 \begin{zd}
-Niech dla dowolnego $n$ $X_n$ i $X$ posiadają rozkład duskretny skupiony na liczbach całkowitych. Udowodnij, że $X_n \rightsquigarrow X$ wtedy i tylko wtedy, gdy $\mathbb{P}(X_n=x) \to \mathbb{P}(X=x)$ dla każdego całkowitego $x$.
+Niech dla dowolnego $n$ $X_n$ i $X$ posiadają rozkład dyskretny skupiony na liczbach całkowitych. Udowodnij, że $X_n \rightsquigarrow X$ wtedy i tylko wtedy, gdy $\mathbb{P}(X_n=x) \to \mathbb{P}(X=x)$ dla każdego całkowitego $x$.
 \end{zd}
 
 \begin{zd}
