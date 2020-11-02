@@ -47,7 +47,7 @@ Niech $X, Y$ będą niezależnymi zmiennymi losowymi o rozkładzie $\mathcal{N}(
 \begin{zd}
 Niech $\{X_i\}$ będzie ciągiem niezależnych zmiennych losowych o tym samym rozkładzie i takim, że $\mathbb{E}|X_i|<\infty$. Niech $S_n = \sum_{i=1}^nX_i$ i niech $\mathcal{F}_n = \sigma\left(S_n, S_{n+1}, S_{n+2}, \dots\right)$. Wyznacz
 \begin{itemize}
-\item $\mathbb{E}(X_1)\mathcal{F}_n)$,
+\item $\mathbb{E}(X_1|\mathcal{F}_n)$,
 \item $\mathbb{E}\left(\sum_{i=1}^na_iX_i|\mathcal{F}_n\right)$, gdzie $\sum_{i=1}^na_i = 1$.
 \end{itemize}
 \end{zd}
