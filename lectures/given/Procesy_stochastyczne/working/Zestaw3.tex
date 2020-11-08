@@ -34,7 +34,13 @@ Niech $\Omega = [0, 1]$ i niech $\mathbb{P}$ będzie miarą Lebesgue'a na tym od
 \end{zd}
 
 \begin{zd}
-Niech $X\in L^2(\Omega)$. Możemy wtedy zdefiniować warunkową wariancję jako $Var(X|\mathcal{F}) = \mathbb{E}\left[(X - \mathbb{E}(X|\mathcal{F}))^2|\mathcal{F}\right]$. Pokaż, że zachodzi związek $VarX = \mathbb{E}\left(Var(X|\mathcal{F})\right) + Var\left(\mathbb{E}(X|\mathcal{F})\right)$.
+	Niech zmienna losowa $X$ będzie całkowalna z kwadratem. Określmy $Var (X|\mathcal{F}) = \mathbb{E}\left((X-\mathbb{E}(X|\mathcal{F}))|\mathcal{F}\right)$. Udowodnij, że
+	\begin{displaymath}
+	\begin{split}
+	VarX = &\mathbb{E}\left(Var(X|\mathcal{F})\right) + Var\left(\mathbb{E}(X|\mathcal{F})\right)\\ &\left(\mathbb{E}(X|\mathcal{F})\right)^2 \leq \mathbb{E}(X^2|\mathcal{F})\\
+	& VarX \geq Var\left(\mathbb{E}(X|\mathcal{F})\right).
+	\end{split}
+	\end{displaymath}
 \end{zd}
 
 \begin{zd}
@@ -53,11 +59,30 @@ Niech $\{X_i\}$ będzie ciągiem niezależnych zmiennych losowych o tym samym ro
 \end{itemize}
 \end{zd}
 
+\begin{zd}
+Niech $Y$ będzie całkowalną zmienną losową i niech $X$, $Z$ będą zmiennymi losowymi takimi, że $(X, Y)$ jest niezależne od $Z$. Pokaż, że wtedy $\mathbb{E}(Y|X, Z) = \mathbb{E}(Y|X)$.
+\end{zd}
+
+\begin{zd}
+Niech $X,Y$ będą całkowalnymi z kwadratem zmiennymi losowymi. Udowodnij, że zachodzi
+\begin{displaymath}
+\mathbb{E}\left(X\mathbb{E}(Y|\mathcal{F})\right) = \mathbb{E}\left(Y\mathbb{E}(X|\mathcal{F})\right).
+\end{displaymath}
+\end{zd}
+
 % 4.3 Probability for Finance
 \begin{zd}
 	Niech $X$ będzie zmienną losową o rozkładzie Poissona z parametrem $\lambda$. Znajdź warunkową wartość oczekiwaną tej zmiennej losowej pod warunkiem, że przyjmuje ona wartość parzystą.
 \end{zd}
 
+% 2.15 Basic stochastic processes Course through Exercises
+\begin{zd}
+	Niech zmienne losowe $X,Y$ mają ten sam rozkład. Przy jakim dodatkowym założeniu zachodzi
+	\begin{displaymath}
+		\mathbb{E}\left(\frac{X}{X+Y}\right) = \mathbb{E}\left(\frac{Y}{X+Y}\right)?
+	\end{displaymath}
+	Przy tym założeniu oblicz tą wartość.
+\end{zd}
 % 4.13 Probability for Finance
 \begin{zd}
 	Niech $X,Y$ będą zmiennymi losowymi o standardowym rozkładzie normalnym i kowariancji równej $\rho$. Znajdź $\mathbb{E}(X|Y)$.

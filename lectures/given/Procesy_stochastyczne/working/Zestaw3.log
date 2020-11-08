@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.3.7)  2 NOV 2020 17:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.3.7)  8 NOV 2020 20:24
 entering extended mode
 **./Zestaw3.tex
 (Zestaw3.tex
@@ -446,39 +446,39 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX Warning: No \author given.
 
 
-Overfull \hbox (11.16441pt too wide) in paragraph at lines 41--42
+Overfull \hbox (11.16441pt too wide) in paragraph at lines 47--48
 \T1/aer/bx/n/10 Zadanie 5. \T1/aer/m/it/10 Niech $\OML/cmm/m/it/10 X[]; X[]; []
  ; X[]$ \T1/aer/m/it/10 b¦dzie ci¡giem nieza-le»nych zmi-en-nych losowych
  []
 
 [1
 
-{/home/grzegorz/.miktex/texmfs/data/pdftex/config/pdftex.map}] (Zestaw3.aux) ) 
+{/home/grzegorz/.miktex/texmfs/data/pdftex/config/pdftex.map}] [2]
+(Zestaw3.aux) ) 
 Here is how much of TeX's memory you used:
  3791 strings out of 494386
  52425 string characters out of 3173828
- 113218 words of memory out of 3000000
+ 114218 words of memory out of 3000000
  7809 multiletter control sequences out of 15000+200000
  19351 words of font info for 45 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 53i,7n,32p,329b,243s stack positions out of 5000i,500n,10000p,200000b,50000s
-<
-/home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.p
-fb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10
-.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi
-7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr
-10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cm
-r17.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/c
-mr7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/c
-msy10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm
-/cmsy7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts/c
-m/cmti10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfonts
-/symbols/msbm10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/a
-msfonts/symbols/msbm7.pfb>
-Output written on Zestaw3.pdf (1 page, 115112 bytes).
+ 53i,16n,32p,299b,243s stack positions out of 5000i,500n,10000p,200000b,50000s
+</home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfon
+ts/cm/cmbx10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsf
+onts/cm/cmex10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/am
+sfonts/cm/cmmi10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/
+amsfonts/cm/cmmi7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public
+/amsfonts/cm/cmr10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/publi
+c/amsfonts/cm/cmr17.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/publ
+ic/amsfonts/cm/cmr7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/publ
+ic/amsfonts/cm/cmsy10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/pu
+blic/amsfonts/cm/cmsy7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/p
+ublic/amsfonts/cm/cmti10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1
+/public/amsfonts/symbols/msbm10.pfb></home/grzegorz/.miktex/texmfs/install/font
+s/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on Zestaw3.pdf (2 pages, 118041 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
+ 58 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  5 words of extra memory for PDF output out of 10000 (max. 10000000)
 
