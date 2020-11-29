@@ -1,0 +1,97 @@
+\documentclass{mwart}
+%\usepackage{polski}
+%\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{zd}{Zadanie}
+\newtheorem{zdt}[zd]{Zadanie*}
+\title{Zestaw 5}
+\usepackage{Sweave}
+\begin{document}
+\input{Zestaw5-concordance}
+\maketitle
+
+\begin{zd}
+Niech $\tau$, $\tau_1$ i $\tau_2$ będą momentami stopu. Udowodnij
+\begin{itemize}
+\item $\mathcal{F}_{\tau}$ jest $\sigma$- ciałem,
+\item jeśli $\tau \equiv t$, to $\mathcal{F}_{\tau} = \mathcal{F}_t$,
+\item $A \in \mathcal{F}_{\tau}$ wtedy i tylko wtedy, gdy $A\in \mathcal{F}$ i $\{\tau = t\} \cap A \in \mathcal{F}_t$ dla dowolnego $t$,
+\item jeśli $\tau_1 \leq \tau_2$, to $\mathcal{F}_{\tau_1} \subset \mathcal{F}_{\tau_2}$.
+\end{itemize}
+\end{zd}
+
+\begin{zd}
+Niech $T= [0, \infty)$ oraz niech $\tau$ będzie momentem stopu. Czy momentem stopu jest
+\begin{itemize}
+\item $\tau^2$,
+\item $\tau -1$,
+\item $\tau +1$,
+\item $\tau + c,\ c>0$,
+\item $\tau - c,\ c>0$.
+\end{itemize}
+\end{zd}
+
+\begin{zd}
+		Niech $T, S$ będą momentami stopu. Czy momentem stopu jest zmienna losowa $T + S$ lub $T - S$?
+\end{zd}
+
+\begin{zd}
+	Niech będzie dana przestrzeń probabilistyczna $(\Omega, \mathcal{F}, \mathbb{P})$ z filtracją zupełną $\{\mathcal{F}_n\}$. Niech $\tau, \sigma$ będą dwoma momentami Markowa o skończonych wartościach takimi, że istnieje $t_0 \geq 0$, takie, że $\mathbb{P}(\tau \geq t_0) = \mathbb{P}(\sigma \geq t_0) = 1$. Niech $A\in \mathcal{F}_{t_0}$. Sprawdź, czy momentem stopu jest zmienna losowa
+	\begin{displaymath}
+	U = \tau \cdot\pmb{1}_A + \sigma \cdot \pmb{1}_{A'}
+	\end{displaymath}
+	względem podanej filtracji.
+\end{zd}
+
+\begin{zd}
+Niech $\tau$, $\sigma$ będą momentami stopu. Udowodnij, że $\tau \land \sigma$ i $\tau \lor \sigma$ są momentami stopu.
+\end{zd}
+
+
+\begin{zd}
+	Niech $S, T$ będą momentami stopu. Udowodnij, że zachodzi $\mathcal{F}_{\min\{T,S\}} = \mathcal{F}_{T} \cap \mathcal{F}_{S}$.
+\end{zd}
+%5/11.1
+\begin{zd}
+Niech $(X_i)$ będzie ciągiem niezależnych zmiennych losowych o tym samym rozkładzie $U[0, 1]$. Niech $\tau = \inf\{n\colon X_1 + X_2 + \dots + X_n \geq 1\}$. Wyznacz $\mathbb{E}\tau$.
+\end{zd}
+
+%12/11.1
+\begin{zd}
+Niech $(X_n)$ będzie ciągiem Bernoulliego, zaś $\tau = \inf\{n\colon S_n=1\}$. Wykaż, że $\mathbb{E}\tau = \infty$.
+\end{zd}
+%3/11.2
+\begin{zd}
+Niech $X_1, X_2, \dots$ będą niezależnymi zmiennymi losowymi o tym samym rozkładzie ze skończonym drugim momentem i nich $\tau$ będzie całkowalnym momentem stopu. Udowodnij zmodyfikowaną tożsamość Wald'a postaci $\mathbb{E}\left(S_n - \tau\mathbb{E}X_1\right)^2 = \mathbb{E}\tau VarX_1$.
+\end{zd}
+
+\begin{zd}
+Niech $\tau$ będzie zmienną losową, a $(X_n, \mathcal{F}_n)$ martyngałem. Kiedy $(X_{n\wedge \tau}, \mathcal{F}_n)$ jest martyngałem?
+\end{zd}
+
+\begin{zd}
+	Niech $0 < T_1 < T_2 < \dots < T_n < \dots $ będzie rosnącym do nieskończoności ciągiem momentów stopu o skończonych wartościach. Niech $N_t = \sum_{i = 1}^{\infty}\pmb{1}_{\{i \geq T_i\}}.$ Niech ponadto $\{U_i\}_{i \in \mathbb{N}}$ będzie ciągiem niezależnych zmiennych losowych takim, że jest on niezależny od procesu $N$. Załóżmy, że $\sup_i\mathbb{E}|U_i|< \infty$ oraz $\mathbb{E}U_i = 0$ dla dowolnego $i$. Udowodnij, że wtedy proces
+	\begin{displaymath}
+		Z_t = \sum_{i = 1}^{\infty}U_i\pmb{1}_{\{t \geq T_i\}}
+	\end{displaymath}
+	jest martyngałem.
+\end{zd}
+
+\begin{zdt}
+Niech proces $X$ będzie martyngałem i niech $\tau$ będzie momentem stopu.
+\begin{itemize}
+\item Udowodnij, że proces zastopowany $X^{\tau}_t = X(\min\{t, \tau\})$ jest martyngałem.
+\item Niech $\sigma$ będzie momentem stopu takim, że $\sigma \leq \tau$ i niech $\tau,\ \sigma$ będą ograniczone. Udowodnij, że $\mathbb{E}\left(X_{\tau}|\mathcal{F}_{\sigma}\right) = X_{\sigma}$ prawie na pewno.
+\item Przypuśćmy, że istnieje całkowalna zmienna losowa $Y$ taka, że dla dowolnego $t$, $|X_t| \leq Y$ i niech $\tau$ będzie momentem stopu skończonym prawie wszędzie. Udowodnij, że $\mathbb{E}X_{\tau} = \mathbb{E}X_0 $.
+\item Niech $X$ będzie procesem takim, że istnieje stała $M$ taka, że $|X_{n-1} - X_n| \leq M$ dla dowolnego $n$ i niech $\tau$ będzie momentem stopu takim, że $\mathbb{E}\tau < \infty$. Udowodnij, że wtedy $\mathbb{E}X_{\tau} = \mathbb{E}X_0$.
+\end{itemize}
+\end{zdt}
+
+\end{document}
