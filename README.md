@@ -11,6 +11,8 @@
   > grzegorz.mika@agh.edu.pl
 - **LinkedIn**  
   > [LinkedIn profile](https://www.linkedin.com/in/grzegorzwmika/)
+- **GitHub**
+  > [GitHub account](https://github.com/GrzegorzMika)
 
 ## Research
 
@@ -29,6 +31,7 @@ Birgé i in.)"_, seminar talk
 - Grzegorz Mika (2017), [_"Zastosowanie metod MCMC do modeli wyceny"_](https://github.com/GrzegorzMika/Academia/blob/master/presentations/2017/krakowska_konferencja_matematyki_finansowej/MCMC.pdf), VI Krakowska konferencja Matematyki Finansowej, 2017
 
 ### Participant
+- [_XLVI Konferencja Statystyka Matematyczna_](https://xlvistat.umcs.pl/), 30 November-3 December 2020, virtual event
 - [_eRUM 2020_](https://2020.erum.io/), 17-20 June 2020, ~~Milano, Italy~~, moved to virtual event
 - [_Mathematical Methods of Modern Statistics 2_](https://www.cirm-math.com/cirm-virtual-event-2146.html), 15-19 June 2020, ~~Luminy, France~~, moved to virtual event
 - [_XLV Konferencja Statystyka Matematyczna_](https://www.impan.pl/en/activities/banach-center/conferences/19-xlvstatistic), 2-6 December 2019, Będlewo, Poland
@@ -53,9 +56,10 @@ Birgé i in.)"_, seminar talk
 
 ## Other
 - Memeber of the [Bernoulli Society for Mathematical Statistics and Probability](http://www.bernoulli-society.org)
-- Reviewer in [Manning Publications Co.](https://www.manning.com/)
+- Reviewer in [Manning Publications Co.](https://www.manning.com/) - positions in Deep Learning and general Python programming
 - Support of cutting-edge science research under [BOINC](https://boinc.berkeley.edu/) programme:
   - Search for weak astrophysical signals from spinning neutron stars using data from the LIGO gravitational-wave detectors, the Arecibo radio telescope, and the Fermi gamma-ray satellite under [Einstein@Home](https://einsteinathome.org/) reaserch programme.
+- Support of [Folding@home](https://foldingathome.org/), a distributed computing project for simulating protein dynamics, including the process of protein folding and the movements of proteins implicated in a variety of diseases. 
 
 
 [![HitCount](http://hits.dwyl.io/GrzegorzMika/Academia.svg)](http://hits.dwyl.io/GrzegorzMika/Academia)
