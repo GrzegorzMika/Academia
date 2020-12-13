@@ -1,0 +1,75 @@
+\documentclass{mwart}
+%\usepackage{polski}
+%\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{zd}{Zadanie}
+\newtheorem{zdt}[zd]{Zadanie*}
+\title{Zestaw 6}
+\usepackage{Sweave}
+\begin{document}
+\input{Zestaw6-concordance}
+\maketitle
+
+
+% wald.pdf
+\begin{zd}
+Niech $X_1, X_2, \dots$ będą niezależnymi zmiennymi losowymi o tym samym rozkładzie i niech $\phi$ oznacza funkcję generującą momenty dla $X_i$. Niech ponadto $T$ będzie ograniczonym momentem stopu. Oznaczmy przez $S_T=\sum_{i=1}^TX_i$. Udowodnij, że
+\begin{displaymath}
+\mathbb{E}\left(\frac{\exp{(\theta S_T)}}{\phi(\theta)^T}\right)=1.
+\end{displaymath}
+\end{zd}
+
+% MIT18_445S15_homework4_sol.pdf
+\begin{zd}
+Niech proces $X$ będzie martyngałem i niech $\tau$ będzie momentem stopu.
+\begin{itemize}
+\item Niech $\sigma$ będzie momentem stopu takim, że $\sigma \leq \tau$ i niech $\tau,\ \sigma$ będą ograniczone. Udowodnij, że $\mathbb{E}\left(X_{\tau}|\mathcal{F}_{\sigma}\right) = X_{\sigma}$ prawie na pewno.
+\item Przypuśćmy, że istnieje całkowalna zmienna losowa $Y$ taka, że dla dowolnego $t$, $|X_t| \leq Y$ i niech $\tau$ będzie momentem stopu skończonym prawie wszędzie. Udowodnij, że $\mathbb{E}X_{\tau} = \mathbb{E}X_0 $.
+\item Niech $X$ będzie procesem takim, że istnieje stała $M$ taka, że $|X_{n-1} - X_n| \leq M$ dla dowolnego $n$ i niech $\tau$ będzie momentem stopu takim, że $\mathbb{E}\tau < \infty$. Udowodnij, że wtedy $\mathbb{E}X_{\tau} = \mathbb{E}X_0$.
+\end{itemize}
+\end{zd}
+
+
+% Zastawniak 3.12
+\begin{zd}
+Niech $X$ będzie symetrycznym błądzeniem losowym z czasem dyskretnym postaci $X_n = \sum_{i=1}^nY_i$ i niech filtracja $\{\mathcal{F}_n\}$ będzie genereowana przez zmienne $Y_i$. Weźmy dowolne $K\in \mathbb{N}$ i określmy $T = \inf\{n\colon |X_n|=K\}$. Udowdnij:
+\begin{itemize}
+\item $T$ jest momentem stopu,
+\item proces $Z_n = (-1)^n\cos\left(\pi\cdot (X_n+K)\right)$ jest martyngałem,
+\item proces $Z$ spełnia założenia twierdzenia o opcjonalnym stopowaniu,
+\item znajdź $\mathbb{E}(-1)^T$.
+\end{itemize}
+\end{zd}
+
+% Sztencel 11.4.1
+\begin{zd}
+Niech $(X_k)_{k=1}^n$ będzie podmartyngałem oraz niech $\lambda > 0$. Udowodnij, że zachodzi wtedy
+\begin{displaymath}
+\lambda \mathbb{P}(\min_{k\leq n}X_k \leq -r) \leq \mathbb{E}(X_n\pmb{1}_{\{\min_{k\leq n}X_k \geq -r\}}) - \mathbb{E}X_0 \leq \mathbb{E}X_n^+ - \mathbb{E}X_0 \leq \mathbb{E}|X_n| - \mathbb{E}X_0.
+\end{displaymath}
+\end{zd}
+
+% Sztencel 11.4.4
+\begin{zd}[Nierówność Doob'a w $L^p$]
+Niech $(X_k)_{k=1}^n$ będzie odpowiednio całkowalnym podmartyngałem i niech $p > 1$. Udowodnij, że zachodzi wtedy
+\begin{displaymath}
+\mathbb{E}\sup_{k\leq n}|X_k|^p \leq \left(\frac{p}{p-1}\right)^p\mathbb{E}|X_n|^p.
+\end{displaymath}
+\end{zd}
+
+
+\begin{zd}
+Niech $\sqrt{n}(T_n - \theta)$ zbiega według rozkładu do pewnej zmiennej losowej. Udodowdnij, że wtesy $T_n$ zbiega według prawdopodobieństwa do $\theta$.
+\end{zd}
+
+\begin{zd}
+Niech $\mathbb{E}X_n \to \mu$ oraz $VarX_n \to 0$. Udowodnij, że wtedy $X_n \to \mu$ według prawdopodobieństwa.
+\end{zd}
+\end{document}
