@@ -1,0 +1,35 @@
+\documentclass{mwart}
+%\usepackage{polski}
+%\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{zd}{Zadanie}
+\newtheorem{zdt}[zd]{Zadanie*}
+\title{Kolokwium 1\\Grupa B}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\maketitle
+
+\begin{zd}
+Niech $\xi_n = \eta_1 + \dots + \eta_n$. Kiedy $\xi_n^2-n$ jest martyngałem względem filtracji $\mathcal{F}_n = \sigma (\eta_1, \dots, \eta_n)$?
+\end{zd}
+
+\begin{zd}
+Niec $X$ będzie supermartyngałem względem pewnej filtracji takim, że jego wartość oczekiwana jest stała w czasie. Udowodnij, że proces ten jest martyngałem.
+\end{zd}
+
+\begin{zd}
+Niech $(Y_n)_{n=0}^{\infty}$ będzie ciągiem całkowalnych zmiennych losowych adaptowanym do filtracji $\{\mathcal{F}_n\}_{n=0}^{\infty}$. Załóżmy, że istnieją ciągi liczb $\{u_n\}$, $\{v_n\}$, $n\geq 0$ takie, że $\mathbb{E}(Y_{n+1}|\mathcal{F}_n) = u_nY_n + v_n$. Znajdź ciągi liczbowe $\{a_n\}$, $\{b_n\}$, $n\geq 0$ takie, że ciąg zmiennych losowych $M_n = a_nY_n + b_n$, $n> 1$ jest martyngałem względem filtracji  $\{\mathcal{F}_n\}$.
+\end{zd}
+
+\begin{zd}[Druga tożsamość Wald'a]
+Niech $T$ będzie ograniczonym momentem stopu względem pewnej filtracji i niech $(X_n)$ będzie ciągiem zmiennych losowych adaptowanym do tej filtracji. Załóżmy, że dla dowolnego $i\geq 0$ zachodzi $(X_1, X_2, \dots, X_i, T\wedge (i+1)) \perp X_{i+1})$ i niech $\mathbb{E}T < \infty$, $\mathbb{E}X_i = 0$ oraz $\mathbb{E}X_i^2 = \mathbb{E}X_1^2 < \infty$ dla dowolnego $i$. Oznaczmy ponadto $S_n = \sum_{i=1}^nX_i$. Udowodnij, że $\mathbb{E}S_n^2 = \mathbb{E}X_1^2\mathbb{E}T$.
+\end{zd}
+
+\end{document}

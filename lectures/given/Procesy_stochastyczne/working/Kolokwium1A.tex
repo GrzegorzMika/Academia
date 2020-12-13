@@ -1,0 +1,36 @@
+\documentclass{mwart}
+%\usepackage{polski}
+%\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{zd}{Zadanie}
+\newtheorem{zdt}[zd]{Zadanie*}
+\title{Kolokwium 1\\Grupa A}
+\usepackage{Sweave}
+\begin{document}
+\input{Kolokwium1A-concordance}
+\maketitle
+
+\begin{zd}
+Kiedy $X_n = \sum_{i=0}^{n-1}\alpha_{i+1}(\xi_{i+1} - \xi_i)$ jest martyngałem?
+\end{zd}
+
+\begin{zd}
+Udowodnij, że przyrosty martyngału są parami nieskorelowane.
+\end{zd}
+
+\begin{zd}
+Niech $(X_i)$ będzie ciągiem całkowalnych zmiennych losowych i niech $\mathcal{F}_n = \sigma(X_0, X_1, \dots, X_n)$. Załóżmy, że dla dowolnego $n \geq 1$ zachodzi $\mathbb{E}(X_{n+1}|\mathcal{F}_n) = aX_n + b_nX_{n-1}$, gdzie $a\in (0, 1)$ i $a+b=1$. Dla jakich wartości parametru $\alpha$ $S_n = \alpha X_n + X_{n-1}$ jest martyngałem względem filtracji $\{\mathcal{F}_n\}$?
+\end{zd}
+
+\begin{zd}[Trzecia tożsamość Wald'a]
+Niech $T$ będzie ograniczonym przez $N$ momentem stopu względem pewnej filtracji i niech $X_i$ będą niezależnymi zmiennymi losowymi przyjmującymi wartości w przedziale $[0, \infty )$ takimi, że $\mathbb{E}X_i = 1$ dla dowolnego $i$ i niech $\pmb{1}_{\{T=k\}}\prod_{i=1}^kX_i \perp \prod_{i=k+1}^NX_i$ dla dowolnego $k \leq N$. Oznaczmy $M = \prod_{i=1}^TX_i$ i niech zawsze $\prod_{i=1}^0(\dots ) = 1$. Udowodnij, że $\mathbb{E}M =1$.
+\end{zd}
+
+\end{document}

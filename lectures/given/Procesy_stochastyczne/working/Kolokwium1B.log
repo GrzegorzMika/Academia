@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.3.7)  6 DEC 2020 19:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.3.7)  6 DEC 2020 21:24
 entering extended mode
-**./kolokwium_A.tex
-(kolokwium_A.tex
+**./Kolokwium1B.tex
+(Kolokwium1B.tex
 LaTeX2e <2019-10-01> patch level 1
 (/home/grzegorz/.miktex/texmfs/install/tex/latex/mwcls/mwart.cls
 Document Class: mwart 2017/05/13 v0.75 A LaTeX document class (MW)
@@ -344,8 +344,8 @@ LaTeX Font Info:    Trying to load font information for T1+aer on input line 10
 (/home/grzegorz/.miktex/texmfs/install/tex/latex/ae/t1aer.fd
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
 ))))
-(kolokwium_A.aux)
-\openout1 = `kolokwium_A.aux'.
+(Kolokwium1B.aux)
+\openout1 = `Kolokwium1B.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
@@ -430,7 +430,7 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-(kolokwium_A-concordance.tex)
+(Kolokwium1B-concordance.tex)
 LaTeX Font Info:    Trying to load font information for U+msa on input line 18.
 
 
@@ -446,34 +446,40 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 LaTeX Warning: No \author given.
 
+
+Overfull \hbox (45.42554pt too wide) in paragraph at lines 33--34
+\T1/aer/m/it/10 adap-towanym do tej fil-tracji. Za-ªó»my, »e dla dowol-nego $\O
+ML/cmm/m/it/10 i \OMS/cmsy/m/n/10  \OT1/cmr/m/n/10 0$ \T1/aer/m/it/10 za-chodz
+i $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 X[]; X[]; [] ; X[]; T \OMS/cmsy/m/n/10 ^
+ []
+
 [1
 
 {/home/grzegorz/.miktex/texmfs/data/pdftex/config/pdftex.map}]
-(kolokwium_A.aux) ) 
+(Kolokwium1B.aux) ) 
 Here is how much of TeX's memory you used:
  3791 strings out of 494386
- 52529 string characters out of 3173828
+ 52489 string characters out of 3173828
  109229 words of memory out of 3000000
  7809 multiletter control sequences out of 15000+200000
  19351 words of font info for 45 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 53i,7n,32p,360b,243s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 53i,7n,32p,512b,243s stack positions out of 5000i,500n,10000p,200000b,50000s
 </home/grzegorz/.miktex/texmfs/install/fonts/type1/public/am
 sfonts/cm/cmbx10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/
 amsfonts/cm/cmex10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/publi
 c/amsfonts/cm/cmmi10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/pub
-lic/amsfonts/cm/cmmi5.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/pu
-blic/amsfonts/cm/cmmi7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/p
-ublic/amsfonts/cm/cmr10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/
-public/amsfonts/cm/cmr17.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1
-/public/amsfonts/cm/cmr7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1
-/public/amsfonts/cm/cmsy10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/typ
-e1/public/amsfonts/cm/cmsy7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/ty
-pe1/public/amsfonts/cm/cmti10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/
-type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on kolokwium_A.pdf (1 page, 110418 bytes).
+lic/amsfonts/cm/cmmi7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/pu
+blic/amsfonts/cm/cmr10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/p
+ublic/amsfonts/cm/cmr17.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/
+public/amsfonts/cm/cmr7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type
+1/public/amsfonts/cm/cmsy7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/typ
+e1/public/amsfonts/cm/cmti10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/t
+ype1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Kolokwium1B.pdf (1 page, 111154 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
+ 51 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  5 words of extra memory for PDF output out of 10000 (max. 10000000)
 
