@@ -81,7 +81,7 @@ W kranine Oz spotkania z lwami, tygrysami i niedźwiedzami opisywane są procesa
 
 \end{zdt}
 
-<<echo = FALSE, fig = TRUE>>=
+<<echo = TRUE, fig = TRUE>>=
 library(tidyverse)
 library(foreach)
 
@@ -94,7 +94,8 @@ simulate_path <- function(lambda, tMax = 100, simulation_nr = NA) {
   n <- qpois(1 - 1e-8, lambda = lambda * tMax)
   X <- rexp(n = n, rate = lambda)
   S <- c(0, cumsum(X))
-  return(data.frame(simulation = rep(simulation_nr, length(S)), values = 0:(length(S) - 1), time = S))
+  return(data.frame(simulation = rep(simulation_nr, length(S)),
+                    values = 0:(length(S) - 1), time = S))
 }
 
 plot <- function(data, lambda) {

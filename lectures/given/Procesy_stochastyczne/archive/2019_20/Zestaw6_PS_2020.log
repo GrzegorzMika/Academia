@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250) (preloaded format=pdflatex 2019.11.3)  26 DEC 2019 19:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.3.7)  3 JAN 2021 19:11
 entering extended mode
 **./Zestaw6_PS_2020.tex
 (Zestaw6_PS_2020.tex
@@ -456,12 +456,12 @@ Package pdftex.def Info: Zestaw6_PS_2020-001.pdf  used on input line 50.
 {/home/grzegorz/.miktex/texmfs/data/pdftex/config/pdftex.map} <./Zestaw6_PS_202
 0-001.pdf>] (Zestaw6_PS_2020.aux) ) 
 Here is how much of TeX's memory you used:
- 3797 strings out of 494415
- 52724 string characters out of 3174393
- 109146 words of memory out of 3000000
- 7806 multiletter control sequences out of 15000+200000
+ 3797 strings out of 494386
+ 52791 string characters out of 3173828
+ 109251 words of memory out of 3000000
+ 7815 multiletter control sequences out of 15000+200000
  19351 words of font info for 45 fonts, out of 3000000 for 9000
- 0 hyphenation exceptions out of 8191
+ 14 hyphenation exceptions out of 8191
  53i,7n,32p,307b,243s stack positions out of 5000i,500n,10000p,200000b,50000s
 </home/grzegorz/.miktex/texmfs/install/fonts
 /type1/public/amsfonts/cm/cmbx10.pfb></home/grzegorz/.miktex/texmfs/install/fon
@@ -474,7 +474,7 @@ l/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/grzegorz/.miktex/texmfs/inst
 all/fonts/type1/public/amsfonts/cm/cmsy7.pfb></home/grzegorz/.miktex/texmfs/ins
 tall/fonts/type1/public/amsfonts/cm/cmti10.pfb></home/grzegorz/.miktex/texmfs/i
 nstall/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Zestaw6_PS_2020.pdf (1 page, 108607 bytes).
+Output written on Zestaw6_PS_2020.pdf (1 page, 108578 bytes).
 PDF statistics:
  53 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

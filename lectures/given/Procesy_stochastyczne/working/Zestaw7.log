@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.3.7)  3 JAN 2021 19:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.3.7)  3 JAN 2021 19:12
 entering extended mode
 **./Zestaw7.tex
 (Zestaw7.tex
@@ -460,37 +460,43 @@ t/10 N[]\OT1/cmr/m/n/10 )[]\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10
 0 N[]\OT1/cmr/m/n/10 )[]$ \T1/aer/m/it/10 b¦d¡ nieza-le»nymi proce-
  []
 
-<Zestaw7-001.pdf, id=2, 433.62pt x 433.62pt>
+LaTeX Font Info:    Trying to load font information for T1+aett on input line 8
+6.
+(/home/grzegorz/.miktex/texmfs/install/tex/latex/ae/t1aett.fd
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+) [1
+
+{/home/grzegorz/.miktex/texmfs/data/pdftex/config/pdftex.map}]
+<Zestaw7-001.pdf, id=16, 433.62pt x 433.62pt>
 File: Zestaw7-001.pdf Graphic file (type pdf)
 <use Zestaw7-001.pdf>
-Package pdftex.def Info: Zestaw7-001.pdf  used on input line 85.
+Package pdftex.def Info: Zestaw7-001.pdf  used on input line 112.
 (pdftex.def)             Requested size: 276.00105pt x 276.0139pt.
-[1
-
-{/home/grzegorz/.miktex/texmfs/data/pdftex/config/pdftex.map}] [2 <./Zestaw7-00
-1.pdf>] (Zestaw7.aux) ) 
+ [2 <./Zestaw7-001.pdf>]
+(Zestaw7.aux) ) 
 Here is how much of TeX's memory you used:
- 3798 strings out of 494386
- 52590 string characters out of 3173828
+ 3825 strings out of 494386
+ 53080 string characters out of 3173828
  113218 words of memory out of 3000000
- 7816 multiletter control sequences out of 15000+200000
- 19351 words of font info for 45 fonts, out of 3000000 for 9000
+ 7837 multiletter control sequences out of 15000+200000
+ 20163 words of font info for 48 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 53i,7n,32p,456b,243s stack positions out of 5000i,500n,10000p,200000b,50000s
-</home/grzegorz/.miktex/texmfs/install/fonts/type1/publi
-c/amsfonts/cm/cmbx10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/pub
-lic/amsfonts/cm/cmmi10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/p
-ublic/amsfonts/cm/cmmi7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/
-public/amsfonts/cm/cmr10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1
-/public/amsfonts/cm/cmr17.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type
-1/public/amsfonts/cm/cmr7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/ty
-pe1/public/amsfonts/cm/cmsy7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/t
-ype1/public/amsfonts/cm/cmti10.pfb></home/grzegorz/.miktex/texmfs/install/fonts
-/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Zestaw7.pdf (2 pages, 127563 bytes).
+ 53i,7n,32p,456b,280s stack positions out of 5000i,500n,10000p,200000b,50000s
+</home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsfon
+ts/cm/cmbx10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/amsf
+onts/cm/cmmi10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/am
+sfonts/cm/cmmi7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/a
+msfonts/cm/cmr10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public/
+amsfonts/cm/cmr17.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public
+/amsfonts/cm/cmr7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/public
+/amsfonts/cm/cmsltt10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1/
+public/amsfonts/cm/cmsy7.pfb></home/grzegorz/.miktex/texmfs/install/fonts/type1
+/public/amsfonts/cm/cmti10.pfb></home/grzegorz/.miktex/texmfs/install/fonts/typ
+e1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Zestaw7.pdf (2 pages, 144088 bytes).
 PDF statistics:
- 56 PDF objects out of 1000 (max. 8388607)
+ 60 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  10 words of extra memory for PDF output out of 10000 (max. 10000000)
 
