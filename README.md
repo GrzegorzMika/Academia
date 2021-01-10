@@ -51,6 +51,8 @@ Birgé i in.)"_, seminar talk
   - [Zestaw 4](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Zestaw4.pdf)
   - [Zestaw 5](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Zestaw5.pdf)
   - [Zestaw 6](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Zestaw6.pdf)
+  - [Zestaw 7](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Zestaw7.pdf)
+  - [Zestaw 8](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Zestaw8.pdf)
 - Bazy danych (2020/21)
   - Informacje przydatne na start - [tutaj](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Bazy_danych/Intro.pdf)
 - For information about previous semesters please see [here](https://github.com/GrzegorzMika/Academia/blob/master/lectures/lectures.md)
