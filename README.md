@@ -56,6 +56,3 @@ Birgé i in.)"_, seminar talk
   - Search for weak astrophysical signals from spinning neutron stars using data from the LIGO gravitational-wave detectors, the Arecibo radio telescope, and the Fermi gamma-ray satellite under [Einstein@Home](https://einsteinathome.org/) reaserch programme.
 - Support of [Folding@home](https://foldingathome.org/), a distributed computing project for simulating protein dynamics, including the process of protein folding and the movements of proteins implicated in a variety of diseases. 
 
-
-[![HitCount](http://hits.dwyl.io/GrzegorzMika/Academia.svg)](http://hits.dwyl.io/GrzegorzMika/Academia)
-
