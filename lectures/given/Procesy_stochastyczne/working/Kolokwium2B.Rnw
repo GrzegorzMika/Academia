@@ -1,0 +1,39 @@
+\documentclass{mwart}
+%\usepackage{polski}
+%\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{zd}{Zadanie}
+\newtheorem{zdt}[zd]{Zadanie*}
+\title{Kolokwium 2\\Grupa B}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\maketitle
+
+\begin{zd}
+Wykaż, że $W(t)$ oraz $W(t)^2 - t$ są martyngałami.
+\end{zd}
+
+\begin{zd}
+Niech $W$ będzie procesem Wienera. Oblicz
+\begin{itemize}
+\item $\mathbb{E}(2W_2+3W_3+4W_4)$,
+\item $\mathbb{P}(W_4-W_2>1|W_2=0.5)$.
+\end{itemize}
+\end{zd}
+
+\begin{zd}
+Niech $N^1,\ N^2$ będą dwoma niezależnymi procesami Poissona z intensywnością $\lambda$ i niech $\rho \in [0, 1]$. Określmy proces $X_t = \rho N_t^1 + \sqrt{1 - \rho^2}N^2_t$ dla dowolnego $t\geq 0$. Czy proces $X$ jest procesem Poissona?
+\end{zd}
+
+
+\begin{zd}
+Niech $W$ będzie procesem Wienera. Udowodnij, że $\exp(W_t)\exp(-t/2)$ jest martyngałem względem filtracji naturalnej procesu Wienera.
+\end{zd}
+\end{document}

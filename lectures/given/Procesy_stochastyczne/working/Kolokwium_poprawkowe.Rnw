@@ -1,0 +1,39 @@
+\documentclass{mwart}
+%\usepackage{polski}
+%\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{zd}{Zadanie}
+\newtheorem{zdt}[zd]{Zadanie*}
+\title{Kolokwium poprawkowe}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\maketitle
+
+\begin{zd}
+Niech $t, s >0$. Wykaż, że $V(s) = W(t+s) - W(t)$ jest procesem Wienera.
+\end{zd}
+
+\begin{zd}
+Wyznacz $\mathbb{E}(\xi|\eta)$, gdzie $\eta(x) = 1- \frac{1}{2}|3x-1|$ oraz $\xi(x) = 2x^2$.
+\end{zd}
+
+\begin{zd}
+Niech $(N_t)_{\{t \geq 0\}}$ będzie procesm Poissona z instensywnością 2. Oblicz:
+\begin{itemize}
+\item $\mathbb{E}(N_3N_4)$,
+\item $Cov(N_5-2N_6, 3N_{10})$.
+\end{itemize}
+\end{zd}
+
+\begin{zd}
+Niech $\tau$, $\sigma$ będą momentami stopu. Udowodnij, że $\tau \land \sigma$ jest momentem stopu.
+\end{zd}
+
+\end{document}
