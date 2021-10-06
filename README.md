@@ -46,17 +46,7 @@ Birgé i in.)"_, seminar talk
 
 - Konsultacje: środa, 17:45-19:15 na platformie MS Teams
 - Procesy stochastyczne (2020/21)  
-  # - Informacje przydatne na start - [tutaj](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Procesy_intro.pdf)
   - [Zestaw 1](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Zestaw1.pdf)
-#   - [Zestaw 2](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Zestaw2.pdf)
-#   - [Zestaw 3](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Zestaw3.pdf)
-#   - [Zestaw 4](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Zestaw4.pdf)
-#   - [Zestaw 5](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Zestaw5.pdf)
-#   - [Zestaw 6](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Zestaw6.pdf)
-#   - [Zestaw 7](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Zestaw7.pdf)
-#   - [Zestaw 8](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Zestaw8.pdf)
-# - Bazy danych (2020/21)
-#   - Informacje przydatne na start - [tutaj](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Bazy_danych/Intro.pdf)
 - For information about previous semesters please see [here](https://github.com/GrzegorzMika/Academia/blob/master/lectures/lectures.md)
 
 ## Other
