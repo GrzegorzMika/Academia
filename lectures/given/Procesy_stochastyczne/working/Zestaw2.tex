@@ -1,0 +1,90 @@
+\documentclass{mwart}
+%\usepackage{polski}
+%\usepackage[polish]{babel}
+\usepackage{amsfonts}
+% \usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{zd}{Zadanie}
+\newtheorem{zdt}[zd]{Zadanie*}
+\title{Zestaw 2}
+\usepackage{Sweave}
+\begin{document}
+\input{Zestaw2-concordance}
+\maketitle
+
+\begin{zd}
+Niech $A, B$ będą zbiorami mierzalnymi i niech $\mathbb{P}(B)>0$. Pokaż, że $\mathbb{E}(\pmb{1}_A|B)= \mathbb{P}(A|B)$.
+\end{zd}
+
+\begin{zd}
+Niech $g$ będzie funkcją stałą i niech $f$ będzie funkcją całkowalną. Pokaż, że $\mathbb{E}(f|g)$ jest funkcją stałą i równą $\mathbb{E}(f)$.
+\end{zd}
+
+\begin{zd}
+Niech $\{A_i\}_{i \in I}$ będzie przeliczalnym rozbiciem przestrzeni $\Omega$ i takim, że dla dowolnego $i$ $\mathbb{P}(A_i) > 0$. Wykaż, że wtedy $\mathbb{E}X = \sum_{i\in I}\mathbb{E}(X|A_i)\mathbb{P}(A_i)$.
+\end{zd}
+
+\begin{zd}
+Niech $\Omega = [0, 1]$ i niech $\mathbb{P}$ będzie miarą Lebesgue'a na tym odcinku. Znajdź $\mathbb{E}(f|\mathcal{F})$ jeśli
+\begin{itemize}
+\item $f(x) = \sqrt{x}$ i $\mathcal{F}$ jest generowane przez zbiory $[0, 1/4)$ i $[1/4, 1]$,
+\item $f(x) = -x$ i $\mathcal{F}$ jest generowane przez zbiory $[0, 1/4)$ i $[1/3, 1]$.
+\end{itemize}
+\end{zd}
+
+\begin{zd}
+	Niech zmienne losowe $X,Y$ będą określone na pewnej przestrzeni probabilistycznej w następujący sposób
+	\begin{itemize}
+	\item $X(x) = 2x^2,\ \ \ \ Y(x) = 1 - |2x - 1|$,
+	\item $X(x) = 2x^2, \ \ \ \ Y(x) = 1 - \frac{1}{2}\left|3x-1\right|$,
+	\item $X(x) = x^2, \ \ \ \ Y(x) = 2\pmb{1}_{[0, 1/2)} + x\pmb{1}_{[1/2, 1]}$.
+	\end{itemize}
+	Znajdź $\mathbb{E}(X|Y)$.
+\end{zd}
+
+\begin{zd}
+	Niech $(\Omega = [0,1], \mathcal{F} = \mathcal{B}_{[0,1]}, \lambda)$ będzie przestrzenią probabilistyczną. Niech $Y(\omega) = \omega(1-\omega)$. Udowodnij, że dla dowolnej zmiennej losowej $X$ określonej na tej przestrzeni zachodzi
+	\begin{displaymath}
+	 \mathbb{E}(X|Y)(\omega) = \frac{X(\omega) + X(1-\omega)}{2}.
+	\end{displaymath}
+\end{zd}
+
+\begin{zd}
+	Niech $X_1, X_2, \dots $ będzie ciągiem niezależnych i całkowalnych zmiennych losowych o tym samym rozkładzie normalnym ($\mathcal{N}(\mu,\sigma)$) i niech $\tau$ będzie zmienną losową o rozkładzie Poissona z parametrem $\lambda$ niezależną od tego ciągu. Znajdź wartość oczekiwaną zmiennej losowej
+	\begin{displaymath}
+	\xi \stackrel{d}{=} \sum_{n=1}^\tau X_n.
+	\end{displaymath}
+\end{zd}
+
+\begin{zd}
+Niech $\{X_i\}$ będzie ciągiem niezależnych zmiennych losowych o tym samym rozkładzie i takim, że $\mathbb{E}|X_i|<\infty$. Niech $S_n = \sum_{i=1}^nX_i$ i niech $\mathcal{F}_n = \sigma\left(S_n, S_{n+1}, S_{n+2}, \dots\right)$. Wyznacz
+\begin{itemize}
+\item $\mathbb{E}(X_1|\mathcal{F}_n)$,
+\item $\mathbb{E}\left(\sum_{i=1}^na_iX_i|\mathcal{F}_n\right)$, gdzie $\sum_{i=1}^na_i = 1$.
+\end{itemize}
+\end{zd}
+
+\begin{zd}
+	Niech zmienna losowa $X$ będzie całkowalna z kwadratem. Określmy $Var (X|\mathcal{F}) = \mathbb{E}\left((X-\mathbb{E}(X|\mathcal{F}))^2|\mathcal{F}\right)$. Udowodnij, że
+	\begin{displaymath}
+	\begin{split}
+	VarX = &\mathbb{E}\left(Var(X|\mathcal{F})\right) + Var\left(\mathbb{E}(X|\mathcal{F})\right)\\ &\left(\mathbb{E}(X|\mathcal{F})\right)^2 \leq \mathbb{E}(X^2|\mathcal{F})\\
+	& VarX \geq Var\left(\mathbb{E}(X|\mathcal{F})\right).
+	\end{split}
+	\end{displaymath}
+\end{zd}
+
+\begin{zd}
+	Niech $(\Omega,\mathcal{F},\mathbb{P})$ będzie przestrzenią probabilistyczną i niech $B\in \mathcal{F}$ będzie taki, że $\mathbb{P}(B) > 0$. Udowodnij, że $\mathbb{P}_B(A) = \mathbb{P}(A|B)$ jest rozkładem prawdopodobieństwa na $B$ z $\sigma$-ciałem $\mathcal{F}_B$ składającym się ze wszystkich $A\in\mathcal{F}$ takich, że $A\subset B$.
+\end{zd}
+
+\begin{zd}
+	Co to znaczy, że $\sigma$-ciała $\mathcal{F},\mathcal{G}$ są niezależne? Co można powiedzieć o $\sigma$-ciele, które jest niezależne od siebie samego?
+\end{zd}
+
+\end{document}
