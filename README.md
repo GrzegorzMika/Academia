@@ -48,6 +48,7 @@ Birgé i in.)"_, seminar talk
 - Procesy stochastyczne (2021/22)  
   - [Zestaw 1](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Zestaw1.pdf)
   - [Zestaw 2](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Zestaw2.pdf)
+  - [Zestaw 3](https://github.com/GrzegorzMika/Academia/blob/master/lectures/given/Procesy_stochastyczne/Zestaw3.pdf)
 - Bazy danych (2021/22)
   - [Materiały](https://drive.google.com/drive/folders/14wbCGScA-SpXnTFeZI_gMCAMFLP4fSsH?usp=sharing)
 - For information about previous semesters please see [here](https://github.com/GrzegorzMika/Academia/blob/master/lectures/lectures.md)
