@@ -38,6 +38,7 @@ Z_n = V_0X_0 + V_1(X_1-X_0) + V_2(X_2-X_1) + \dots + V_n(X_n - X_{n-1}).
 Pokaż, że $(Z_n, \mathcal{F}_n)$ jest martyngałem.
 \end{zd}
 
+%sztencel 11.3.7
 \begin{zd}
 Wykazać, że przy odpowiednich założeniach co do całkowalności funkcja wypukła martyngały względem pewnej filtracji jest submartyngałem względem tej filtracji oraz że funkcja wypukła i niemalejąca przekształca submartyngał w submartyngał.
 \end{zd}
@@ -76,6 +77,7 @@ Niech $\{X_n\}_{n=1}^{\infty}$ będzie ciągiem niezależnych zmiennych losowych
 Niech $X_1, X_2, X_3, \dots$ będzie ciągiem niezależnych zmiennych losowych o tym samym rozkładzie, odpowiednio całkowalnych i o średniej zero. Niech $S_n = X_1+X_2+\dots + X_n$. Pokaż, że proces $S_n^2 - n\mathbb{E}X_1^2$  jest martyngałem. Czy proces $S_n^3$ jest martyngałem? Jaką postać komensacji $A_n$ należy zaproponować, by proces $S_n^3-A_n$ był martyngałem? Co gdy $S_n^3$ zastąpimy przez $S_n^m$?
 \end{zd}
 
+%sztencel 11.53.5
 \begin{zd}
 Niech $X_1, X_2, X_3, \dots$ będzie ciągiem niezależnych zmiennych losowych o tym samym rozkładzie zadanym przez
 \begin{displaymath}
