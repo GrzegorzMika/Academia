@@ -1,0 +1,35 @@
+\documentclass{mwart}
+%\usepackage{polski}
+%\usepackage[polish]{babel}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{multirow}
+\usepackage{amsmath}
+\newtheorem{tw}{Twierdzenie}
+\newtheorem{df}{Definicja}
+\newtheorem{zd}{Zadanie}
+\newtheorem{zdt}[zd]{Zadanie*}
+\title{Kolokwium 1\\Grupa B}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\maketitle
+
+\begin{zd}(10 pkt)\newline
+\end{zd}
+
+\begin{zd}(10 pkt)\newline
+\end{zd}
+
+\begin{zd}(10 pkt)\newline
+Niech $(Y_n)_{n=0}^{\infty}$ będzie ciągiem całkowalnych zmiennych losowych adaptowanym do filtracji $\{\mathcal{F}_n\}_{n=0}^{\infty}$. Załóżmy, że istnieją ciągi liczb $\{u_n\}$, $\{v_n\}$, $n\geq 0$ takie, że $\mathbb{E}(Y_{n+1}|\mathcal{F}_n) = u_nY_n + v_n$. Znajdź ciągi liczbowe $\{a_n\}$, $\{b_n\}$, $n\geq 0$ takie, że ciąg zmiennych losowych $M_n = a_nY_n + b_n$, $n> 1$ jest martyngałem względem filtracji  $\{\mathcal{F}_n\}$.
+\end{zd}
+
+\begin{zd}(10 pkt)\newline
+\end{zd}
+
+\begin{zd}(5 pkt)\newline
+\end{zd}
+
+\end{document}
